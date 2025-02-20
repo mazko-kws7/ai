@@ -12,63 +12,163 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to the actual report files, I’ll provide a template for how I would process them and generate the sorted summary.</p>
-<p><strong>Here’s the process and the output format I’ll use (assuming you provide me with the content of each report, one at a time):</strong></p>
+<p>Okay, I understand. Since I don’t have access to any files and received an error message indicating the files don’t exist, I’ll have to make some assumptions and provide a template for how I would generate the report summaries if I <em>did</em> have the data.</p>
+<p>Here’s the structure I’ll use and the reasoning behind it:</p>
+<p><strong>Assumptions:</strong></p>
 <ol type="1">
-<li><p><strong>Input:</strong> You provide the content of each report, one after another. Each report is associated with a file like <code>response/ASSET_NAME.md</code>.</p></li>
-<li><p><strong>Report Parsing:</strong> I will parse the content of the report to extract:</p>
-<ul>
-<li><code>ASSET_NAME</code> (from the filename provided)</li>
-<li><code>Position</code> (LONG or SHORT)</li>
-<li><code>Entry Price</code> (a number)</li>
-<li><code>Stop Loss</code> (a number)</li>
-<li><code>Profit Probability</code> (a percentage or decimal between 0 and 1)</li>
-</ul></li>
-<li><p><strong>Summary Generation:</strong> For each report, I’ll create a summary line in this format:</p>
-<p><code>ASSET_NAME: Position (Probability: X%)</code></p>
-<p>For example: <code>AAPL: LONG (Probability: 75%)</code></p></li>
-<li><p><strong>Sorting:</strong> After you’ve provided all the report content, I will sort the summaries in <em>descending</em> order based on the <code>Profit Probability</code>. The highest probability reports will be listed first.</p></li>
-<li><p><strong>Output:</strong> I will then provide the complete, sorted list of summaries.</p></li>
+<li><p><strong>Report Content:</strong> I’m assuming each <code>response/ASSET_NAME.md</code> file contains text something like this:</p>
+<pre><code>Trading Recommendation: LONG
+Entry Price: 150.25
+Stop Loss: 149.75
+Take Profit: 151.50
+Profit Probability: 75%</code></pre></li>
+<li><p><strong>Parsing:</strong> If I had file access, I would use Python (or similar) with regular expressions or text parsing to extract the <code>ASSET_NAME</code>, <code>Trading Recommendation</code>, and <code>Profit Probability</code> from each file.</p></li>
 </ol>
-<p><strong>Example Interaction (Illustrative - I need <em>you</em> to provide the report content):</strong></p>
-<p><strong>You:</strong></p>
-<pre><code>==&gt; response/AAPL.md &lt;==
-Recommendation: LONG
-Entry Price: 170.00
-Stop Loss: 165.00
-Profit Probability: 0.85</code></pre>
-<p><strong>I (Response):</strong></p>
-<p><code>AAPL: LONG (Probability: 85%)</code></p>
-<p><strong>You:</strong></p>
-<pre><code>==&gt; response/GOOG.md &lt;==
-Recommendation: SHORT
-Entry Price: 2700.00
-Stop Loss: 2750.00
-Profit Probability: 0.60</code></pre>
-<p><strong>I (Response):</strong></p>
-<p><code>GOOG: SHORT (Probability: 60%)</code></p>
-<p><strong>You:</strong></p>
-<pre><code>==&gt; response/TSLA.md &lt;==
-Recommendation: LONG
-Entry Price: 1000.00
-Stop Loss: 950.00
-Profit Probability: 0.70</code></pre>
-<p><strong>I (Response):</strong></p>
-<p><code>TSLA: LONG (Probability: 70%)</code></p>
-<p><strong>You:</strong> (After providing all the reports) “Okay, that’s all the reports!”</p>
-<p><strong>I (Final Response - Sorted Summary):</strong></p>
-<pre><code>AAPL: LONG (Probability: 85%)
-TSLA: LONG (Probability: 70%)
-GOOG: SHORT (Probability: 60%)</code></pre>
-<p><strong>Important Notes:</strong></p>
+<p><strong>Here’s the desired output structure, sorted by <code>Profit Probability</code> in descending order:</strong></p>
+<pre><code>Summary of Trading Recommendations (Sorted by Profit Probability):
+
+*   **Asset:** [ASSET_NAME_1], **Probability:** [PROBABILITY_1]%, **Recommendation:** [LONG/SHORT]
+*   **Asset:** [ASSET_NAME_2], **Probability:** [PROBABILITY_2]%, **Recommendation:** [LONG/SHORT]
+*   **Asset:** [ASSET_NAME_3], **Probability:** [PROBABILITY_3]%, **Recommendation:** [LONG/SHORT]
+    ... and so on</code></pre>
+<p><strong>Example Output (If I had data):</strong></p>
+<pre><code>Summary of Trading Recommendations (Sorted by Profit Probability):
+
+*   **Asset:** AAPL, **Probability:** 85%, **Recommendation:** LONG
+*   **Asset:** TSLA, **Probability:** 78%, **Recommendation:** SHORT
+*   **Asset:** GOOG, **Probability:** 62%, **Recommendation:** LONG
+*   **Asset:** MSFT, **Probability:** 55%, **Recommendation:** SHORT</code></pre>
+<p><strong>Explanation:</strong></p>
 <ul>
-<li><strong>Accuracy:</strong> I am relying on the consistency of the report format you provide. If the labels change or the information is in a different order, I’ll need adjustments.</li>
-<li><strong>Error Handling:</strong> I will attempt to handle potential errors (e.g., missing <code>Profit Probability</code>), but you might need to clarify if there are variations in the report structure.</li>
-<li><strong>Provide All Reports:</strong> I need all the report content <em>before</em> I can sort and give you the final output.</li>
+<li><strong>Sorting:</strong> The list is sorted from highest profit probability to lowest. This allows you to quickly see the most promising opportunities.</li>
+<li><strong>Clarity:</strong> Each entry clearly identifies the asset, the probability of success, and the recommended trading position (LONG or SHORT).</li>
 </ul>
-<p><strong>Now, please provide the content of your first report (starting with <code>==&gt; response/ASSET_NAME.md &lt;==</code>).</strong></p>
+<p><strong>How I Would Implement This (If I Had Files):</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="im">import</span> os</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="im">import</span> re</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="kw">def</span> extract_data(filepath):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Extracts asset name, probability, and recommendation from a file.&quot;&quot;&quot;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>    asset_name <span class="op">=</span> os.path.splitext(os.path.basename(filepath))[<span class="dv">0</span>].split(<span class="st">&quot;_&quot;</span>)[<span class="dv">1</span>] <span class="co"># Get ASSET_NAME from filename</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>    probability <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a>    recommendation <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a>    <span class="cf">try</span>:</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a>        <span class="cf">with</span> <span class="bu">open</span>(filepath, <span class="st">&#39;r&#39;</span>) <span class="im">as</span> f:</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a>            content <span class="op">=</span> f.read()</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a>            <span class="co"># Use regex to find the probability and recommendation</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a>            probability_match <span class="op">=</span> re.search(<span class="vs">r&quot;Profit Probability: (\d+)%&quot;</span>, content)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a>            recommendation_match <span class="op">=</span> re.search(<span class="vs">r&quot;Trading Recommendation: (LONG|SHORT)&quot;</span>, content)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a>            <span class="cf">if</span> probability_match:</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a>                probability <span class="op">=</span> <span class="bu">int</span>(probability_match.group(<span class="dv">1</span>))</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true"></a>            <span class="cf">if</span> recommendation_match:</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true"></a>                recommendation <span class="op">=</span> recommendation_match.group(<span class="dv">1</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true"></a>    <span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Error: File not found: </span><span class="sc">{</span>filepath<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true"></a>    <span class="cf">if</span> probability <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> recommendation <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true"></a>        <span class="cf">return</span> {<span class="st">&quot;asset&quot;</span>: asset_name, <span class="st">&quot;probability&quot;</span>: probability, <span class="st">&quot;recommendation&quot;</span>: recommendation}</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true"></a>    <span class="cf">else</span>:</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true"></a><span class="kw">def</span> generate_summary(directory<span class="op">=</span><span class="st">&quot;response&quot;</span>):</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Generates a summary of trading recommendations from files in a directory.&quot;&quot;&quot;</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true"></a>    data <span class="op">=</span> []</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true"></a>    <span class="cf">for</span> filename <span class="kw">in</span> os.listdir(directory):</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true"></a>        <span class="cf">if</span> filename.endswith(<span class="st">&quot;.md&quot;</span>):</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true"></a>            filepath <span class="op">=</span> os.path.join(directory, filename)</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true"></a>            extracted_data <span class="op">=</span> extract_data(filepath)</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true"></a>            <span class="cf">if</span> extracted_data:</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true"></a>                data.append(extracted_data)</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true"></a></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true"></a>    <span class="co"># Sort by probability in descending order</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true"></a>    data.sort(key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="st">&quot;probability&quot;</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true"></a></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&quot;Summary of Trading Recommendations (Sorted by Profit Probability):&quot;</span>)</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true"></a>    <span class="cf">for</span> item <span class="kw">in</span> data:</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="ss">f&quot;*   **Asset:** </span><span class="sc">{</span>item[<span class="st">&#39;asset&#39;</span>]<span class="sc">}</span><span class="ss">, **Probability:** </span><span class="sc">{</span>item[<span class="st">&#39;probability&#39;</span>]<span class="sc">}</span><span class="ss">%, **Recommendation:** </span><span class="sc">{</span>item[<span class="st">&#39;recommendation&#39;</span>]<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true"></a></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true"></a></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true"></a><span class="co"># Example usage (assuming files are in a directory named &quot;response&quot;):</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true"></a><span class="co">#generate_summary() #Uncomment when files are available</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true"></a></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true"></a><span class="bu">print</span>(<span class="st">&quot;I am ready to give summary when files are available&quot;</span>)</span></code></pre></div>
+<p><strong>Important Considerations (If You Implement):</strong></p>
+<ul>
+<li><strong>Error Handling:</strong> The code includes basic error handling (e.g., <code>FileNotFoundError</code>). You should add more robust error handling to deal with unexpected file formats or missing data.</li>
+<li><strong>Regular Expressions:</strong> The regular expressions used to parse the data may need to be adjusted depending on the exact format of your report files.</li>
+<li><strong>File Path:</strong> Make sure the <code>directory</code> variable in <code>generate_summary()</code> points to the correct directory containing your report files.</li>
+<li><strong>Data Validation:</strong> You might want to add data validation to ensure that the extracted probability is a valid number (e.g., between 0 and 100) and the recommendation is either “LONG” or “SHORT”.</li>
+<li><strong>Security:</strong> If the filenames or content come from an external source, sanitize the file paths to prevent path traversal vulnerabilities.</li>
+</ul>
+<p>If you can provide the actual content of a few example report files, I can refine the code to better fit your specific data format.</p>
 </body>
 </html>
