@@ -12,196 +12,63 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {   }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to your local file system and I’m receiving the error <code>tail: cannot open &#39;response/*&#39; for reading: No such file or directory</code>, I can’t process the actual content of the files.</p>
-<p>However, I can give you the logic and expected output format, so you can apply it to your data once you have the content of the reports:</p>
-<p><strong>Here’s the algorithm and output format I would use if I had the data:</strong></p>
+<p>Okay, I understand.</p>
+<p>Since you’re telling me that you’re running a command that’s failing because the files don’t exist (&quot;tail: cannot open ’response/<em>’ for reading: No such file or directory&quot;), I can’t actually </em>process* any files.</p>
+<p>However, I <em>can</em> simulate what I <em>would</em> do if the files <em>did</em> exist. Here’s how I would approach the problem and what the output would <em>look like</em>, based on your requirements:</p>
+<p><strong>Assumptions:</strong></p>
+<ul>
+<li>Each <code>response/ASSET_NAME.md</code> file contains text like this (example):</li>
+</ul>
+<pre><code># Trading Recommendation for AAPL
+
+**Position:** LONG
+**Entry Price:** 175.50
+**Stop Loss:** 174.00
+**Profit Probability:** 65%</code></pre>
+<ul>
+<li>The “Profit Probability” line <em>always</em> exists and is formatted as a percentage.</li>
+</ul>
+<p><strong>Simulated Logic:</strong></p>
 <ol type="1">
-<li><p><strong>Parse Filenames and Extract Asset Names:</strong> For each line provided (e.g., <code>==&gt; response/AAPL.md &lt;==</code>), extract the <code>ASSET_NAME</code> (e.g., <code>AAPL</code>).</p></li>
-<li><p><strong>Extract Information from File Content (if possible):</strong> <em>I can’t do this part</em>, but <em>you</em> would read the contents of each report. You’d need to use code to parse the file’s text and extract these key pieces of information:</p>
+<li><strong>File Processing (Hypothetical):</strong> I would iterate through each file name you provide (e.g., <code>response/AAPL.md</code>, <code>response/GOOG.md</code>, etc.).</li>
+<li><strong>Data Extraction (Hypothetical):</strong> For each file:
 <ul>
-<li>Trading Recommendation (LONG or SHORT)</li>
-<li>Entry Price</li>
-<li>Stop Loss</li>
-<li>Profit Probability (This is the most important for sorting)</li>
+<li>Extract the <code>ASSET_NAME</code> from the filename.</li>
+<li>Open the file and read its contents.</li>
+<li>Parse the text to find the “Profit Probability” line and extract the percentage value.</li>
 </ul></li>
-<li><p><strong>Create Summary Dictionaries/Objects:</strong> For each report, create a dictionary (or an object, if you’re using a programming language with classes) to store the extracted information. For example:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>report1 <span class="op">=</span> {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    <span class="st">&quot;asset_name&quot;</span>: <span class="st">&quot;AAPL&quot;</span>,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>    <span class="st">&quot;recommendation&quot;</span>: <span class="st">&quot;LONG&quot;</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>    <span class="st">&quot;entry_price&quot;</span>: <span class="fl">150.00</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="st">&quot;stop_loss&quot;</span>: <span class="fl">145.00</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>    <span class="st">&quot;profit_probability&quot;</span>: <span class="fl">0.75</span>  <span class="co"># 75%</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>}</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>report2 <span class="op">=</span> {</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>    <span class="st">&quot;asset_name&quot;</span>: <span class="st">&quot;TSLA&quot;</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>    <span class="st">&quot;recommendation&quot;</span>: <span class="st">&quot;SHORT&quot;</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>    <span class="st">&quot;entry_price&quot;</span>: <span class="fl">800.00</span>,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>    <span class="st">&quot;stop_loss&quot;</span>: <span class="fl">810.00</span>,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>    <span class="st">&quot;profit_probability&quot;</span>: <span class="fl">0.60</span>  <span class="co"># 60%</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a>}</span></code></pre></div></li>
-<li><p><strong>Store all the summaries in a list:</strong> <code>python       reports = [report1,report2]</code></p></li>
-<li><p><strong>Sort by Profit Probability:</strong> Sort the list of dictionaries in <em>descending</em> order (highest probability first) based on the <code>&quot;profit_probability&quot;</code> key.</p></li>
-<li><p><strong>Generate Output:</strong> Create a formatted string for each report in the sorted list. The string should include the <code>asset_name</code> and the <code>profit_probability</code>.</p></li>
+<li><strong>Data Storage (Hypothetical):</strong> Store the <code>ASSET_NAME</code> and <code>Profit Probability</code> in a list of dictionaries (or a similar data structure).</li>
+<li><strong>Sorting:</strong> Sort the list of dictionaries by the <code>Profit Probability</code> value in ascending order.</li>
+<li><strong>Output:</strong> Generate a formatted string with the asset name and probability for each asset, from lowest to highest probability.</li>
 </ol>
-<p><strong>Example Output (Sorted by Profit Probability - Highest First):</strong></p>
-<pre><code>AAPL: 75% Profit Probability
-GOOG: 70% Profit Probability
-TSLA: 60% Profit Probability
-MSFT: 55% Profit Probability</code></pre>
-<p><strong>How you would do this in Python (Example):</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="im">import</span> re</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="kw">def</span> summarize_reports(report_lines, report_content_fetcher):</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="co">    Summarizes trading reports, sorts by profit probability, and prints the results.</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="co">    Args:</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a><span class="co">        report_lines: A list of strings, where each string is a line like &quot;==&gt; response/ASSET_NAME.md &lt;==&quot;.</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a><span class="co">        report_content_fetcher: A function that takes an asset name and returns a dictionary</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a><span class="co">                                 containing the report details (including &quot;profit_probability&quot;).  If the</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a><span class="co">                                 report cannot be fetched, it should return None.</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a><span class="co">    &quot;&quot;&quot;</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a>    reports <span class="op">=</span> []</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true"></a>    <span class="cf">for</span> line <span class="kw">in</span> report_lines:</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true"></a>        match <span class="op">=</span> re.search(<span class="vs">r&quot;response/(\w+)\.md&quot;</span>, line) <span class="co">#Extract asset name</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true"></a>        <span class="cf">if</span> match:</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true"></a>            asset_name <span class="op">=</span> match.group(<span class="dv">1</span>)</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true"></a>            report_data <span class="op">=</span> report_content_fetcher(asset_name) <span class="co">#get report data</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true"></a>            <span class="cf">if</span> report_data:</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true"></a>              reports.append(report_data)</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true"></a></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true"></a>    <span class="co"># Sort reports by profit_probability in descending order</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true"></a>    reports.sort(key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="st">&quot;profit_probability&quot;</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true"></a></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true"></a>    <span class="co"># Print the sorted summaries</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true"></a>    <span class="cf">for</span> report <span class="kw">in</span> reports:</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>report[<span class="st">&#39;asset_name&#39;</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>report[<span class="st">&#39;profit_probability&#39;</span>] <span class="op">*</span> <span class="dv">100</span><span class="sc">:.0f}</span><span class="ss">% Profit Probability&quot;</span>)</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true"></a><span class="co"># Example Usage (You&#39;ll need to adapt this to your specific file reading method):</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true"></a><span class="kw">def</span> fetch_report_content(asset_name):</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;</span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true"></a><span class="co">    **REPLACE THIS WITH YOUR ACTUAL FILE READING/PARSING LOGIC.**</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true"></a><span class="co">    This is a placeholder that returns sample data.  You need to read the content</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true"></a><span class="co">    of the file &#39;response/{asset_name}.md&#39; and extract the relevant information.</span></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true"></a><span class="co">    &quot;&quot;&quot;</span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true"></a>    <span class="co"># Replace with your actual logic to read and parse the report file</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true"></a>    <span class="co"># and return a dictionary with the relevant fields.</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true"></a></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true"></a>    <span class="co"># Simulate reading the report file (replace with your actual file reading)</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true"></a>    <span class="cf">try</span>:</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true"></a>        <span class="co">#Construct the file name</span></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true"></a>        filename <span class="op">=</span> <span class="ss">f&quot;response/</span><span class="sc">{</span>asset_name<span class="sc">}</span><span class="ss">.md&quot;</span></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true"></a>        <span class="co">#Open and read file</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true"></a>        <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">&#39;r&#39;</span>) <span class="im">as</span> f:</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true"></a>          content <span class="op">=</span> f.read()</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true"></a></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true"></a>        <span class="co">#Simple mock data, replace with actual parsing</span></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true"></a>        <span class="cf">if</span> asset_name <span class="op">==</span> <span class="st">&quot;AAPL&quot;</span>:</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true"></a>            <span class="cf">return</span> {<span class="st">&quot;asset_name&quot;</span>: <span class="st">&quot;AAPL&quot;</span>, <span class="st">&quot;recommendation&quot;</span>: <span class="st">&quot;LONG&quot;</span>, <span class="st">&quot;entry_price&quot;</span>: <span class="fl">150.00</span>, <span class="st">&quot;stop_loss&quot;</span>: <span class="fl">145.00</span>, <span class="st">&quot;profit_probability&quot;</span>: <span class="fl">0.75</span>}</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true"></a>        <span class="cf">elif</span> asset_name <span class="op">==</span> <span class="st">&quot;TSLA&quot;</span>:</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true"></a>            <span class="cf">return</span> {<span class="st">&quot;asset_name&quot;</span>: <span class="st">&quot;TSLA&quot;</span>, <span class="st">&quot;recommendation&quot;</span>: <span class="st">&quot;SHORT&quot;</span>, <span class="st">&quot;entry_price&quot;</span>: <span class="fl">800.00</span>, <span class="st">&quot;stop_loss&quot;</span>: <span class="fl">810.00</span>, <span class="st">&quot;profit_probability&quot;</span>: <span class="fl">0.60</span>}</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true"></a>        <span class="cf">elif</span> asset_name <span class="op">==</span> <span class="st">&quot;GOOG&quot;</span>:</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true"></a>            <span class="cf">return</span> {<span class="st">&quot;asset_name&quot;</span>: <span class="st">&quot;GOOG&quot;</span>, <span class="st">&quot;recommendation&quot;</span>: <span class="st">&quot;LONG&quot;</span>, <span class="st">&quot;entry_price&quot;</span>: <span class="fl">2700.00</span>, <span class="st">&quot;stop_loss&quot;</span>: <span class="fl">2650.00</span>, <span class="st">&quot;profit_probability&quot;</span>: <span class="fl">0.70</span>}</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true"></a>        <span class="cf">else</span>:</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true"></a>            <span class="cf">return</span> <span class="va">None</span>  <span class="co"># Indicate that the report couldn&#39;t be fetched or doesn&#39;t exist</span></span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true"></a>    <span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true"></a>        <span class="cf">return</span> <span class="va">None</span> <span class="co">#Handle the case where file is not found</span></span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true"></a></span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true"></a><span class="co">#Dummy report file list</span></span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true"></a>report_lines <span class="op">=</span> [</span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true"></a>    <span class="st">&quot;==&gt; response/AAPL.md &lt;==</span><span class="ch">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true"></a>    <span class="st">&quot;==&gt; response/TSLA.md &lt;==</span><span class="ch">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true"></a>    <span class="st">&quot;==&gt; response/GOOG.md &lt;==</span><span class="ch">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true"></a>    <span class="st">&quot;==&gt; response/FAKE.md &lt;==</span><span class="ch">\n</span><span class="st">&quot;</span> <span class="co">#Simulating a report file that doesnt exist.</span></span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true"></a>]</span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true"></a></span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true"></a></span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true"></a>summarize_reports(report_lines, fetch_report_content)</span></code></pre></div>
-<p><strong>Important Considerations and How to Adapt the Code:</strong></p>
+<p><strong>Example Input (that you would be providing in your full interaction, <em>not</em> just the “tail” error):</strong></p>
+<pre><code>response/AAPL.md
+response/GOOG.md
+response/MSFT.md</code></pre>
+<p><strong>Example Simulated Output:</strong></p>
+<p>Let’s <em>pretend</em> that after processing the files (which I can’t actually do, since you say they don’t exist), I find these probabilities:</p>
 <ul>
-<li><strong><code>fetch_report_content</code> function:</strong> This is the <em>crucial</em> part you need to implement. This function <em>must</em> take the <code>asset_name</code> as input, open the corresponding <code>response/{asset_name}.md</code> file, read its contents, and parse the text to extract the <code>&quot;profit_probability&quot;</code>, <code>&quot;recommendation&quot;</code>, <code>&quot;entry_price&quot;</code>, and <code>&quot;stop_loss&quot;</code>. Use string manipulation, regular expressions, or a more structured parsing library (depending on the file format) to extract the data.</li>
-<li><strong>Error Handling:</strong> The example includes basic error handling (e.g., <code>FileNotFoundError</code>). Add more robust error handling (e.g., handling cases where the file exists but doesn’t contain the expected data).</li>
-<li><strong>File Format:</strong> The parsing logic in <code>fetch_report_content</code> will be <em>highly</em> dependent on the <em>exact</em> format of your <code>response/*.md</code> files. Provide example file contents if you’d like me to give you more specific parsing suggestions.</li>
-<li><strong>Markdown Parsing (Optional):</strong> If the <code>.md</code> files contain more complex Markdown formatting that makes simple string manipulation difficult, you might want to use a Markdown parsing library (like <code>markdown</code>) to convert the Markdown to HTML, which might be easier to parse. However, for simple key-value extraction, string methods/regex are often sufficient.</li>
+<li>AAPL: 65%</li>
+<li>GOOG: 72%</li>
+<li>MSFT: 58%</li>
 </ul>
-<p><strong>Key Improvements in this Response:</strong></p>
+<p>Then, based on your instructions, the output would be:</p>
+<pre><code>MSFT: 58%
+AAPL: 65%
+GOOG: 72%</code></pre>
+<p><strong>Important Considerations (and how to fix your problem):</strong></p>
+<ol type="1">
+<li><strong>File Existence:</strong> The <code>tail: cannot open &#39;response/*&#39; for reading: No such file or directory</code> error is the <em>core</em> problem. You need to ensure that:
 <ul>
-<li><strong>Clearer Separation of Concerns:</strong> The <code>summarize_reports</code> function handles the overall logic, and the <code>fetch_report_content</code> function (which <em>you</em> implement) handles the file reading and parsing. This makes the code much more modular and testable.</li>
-<li><strong>Error Handling:</strong> Includes basic error handling for file not found.</li>
-<li><strong>Flexibility:</strong> The structure allows you to easily adapt the code to different file formats or data extraction methods.</li>
-<li><strong>Testability:</strong> The modular design makes it easier to write unit tests for the <code>fetch_report_content</code> function.</li>
-<li><strong>Illustrative Example:</strong> Shows how to create the dummy report data for testing.</li>
-<li><strong>Handles Missing Files:</strong> Correctly accounts for cases where report files might not exist.</li>
-</ul>
-<p>Remember to replace the placeholder logic in <code>fetch_report_content</code> with <em>your actual file reading and parsing code.</em> Provide example file contents if you’d like more specific help with that part.</p>
+<li>The <code>response/</code> directory exists.</li>
+<li>The <code>response/</code> directory contains the files <code>AAPL.md</code>, <code>GOOG.md</code>, etc. (or whatever the actual filenames are).</li>
+<li>The program or script generating these files is working correctly and placing them in the correct location.</li>
+</ul></li>
+<li><strong>How you’ll actually provide the input:</strong> I’ve assumed you’ll be providing the filenames one per line, as in the “Example Input” above. You’ll need to adapt my response if you’re providing the filenames in a different format. You’ll likely be using <code>ls</code> to get the list of filenames, and piping that to a script that processes each file.</li>
+</ol>
+<p><strong>In summary:</strong> I can’t <em>run</em> the code because the files don’t exist. But I’ve provided a clear explanation of the logic I <em>would</em> use, along with example input and output, and importantly, I’ve highlighted the reason <em>why</em> your current command is failing and how to troubleshoot it. Once you fix the file existence problem, you can adapt this explanation into a working script (in Python, Bash, or any other language).</p>
 </body>
 </html>
