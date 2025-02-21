@@ -12,50 +12,121 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to the actual report files, I’ll simulate how I would process them based on your description. I’ll make up some example data to demonstrate the output you’re looking for.</p>
-<p><strong>Here’s the process and example output:</strong></p>
+<p>Okay, I understand. It sounds like I’m missing the actual report contents since the <code>tail</code> command failed. However, I can still provide the format and logic I would use to analyze the reports and produce the desired summary <em>if</em> I had the data.</p>
+<p>Here’s the breakdown of what I would do:</p>
 <ol type="1">
-<li><p><strong>Assume Input:</strong> I’ll assume you provided a list of filenames like this (but I’ll generate the <em>content</em> of each file):</p>
-<pre><code>response/AAPL.md
-response/GOOG.md
-response/MSFT.md
-response/AMZN.md</code></pre></li>
-<li><p><strong>Simulate Report Content:</strong> For <em>each</em> of those files, I’ll <em>pretend</em> to read its content and extract the relevant information. I’ll simulate the following content structure (it’s just an example):</p>
-<pre><code>## Trading Recommendation
-
-**Asset:** AAPL
-**Position:** LONG
-**Entry Price:** 170.00
-**Stop Loss:** 165.00
-**Take Profit:** 180.00
-**Profit Probability:** 65%</code></pre></li>
-<li><p><strong>Extraction:</strong> I’ll extract the asset name (e.g., “AAPL”) and the profit probability (e.g., “65%”).</p></li>
-<li><p><strong>Summarization &amp; Sorting:</strong> I’ll create a short summary for each report and then sort the summaries by the profit probability (highest to lowest).</p></li>
+<li><p><strong>Parse the Input (Hypothetically):</strong> I would receive a series of lines like <code>==&gt; response/ASSET_NAME.md &lt;==</code>. I would extract the <code>ASSET_NAME</code> from each line.</p></li>
+<li><p><strong>Access the Report Contents (If Available):</strong> Ideally, I’d have access to the actual content of each <code>response/ASSET_NAME.md</code> file. Without the files, I’ll assume a way to access them based on <code>ASSET_NAME</code>.</p></li>
+<li><p><strong>Extract Key Information from Each Report:</strong> For each report, I would look for the following information (using techniques like regular expressions or text parsing, depending on the file format):</p>
+<ul>
+<li><strong>Trading Position:</strong> (LONG or SHORT)</li>
+<li><strong>Entry Price:</strong> (A numerical value)</li>
+<li><strong>Stop Loss:</strong> (A numerical value)</li>
+<li><strong>Profit Probability:</strong> (A numerical value, often a percentage)</li>
+</ul></li>
+<li><p><strong>Create a Summary Object for Each Report:</strong> I would create a simple data structure (like a dictionary in Python) to hold the extracted information for each asset. For example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>report_data <span class="op">=</span> {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    <span class="st">&quot;asset_name&quot;</span>: <span class="st">&quot;AAPL&quot;</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>    <span class="st">&quot;position&quot;</span>: <span class="st">&quot;LONG&quot;</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>    <span class="st">&quot;entry_price&quot;</span>: <span class="fl">175.00</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="st">&quot;stop_loss&quot;</span>: <span class="fl">170.00</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>    <span class="st">&quot;profit_probability&quot;</span>: <span class="fl">0.75</span>  <span class="co"># Representing 75%</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>}</span></code></pre></div></li>
+<li><p><strong>Store the Summaries in a List:</strong> I would store all the <code>report_data</code> dictionaries in a list.</p></li>
+<li><p><strong>Sort the List by Profit Probability:</strong> I would sort the list of dictionaries in descending order based on the <code>profit_probability</code> value. This would put the assets with the highest profit probability at the top.</p></li>
+<li><p><strong>Generate the Output:</strong> I would iterate through the sorted list and print a concise summary for each asset, including the asset name and the profit probability.</p></li>
 </ol>
-<p><strong>Example Output (Based on Simulated Data):</strong></p>
-<p>Here’s what the final output would look like, sorted by profit probability:</p>
-<pre><code>*   **Asset:** GOOG, **Profit Probability:** 82%
-*   **Asset:** AMZN, **Profit Probability:** 75%
-*   **Asset:** AAPL, **Profit Probability:** 65%
-*   **Asset:** MSFT, **Profit Probability:** 58%</code></pre>
-<p><strong>Explanation of the Simulated Output:</strong></p>
-<ul>
-<li>Each line represents a report.</li>
-<li>The reports are sorted in descending order of profit probability.</li>
-<li>The key information (asset name and profit probability) is clearly presented.</li>
-</ul>
-<p><strong>How it would work with <em>real</em> data (if I had access):</strong></p>
-<p>If I had access to the <code>response/ASSET_NAME.md</code> files, the process would be the same, but I would actually <em>read</em> the content of each file instead of simulating it. The extraction would rely on finding the lines containing “Asset:” and “Profit Probability:” within each file and parsing the values.</p>
-<p><strong>Important Notes:</strong></p>
-<ul>
-<li><strong>Format Assumptions:</strong> This assumes a consistent format within your reports (e.g., the labels “Asset:” and “Profit Probability:” are always used). If the format varies, the extraction logic would need to be adjusted accordingly.</li>
-<li><strong>Error Handling:</strong> In a real-world implementation, I would need to add error handling to gracefully handle cases where a file is missing, a required field is not found, or the format is unexpected.</li>
-<li><strong>Command Line Tools (if applicable):</strong> If you want to <em>actually</em> perform this on your own system, you could use command-line tools like <code>grep</code>, <code>sed</code>, <code>awk</code>, and <code>sort</code> to achieve the same result. Let me know if you’d like help constructing such a command.</li>
-</ul>
-<p><strong>In Summary:</strong></p>
-<p>I’ve provided a conceptual overview and a simulated example of how I would process your reports and provide the requested summary. If you can provide some real examples of the report content (even if sanitized), I can give you a more precise and actionable solution.</p>
+<p><strong>Example (Assuming I had the report data):</strong></p>
+<p>Let’s say I processed three reports and created the following list of <code>report_data</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>reports <span class="op">=</span> [</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>    {<span class="st">&quot;asset_name&quot;</span>: <span class="st">&quot;AAPL&quot;</span>, <span class="st">&quot;position&quot;</span>: <span class="st">&quot;LONG&quot;</span>, <span class="st">&quot;entry_price&quot;</span>: <span class="fl">175.00</span>, <span class="st">&quot;stop_loss&quot;</span>: <span class="fl">170.00</span>, <span class="st">&quot;profit_probability&quot;</span>: <span class="fl">0.75</span>},</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>    {<span class="st">&quot;asset_name&quot;</span>: <span class="st">&quot;GOOG&quot;</span>, <span class="st">&quot;position&quot;</span>: <span class="st">&quot;SHORT&quot;</span>, <span class="st">&quot;entry_price&quot;</span>: <span class="fl">2700.00</span>, <span class="st">&quot;stop_loss&quot;</span>: <span class="fl">2750.00</span>, <span class="st">&quot;profit_probability&quot;</span>: <span class="fl">0.60</span>},</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    {<span class="st">&quot;asset_name&quot;</span>: <span class="st">&quot;MSFT&quot;</span>, <span class="st">&quot;position&quot;</span>: <span class="st">&quot;LONG&quot;</span>, <span class="st">&quot;entry_price&quot;</span>: <span class="fl">300.00</span>, <span class="st">&quot;stop_loss&quot;</span>: <span class="fl">295.00</span>, <span class="st">&quot;profit_probability&quot;</span>: <span class="fl">0.80</span>}</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>]</span></code></pre></div>
+<p>Here’s the Python code to sort and print the summary:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>reports.sort(key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="st">&quot;profit_probability&quot;</span>], reverse<span class="op">=</span><span class="va">True</span>)  <span class="co"># Sort by profit_probability descending</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="cf">for</span> report <span class="kw">in</span> reports:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>report[<span class="st">&#39;asset_name&#39;</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>report[<span class="st">&#39;profit_probability&#39;</span>]<span class="sc">:.2f}</span><span class="ss">&quot;</span>)  <span class="co"># Format to 2 decimal places</span></span></code></pre></div>
+<p><strong>Expected Output (based on the example):</strong></p>
+<pre><code>MSFT: 0.80
+AAPL: 0.75
+GOOG: 0.60</code></pre>
+<p><strong>In Summary (Without the Actual Reports):</strong></p>
+<p>The process would involve:</p>
+<ol type="1">
+<li>Extracting <code>ASSET_NAME</code> from the input lines.</li>
+<li>Accessing (or simulating access to) the report content for each <code>ASSET_NAME</code>.</li>
+<li>Parsing the report content to extract the required information (position, entry price, stop loss, profit probability).</li>
+<li>Storing the extracted data in a suitable data structure.</li>
+<li>Sorting the data by profit probability (highest to lowest).</li>
+<li>Generating a concise summary for each asset, showing the asset name and profit probability.</li>
+</ol>
+<p>Because I don’t have the report files, I can’t actually run this. If you can provide example report contents, I can give you a more specific solution. Let me know if you have any other questions.</p>
 </body>
 </html>
