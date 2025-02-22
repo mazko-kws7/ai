@@ -15,69 +15,38 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to any files (including <code>response/ASSET_NAME.md</code>), I’ll provide a template for the output I <em>would</em> generate based on the instructions, and explain the logic. You’ll need to manually fill in the details from your actual reports.</p>
-<p><strong>Assumptions:</strong></p>
+<p>Okay, I understand.</p>
+<p>Since I don’t have access to any actual report files, I’ll need you to provide the content of each <code>response/ASSET_NAME.md</code> file individually.</p>
+<p><strong>Here’s how I will process each file and then present the final sorted summary:</strong></p>
+<ol type="1">
+<li><strong>You Provide Content:</strong> You will paste the content of a single <code>response/ASSET_NAME.md</code> file.</li>
+<li><strong>I Extract Data:</strong> I will parse the content and extract the following:
 <ul>
-<li>Each <code>response/ASSET_NAME.md</code> file contains text that clearly indicates:
-<ul>
-<li><code>ASSET_NAME</code> (easily extracted from the filename)</li>
-<li><code>Position</code> (LONG or SHORT)</li>
-<li><code>Entry Price</code> (a numerical value)</li>
-<li><code>Stop Loss</code> (a numerical value)</li>
-<li><code>Profit Probability</code> (a percentage, or a decimal between 0 and 1)</li>
+<li><code>ASSET_NAME</code> (from the filename you will have already provided).</li>
+<li><code>Position</code> (LONG or SHORT).</li>
+<li><code>Entry Price</code></li>
+<li><code>Stop Loss</code></li>
+<li><code>Profit Probability</code></li>
 </ul></li>
-</ul>
-<p><strong>Example Reports (You provide these):</strong></p>
-<p>Let’s say you have these reports (I don’t have the <em>contents</em> of these files, only the filenames). This is just an example; you need to use <em>your</em> data.</p>
+<li><strong>I Create a Summary Line:</strong> I will create a summary line in the format: <code>ASSET_NAME: [LONG/SHORT] - Probability: [PROBABILITY]</code></li>
+<li><strong>Repeat:</strong> You will repeat steps 1-3 for each report file.</li>
+<li><strong>I Sort and Present:</strong> After you’ve provided all the reports, I will:
 <ul>
-<li><code>response/AAPL.md</code></li>
-<li><code>response/GOOGL.md</code></li>
-<li><code>response/MSFT.md</code></li>
-<li><code>response/AMZN.md</code></li>
-</ul>
-<p><strong>Desired Output Template (You fill this in based on report contents):</strong></p>
-<p>Here’s the template I would use to provide the output, <em>sorted</em> by Profit Probability (highest to lowest):</p>
-<pre><code>Summary of Trading Recommendations (Sorted by Profit Probability):
-
-*   Asset: &lt;ASSET_NAME_1&gt;, Probability: &lt;PROBABILITY_1&gt;  (e.g., Asset: AAPL, Probability: 85%)
-*   Asset: &lt;ASSET_NAME_2&gt;, Probability: &lt;PROBABILITY_2&gt;  (e.g., Asset: GOOGL, Probability: 70%)
-*   Asset: &lt;ASSET_NAME_3&gt;, Probability: &lt;PROBABILITY_3&gt;
-*   Asset: &lt;ASSET_NAME_4&gt;, Probability: &lt;PROBABILITY_4&gt;
-... and so on</code></pre>
-<p><strong>Example of Populated Output (Based on hypothetical report data):</strong></p>
-<p>Let’s <em>pretend</em> the content of the files contains this information (again, <em>you</em> have to look at your actual reports):</p>
-<ul>
-<li><code>response/AAPL.md</code>: Profit Probability 85%</li>
-<li><code>response/GOOGL.md</code>: Profit Probability 70%</li>
-<li><code>response/MSFT.md</code>: Profit Probability 90%</li>
-<li><code>response/AMZN.md</code>: Profit Probability 60%</li>
-</ul>
-<p>Then the output <em>would</em> be:</p>
-<pre><code>Summary of Trading Recommendations (Sorted by Profit Probability):
-
-*   Asset: MSFT, Probability: 90%
-*   Asset: AAPL, Probability: 85%
-*   Asset: GOOGL, Probability: 70%
-*   Asset: AMZN, Probability: 60%</code></pre>
-<p><strong>Explanation:</strong></p>
-<ol type="1">
-<li><strong>Filename Extraction:</strong> The script would extract the asset name from the filename (<code>AAPL</code>, <code>GOOGL</code>, <code>MSFT</code>, <code>AMZN</code>).</li>
-<li><strong>Content Parsing:</strong> The script <em>would</em> read the contents of each <code>.md</code> file and extract the “Profit Probability” value. Since I cannot access files, you’ll need to do this part manually.</li>
-<li><strong>Sorting:</strong> The script <em>would</em> sort the results in descending order based on the “Profit Probability”.</li>
-<li><strong>Output Formatting:</strong> The script would then generate the formatted output string as shown in the example.</li>
+<li>Sort the summary lines in <em>descending</em> order of <code>Profit Probability</code> (highest probability first).</li>
+<li>Present the sorted summary lines to you.</li>
+</ul></li>
 </ol>
-<p><strong>How to Use This:</strong></p>
-<ol type="1">
-<li><strong>Manually Open Each Report:</strong> Open each <code>response/ASSET_NAME.md</code> file in a text editor.</li>
-<li><strong>Extract Information:</strong> Read the file and find the “Profit Probability” value.</li>
-<li><strong>Populate the Template:</strong> Fill in the <code>&lt;ASSET_NAME&gt;</code> and <code>&lt;PROBABILITY&gt;</code> placeholders in the template above with the extracted information.</li>
-<li><strong>Sort:</strong> Finally, manually reorder the lines in the template so that they are sorted from highest probability to lowest.</li>
-</ol>
-<p><strong>Important Considerations:</strong></p>
-<ul>
-<li><strong>Error Handling:</strong> A real script would need error handling (e.g., what to do if a file is missing or the “Profit Probability” cannot be found).</li>
-<li><strong>Content Format:</strong> The accuracy depends on the consistency of the format of the information within each <code>.md</code> file.</li>
-<li><strong>File Access:</strong> I cannot access your local files; you need to perform the file reading and information extraction manually.</li>
-</ul>
+<p><strong>Example:</strong></p>
+<p><strong>You:</strong></p>
+<pre><code>Content of response/AAPL.md:
+
+Recommendation: LONG
+Entry Price: 170.00
+Stop Loss: 165.00
+Profit Probability: 0.75</code></pre>
+<p><strong>I:</strong> <code>AAPL: LONG - Probability: 0.75</code></p>
+<p>Then you would provide the content of the next file, and so on. Finally, I will give you the sorted list.</p>
+<p><strong>Important:</strong> Please ensure the “Profit Probability” is a numerical value (e.g., 0.6, 0.85, etc.).</p>
+<p>I am ready when you are. Please provide the content of the first file.</p>
 </body>
 </html>
