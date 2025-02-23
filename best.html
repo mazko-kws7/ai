@@ -15,51 +15,43 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since you encountered an error (<code>tail: cannot open &#39;response/*&#39; for reading: No such file or directory</code>), it means I don’t have access to the actual files. I can’t read the contents of your reports directly.</p>
-<p>However, I can provide you with the <em>format</em> of how I <em>would</em> summarize and sort the reports <em>if</em> I had access to them. You can then manually apply this format to your reports.</p>
-<p><strong>Here’s how I would process and present the data:</strong></p>
-<ol type="1">
-<li><p><strong>Extraction:</strong> For each <code>response/ASSET_NAME.md</code> file, I would:</p>
+<p>Okay, I understand. Since I don’t have access to the actual files or the content within them, I will provide you with a general response based on the information you’ve given me.</p>
+<p><strong>Assumptions:</strong></p>
 <ul>
-<li>Extract the <code>ASSET_NAME</code> from the filename.</li>
-<li>Open and read the content of the file.</li>
-<li>Identify the trading position (LONG or SHORT).</li>
-<li>Identify the entry price.</li>
-<li>Identify the stop loss.</li>
-<li>Identify the profit probability (as a percentage or decimal).</li>
-<li>If values of entry price, stop loss or profit probability can’t be parsed to a float, it is an ERROR!</li>
+<li>You have multiple files named <code>response/ASSET_NAME.md</code>.</li>
+<li>Each file contains the following information:
+<ul>
+<li>Asset Name (ASSET_NAME from the filename).</li>
+<li>Trading Position (LONG or SHORT).</li>
+<li>Entry Price (a numerical value).</li>
+<li>Stop Loss (a numerical value).</li>
+<li>Profit Probability (a percentage or decimal value).</li>
 </ul></li>
-<li><p><strong>Summarization:</strong> Create a summary for each asset:</p>
-<pre><code>ASSET_NAME: [ASSET_NAME], Position: [LONG/SHORT], Profit Probability: [Probability]</code></pre>
-<p>Example:</p>
-<pre><code>Asset: AAPL, Position: LONG, Profit Probability: 75%</code></pre></li>
-<li><p><strong>Sorting:</strong> Sort the summaries based on the <code>Profit Probability</code> in descending order (highest probability first).</p></li>
-<li><p><strong>Output:</strong> Display the sorted summaries.</p></li>
-</ol>
-<p><strong>Example (Hypothetical) Output:</strong></p>
-<pre><code>Asset: TSLA, Position: LONG, Profit Probability: 85%
-Asset: AMZN, Position: SHORT, Profit Probability: 70%
-Asset: GOOG, Position: LONG, Profit Probability: 60%
-Asset: AAPL, Position: SHORT, Profit Probability: 55%</code></pre>
-<p><strong>To use this with your actual reports:</strong></p>
+</ul>
+<p><strong>How I will process the data (hypothetically):</strong></p>
+<p>If I <em>could</em> access the files, I would perform these steps for each file:</p>
 <ol type="1">
-<li><strong>Manually open each <code>response/ASSET_NAME.md</code> file.</strong></li>
-<li><strong>Read the file and extract the required information (ASSET_NAME, Position, Profit Probability).</strong></li>
-<li><strong>Create a summary line in the format described above.</strong></li>
-<li><strong>After processing all reports, sort the summaries by <code>Profit Probability</code> in descending order.</strong></li>
-<li><strong>Present the sorted summaries.</strong></li>
+<li><strong>Extract the Asset Name:</strong> Get <code>ASSET_NAME</code> from the filename (e.g., <code>response/AAPL.md</code> would give me “AAPL”).</li>
+<li><strong>Parse the File Content:</strong> Read the file and use pattern recognition (or a Markdown parser if needed) to identify the Trading Position, Entry Price, Stop Loss, and, most importantly, the Profit Probability.</li>
+<li><strong>Create a Summary:</strong> Create a small summary string for each asset.</li>
+<li><strong>Sort by Profit Probability:</strong> Store the summary in a list and sort the list based on the extracted profit probability, in ascending order.</li>
+<li><strong>Print the Sorted Summaries:</strong> Output the sorted summaries to the console.</li>
 </ol>
-<p><strong>Error Handling Considerations:</strong></p>
+<p><strong>Example Output (if I had the data):</strong></p>
+<p>Because I don’t have access to your files, here’s what the output <em>might</em> look like based on hypothetical data. The format will be:</p>
+<p><code>ASSET_NAME: Profit Probability - Trading Position</code></p>
+<pre><code>Example output sorted by profit probability (ASC):
+
+GOOGL: 55% - LONG
+MSFT: 62% - SHORT
+AMZN: 70% - LONG
+TSLA: 85% - SHORT</code></pre>
+<p><strong>Explanation of Example:</strong></p>
 <ul>
-<li><strong>Missing Data:</strong> If a report is missing the probability, assign it a value of 0% or mark it as “N/A” and place it at the end of the sorted list.</li>
-<li><strong>Invalid Probability Format:</strong> If the probability is not in a recognizable format (e.g., a string instead of a number), log an error or skip that report.</li>
+<li>Each line represents a different asset.</li>
+<li>The output is sorted by the profit probability (lowest to highest).</li>
+<li>The “Trading Position” indicates whether the recommendation is to go LONG (buy) or SHORT (sell).</li>
 </ul>
-<p><strong>Caveats:</strong></p>
-<ul>
-<li>I cannot automate this process because I don’t have access to your files.</li>
-<li>You will need to perform the steps manually.</li>
-<li>Ensure that your reports follow a consistent format for easy extraction.</li>
-</ul>
-<p>Let me know if you have any other questions or if you need help with a specific part of the process once you have some report summaries ready.</p>
+<p><strong>Since I cannot process the files directly, you will need to adapt the logic I’ve described above and code it yourself using a suitable scripting language (e.g., Python, Bash). Let me know if you need help with any of this code.</strong></p>
 </body>
 </html>
