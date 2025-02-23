@@ -12,46 +12,133 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to the actual files or the content within them, I will provide you with a general response based on the information you’ve given me.</p>
-<p><strong>Assumptions:</strong></p>
-<ul>
-<li>You have multiple files named <code>response/ASSET_NAME.md</code>.</li>
-<li>Each file contains the following information:
-<ul>
-<li>Asset Name (ASSET_NAME from the filename).</li>
-<li>Trading Position (LONG or SHORT).</li>
-<li>Entry Price (a numerical value).</li>
-<li>Stop Loss (a numerical value).</li>
-<li>Profit Probability (a percentage or decimal value).</li>
-</ul></li>
-</ul>
-<p><strong>How I will process the data (hypothetically):</strong></p>
-<p>If I <em>could</em> access the files, I would perform these steps for each file:</p>
+<p>Okay, I understand. Since I don’t have access to your local file system and can’t read the content of the files, I’ll simulate the response based on the information you’ve provided and the expected format of the reports.</p>
+<p>Here’s how I’ll proceed, given the constraints:</p>
 <ol type="1">
-<li><strong>Extract the Asset Name:</strong> Get <code>ASSET_NAME</code> from the filename (e.g., <code>response/AAPL.md</code> would give me “AAPL”).</li>
-<li><strong>Parse the File Content:</strong> Read the file and use pattern recognition (or a Markdown parser if needed) to identify the Trading Position, Entry Price, Stop Loss, and, most importantly, the Profit Probability.</li>
-<li><strong>Create a Summary:</strong> Create a small summary string for each asset.</li>
-<li><strong>Sort by Profit Probability:</strong> Store the summary in a list and sort the list based on the extracted profit probability, in ascending order.</li>
-<li><strong>Print the Sorted Summaries:</strong> Output the sorted summaries to the console.</li>
-</ol>
-<p><strong>Example Output (if I had the data):</strong></p>
-<p>Because I don’t have access to your files, here’s what the output <em>might</em> look like based on hypothetical data. The format will be:</p>
-<p><code>ASSET_NAME: Profit Probability - Trading Position</code></p>
-<pre><code>Example output sorted by profit probability (ASC):
+<li><p><strong>Assume a Placeholder Format:</strong> I’ll assume that each <code>response/ASSET_NAME.md</code> file contains text structured something like this:</p>
+<pre><code># Trading Recommendation: {LONG/SHORT}
 
-GOOGL: 55% - LONG
-MSFT: 62% - SHORT
-AMZN: 70% - LONG
-TSLA: 85% - SHORT</code></pre>
-<p><strong>Explanation of Example:</strong></p>
+Asset: ASSET_NAME
+Recommendation: LONG
+Entry Price: 100.00
+Stop Loss: 95.00
+Take Profit Probability: 75%</code></pre>
+<p>(I’ll need to <em>assume</em> this format; you might need to adjust based on the <em>actual</em> format of your reports.)</p></li>
+<li><p><strong>Simulate Data:</strong> Since I can’t read files, I’ll <em>simulate</em> data for several different <code>ASSET_NAME</code> values, including different <code>Take Profit Probability</code> values.</p></li>
+<li><p><strong>Extract and Summarize:</strong> I will extract <code>ASSET_NAME</code> and <code>Take Profit Probability</code> for each “report.”</p></li>
+<li><p><strong>Sort by Probability:</strong> I will sort the summaries in descending order of <code>Take Profit Probability</code>.</p></li>
+<li><p><strong>Present the Summary:</strong> I will present the results as a list of summaries, sorted by probability.</p></li>
+</ol>
+<p>Here’s the <strong>simulated</strong> output:</p>
+<pre><code>**Trading Recommendation Summary (Sorted by Take Profit Probability)**
+
+*   **Asset:** Gold, **Probability:** 92%
+*   **Asset:** Bitcoin, **Probability:** 85%
+*   **Asset:** Ethereum, **Probability:** 78%
+*   **Asset:** Silver, **Probability:** 65%
+*   **Asset:** Oil, **Probability:** 58%
+*   **Asset:** DowJones, **Probability:** 42%</code></pre>
+<p><strong>Important Notes and How to Adapt This:</strong></p>
 <ul>
-<li>Each line represents a different asset.</li>
-<li>The output is sorted by the profit probability (lowest to highest).</li>
-<li>The “Trading Position” indicates whether the recommendation is to go LONG (buy) or SHORT (sell).</li>
+<li><p><strong>Real File Access:</strong> I <em>cannot</em> directly access your <code>response/ASSET_NAME.md</code> files. This is a fundamental security restriction for AI models like me.</p></li>
+<li><p><strong>Your Job: Provide the Data:</strong> You’ll need to <em>read</em> the contents of your <code>response/ASSET_NAME.md</code> files and then <em>provide</em> me with the relevant information (the asset name and the probability) in a structured format, probably as a list of dictionaries or a CSV string. For example:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>reports_data <span class="op">=</span> [</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>    {<span class="st">&quot;asset&quot;</span>: <span class="st">&quot;Gold&quot;</span>, <span class="st">&quot;probability&quot;</span>: <span class="dv">92</span>},</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>    {<span class="st">&quot;asset&quot;</span>: <span class="st">&quot;Bitcoin&quot;</span>, <span class="st">&quot;probability&quot;</span>: <span class="dv">85</span>},</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>    {<span class="st">&quot;asset&quot;</span>: <span class="st">&quot;Ethereum&quot;</span>, <span class="st">&quot;probability&quot;</span>: <span class="dv">78</span>},</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>    {<span class="st">&quot;asset&quot;</span>: <span class="st">&quot;Silver&quot;</span>, <span class="st">&quot;probability&quot;</span>: <span class="dv">65</span>},</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>    {<span class="st">&quot;asset&quot;</span>: <span class="st">&quot;Oil&quot;</span>, <span class="st">&quot;probability&quot;</span>: <span class="dv">58</span>},</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>    {<span class="st">&quot;asset&quot;</span>: <span class="st">&quot;DowJones&quot;</span>, <span class="st">&quot;probability&quot;</span>: <span class="dv">42</span>},</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>]</span></code></pre></div>
+<p>Or a CSV string:</p>
+<pre><code>asset,probability
+Gold,92
+Bitcoin,85
+Ethereum,78
+Silver,65
+Oil,58
+DowJones,42</code></pre></li>
+<li><p><strong>Code for Sorting (If You Provide Data):</strong> If you provide the data in a structured format (like the Python list of dictionaries above), I can then give you Python code to sort it and generate the summary. For example:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>reports_data <span class="op">=</span> [</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>    {<span class="st">&quot;asset&quot;</span>: <span class="st">&quot;Gold&quot;</span>, <span class="st">&quot;probability&quot;</span>: <span class="dv">92</span>},</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>    {<span class="st">&quot;asset&quot;</span>: <span class="st">&quot;Bitcoin&quot;</span>, <span class="st">&quot;probability&quot;</span>: <span class="dv">85</span>},</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>    {<span class="st">&quot;asset&quot;</span>: <span class="st">&quot;Ethereum&quot;</span>, <span class="st">&quot;probability&quot;</span>: <span class="dv">78</span>},</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>    {<span class="st">&quot;asset&quot;</span>: <span class="st">&quot;Silver&quot;</span>, <span class="st">&quot;probability&quot;</span>: <span class="dv">65</span>},</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>    {<span class="st">&quot;asset&quot;</span>: <span class="st">&quot;Oil&quot;</span>, <span class="st">&quot;probability&quot;</span>: <span class="dv">58</span>},</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>    {<span class="st">&quot;asset&quot;</span>: <span class="st">&quot;DowJones&quot;</span>, <span class="st">&quot;probability&quot;</span>: <span class="dv">42</span>},</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>]</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a>sorted_reports <span class="op">=</span> <span class="bu">sorted</span>(reports_data, key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="st">&quot;probability&quot;</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a><span class="bu">print</span>(<span class="st">&quot;**Trading Recommendation Summary (Sorted by Take Profit Probability)**&quot;</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a><span class="cf">for</span> report <span class="kw">in</span> sorted_reports:</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="ss">f&quot;*   **Asset:** </span><span class="sc">{</span>report[<span class="st">&#39;asset&#39;</span>]<span class="sc">}</span><span class="ss">, **Probability:** </span><span class="sc">{</span>report[<span class="st">&#39;probability&#39;</span>]<span class="sc">}</span><span class="ss">%&quot;</span>)</span></code></pre></div></li>
 </ul>
-<p><strong>Since I cannot process the files directly, you will need to adapt the logic I’ve described above and code it yourself using a suitable scripting language (e.g., Python, Bash). Let me know if you need help with any of this code.</strong></p>
+<p><strong>In summary:</strong> I can’t directly process your files. You need to read the files, extract the data, and provide it to me. Then, I can help you sort and summarize it. Tell me what the <em>actual</em> file format is, and provide the extracted data, and I’ll give you the code to generate the sorted summary.</p>
 </body>
 </html>
