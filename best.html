@@ -15,53 +15,51 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since you cannot provide the actual report content, I will provide a template response based on the information you’ve given me about the report structure. I’ll assume a basic structure for each report, and then create summaries sorted by take profit probability.</p>
-<p><strong>Assumed Report Structure (Example):</strong></p>
-<pre><code>Trading Position: LONG
-Asset Name: ASSET_NAME  (This comes from the filename)
-Entry Price: 150.00
-Stop Loss: 145.00
-Take Profit: 160.00
-Profit Probability: 0.75</code></pre>
-<p><strong>Here’s the template response. You’ll need to fill in the values yourself based on your actual reports:</strong></p>
-<pre><code>**Report Summaries (Sorted by Take Profit Probability):**
-
-*   **ASSET_NAME_1 (Probability: P_1):**  Asset: ASSET_NAME_1, Profit Probability: P_1
-*   **ASSET_NAME_2 (Probability: P_2):**  Asset: ASSET_NAME_2, Profit Probability: P_2
-*   **ASSET_NAME_3 (Probability: P_3):**  Asset: ASSET_NAME_3, Profit Probability: P_3
-*   **ASSET_NAME_4 (Probability: P_4):**  Asset: ASSET_NAME_4, Profit Probability: P_4
-*   **ASSET_NAME_5 (Probability: P_5):**  Asset: ASSET_NAME_5, Profit Probability: P_5
-</code></pre>
-<p><strong>Example with hypothetical data (replace with YOUR actual data):</strong></p>
-<p>Let’s say you have these reports:</p>
-<ul>
-<li><code>response/AAPL.md</code> (Profit Probability: 0.65)</li>
-<li><code>response/GOOG.md</code> (Profit Probability: 0.80)</li>
-<li><code>response/MSFT.md</code> (Profit Probability: 0.70)</li>
-<li><code>response/TSLA.md</code> (Profit Probability: 0.90)</li>
-<li><code>response/AMZN.md</code> (Profit Probability: 0.75)</li>
-</ul>
-<p>Then, the output would be:</p>
-<pre><code>**Report Summaries (Sorted by Take Profit Probability):**
-
-*   **AAPL (Probability: 0.65):** Asset: AAPL, Profit Probability: 0.65
-*   **MSFT (Probability: 0.70):** Asset: MSFT, Profit Probability: 0.70
-*   **AMZN (Probability: 0.75):** Asset: AMZN, Profit Probability: 0.75
-*   **GOOG (Probability: 0.80):** Asset: GOOG, Profit Probability: 0.80
-*   **TSLA (Probability: 0.90):** Asset: TSLA, Profit Probability: 0.90</code></pre>
-<p><strong>To Use This:</strong></p>
+<p>Okay, I understand. Since I don’t have access to the actual files (as indicated by the &quot;tail: cannot open ’response/*’&quot; error), I’ll provide you with a template response that you can fill in with the data from your reports. Once you provide the actual content of each <code>response/ASSET_NAME.md</code> file, I can give you a sorted summary.</p>
+<p>Here’s the template and how I would structure the output <em>if</em> you provided the data:</p>
+<p><strong>Instructions:</strong></p>
 <ol type="1">
-<li><strong>For each <code>response/ASSET_NAME.md</code> file:</strong> Open the file.</li>
-<li><strong>Extract the Profit Probability.</strong></li>
-<li><strong>Replace <code>ASSET_NAME_X</code> and <code>P_X</code></strong> with the actual asset name and probability from the report.</li>
-<li><strong>Re-order the list</strong> so that the reports are sorted from lowest to highest profit probability.</li>
-</ol>
-<p><strong>Important Considerations:</strong></p>
+<li><p><strong>For each <code>response/ASSET_NAME.md</code> file:</strong> Read the file and extract the following information:</p>
 <ul>
-<li><strong>Error Handling:</strong> Since you got a “No such file or directory” error, double-check that the <code>response/</code> directory exists and that the report files are actually located there.</li>
-<li><strong>Report Parsing:</strong> If you have many reports, consider writing a script (Python, etc.) to automatically parse the files and extract the data. This will save you a lot of manual work.</li>
-<li><strong>Other Data:</strong> You can easily extend this to include other key data from the reports (e.g., position type, entry price).</li>
-</ul>
-<p>Let me know if you need help with writing a script to automatically parse the reports (once you have them available). Just provide a sample of the report content, and I can give you some Python code.</p>
+<li><code>ASSET_NAME</code>: The name of the asset from the filename (e.g., if the file is <code>response/AAPL.md</code>, then <code>ASSET_NAME</code> is <code>AAPL</code>).</li>
+<li><code>Recommendation</code>: Whether the recommendation is “SHORT” or “LONG”.</li>
+<li><code>Probability</code>: The take profit probability (expressed as a percentage or a decimal).</li>
+<li><code>Entry Price</code>: The proposed entry price.</li>
+<li><code>Stop Loss</code>: The proposed stop loss.</li>
+</ul></li>
+<li><p><strong>Fill in the template below:</strong> Replace the bracketed placeholders with the extracted values. Provide the content of each <code>response/ASSET_NAME.md</code> file.</p></li>
+<li><p><strong>Provide the data to me:</strong> Paste the filled-in template data (i.e., the content of each markdown file) into the chat.</p></li>
+</ol>
+<p><strong>Example Template (You should have one of these filled for <em>each</em> <code>response/ASSET_NAME.md</code> file):</strong></p>
+<pre><code>**response/[ASSET_NAME].md Content:**
+
+Recommendation: [SHORT or LONG]
+Entry Price: [Entry Price Value]
+Stop Loss: [Stop Loss Value]
+Probability: [Take Profit Probability Value]
+</code></pre>
+<p><strong>Example - with Placeholder Filled:</strong></p>
+<pre><code>**response/AAPL.md Content:**
+
+Recommendation: LONG
+Entry Price: 170.00
+Stop Loss: 165.00
+Probability: 0.75</code></pre>
+<p><strong>Once you give me the data for <em>all</em> your <code>response/ASSET_NAME.md</code> files, I will:</strong></p>
+<ol type="1">
+<li>Parse the data you provide.</li>
+<li>Generate a summary for each asset, including the asset name and probability.</li>
+<li>Sort the summaries by the take profit probability in descending order (highest probability first).</li>
+<li>Present the sorted summaries in a clear, readable format.</li>
+</ol>
+<p><strong>Example of the Final Output (after you provide data):</strong></p>
+<pre><code>**Sorted Trading Recommendation Summaries (by Take Profit Probability):**
+
+*   **Asset:** GOOG, **Probability:** 0.85
+*   **Asset:** MSFT, **Probability:** 0.80
+*   **Asset:** AAPL, **Probability:** 0.75
+*   **Asset:** TSLA, **Probability:** 0.60</code></pre>
+<p><strong>Important:</strong> I <em>cannot</em> access files on your computer. You <em>must</em> provide the content of the files to me directly. The above error message, <code>tail: cannot open &#39;response/*&#39; for reading: No such file or directory</code> confirms that I don’t have the ability to read files from your system.</p>
+<p>I’m ready when you are! Just paste the content of each <code>response/ASSET_NAME.md</code> file using the template above.</p>
 </body>
 </html>
