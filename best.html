@@ -15,55 +15,38 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to the actual files, I will simulate processing them and provide the output based on the information you’ve given me.</p>
-<p><strong>Assumptions:</strong></p>
-<ul>
-<li>Each <code>response/ASSET_NAME.md</code> file contains text with information about the trading position, entry price, stop loss, and profit probability.</li>
-<li>I will need to parse the text in the file to extract:
-<ul>
-<li><code>ASSET_NAME</code> (from the filename)</li>
-<li>Trading Position (<code>SHORT</code> or <code>LONG</code>)</li>
-<li>Profit Probability (a numerical value, e.g., “75%”)</li>
-</ul></li>
-</ul>
-<p><strong>Simulated Processing and Output:</strong></p>
-<p>I’ll assume you had the following reports, with their corresponding asset names and (simulated) content that includes the profit probability:</p>
-<p><strong>Example Reports:</strong></p>
-<ul>
-<li><code>response/AAPL.md</code>: Contains “…Trading Position: LONG…Profit Probability: 85%…”</li>
-<li><code>response/GOOGL.md</code>: Contains “…Trading Position: SHORT…Profit Probability: 60%…”</li>
-<li><code>response/MSFT.md</code>: Contains “…Trading Position: LONG…Profit Probability: 70%…”</li>
-<li><code>response/AMZN.md</code>: Contains “…Trading Position: SHORT…Profit Probability: 90%…”</li>
-<li><code>response/TSLA.md</code>: Contains “…Trading Position: LONG…Profit Probability: 65%…”</li>
-</ul>
-<p><strong>Generated Summary (Sorted by Take Profit Probability):</strong></p>
-<pre><code>AMZN: Profit Probability: 90%
-AAPL: Profit Probability: 85%
-MSFT: Profit Probability: 70%
-TSLA: Profit Probability: 65%
-GOOGL: Profit Probability: 60%</code></pre>
-<p><strong>Explanation of the Process and Output:</strong></p>
+<p>Okay, I understand. Since I don’t have access to the actual files and their content (due to the <code>tail</code> error indicating the files don’t exist in my environment), I will operate under the following assumption:</p>
+<p><strong>Assumption:</strong> I will <em>simulate</em> reading the content of files named like <code>response/ASSET_NAME.md</code> and assume each file contains text including the following data structure:</p>
+<pre><code>Trading Position: LONG/SHORT
+Entry Price: [some number]
+Stop Loss: [some number]
+Profit Probability: [some percentage]%</code></pre>
+<p><strong>Here’s how I’ll process your requests and format my response:</strong></p>
 <ol type="1">
-<li><strong>Asset Name Extraction:</strong> For each file listed (e.g., <code>response/AAPL.md</code>), the <code>ASSET_NAME</code> (e.g., <code>AAPL</code>) is extracted from the filename.</li>
-<li><strong>Content Parsing (Simulated):</strong> Since I cannot access the actual files, I <em>simulate</em> reading the file content and using pattern matching or text processing techniques to find the “Profit Probability” value within the file. I then extract the percentage.</li>
-<li><strong>Summary Generation:</strong> I create a short summary line for each asset, including the asset name and the extracted profit probability.</li>
-<li><strong>Sorting:</strong> I sort the list of summaries by the profit probability value in <em>descending</em> order (highest probability first).</li>
-<li><strong>Output:</strong> I print the sorted summaries to the console.</li>
+<li><strong>Simulate Reading:</strong> I will <em>imagine</em> I am reading the <code>response/ASSET_NAME.md</code> files (even though I don’t actually have them).</li>
+<li><strong>Extract Information:</strong> I will extract the <code>ASSET_NAME</code> from the filename and the <code>Profit Probability</code> from the <em>simulated</em> file content.</li>
+<li><strong>Summarize:</strong> I will create a short summary for each report in this format: <code>ASSET_NAME: Profit Probability = XX%</code></li>
+<li><strong>Sort:</strong> I will sort the summaries by <code>Profit Probability</code> in descending order (highest probability first).</li>
+<li><strong>Present Results:</strong> I will provide the sorted list of summaries.</li>
 </ol>
+<p><strong>Example Response (Illustrative):</strong></p>
+<p>Let’s say you <em>hypothetically</em> had these files and contents:</p>
+<ul>
+<li><code>response/AAPL.md</code> (contains: <code>Trading Position: LONG</code>, <code>Profit Probability: 85%</code>)</li>
+<li><code>response/GOOG.md</code> (contains: <code>Trading Position: SHORT</code>, <code>Profit Probability: 60%</code>)</li>
+<li><code>response/MSFT.md</code> (contains: <code>Trading Position: LONG</code>, <code>Profit Probability: 92%</code>)</li>
+</ul>
+<p>Then my response would be:</p>
+<pre><code>Summary of Trading Recommendations (Sorted by Profit Probability):
+
+*   MSFT: Profit Probability = 92%
+*   AAPL: Profit Probability = 85%
+*   GOOG: Profit Probability = 60%</code></pre>
 <p><strong>Important Considerations:</strong></p>
 <ul>
-<li><strong>Real-World Implementation:</strong> To make this work in reality, you will need to use a scripting language (like Python) to:
-<ul>
-<li>Read the list of files (e.g., using <code>glob</code> or <code>os.listdir(&#39;response/&#39;)</code>)</li>
-<li>Open and read the contents of each file.</li>
-<li>Use regular expressions (<code>re</code> module in Python) or other string parsing methods to extract the <code>Profit Probability</code> from the text.</li>
-<li>Store the results in a list or dictionary.</li>
-<li>Sort the list/dictionary based on the <code>Profit Probability</code>.</li>
-<li>Print the formatted output.</li>
-</ul></li>
-<li><strong>Error Handling:</strong> You should add error handling (e.g., <code>try...except</code> blocks) to gracefully handle cases where a file is missing, unreadable, or does not contain the expected information.</li>
-<li><strong>Data Type Conversion:</strong> Make sure to convert the extracted “Profit Probability” value to a numerical type (e.g., <code>float</code>) before sorting. Remove “%” sign.</li>
+<li><strong>Accuracy Depends on Input:</strong> The accuracy of my response <em>entirely</em> depends on you correctly providing the <code>ASSET_NAME</code> in the filenames and the presence of a properly formatted <code>Profit Probability</code> within the (non-existent) file content.</li>
+<li><strong>Error Handling:</strong> Since I cannot actually read the files, I cannot perform any error handling (e.g., if a file is missing or doesn’t contain the expected information).</li>
 </ul>
-<p>I hope this helps! Let me know if you have any further questions or would like me to help you with a Python script to implement this.</p>
+<p><strong>Now, I am ready for you to provide the list of filenames (e.g., <code>response/AAPL.md</code>, <code>response/GOOG.md</code>, etc.). Remember, I will <em>assume</em> I can read the content of those files as described above.</strong></p>
 </body>
 </html>
