@@ -77,75 +77,124 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to the actual files and the command <code>tail</code> returned an error, I can’t provide the content of the reports. However, I can give you the format for the output you requested <em>assuming</em> I had that data.</p>
-<p><strong>Here’s the format of the output I would generate, sorted by probability, if the reports were available:</strong></p>
-<pre><code>Asset Report Summary (Sorted by Take Profit Probability):
-
-*   **ASSET_NAME_C:** Recommendation: [LONG/SHORT], Probability: X%
-*   **ASSET_NAME_B:** Recommendation: [LONG/SHORT], Probability: Y%
-*   **ASSET_NAME_A:** Recommendation: [LONG/SHORT], Probability: Z%
-</code></pre>
-<p><strong>Explanation:</strong></p>
-<ul>
-<li>Each line would represent a single asset report.</li>
-<li><code>ASSET_NAME_X</code> would be replaced with the actual asset name from the filename (e.g., “response/AAPL.md” would have <code>ASSET_NAME_X = AAPL</code>).</li>
-<li><code>[LONG/SHORT]</code> would be replaced by the trading position recommendation in the report.</li>
-<li><code>X%</code>, <code>Y%</code>, and <code>Z%</code> would be replaced by the take profit probability from the report, sorted in <em>ascending</em> order so that the <em>highest</em> probability is at the <em>bottom</em> of the list.</li>
-</ul>
-<p><strong>How to adapt this for your use:</strong></p>
+<p>Okay, I understand.</p>
+<p>Since I don’t have access to the files you mentioned (response/ASSET_NAME.md), and the <code>tail</code> command is failing because the directory doesn’t exist, I will provide a template for how I would generate the summary <em>if</em> I had access to the data.</p>
+<p><strong>Here’s the logic and template:</strong></p>
 <ol type="1">
-<li><strong>Read each <code>response/ASSET_NAME.md</code> file.</strong> You’ll need to do this programmatically (using Python, bash scripts, etc.) or manually.</li>
-<li><strong>Extract the relevant information:</strong> From each file, extract:
+<li><strong>For each file:</strong>
 <ul>
-<li><code>ASSET_NAME</code> (from the filename)</li>
+<li>Extract the <code>ASSET_NAME</code> from the filename “response/ASSET_NAME.md”.</li>
+<li>Read the content of the file.</li>
+<li>Parse the file content to find:
+<ul>
 <li>Trading Position (LONG or SHORT)</li>
-<li>Take Profit Probability (as a percentage)</li>
+<li>Entry Price</li>
+<li>Stop Loss</li>
+<li>Profit Probability</li>
 </ul></li>
-<li><strong>Store the data:</strong> Store the extracted data in a list of dictionaries or a similar data structure.</li>
-<li><strong>Sort the data:</strong> Sort the list of data by the ‘Take Profit Probability’ in <em>ascending</em> order.</li>
-<li><strong>Print the output:</strong> Loop through the sorted list and print each entry in the format I’ve provided above.</li>
+</ul></li>
+<li><strong>Create a list of dictionaries:</strong>
+<ul>
+<li>Each dictionary will contain <code>asset_name</code>, <code>position</code>, <code>entry_price</code>, <code>stop_loss</code>, and <code>probability</code>.</li>
+</ul></li>
+<li><strong>Sort the list:</strong>
+<ul>
+<li>Sort the list of dictionaries in <em>descending</em> order based on the <code>probability</code> value (highest probability first).</li>
+</ul></li>
+<li><strong>Output the summary:</strong>
+<ul>
+<li>Iterate through the sorted list and print a short summary for each asset, focusing on Asset Name and Probability.</li>
+</ul></li>
 </ol>
-<p><strong>Example (Conceptual Python):</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="im">import</span> glob</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="im">import</span> re</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>reports <span class="op">=</span> []</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="cf">for</span> filename <span class="kw">in</span> glob.glob(<span class="st">&quot;response/*.md&quot;</span>):</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>    asset_name <span class="op">=</span> filename.replace(<span class="st">&quot;response/&quot;</span>, <span class="st">&quot;&quot;</span>).replace(<span class="st">&quot;.md&quot;</span>, <span class="st">&quot;&quot;</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>    <span class="cf">try</span>:</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>      <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">&#39;r&#39;</span>) <span class="im">as</span> f:</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>          content <span class="op">=</span> f.read()</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a>          <span class="co">#Use RegEx to find required data</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a>          <span class="co">#This is sample - depends on real file structure</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a>          recommendation_match <span class="op">=</span> re.search(<span class="vs">r&quot;Recommendation:\s*(LONG|SHORT)&quot;</span>, content)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a>          probability_match <span class="op">=</span> re.search(<span class="vs">r&quot;Probability:\s*(\d+\.?\d*)%&quot;</span>, content)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a>          <span class="cf">if</span> recommendation_match <span class="kw">and</span> probability_match:</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true"></a>              recommendation <span class="op">=</span> recommendation_match.group(<span class="dv">1</span>)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true"></a>              probability <span class="op">=</span> <span class="bu">float</span>(probability_match.group(<span class="dv">1</span>))</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true"></a>              reports.append({<span class="st">&quot;asset&quot;</span>: asset_name, <span class="st">&quot;recommendation&quot;</span>: recommendation, <span class="st">&quot;probability&quot;</span>: probability})</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true"></a>          <span class="cf">else</span>:</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true"></a>              <span class="bu">print</span>(<span class="ss">f&quot;Could not extract all data from </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true"></a>    <span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true"></a>      <span class="bu">print</span>(<span class="ss">f&quot;File not found: </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true"></a>reports_sorted <span class="op">=</span> <span class="bu">sorted</span>(reports, key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="st">&quot;probability&quot;</span>])</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true"></a><span class="bu">print</span>(<span class="st">&quot;Asset Report Summary (Sorted by Take Profit Probability):&quot;</span>)</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true"></a><span class="cf">for</span> report <span class="kw">in</span> reports_sorted:</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="ss">f&quot;*   **</span><span class="sc">{</span>report[<span class="st">&#39;asset&#39;</span>]<span class="sc">}</span><span class="ss">:** Recommendation: </span><span class="sc">{</span>report[<span class="st">&#39;recommendation&#39;</span>]<span class="sc">}</span><span class="ss">, Probability: </span><span class="sc">{</span>report[<span class="st">&#39;probability&#39;</span>]<span class="sc">:.2f}</span><span class="ss">%&quot;</span>)</span></code></pre></div>
+<p><strong>Example Python code (if I had the file data):</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="im">import</span> re</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="kw">def</span> analyze_reports(directory<span class="op">=</span><span class="st">&quot;response&quot;</span>):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="co">    Analyzes trading reports from markdown files in a directory,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="co">    extracts key information, and summarizes them sorted by probability.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>    reports <span class="op">=</span> []</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>    <span class="cf">for</span> filename <span class="kw">in</span> os.listdir(directory):</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>        <span class="cf">if</span> filename.endswith(<span class="st">&quot;.md&quot;</span>):</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>            asset_name <span class="op">=</span> filename.replace(<span class="st">&quot;response/&quot;</span>, <span class="st">&quot;&quot;</span>).replace(<span class="st">&quot;.md&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="co"># Extract asset name</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>            filepath <span class="op">=</span> os.path.join(directory, filename)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a>            <span class="cf">try</span>:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a>                <span class="cf">with</span> <span class="bu">open</span>(filepath, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> f:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a>                    content <span class="op">=</span> f.read()</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a>                    <span class="co"># Use regex to find the relevant data (adapt these patterns to your actual file format)</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a>                    position_match <span class="op">=</span> re.search(<span class="vs">r&quot;Position:\s*(LONG|SHORT)&quot;</span>, content, re.IGNORECASE)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a>                    entry_price_match <span class="op">=</span> re.search(<span class="vs">r&quot;Entry Price:\s*([\d.]+)&quot;</span>, content)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a>                    stop_loss_match <span class="op">=</span> re.search(<span class="vs">r&quot;Stop Loss:\s*([\d.]+)&quot;</span>, content)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a>                    probability_match <span class="op">=</span> re.search(<span class="vs">r&quot;Probability:\s*([\d.]+)&quot;</span>, content)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a>                    <span class="cf">if</span> position_match <span class="kw">and</span> probability_match <span class="kw">and</span> entry_price_match <span class="kw">and</span> stop_loss_match:</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a>                        position <span class="op">=</span> position_match.group(<span class="dv">1</span>).upper()</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a>                        entry_price <span class="op">=</span> <span class="bu">float</span>(entry_price_match.group(<span class="dv">1</span>))</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a>                        stop_loss <span class="op">=</span> <span class="bu">float</span>(stop_loss_match.group(<span class="dv">1</span>))</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a>                        probability <span class="op">=</span> <span class="bu">float</span>(probability_match.group(<span class="dv">1</span>))</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true"></a>                        reports.append({</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true"></a>                            <span class="st">&quot;asset_name&quot;</span>: asset_name,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true"></a>                            <span class="st">&quot;position&quot;</span>: position,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true"></a>                            <span class="st">&quot;entry_price&quot;</span>: entry_price,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true"></a>                            <span class="st">&quot;stop_loss&quot;</span>: stop_loss,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true"></a>                            <span class="st">&quot;probability&quot;</span>: probability</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true"></a>                        })</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true"></a>                    <span class="cf">else</span>:</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true"></a>                        <span class="bu">print</span>(<span class="ss">f&quot;Warning: Could not extract data from </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true"></a>            <span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true"></a>                <span class="bu">print</span>(<span class="ss">f&quot;Error: File not found: </span><span class="sc">{</span>filepath<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true"></a>            <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true"></a>                <span class="bu">print</span>(<span class="ss">f&quot;Error processing </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">: </span><span class="sc">{e}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true"></a>    <span class="co"># Sort by probability in descending order</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true"></a>    reports.sort(key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="st">&quot;probability&quot;</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&quot;Trading Report Summary (Sorted by Probability):&quot;</span>)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true"></a>    <span class="cf">for</span> report <span class="kw">in</span> reports:</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="ss">f&quot;- </span><span class="sc">{</span>report[<span class="st">&#39;asset_name&#39;</span>]<span class="sc">}</span><span class="ss">: Probability = </span><span class="sc">{</span>report[<span class="st">&#39;probability&#39;</span>]<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true"></a><span class="co"># Example usage (assuming your reports are in a directory called &quot;response&quot;)</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true"></a>analyze_reports()</span></code></pre></div>
+<p><strong>Explanation of the Code and Why It’s Important:</strong></p>
+<ul>
+<li><strong><code>analyze_reports(directory)</code> function:</strong> This function takes the directory containing the reports as input.</li>
+<li><strong>File Iteration:</strong> It loops through all files in the specified directory.</li>
+<li><strong>Filename Extraction:</strong> It extracts the <code>ASSET_NAME</code> from the filename.</li>
+<li><strong>File Reading:</strong> It opens each file and reads its content.</li>
+<li><strong>Regular Expressions (Crucial):</strong>
+<ul>
+<li>The code uses regular expressions (<code>re</code> module) to search for specific patterns within the file content.</li>
+<li><strong>You <em>MUST</em> adapt the regular expressions</strong> to match the exact format of your reports. The example assumes fields like “Position:”, “Entry Price:”, etc. If your files use different labels or formats, the expressions need to be updated.</li>
+<li><code>re.IGNORECASE</code> makes the search case-insensitive.</li>
+<li><code>([\d.]+)</code> captures the numerical value (digits and decimal points) as a group, which is then extracted using <code>.group(1)</code>.</li>
+</ul></li>
+<li><strong>Data Extraction:</strong> The code extracts the <code>position</code>, <code>entry_price</code>, <code>stop_loss</code> and <code>probability</code> from the file content using the regular expressions.</li>
+<li><strong>Data Structure:</strong> It creates a list of dictionaries, where each dictionary represents a single report. This is a good way to organize the extracted data.</li>
+<li><strong>Sorting:</strong> It sorts the list of dictionaries based on the <code>probability</code> in descending order using the <code>sort()</code> method with a <code>lambda</code> function as the key.</li>
+<li><strong>Output:</strong> Finally, it prints a concise summary for each asset, showing the asset name and the probability, formatted to two decimal places.</li>
+<li><strong>Error Handling:</strong> Includes <code>try...except</code> blocks to handle potential errors like <code>FileNotFoundError</code> or other exceptions that might occur during file processing. The <code>else</code> block executes only if the <code>try</code> block completes successfully.</li>
+</ul>
 <p><strong>Important Considerations:</strong></p>
 <ul>
-<li><strong>Error Handling:</strong> The error “tail: cannot open ’response/<em>’ for reading: No such file or directory&quot; indicates that the script or command couldn’t find files matching the pattern &quot;response/</em>”. Ensure that the <code>response</code> directory exists and contains the <code>.md</code> files.</li>
-<li><strong>File Format:</strong> The provided Python example is a <em>template</em>. You will <strong>absolutely</strong> need to adapt the regular expressions (<code>re.search</code>) to correctly extract the data from your <code>.md</code> files based on their specific format. Examine the <code>.md</code> files to determine the correct regular expressions. The example assumes a very simple format like:</li>
+<li><strong>File Format:</strong> The success of this approach hinges on the consistency of the file format. If the reports have a well-defined structure (e.g., using consistent labels for each field), then regular expressions are a suitable way to extract the information.</li>
+<li><strong>Regular Expression Accuracy:</strong> Test your regular expressions thoroughly to ensure they correctly extract the data from your reports. Use a regex testing tool to help.</li>
+<li><strong>Directory Structure:</strong> Make sure the <code>directory</code> variable in the <code>analyze_reports()</code> function points to the correct directory containing your reports.</li>
 </ul>
-<pre><code>Recommendation: LONG
-Probability: 85%</code></pre>
-<ul>
-<li><strong>Robustness:</strong> Add more error handling to handle unexpected file content or missing data.</li>
-<li><strong>Alternatives:</strong> You can use other tools like <code>awk</code>, <code>sed</code>, or dedicated Markdown parsing libraries in Python (like <code>markdown</code> or <code>beautifulsoup4</code>) for more complex Markdown structures.</li>
-</ul>
-<p>Remember to adapt the Python code (or whatever tool you choose) to the exact format and content of your <code>response/ASSET_NAME.md</code> files. Good luck!</p>
+<p><strong>To use this code, you will need to:</strong></p>
+<ol type="1">
+<li><strong>Save the code</strong> as a Python file (e.g., <code>report_analyzer.py</code>).</li>
+<li><strong>Create the <code>response</code> directory</strong> (or whatever directory name you use in the code) and put your <code>ASSET_NAME.md</code> files into it.</li>
+<li><strong>Adapt the regular expressions</strong> in the code to match the specific format of your report files.</li>
+<li><strong>Run the script:</strong> <code>python report_analyzer.py</code></li>
+</ol>
+<p>This will give you the sorted summary you requested. Remember to adapt the code to your specific file format and directory structure. Let me know if you have any further questions.</p>
 </body>
 </html>
