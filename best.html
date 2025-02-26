@@ -15,43 +15,51 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to the content of the files (as indicated by the <code>tail: cannot open &#39;response/*&#39; for reading: No such file or directory</code> error), I’ll create a hypothetical response based on the information you provided and a likely report format.</p>
-<p><strong>Assumptions:</strong></p>
-<ul>
-<li>Each report file contains text that includes keywords like “SHORT” or “LONG”, “Entry Price”, “Stop Loss”, and “Profit Probability”.</li>
-<li>“ASSET_NAME” is extracted from the filename <code>response/ASSET_NAME.md</code>.</li>
-<li>“Profit Probability” will be expressed as percentage like 70% or 95%.</li>
-</ul>
-<p><strong>Hypothetical Example Reports (These would be <em>read</em> from your files):</strong></p>
-<ul>
-<li><code>response/AAPL.md</code>: Contains text like “Recommendation: LONG, Entry Price: 170.00, Stop Loss: 165.00, Profit Probability: 85%”</li>
-<li><code>response/GOOG.md</code>: Contains text like “Recommendation: SHORT, Entry Price: 2700.00, Stop Loss: 2750.00, Profit Probability: 60%”</li>
-<li><code>response/TSLA.md</code>: Contains text like “Recommendation: LONG, Entry Price: 1000.00, Stop Loss: 950.00, Profit Probability: 92%”</li>
-<li><code>response/MSFT.md</code>: Contains text like “Recommendation: SHORT, Entry Price: 300.00, Stop Loss: 305.00, Profit Probability: 75%”</li>
-</ul>
-<p><strong>Hypothetical Output (Sorted by Profit Probability, Descending):</strong></p>
-<ul>
-<li><strong>TSLA:</strong> Profit Probability: 92%</li>
-<li><strong>AAPL:</strong> Profit Probability: 85%</li>
-<li><strong>MSFT:</strong> Profit Probability: 75%</li>
-<li><strong>GOOG:</strong> Profit Probability: 60%</li>
-</ul>
-<p><strong>Explanation of what <em>would</em> happen if I had the files:</strong></p>
+<p>Okay, I understand. Since I don’t have access to the actual report files (<code>response/ASSET_NAME.md</code>), I will operate under the assumption that you will <strong>provide me with the content of each report, one at a time, along with the asset name.</strong></p>
+<p>Here’s how I will respond to each report you provide:</p>
 <ol type="1">
-<li><p><strong>Filename Parsing:</strong> For each filename like <code>response/AAPL.md</code>, I would extract “AAPL” as the asset name.</p></li>
-<li><p><strong>File Reading:</strong> I would <em>attempt</em> to open and read the content of each file (e.g., <code>response/AAPL.md</code>). Since you’ve indicated the <code>tail</code> command failed, this is where the real process would break down if I were actually running this.</p></li>
-<li><p><strong>Information Extraction:</strong> <em>If</em> the files were successfully read, I would use text processing techniques (e.g., regular expressions or simple string searches) to find the “Profit Probability” value within the file content.</p></li>
-<li><p><strong>Data Storage:</strong> I would store the asset name and extracted probability in a data structure (like a list of tuples or a dictionary).</p></li>
-<li><p><strong>Sorting:</strong> I would sort the data structure based on the “Profit Probability” value, in descending order (highest probability first).</p></li>
-<li><p><strong>Output Generation:</strong> I would then format and print the sorted results as shown in the “Hypothetical Output” above.</p></li>
+<li><p><strong>Extract Information:</strong> I’ll look for the following information within the report content:</p>
+<ul>
+<li>Asset Name (which you’ll provide separately as the <code>ASSET_NAME</code>)</li>
+<li>Trading Position (LONG or SHORT)</li>
+<li>Entry Price (a numerical value)</li>
+<li>Stop Loss (a numerical value)</li>
+<li>Profit Probability (a numerical value, ideally a percentage)</li>
+</ul></li>
+<li><p><strong>Create a Summary:</strong> I’ll create a short summary in this format:</p>
+<p><code>ASSET_NAME: Position - [LONG/SHORT], Probability - [PROBABILITY]%</code></p></li>
+<li><p><strong>Store Summaries:</strong> I’ll store these summaries internally.</p></li>
+<li><p><strong>After you provide ALL the reports:</strong> Once you tell me you’ve given me all the reports, I will:</p>
+<ul>
+<li>Sort the collected summaries by <code>Probability</code> in descending order (highest probability first).</li>
+<li>Present the sorted summaries as my final response.</li>
+</ul></li>
 </ol>
+<p><strong>Example Input and Output:</strong></p>
+<p><strong>You (Input):</strong></p>
+<p><code>Asset Name:  AAPL</code> <code>Report Content: Trading Recommendation: LONG Entry Price: 170.00 Stop Loss: 165.00 Profit Probability: 65%</code></p>
+<p><strong>My Response:</strong></p>
+<p><code>AAPL: Position - LONG, Probability - 65%</code></p>
+<p><strong>You (Input):</strong></p>
+<p><code>Asset Name: TSLA</code> <code>Report Content: Trading Recommendation: SHORT Entry Price: 1000.00 Stop Loss: 1020.00 Profit Probability: 80%</code></p>
+<p><strong>My Response:</strong></p>
+<p><code>TSLA: Position - SHORT, Probability - 80%</code></p>
+<p><strong>You (Input):</strong></p>
+<p><code>Asset Name:  GOOG</code> <code>Report Content: Trading Recommendation: LONG Entry Price: 2500.00 Stop Loss: 2450.00 Profit Probability: 70%</code></p>
+<p><strong>My Response:</strong></p>
+<p><code>GOOG: Position - LONG, Probability - 70%</code></p>
+<p><strong>You (Input):</strong></p>
+<p><code>ALL REPORTS PROVIDED</code></p>
+<p><strong>My Final Response (Sorted by Probability):</strong></p>
+<pre><code>TSLA: Position - SHORT, Probability - 80%
+GOOG: Position - LONG, Probability - 70%
+AAPL: Position - LONG, Probability - 65%</code></pre>
 <p><strong>Important Considerations:</strong></p>
 <ul>
-<li><strong>Error Handling:</strong> In a real implementation, robust error handling is crucial. This includes handling cases where files are missing, the “Profit Probability” isn’t found in the expected format, or the file content is malformed. The error message you provided (<code>tail: cannot open &#39;response/*&#39; for reading: No such file or directory</code>) indicates a fundamental problem: the files are not accessible at the specified path. You will need to make sure those files exist where your program is trying to find them.</li>
-<li><strong>Data Validation:</strong> Validate the extracted “Profit Probability” to ensure it’s a valid numerical value (e.g., between 0 and 100).</li>
-<li><strong>Scalability:</strong> If you have a large number of reports, consider using more efficient data structures and algorithms for sorting.</li>
-<li><strong>File Access:</strong> You will need to ensure that the program has the necessary permissions to read the report files.</li>
-<li><strong>Report Format Consistency:</strong> This solution relies on a consistent format for the reports. If the format varies significantly, the extraction process may become more complex.</li>
+<li><strong>Report Format:</strong> Please be as consistent as possible with the format of the report content you provide. This will help me accurately extract the necessary information.</li>
+<li><strong>“ALL REPORTS PROVIDED” Signal:</strong> Make sure to clearly indicate when you have provided all the reports so I know when to generate the final sorted list.</li>
+<li><strong>Error Handling:</strong> If I can’t find the necessary information in a report, I will let you know and skip that report in the final summary.</li>
 </ul>
+<p>Ready when you are! Please provide the first Asset Name and Report Content.</p>
 </body>
 </html>
