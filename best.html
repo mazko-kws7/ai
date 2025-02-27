@@ -15,50 +15,43 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Even though you encountered an error message <code>tail: cannot open &#39;response/*&#39; for reading: No such file or directory</code>, I can still help you understand how I would process the reports if they were available.</p>
-<p><strong>Here’s how I would approach the task and provide the sorted resume:</strong></p>
+<p>Okay, I understand. It seems like I don’t have access to the actual content of the reports you’re referring to. If I <em>did</em> have that access, I would follow these steps to provide the summary you requested:</p>
 <ol type="1">
-<li><p><strong>Input:</strong> I would receive the list of reports, each formatted as <code>==&gt; response/ASSET_NAME.md &lt;==</code>.</p></li>
-<li><p><strong>Parsing each file:</strong> For each report, I would need to:</p>
+<li><p><strong>Process each report:</strong> I’d iterate through the list you provided (e.g., <code>response/AAPL.md</code>, <code>response/GOOG.md</code>, etc.).</p></li>
+<li><p><strong>Extract relevant information:</strong> For each file:</p>
 <ul>
-<li>Extract the <code>ASSET_NAME</code> from the filename.</li>
-<li>Read the contents of the report.</li>
-<li>Look for the following information within the report content:
+<li>Extract the asset name from the filename (e.g., “AAPL” from <code>response/AAPL.md</code>).</li>
+<li>Open the file and read its content.</li>
+<li>Parse the content to find the:
 <ul>
-<li><strong>Trading Position:</strong> (<code>SHORT</code> or <code>LONG</code>)</li>
-<li><strong>Entry Price:</strong> (a numerical value)</li>
-<li><strong>Stop Loss:</strong> (a numerical value)</li>
-<li><strong>Profit Probability:</strong> (a percentage or probability value, like <code>85%</code> or <code>0.85</code>)</li>
+<li>Trading position (LONG or SHORT)</li>
+<li>Entry price (not used for the result, but useful for context)</li>
+<li>Stop Loss (not used for the result, but useful for context)</li>
+<li>Profit Probability (This is the key value)</li>
 </ul></li>
 </ul></li>
-<li><p><strong>Creating a Summary:</strong> For each report, I would create a summary entry with the following format:</p>
-<p><code>ASSET_NAME: {Position: SHORT/LONG, Probability: XX%}</code> For example: <code>AAPL: {Position: LONG, Probability: 75%}</code></p></li>
-<li><p><strong>Sorting:</strong> After processing all the reports, I would sort the summaries in <em>descending order</em> based on the <code>Profit Probability</code>. This means the report with the highest profit probability would be at the top.</p></li>
-<li><p><strong>Output:</strong> Finally, I would output the sorted list of summaries. <strong>Example with hypothetical data</strong></p></li>
+<li><p><strong>Create a summary:</strong> For each report, create a summary in this format: <code>ASSET_NAME: Profit Probability = XX%</code></p></li>
+<li><p><strong>Sort by Probability:</strong> Store all the summaries in a list and sort the list in descending order based on the Profit Probability.</p></li>
+<li><p><strong>Output the sorted summaries:</strong> Print the sorted list of summaries.</p></li>
 </ol>
-<p>Let’s say the input was this:</p>
-<pre><code>==&gt; response/AAPL.md &lt;==
-==&gt; response/GOOG.md &lt;==
-==&gt; response/MSFT.md &lt;==
-==&gt; response/TSLA.md &lt;==</code></pre>
-<p>And the contents of the files contained the following information (hypothetical):</p>
+<p><strong>Example (if the reports existed and I processed them):</strong></p>
+<p>Let’s <em>imagine</em> these are the Profit Probabilities I found in the reports:</p>
 <ul>
-<li><strong>AAPL.md:</strong> Position: LONG, Entry Price: 170.00, Stop Loss: 165.00, Profit Probability: 80%</li>
-<li><strong>GOOG.md:</strong> Position: SHORT, Entry Price: 2700.00, Stop Loss: 2750.00, Profit Probability: 65%</li>
-<li><strong>MSFT.md:</strong> Position: LONG, Entry Price: 330.00, Stop Loss: 325.00, Profit Probability: 90%</li>
-<li><strong>TSLA.md:</strong> Position: SHORT, Entry Price: 1000.00, Stop Loss: 1020.00, Profit Probability: 70%</li>
+<li><code>response/AAPL.md</code>: Profit Probability = 75%</li>
+<li><code>response/GOOG.md</code>: Profit Probability = 90%</li>
+<li><code>response/MSFT.md</code>: Profit Probability = 60%</li>
+<li><code>response/TSLA.md</code>: Profit Probability = 82%</li>
 </ul>
-<p><strong>The output I would provide would be:</strong></p>
-<pre><code>MSFT: {Position: LONG, Probability: 90%}
-AAPL: {Position: LONG, Probability: 80%}
-TSLA: {Position: SHORT, Probability: 70%}
-GOOG: {Position: SHORT, Probability: 65%}</code></pre>
-<p><strong>Important Considerations:</strong></p>
-<ul>
-<li><strong>Error Handling:</strong> I would need to handle cases where the files don’t exist, are unreadable, or don’t contain the expected information. I would likely log errors or provide informative messages about any issues encountered.</li>
-<li><strong>Data Extraction Robustness:</strong> The parsing logic would need to be robust enough to handle variations in the format of the report files (e.g., different wording for “Profit Probability,” different units).</li>
-<li><strong>File Path:</strong> I’m assuming the files are in a subdirectory named “response”. If that’s not the case, the code would need to be adjusted.</li>
-</ul>
-<p><strong>In summary, I am ready to analyze the reports, extract the necessary information, and provide you with a sorted summary based on profit probability as soon as you can provide the content of the reports.</strong> Just paste the content (or representative examples) and I’ll do my best to process them.</p>
+<p><strong>Then, the output I <em>would</em> give you would be:</strong></p>
+<pre><code>GOOG: Profit Probability = 90%
+TSLA: Profit Probability = 82%
+AAPL: Profit Probability = 75%
+MSFT: Profit Probability = 60%</code></pre>
+<p><strong>Important Note about the error message:</strong> The “tail: cannot open ’response/<em>’ for reading: No such file or directory&quot; error indicates that the script or command you were using (presumably something like <code>tail response/*</code>) couldn’t find a directory named &quot;response&quot; or any files within it that matched the pattern &quot;response/</em>”. This confirms that I don’t have access to those files.</p>
+<p><strong>To actually get the result you need, you’ll have to:</strong></p>
+<ol type="1">
+<li>Ensure the <code>response</code> directory exists and contains the <code>*.md</code> files.</li>
+<li>Use a script (Python, bash, etc.) that can read the files, parse the information, and perform the sorting. You’ll need to write that script yourself, as I cannot access your file system. I can help you with the code for the script if you provide the typical structure of the <code>.md</code> files.</li>
+</ol>
 </body>
 </html>
