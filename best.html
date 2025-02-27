@@ -15,54 +15,56 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since you can’t provide the actual report content right now, I’ll give you the structure of how I <em>would</em> process the reports and give you the output you requested, assuming I <em>did</em> have the <code>response/ASSET_NAME.md</code> files.</p>
-<p><strong>Here’s the process I would follow and how the output would look:</strong></p>
+<p>Okay, I understand. Since you are getting an error indicating that the files &quot;response/<em>&quot; don’t exist, I’ll operate under the assumption that you </em>would* provide the content of each <code>response/ASSET_NAME.md</code> file to me, one at a time, in subsequent turns.</p>
+<p><strong>Here’s how I will proceed:</strong></p>
 <ol type="1">
-<li><p><strong>Identify Asset Name and Open the File:</strong> For each line like <code>==&gt; response/ASSET_NAME.md &lt;==</code>, I would extract the <code>ASSET_NAME</code>. Then I would attempt to open and read the file <code>response/ASSET_NAME.md</code>.</p></li>
-<li><p><strong>Parse the Report Content:</strong> Within each file, I would look for the following:</p>
+<li><strong>You provide the content of a <code>response/ASSET_NAME.md</code> file.</strong> Copy and paste the entire content of the file.</li>
+<li><strong>I will extract the relevant information:</strong> I will specifically look for the following within the provided text:
 <ul>
-<li><strong>Trading Position:</strong> (e.g., “SHORT” or “LONG”)</li>
-<li><strong>Entry Price:</strong> (e.g., “1.2500”)</li>
-<li><strong>Stop Loss:</strong> (e.g., “1.2550”)</li>
-<li><strong>Profit Probability:</strong> (e.g., “75%”) I’d convert this into a numerical representation (e.g., 0.75).</li>
+<li><code>ASSET_NAME</code>: (I will use the filename from your initial “==&gt; response/ASSET_NAME.md &lt;==” line.)</li>
+<li><code>Trading Position</code>: (LONG or SHORT)</li>
+<li><code>Entry Price</code>: (The numeric value)</li>
+<li><code>Stop Loss</code>: (The numeric value)</li>
+<li><code>Profit Probability</code>: (The probability percentage, e.g., “65%”)</li>
 </ul></li>
-<li><p><strong>Create a Summary:</strong> For each report, I would create a summary object/dictionary containing:</p>
+<li><strong>I will store the extracted data.</strong> I will keep track of the data from each report in memory.</li>
+<li><strong>Once you’ve provided all the reports</strong>, tell me “DONE” or some other signal.</li>
+<li><strong>I will generate the sorted summary.</strong> After receiving the “DONE” signal, I will:
 <ul>
-<li><code>asset_name</code>: The extracted <code>ASSET_NAME</code>.</li>
-<li><code>position</code>: The trading position (SHORT or LONG).</li>
-<li><code>probability</code>: The profit probability (as a number between 0 and 1).</li>
+<li>Create a summary line for each asset in the format: <code>ASSET_NAME: [LONG/SHORT] - Profit Probability: [XX%]</code></li>
+<li>Sort the summary lines in <em>descending</em> order based on the <code>Profit Probability</code>.</li>
+<li>Present the sorted summary.</li>
 </ul></li>
-<li><p><strong>Store Summaries:</strong> Store all the individual report summaries into a list.</p></li>
-<li><p><strong>Sort by Probability:</strong> Sort the list of summaries in <em>descending</em> order based on the <code>probability</code> value (highest probability first).</p></li>
-<li><p><strong>Output the Sorted Summaries:</strong> Present the sorted summaries in a clear format, as requested.</p></li>
 </ol>
-<p><strong>Example Output (Hypothetical):</strong></p>
-<p>Let’s say after processing the files, here’s what the data looks like:</p>
-<ul>
-<li><code>response/AAPL.md</code> contains: Position: LONG, Probability: 85%</li>
-<li><code>response/GOOG.md</code> contains: Position: SHORT, Probability: 60%</li>
-<li><code>response/MSFT.md</code> contains: Position: LONG, Probability: 92%</li>
-<li><code>response/AMZN.md</code> contains: Position: SHORT, Probability: 70%</li>
-</ul>
-<p>Then the output would be:</p>
-<pre><code>MSFT: 92%
-AAPL: 85%
-AMZN: 70%
-GOOG: 60%</code></pre>
-<p><strong>Explanation of the order:</strong></p>
-<p>The order is determined by the take profit probability, from highest to lowest.</p>
-<ul>
-<li>MSFT has 92%</li>
-<li>AAPL has 85%</li>
-<li>AMZN has 70%</li>
-<li>GOOG has 60%</li>
-</ul>
-<p><strong>Important Considerations (Without the actual files):</strong></p>
-<ul>
-<li><strong>Error Handling:</strong> In a real implementation, robust error handling is essential. What happens if a file is missing, corrupted, or doesn’t contain the expected information? The code would need to handle these cases gracefully (e.g., skip the file, log an error message).</li>
-<li><strong>Data Extraction Logic:</strong> The accuracy of this entire process hinges on reliably extracting the relevant information from each report file. I’d need precise rules (possibly using regular expressions or a more structured parsing approach) to get the correct values.</li>
-<li><strong>File Path:</strong> The code should be able to handle different file paths or relative paths if necessary.</li>
-</ul>
-<p>If you can provide the contents of some example <code>response/ASSET_NAME.md</code> files, I can refine my response and give you more specific and accurate code or a more detailed explanation of the data extraction process.</p>
+<p><strong>Example:</strong></p>
+<p>Let’s say you send me the following (in multiple turns):</p>
+<p><strong>Turn 1:</strong></p>
+<pre><code>==&gt; response/AAPL.md &lt;==
+Trading Position: LONG
+Entry Price: 170.00
+Stop Loss: 165.00
+Profit Probability: 70%
+Some other irrelevant text.</code></pre>
+<p><strong>Turn 2:</strong></p>
+<pre><code>==&gt; response/TSLA.md &lt;==
+Trading Position: SHORT
+Entry Price: 1000.00
+Stop Loss: 1020.00
+Profit Probability: 60%
+More irrelevant text.</code></pre>
+<p><strong>Turn 3:</strong></p>
+<pre><code>==&gt; response/GOOG.md &lt;==
+Trading Position: LONG
+Entry Price: 2500.00
+Stop Loss: 2450.00
+Profit Probability: 80%
+Even more irrelevant text.</code></pre>
+<p><strong>Turn 4:</strong></p>
+<p>DONE</p>
+<p><strong>My final response would be:</strong></p>
+<pre><code>GOOG: LONG - Profit Probability: 80%
+AAPL: LONG - Profit Probability: 70%
+TSLA: SHORT - Profit Probability: 60%</code></pre>
+<p><strong>Now, please provide the content of the first <code>response/ASSET_NAME.md</code> file.</strong></p>
 </body>
 </html>
