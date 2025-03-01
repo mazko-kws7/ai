@@ -15,65 +15,51 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to the actual files and I’m receiving a “No such file or directory” error, I’ll simulate the report analysis based on the format you described. I will assume each report would look something like this:</p>
-<pre><code>==&gt; response/ASSET_NAME.md &lt;==
-Recommendation: LONG
-Entry Price: 150.25
-Stop Loss: 148.00
-Profit Probability: 0.75</code></pre>
-<p>And I’ll provide a response based on hypothetical data. If you provide the content of the reports directly, I can give you a much more accurate and useful summary.</p>
-<p><strong>Here’s the format of the output you’ll receive:</strong></p>
-<pre><code>*   **Asset:** ASSET_NAME1, **Probability:** PROBABILITY1
-*   **Asset:** ASSET_NAME2, **Probability:** PROBABILITY2
-*   **Asset:** ASSET_NAME3, **Probability:** PROBABILITY3
-... and so on, sorted by PROBABILITY in descending order.</code></pre>
-<p><strong>Hypothetical Analysis and Sorted Summary:</strong></p>
-<p>Let’s say I processed the following hypothetical reports (since I can’t actually access them):</p>
+<p>Okay, I understand. Since I don’t have access to any files or a command line to read the reports, I’ll provide a template response based on your request. I’ll assume the content of each <code>ASSET_NAME.md</code> file follows a consistent structure that includes the necessary information.</p>
+<p><strong>Assumptions about the <code>ASSET_NAME.md</code> file content:</strong></p>
 <ul>
-<li>response/AAPL.md</li>
-<li>response/GOOG.md</li>
-<li>response/TSLA.md</li>
-<li>response/MSFT.md</li>
-<li>response/AMZN.md</li>
-</ul>
-<p>And let’s assume they contained the following (hypothetical) probabilities:</p>
+<li>Each file contains the following information:
 <ul>
-<li>AAPL: 0.65</li>
-<li>GOOG: 0.80</li>
-<li>TSLA: 0.70</li>
-<li>MSFT: 0.90</li>
-<li>AMZN: 0.75</li>
+<li>Asset Name (represented by <code>ASSET_NAME</code> in the filename)</li>
+<li>Trading Position Recommendation (e.g., “LONG”, “SHORT”)</li>
+<li>Entry Price (e.g., 1.2345)</li>
+<li>Stop Loss (e.g., 1.2300)</li>
+<li>Profit Probability (e.g., 75%)</li>
+</ul></li>
 </ul>
-<p><strong>Then the output would be:</strong></p>
-<ul>
-<li><strong>Asset:</strong> MSFT, <strong>Probability:</strong> 0.90</li>
-<li><strong>Asset:</strong> GOOG, <strong>Probability:</strong> 0.80</li>
-<li><strong>Asset:</strong> AMZN, <strong>Probability:</strong> 0.75</li>
-<li><strong>Asset:</strong> TSLA, <strong>Probability:</strong> 0.70</li>
-<li><strong>Asset:</strong> AAPL, <strong>Probability:</strong> 0.65</li>
-</ul>
-<p><strong>Important:</strong></p>
-<ul>
-<li><strong>Replace the hypothetical ASSET names and probabilities above with the actual data from your reports.</strong></li>
-<li>To get a real analysis, you need to <strong>provide the content of each <code>response/ASSET_NAME.md</code> file.</strong> You can copy and paste the text from each file, separated by a line that starts with <code>==&gt; response/ASSET_NAME.md &lt;==</code>. For example:</li>
-</ul>
-<pre><code>==&gt; response/AAPL.md &lt;==
-Recommendation: LONG
-Entry Price: 150.25
-Stop Loss: 148.00
-Profit Probability: 0.65
+<p><strong>Example Output (Template):</strong></p>
+<pre><code>Sorted Trade Recommendations by Profit Probability:
 
-==&gt; response/GOOG.md &lt;==
-Recommendation: SHORT
-Entry Price: 2700.00
-Stop Loss: 2720.00
-Profit Probability: 0.80
+*   **Asset: [Asset Name 1], Probability: [Probability 1]%, Recommendation: [LONG/SHORT]**
+*   **Asset: [Asset Name 2], Probability: [Probability 2]%, Recommendation: [LONG/SHORT]**
+*   **Asset: [Asset Name 3], Probability: [Probability 3]%, Recommendation: [LONG/SHORT]**
+*   **Asset: [Asset Name 4], Probability: [Probability 4]%, Recommendation: [LONG/SHORT]**
+... and so on, ordered from highest to lowest probability.</code></pre>
+<p><strong>How to Use This:</strong></p>
+<ol type="1">
+<li><strong>You will need to manually read each <code>ASSET_NAME.md</code> file.</strong></li>
+<li><strong>Extract the <code>ASSET_NAME</code>, the <code>Profit Probability</code>, and the <code>Trading Position</code>.</strong></li>
+<li><strong>Replace the bracketed placeholders in the template with the extracted data.</strong></li>
+<li><strong>Order the list items based on the Profit Probability, from highest to lowest.</strong></li>
+</ol>
+<p><strong>Example with Hypothetical Data:</strong></p>
+<p>Let’s say you have the following information after reading three files:</p>
+<ul>
+<li><code>response/AAPL.md</code>: Profit Probability: 80%, Recommendation: LONG</li>
+<li><code>response/GOOG.md</code>: Profit Probability: 65%, Recommendation: SHORT</li>
+<li><code>response/MSFT.md</code>: Profit Probability: 90%, Recommendation: LONG</li>
+</ul>
+<p>The output would be:</p>
+<pre><code>Sorted Trade Recommendations by Profit Probability:
 
-==&gt; response/TSLA.md &lt;==
-Recommendation: LONG
-Entry Price: 750.50
-Stop Loss: 740.00
-Profit Probability: 0.70</code></pre>
-<p>Once you provide the actual report content, I will give you a much more accurate and useful response.</p>
+*   **Asset: MSFT, Probability: 90%, Recommendation: LONG**
+*   **Asset: AAPL, Probability: 80%, Recommendation: LONG**
+*   **Asset: GOOG, Probability: 65%, Recommendation: SHORT**</code></pre>
+<p><strong>Important Considerations:</strong></p>
+<ul>
+<li><strong>Error Handling:</strong> Since I can’t access the files, I cannot validate the data or handle missing information. You’ll need to ensure the data is accurate when extracting it.</li>
+<li><strong>File Format Consistency:</strong> This assumes a consistent format for each report. If the format varies, you’ll need to adjust the extraction process accordingly.</li>
+</ul>
+<p>Let me know if you have further questions about how to implement this. If you can provide more specific details about the file contents (e.g., a sample report), I can refine the instructions.</p>
 </body>
 </html>
