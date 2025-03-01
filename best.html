@@ -15,51 +15,46 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to any files or a command line to read the reports, I’ll provide a template response based on your request. I’ll assume the content of each <code>ASSET_NAME.md</code> file follows a consistent structure that includes the necessary information.</p>
-<p><strong>Assumptions about the <code>ASSET_NAME.md</code> file content:</strong></p>
-<ul>
-<li>Each file contains the following information:
-<ul>
-<li>Asset Name (represented by <code>ASSET_NAME</code> in the filename)</li>
-<li>Trading Position Recommendation (e.g., “LONG”, “SHORT”)</li>
-<li>Entry Price (e.g., 1.2345)</li>
-<li>Stop Loss (e.g., 1.2300)</li>
-<li>Profit Probability (e.g., 75%)</li>
-</ul></li>
-</ul>
-<p><strong>Example Output (Template):</strong></p>
-<pre><code>Sorted Trade Recommendations by Profit Probability:
-
-*   **Asset: [Asset Name 1], Probability: [Probability 1]%, Recommendation: [LONG/SHORT]**
-*   **Asset: [Asset Name 2], Probability: [Probability 2]%, Recommendation: [LONG/SHORT]**
-*   **Asset: [Asset Name 3], Probability: [Probability 3]%, Recommendation: [LONG/SHORT]**
-*   **Asset: [Asset Name 4], Probability: [Probability 4]%, Recommendation: [LONG/SHORT]**
-... and so on, ordered from highest to lowest probability.</code></pre>
-<p><strong>How to Use This:</strong></p>
+<p>Okay, I understand. You’re giving me a list of filenames, each representing a trading report for a specific asset. Each report file contains a trading position (SHORT or LONG), entry price, stop loss, and profit probability. I need to:</p>
 <ol type="1">
-<li><strong>You will need to manually read each <code>ASSET_NAME.md</code> file.</strong></li>
-<li><strong>Extract the <code>ASSET_NAME</code>, the <code>Profit Probability</code>, and the <code>Trading Position</code>.</strong></li>
-<li><strong>Replace the bracketed placeholders in the template with the extracted data.</strong></li>
-<li><strong>Order the list items based on the Profit Probability, from highest to lowest.</strong></li>
+<li><strong>Extract the Asset Name:</strong> From the filename <code>response/ASSET_NAME.md</code>.</li>
+<li><strong>Extract the Profit Probability:</strong> This information is inside the file content, which you are <em>not</em> providing directly. I will <em>assume</em> I can get this later and represent this field as <code>PROBABILITY</code>.</li>
+<li><strong>Create a Summary:</strong> A short summary containing the Asset Name and Profit Probability.</li>
+<li><strong>Sort by Probability:</strong> Sort the summaries in ascending order of profit probability (lowest to highest).</li>
+<li><strong>Deal with the Error Message:</strong> I will ignore the <code>tail</code> error, as it is not relevant to my role of processing file contents.</li>
 </ol>
-<p><strong>Example with Hypothetical Data:</strong></p>
-<p>Let’s say you have the following information after reading three files:</p>
-<ul>
-<li><code>response/AAPL.md</code>: Profit Probability: 80%, Recommendation: LONG</li>
-<li><code>response/GOOG.md</code>: Profit Probability: 65%, Recommendation: SHORT</li>
-<li><code>response/MSFT.md</code>: Profit Probability: 90%, Recommendation: LONG</li>
-</ul>
-<p>The output would be:</p>
-<pre><code>Sorted Trade Recommendations by Profit Probability:
+<p>Since you’re not providing the <em>content</em> of the files, I will assume you will provide it to me later.</p>
+<p><strong>Here’s how I’ll structure my response (which is currently incomplete since I have no probabilities):</strong></p>
+<p>I will provide the list of asset names and wait for probabilities.</p>
+<pre><code>Asset Names detected:
+ASSET_NAME</code></pre>
+<p><strong>When you provide the information from the files, I will update the summary to something like this:</strong></p>
+<pre><code>Sorted Trading Recommendations (by Probability):
 
-*   **Asset: MSFT, Probability: 90%, Recommendation: LONG**
-*   **Asset: AAPL, Probability: 80%, Recommendation: LONG**
-*   **Asset: GOOG, Probability: 65%, Recommendation: SHORT**</code></pre>
+ASSET_NAME_1: PROBABILITY_1%
+ASSET_NAME_2: PROBABILITY_2%
+...
+ASSET_NAME_N: PROBABILITY_N%
+</code></pre>
+<p><strong>Example (if you had provided content):</strong></p>
+<p>Let’s say you later told me:</p>
+<ul>
+<li><code>response/AAPL.md</code> contains (among other things) “Profit Probability: 65%”</li>
+<li><code>response/GOOG.md</code> contains (among other things) “Profit Probability: 70%”</li>
+<li><code>response/MSFT.md</code> contains (among other things) “Profit Probability: 60%”</li>
+</ul>
+<p>My final response would be:</p>
+<pre><code>Sorted Trading Recommendations (by Probability):
+
+MSFT: 60%
+AAPL: 65%
+GOOG: 70%</code></pre>
 <p><strong>Important Considerations:</strong></p>
 <ul>
-<li><strong>Error Handling:</strong> Since I can’t access the files, I cannot validate the data or handle missing information. You’ll need to ensure the data is accurate when extracting it.</li>
-<li><strong>File Format Consistency:</strong> This assumes a consistent format for each report. If the format varies, you’ll need to adjust the extraction process accordingly.</li>
+<li><strong>Format of Probability:</strong> You need to tell me <em>exactly</em> how the “Profit Probability” is formatted inside the files (e.g., <code>&quot;Profit Probability: 75%&quot;</code> or <code>&quot;probability: 0.75&quot;</code>). This is crucial for me to extract it correctly.</li>
+<li><strong>Error Handling (File Content):</strong> I’m assuming the files always exist and contain the profit probability information. If this is not the case, tell me how I should handle missing files or files without probability information (e.g., skip them, report an error).</li>
+<li><strong>Order of Responses:</strong> Since I need to <em>sort</em> by probability, I will need to collect all the asset names and probabilities <em>first</em> before I can provide the final sorted list.</li>
 </ul>
-<p>Let me know if you have further questions about how to implement this. If you can provide more specific details about the file contents (e.g., a sample report), I can refine the instructions.</p>
+<p><strong>Now, please provide the content for each of the <code>response/ASSET_NAME.md</code> files, one by one, so I can give you the sorted recommendations.</strong></p>
 </body>
 </html>
