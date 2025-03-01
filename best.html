@@ -15,47 +15,65 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to any files and received an error message indicating that the files cannot be found, I will <strong>assume</strong> the following structure for each report’s content:</p>
-<p>Each <code>response/ASSET_NAME.md</code> file contains text that includes:</p>
+<p>Okay, I understand. Since I don’t have access to the actual files and I’m receiving a “No such file or directory” error, I’ll simulate the report analysis based on the format you described. I will assume each report would look something like this:</p>
+<pre><code>==&gt; response/ASSET_NAME.md &lt;==
+Recommendation: LONG
+Entry Price: 150.25
+Stop Loss: 148.00
+Profit Probability: 0.75</code></pre>
+<p>And I’ll provide a response based on hypothetical data. If you provide the content of the reports directly, I can give you a much more accurate and useful summary.</p>
+<p><strong>Here’s the format of the output you’ll receive:</strong></p>
+<pre><code>*   **Asset:** ASSET_NAME1, **Probability:** PROBABILITY1
+*   **Asset:** ASSET_NAME2, **Probability:** PROBABILITY2
+*   **Asset:** ASSET_NAME3, **Probability:** PROBABILITY3
+... and so on, sorted by PROBABILITY in descending order.</code></pre>
+<p><strong>Hypothetical Analysis and Sorted Summary:</strong></p>
+<p>Let’s say I processed the following hypothetical reports (since I can’t actually access them):</p>
 <ul>
-<li>The trading position recommendation (either “SHORT” or “LONG”).</li>
-<li>The entry price (a numerical value).</li>
-<li>The stop loss (a numerical value).</li>
-<li>The profit probability (a numerical value, likely a percentage).</li>
+<li>response/AAPL.md</li>
+<li>response/GOOG.md</li>
+<li>response/TSLA.md</li>
+<li>response/MSFT.md</li>
+<li>response/AMZN.md</li>
 </ul>
-<p>Based on this assumption, I will provide you with a template response that you can adapt to your actual data. The template shows how the output would look if I <em>could</em> read the reports. You would need to manually extract the information from your reports and replace the placeholders in my template.</p>
-<p><strong>Here’s the template for the output, assuming you provide me with the extracted data:</strong></p>
-<pre><code>**Trading Position Recommendation Summary (Sorted by Take Profit Probability)**
+<p>And let’s assume they contained the following (hypothetical) probabilities:</p>
+<ul>
+<li>AAPL: 0.65</li>
+<li>GOOG: 0.80</li>
+<li>TSLA: 0.70</li>
+<li>MSFT: 0.90</li>
+<li>AMZN: 0.75</li>
+</ul>
+<p><strong>Then the output would be:</strong></p>
+<ul>
+<li><strong>Asset:</strong> MSFT, <strong>Probability:</strong> 0.90</li>
+<li><strong>Asset:</strong> GOOG, <strong>Probability:</strong> 0.80</li>
+<li><strong>Asset:</strong> AMZN, <strong>Probability:</strong> 0.75</li>
+<li><strong>Asset:</strong> TSLA, <strong>Probability:</strong> 0.70</li>
+<li><strong>Asset:</strong> AAPL, <strong>Probability:</strong> 0.65</li>
+</ul>
+<p><strong>Important:</strong></p>
+<ul>
+<li><strong>Replace the hypothetical ASSET names and probabilities above with the actual data from your reports.</strong></li>
+<li>To get a real analysis, you need to <strong>provide the content of each <code>response/ASSET_NAME.md</code> file.</strong> You can copy and paste the text from each file, separated by a line that starts with <code>==&gt; response/ASSET_NAME.md &lt;==</code>. For example:</li>
+</ul>
+<pre><code>==&gt; response/AAPL.md &lt;==
+Recommendation: LONG
+Entry Price: 150.25
+Stop Loss: 148.00
+Profit Probability: 0.65
 
-(Remember to manually fill in the data below based on your report files)
+==&gt; response/GOOG.md &lt;==
+Recommendation: SHORT
+Entry Price: 2700.00
+Stop Loss: 2720.00
+Profit Probability: 0.80
 
-*   **Asset: [ASSET_NAME_1]** - Probability: [PROBABILITY_1] - Recommendation: [LONG/SHORT]
-*   **Asset: [ASSET_NAME_2]** - Probability: [PROBABILITY_2] - Recommendation: [LONG/SHORT]
-*   **Asset: [ASSET_NAME_3]** - Probability: [PROBABILITY_3] - Recommendation: [LONG/SHORT]
-*   ... and so on ...
-
-**Example based on made up data**
-*   **Asset: BTCUSD** - Probability: 85% - Recommendation: LONG
-*   **Asset: ETHUSD** - Probability: 70% - Recommendation: SHORT
-*   **Asset: AAPL** - Probability: 60% - Recommendation: LONG
-
-**Instructions for using the template:**
-
-1.  **Extract Data:** For each `response/ASSET_NAME.md` file, open it and find the `ASSET_NAME`, the &quot;Profit Probability&quot; (or similar term), and the trading position recommendation (&quot;SHORT&quot; or &quot;LONG&quot;).
-2.  **Fill the Template:** Replace the bracketed placeholders (`[ASSET_NAME_X]`, `[PROBABILITY_X]`, `[LONG/SHORT]`) with the actual values you extracted.
-3.  **Sort:**  Once you&#39;ve filled in the template for all your assets, sort the list from the highest &quot;Probability&quot; to the lowest.
-
-**Important Considerations:**
-
-*   **Error Handling:** Because I can&#39;t read the files, I can&#39;t provide any error handling. If a report is missing information, you&#39;ll need to handle that manually.
-*   **Probability Format:**  Make sure the probability is consistently formatted (e.g., as a percentage or a decimal) before sorting.
-
-**How to use this with your data:**
-
-You&#39;ll have to process your files separately (using a script, manual editing, etc.) and then provide me with the extracted data. For example, you could give me a list like this:
-</code></pre>
-<p>BTCUSD, 85%, LONG ETHUSD, 70%, SHORT AAPL, 60%, LONG ```</p>
-<p>And then I could format it into the desired output.</p>
-<p>Let me know if you have a different way to provide the data! Once you have the extracted information, I can format it and sort it for you.</p>
+==&gt; response/TSLA.md &lt;==
+Recommendation: LONG
+Entry Price: 750.50
+Stop Loss: 740.00
+Profit Probability: 0.70</code></pre>
+<p>Once you provide the actual report content, I will give you a much more accurate and useful response.</p>
 </body>
 </html>
