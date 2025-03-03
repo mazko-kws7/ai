@@ -15,49 +15,51 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to your file system and can’t execute commands like <code>tail</code>, I’ll give you the <em>format</em> of the output I <em>would</em> provide if I <em>could</em> process the files. You’ll need to replace the example data with the actual information from your reports.</p>
-<p>Here’s how the summary would look:</p>
-<pre><code>**Trading Position Recommendation Summary (Sorted by Profit Probability)**
-
-*   **ASSET_NAME_3**: Profit Probability: XX% (Recommendation: LONG/SHORT - Entry Price: XXXX, Stop Loss: YYYY)
-*   **ASSET_NAME_1**: Profit Probability: YY% (Recommendation: LONG/SHORT - Entry Price: XXXX, Stop Loss: YYYY)
-*   **ASSET_NAME_2**: Profit Probability: ZZ% (Recommendation: LONG/SHORT - Entry Price: XXXX, Stop Loss: YYYY)
-*   **ASSET_NAME_4**: Profit Probability: AA% (Recommendation: LONG/SHORT - Entry Price: XXXX, Stop Loss: YYYY)
-*   ...and so on...
-
-**Important Considerations:**
-
-*   **Replace Placeholders:**  You MUST replace `ASSET_NAME_X`, `XX%`, `YY%`, `ZZ%`, `AA%`, `LONG/SHORT`, `XXXX`, and `YYYY` with the actual values extracted from each `response/ASSET_NAME.md` report.
-*   **Sorting:** Ensure the list is sorted in *ascending* order of profit probability (lowest probability at the top, highest at the bottom). I just put some in a random order for example
-*   **Format Consistency:** Maintain the format consistently for each asset.
-*   **Error Handling (You&#39;ll Need This):**  If a report is missing a profit probability, entry price, stop loss or recommendation, note that in the summary (e.g., &quot;Profit Probability: N/A&quot;). Don&#39;t let a single error crash your entire process.
-*   **Rounding/Formatting Probabilities:** Consider rounding the probabilities to a reasonable number of decimal places.
-
-**Example (Illustrative - Replace with Real Data):**
-
-Let&#39;s say you have these three files:
-
-*   `response/AAPL.md` (Content: &quot;Recommendation: LONG, Entry: 170, Stop: 165, Probability: 65%&quot;)
-*   `response/GOOG.md` (Content: &quot;Recommendation: SHORT, Entry: 2500, Stop: 2550, Probability: 80%&quot;)
-*   `response/MSFT.md` (Content: &quot;Recommendation: LONG, Entry: 300, Stop: 290, Probability: 70%&quot;)
-
-The output I *would* generate (if I had the files) would be:
-</code></pre>
-<p><strong>Trading Position Recommendation Summary (Sorted by Profit Probability)</strong></p>
-<ul>
-<li><strong>AAPL</strong>: Profit Probability: 65% (Recommendation: LONG - Entry Price: 170, Stop Loss: 165)</li>
-<li><strong>MSFT</strong>: Profit Probability: 70% (Recommendation: LONG - Entry Price: 300, Stop Loss: 290)</li>
-<li><strong>GOOG</strong>: Profit Probability: 80% (Recommendation: SHORT - Entry Price: 2500, Stop Loss: 2550) ```</li>
-</ul>
-<p><strong>In summary, to get the desired output, you’ll need to:</strong></p>
+<p>Okay, I understand the situation. You’re giving me a list of filenames, where each file contains trading recommendations. Since I can’t access your filesystem, I need you to <strong>provide the <em>content</em> of each file</strong>. Pretend I’m reading the files myself.</p>
+<p>Here’s how I’ll process the information <strong>once you provide the file contents</strong>:</p>
 <ol type="1">
-<li><strong>Read Each File:</strong> Programmatically read the content of each <code>response/ASSET_NAME.md</code> file.</li>
-<li><strong>Extract Information:</strong> Parse the content to extract the asset name, trading position recommendation, entry price, stop loss, and profit probability. Regular expressions or string parsing will likely be useful.</li>
-<li><strong>Structure the Data:</strong> Create a data structure (e.g., a list of dictionaries) to store the extracted information for each asset.</li>
-<li><strong>Sort:</strong> Sort the data structure based on the profit probability (ascending order).</li>
-<li><strong>Format the Output:</strong> Generate the formatted output string as shown above.</li>
-<li><strong>Handle Errors:</strong> Gracefully handle cases where a report file is missing, corrupt, or doesn’t contain the expected information.</li>
+<li><strong>Asset Extraction:</strong> I’ll extract the asset name from the filename you provide (e.g., <code>response/AAPL.md</code> means the asset is <code>AAPL</code>).</li>
+<li><strong>Recommendation Parsing:</strong> I’ll look for the following in the file content:
+<ul>
+<li>Trading Position: <code>SHORT</code> or <code>LONG</code></li>
+<li>Entry Price: A numerical value (e.g., <code>150.25</code>)</li>
+<li>Stop Loss: A numerical value (e.g., <code>149.50</code>)</li>
+<li>Profit Probability: A numerical value representing a percentage (e.g., <code>75%</code> or <code>0.75</code>). I’ll expect probability to be a floating point number between 0 and 1 or an integer between 0 and 100 with a ‘%’ symbol.</li>
+</ul></li>
+<li><strong>Summary Generation:</strong> I’ll create a short summary for each asset in this format: <code>&quot;ASSET_NAME: Recommendation (LONG/SHORT), Profit Probability: XX.XX%&quot;</code></li>
+<li><strong>Sorting:</strong> I’ll sort the summaries based on the <code>Profit Probability</code> in <em>descending</em> order (highest probability first).</li>
+<li><strong>Output:</strong> I will give you back the sorted list.</li>
 </ol>
-<p>Let me know if you have more questions. Good luck!</p>
+<p><strong>Example Input and Expected Output (After You Provide Content):</strong></p>
+<p><strong>Let’s say you give me this:</strong></p>
+<pre><code>==&gt; response/AAPL.md &lt;==
+Trading Position: LONG
+Entry Price: 170.00
+Stop Loss: 169.00
+Profit Probability: 80%
+
+==&gt; response/GOOG.md &lt;==
+Trading Position: SHORT
+Entry Price: 2500.00
+Stop Loss: 2510.00
+Profit Probability: 65%
+
+==&gt; response/MSFT.md &lt;==
+Trading Position: LONG
+Entry Price: 300.00
+Stop Loss: 298.00
+Profit Probability: 90%
+
+==&gt; response/TSLA.md &lt;==
+Trading Position: SHORT
+Entry Price: 1000.00
+Stop Loss: 1010.00
+Profit Probability: 70%</code></pre>
+<p><strong>My Output Would Be:</strong></p>
+<pre><code>MSFT: Recommendation (LONG), Profit Probability: 90.00%
+AAPL: Recommendation (LONG), Profit Probability: 80.00%
+TSLA: Recommendation (SHORT), Profit Probability: 70.00%
+GOOG: Recommendation (SHORT), Profit Probability: 65.00%</code></pre>
+<p><strong>Now, please provide the content of your <code>response/ASSET_NAME.md</code> files, one at a time or all at once as in the example, so I can process them.</strong></p>
 </body>
 </html>
