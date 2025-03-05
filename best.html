@@ -15,59 +15,63 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to your files, I will provide you with a template for how I would process each report and generate the sorted summary, assuming you can provide me with the content of each report one by one.</p>
-<p><strong>Here’s the process and the output format I would use:</strong></p>
+<p>Okay, I understand. Since I don’t have access to your file system, and I am getting an error about not finding files, I will need you to <strong>provide the content of each file individually</strong>.</p>
+<p>Here’s how I will process the information, and what I need from you:</p>
 <ol type="1">
-<li><p><strong>Report Input:</strong> You provide the full content of a report, like this:</p>
-<pre><code>==&gt; response/AAPL.md &lt;==
-Recommendation: LONG
-Entry Price: 170.00
-Stop Loss: 165.00
-Take Profit: 180.00
-Profit Probability: 65%</code></pre></li>
-<li><p><strong>Analysis (performed by my logic):</strong></p>
+<li><strong>You’ll give me the content of ONE file at a time.</strong> Please start with any one of them.</li>
+<li><strong>Format the file content for me as a string.</strong> This is important so I can parse the information correctly. Copy and paste each file content between the <code>---START REPORT---</code> and <code>---END REPORT---</code> markers like in the example:</li>
+</ol>
+<pre><code>---START REPORT---
+(Paste the entire contents of response/ASSET_NAME.md here)
+---END REPORT---</code></pre>
+<ol start="3" type="1">
+<li><strong>After you provide the file content, I will:</strong>
 <ul>
-<li>Extract the asset name from the filename (e.g., “AAPL”).</li>
-<li>Extract the “Profit Probability” value.</li>
+<li>Extract the <code>ASSET_NAME</code> from your initial line (<code>==&gt; response/ASSET_NAME.md &lt;==</code>).</li>
+<li>Look for the trading position (SHORT or LONG), entry price, stop loss, and profit probability within the report content. I’ll assume these are clearly labeled or can be identified with reasonable certainty. If you can give me an example of how these are formatted within the report, it will help me extract them accurately.</li>
+<li>Create a summary for that report including: Asset Name, Position (LONG/SHORT), and Profit Probability.</li>
 </ul></li>
-<li><p><strong>Output Generation:</strong> I will generate a summary line for each report in the following format:</p>
-<p><code>ASSET_NAME: Profit Probability = XX%</code></p></li>
-<li><p><strong>Final Sorting and Presentation:</strong> After you provide all reports, I will sort the generated summary lines in descending order based on the “Profit Probability” value and present the sorted list.</p></li>
-</ol>
-<p><strong>Example with multiple reports:</strong></p>
-<p>Let’s say you provide the following (in separate inputs):</p>
+<li><strong>Repeat steps 1-3 for each report file.</strong></li>
+<li><strong>After you’ve provided all the reports, I will:</strong>
 <ul>
-<li><p><strong>Report 1:</strong></p>
-<pre><code>==&gt; response/AAPL.md &lt;==
-Recommendation: LONG
-Entry Price: 170.00
-Stop Loss: 165.00
-Take Profit: 180.00
-Profit Probability: 65%</code></pre></li>
-<li><p><strong>Report 2:</strong></p>
-<pre><code>==&gt; response/GOOG.md &lt;==
-Recommendation: SHORT
-Entry Price: 2500.00
-Stop Loss: 2550.00
-Take Profit: 2400.00
-Profit Probability: 80%</code></pre></li>
-<li><p><strong>Report 3:</strong></p>
-<pre><code>==&gt; response/TSLA.md &lt;==
-Recommendation: LONG
-Entry Price: 1000.00
-Stop Loss: 950.00
-Take Profit: 1100.00
-Profit Probability: 70%</code></pre></li>
-</ul>
-<p><strong>My final output would be:</strong></p>
-<pre><code>GOOG: Profit Probability = 80%
-TSLA: Profit Probability = 70%
-AAPL: Profit Probability = 65%</code></pre>
-<p><strong>How to use this:</strong></p>
-<ol type="1">
-<li><strong>Copy and paste the content of <em>each</em> report individually to me.</strong> Make sure to include the <code>==&gt; response/ASSET_NAME.md &lt;==</code> line for each report so I can extract the asset name correctly. Treat each report as a separate input.</li>
-<li><strong>After you’ve provided <em>all</em> the reports, let me know, and I’ll generate the final sorted summary.</strong></li>
+<li>Sort all the summaries by Profit Probability (highest to lowest).</li>
+<li>Present the final sorted list of summaries to you.</li>
+</ul></li>
 </ol>
-<p><strong>Important:</strong> I will <em>not</em> execute any commands or access any files on your system. I rely entirely on the text you provide me. The error &quot;tail: cannot open ’response/<em>’ for reading: No such file or directory&quot; is just a reminder that I cannot access your files, which is intentional for security reasons. You must manually copy the </em>content* of the files.</p>
+<p><strong>Example of what I need from you:</strong></p>
+<p>Let’s say you have two files:</p>
+<ul>
+<li><code>response/AAPL.md</code></li>
+<li><code>response/GOOG.md</code></li>
+</ul>
+<p>You would first give me the content of <code>response/AAPL.md</code>:</p>
+<pre><code>---START REPORT---
+## Trading Recommendation: AAPL
+
+**Position:** LONG
+**Entry Price:** 175.00
+**Stop Loss:** 170.00
+**Profit Probability:** 0.85
+---END REPORT---</code></pre>
+<p>Then you would give me the content of <code>response/GOOG.md</code>:</p>
+<pre><code>---START REPORT---
+## Trading Recommendation: GOOG
+
+**Position:** SHORT
+**Entry Price:** 2700.00
+**Stop Loss:** 2750.00
+**Profit Probability:** 0.60
+---END REPORT---</code></pre>
+<p><strong>After you give me both reports, I would then output the following:</strong></p>
+<pre><code>Here&#39;s the sorted summary of the reports:
+
+*   AAPL: LONG, Profit Probability: 0.85
+*   GOOG: SHORT, Profit Probability: 0.60</code></pre>
+<p><strong>Important Considerations:</strong></p>
+<ul>
+<li><strong>Data Format:</strong> The more consistent the format of your reports, the better I can extract the information.</li>
+<li><strong>Error Handling:</strong> If I can’t find the necessary information (e.g., Profit Probability) in a report, I will let you know and skip that report in the final sorted list.</li>
+</ul>
+<p><strong>Please provide the content of the first report file now, using the <code>---START REPORT---</code> and <code>---END REPORT---</code> markers.</strong></p>
 </body>
 </html>
