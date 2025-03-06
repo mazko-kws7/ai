@@ -15,42 +15,56 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since you’re seeing a &quot;tail: cannot open ’response/*’ &quot; error, I’m assuming you haven’t actually provided the report content yet. I need the content of each <code>response/ASSET_NAME.md</code> file to give you the summary.</p>
-<p>However, I can outline the process I will use <em>once</em> you provide the data:</p>
+<p>Okay, I understand. It seems like you were expecting the system to automatically process files in a directory called “response,” but that didn’t work because those files don’t exist. Since I don’t have access to external files or directories, I’ll need you to <em>provide</em> the content of each report one by one.</p>
+<p>Here’s how I’ll proceed, and how you should structure your input:</p>
 <ol type="1">
-<li><p><strong>Data Extraction:</strong> I will parse each report file (<code>response/ASSET_NAME.md</code>) and extract the following information:</p>
+<li><p><strong>You provide the report content.</strong> You will copy and paste the <em>entire</em> content of each <code>response/ASSET_NAME.md</code> file here into our conversation. Make sure to indicate which asset the content belongs to.</p></li>
+<li><p><strong>I’ll extract the relevant data.</strong> I will look for the following information within the content you provide:</p>
 <ul>
-<li><code>ASSET_NAME</code> (from the filename itself)</li>
-<li>Trading Position (SHORT or LONG)</li>
-<li>Entry Price (a numerical value)</li>
-<li>Stop Loss (a numerical value)</li>
-<li>Profit Probability (a numerical value, likely a percentage)</li>
+<li><strong>Asset Name:</strong> I’ll extract this from the name you give me initially (e.g., when you say “Report for response/AAPL.md:”).</li>
+<li><strong>Trading Position:</strong> (SHORT or LONG)</li>
+<li><strong>Entry Price:</strong> The price at which the trade is recommended.</li>
+<li><strong>Stop Loss:</strong> The price at which the trade should be stopped to limit losses.</li>
+<li><strong>Profit Probability:</strong> The probability of the trade being profitable.</li>
 </ul></li>
-<li><p><strong>Summary Generation:</strong> For each report, I’ll create a short summary string, including the asset name and probability. Example: “Asset: AAPL, Probability: 75%”</p></li>
-<li><p><strong>Sorting:</strong> I will sort these summaries based on the Profit Probability value in descending order (highest probability first).</p></li>
-<li><p><strong>Output:</strong> I will return the sorted list of summaries.</p></li>
+<li><p><strong>I’ll summarize and sort.</strong> After you’ve provided all the reports, I will:</p>
+<ul>
+<li>Create a short summary for each report, including the Asset Name, Trading Position, Entry Price, Stop Loss, and Profit Probability.</li>
+<li>Sort the summaries by the Profit Probability in descending order (highest probability first).</li>
+<li>Present the sorted summaries to you.</li>
+</ul></li>
 </ol>
-<p><strong>Example:</strong></p>
-<p>Let’s say you eventually provide me with the following (example content, not real data):</p>
-<p><strong><code>response/AAPL.md</code></strong></p>
-<pre><code>Trading Position: LONG
-Entry Price: 150.00
-Stop Loss: 145.00
-Profit Probability: 80%</code></pre>
-<p><strong><code>response/GOOG.md</code></strong></p>
-<pre><code>Trading Position: SHORT
-Entry Price: 2700.00
-Stop Loss: 2750.00
-Profit Probability: 65%</code></pre>
-<p><strong><code>response/TSLA.md</code></strong></p>
-<pre><code>Trading Position: LONG
-Entry Price: 700.00
-Stop Loss: 680.00
-Profit Probability: 90%</code></pre>
-<p>Then, <em>after</em> processing this, I would give you the following output:</p>
-<pre><code>Asset: TSLA, Probability: 90%
-Asset: AAPL, Probability: 80%
-Asset: GOOG, Probability: 65%</code></pre>
-<p><strong>Now, please provide the content of each <code>response/ASSET_NAME.md</code> file, one at a time or all at once, so I can process them.</strong> You can paste them directly into our chat. Make sure to clearly indicate which content belongs to which file.</p>
+<p><strong>Example Interaction:</strong></p>
+<p><strong>You:</strong></p>
+<pre><code>Report for response/AAPL.md:
+---
+Recommendation: LONG
+Entry Price: 170.00
+Stop Loss: 165.00
+Profit Probability: 0.75
+---</code></pre>
+<p><strong>You:</strong></p>
+<pre><code>Report for response/GOOG.md:
+---
+Recommendation: SHORT
+Entry Price: 2500.00
+Stop Loss: 2550.00
+Profit Probability: 0.60
+---</code></pre>
+<p><strong>You:</strong></p>
+<pre><code>Report for response/TSLA.md:
+---
+Recommendation: LONG
+Entry Price: 800.00
+Stop Loss: 780.00
+Profit Probability: 0.80
+---</code></pre>
+<p><strong>Me (after you’ve provided all reports):</strong></p>
+<pre><code>Here&#39;s the summary of the reports, sorted by Profit Probability (highest to lowest):
+
+*   **Asset: TSLA, Recommendation: LONG, Entry: 800.00, Stop Loss: 780.00, Probability: 0.80**
+*   **Asset: AAPL, Recommendation: LONG, Entry: 170.00, Stop Loss: 165.00, Probability: 0.75**
+*   **Asset: GOOG, Recommendation: SHORT, Entry: 2500.00, Stop Loss: 2550.00, Probability: 0.60**</code></pre>
+<p><strong>Now, please provide the content of your reports, one at a time, so I can process them.</strong> Remember to start each report with “Report for response/ASSET_NAME.md:”.</p>
 </body>
 </html>
