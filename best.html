@@ -15,32 +15,39 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. You’ll provide me with the content of reports, one report per line, formatted as <code>==&gt; response/ASSET_NAME.md &lt;==</code> followed by the report details (recommendation, entry, stop loss, profit probability). I will then:</p>
-<ol type="1">
-<li><strong>Extract the ASSET_NAME</strong> from the filename in each line.</li>
-<li><strong>Extract the “profit probability” value</strong> from the report’s details. I’ll assume a clear pattern for locating that value (e.g., “Profit Probability: 75%”). Please provide a sample report content format for me to be accurate in this extraction.</li>
-<li><strong>Create a summary for each report</strong> containing the ASSET_NAME and its profit probability.</li>
-<li><strong>Sort these summaries by profit probability</strong> in descending order (highest probability first).</li>
-<li><strong>Present the sorted summaries.</strong></li>
-</ol>
-<p><strong>Important Considerations:</strong></p>
+<p>Okay, I understand the situation. Even though you’re getting a &quot;tail: cannot open ’response/*’ for reading: No such file or directory&quot; error (which indicates that the script or process you’re using is trying to access files that don’t exist in a directory named “response”), I can still provide a general response based on the instructions you’ve given.</p>
+<p><strong>Assumptions (since I don’t have the actual report content):</strong></p>
 <ul>
-<li><p><strong>Report Content Format:</strong> I <em>need</em> a sample of the report content to accurately extract the profit probability. Please give me an example line like this (replace “ASSET_NAME” with an actual name and provide realistic data):</p>
-<p><code>==&gt; response/GOLD_USD.md &lt;== Recommendation: LONG, Entry Price: 2000, Stop Loss: 1980, Profit Probability: 80%</code></p></li>
-<li><p><strong>Error Handling:</strong> I will assume all lines follow the given format. I won’t have error handling for malformed lines <em>unless you specifically request it</em>. Let me know if there’s a chance the input might be inconsistent.</p></li>
-<li><p><strong>Ambiguity:</strong> If the report format has variations in how the profit probability is expressed (e.g., “Probability of Profit”, “Profit Chance”), please tell me. The more detail you give, the better I can perform.</p></li>
+<li>Each <code>response/ASSET_NAME.md</code> file contains text that includes:
+<ul>
+<li>A trading position recommendation (e.g., “LONG”, “SHORT”)</li>
+<li>An entry price (e.g., “Entry Price: 100.50”)</li>
+<li>A stop loss (e.g., “Stop Loss: 99.00”)</li>
+<li>A profit probability (e.g., “Profit Probability: 75%”)</li>
+</ul></li>
 </ul>
-<p><strong>Example of how I’ll process your input (assuming the sample format above):</strong></p>
-<p><strong>Input:</strong></p>
-<pre><code>==&gt; response/GOLD_USD.md &lt;== Recommendation: LONG, Entry Price: 2000, Stop Loss: 1980, Profit Probability: 80%
-==&gt; response/SILVER_USD.md &lt;== Recommendation: SHORT, Entry Price: 25, Stop Loss: 25.5, Profit Probability: 65%
-==&gt; response/BTC_USD.md &lt;== Recommendation: LONG, Entry Price: 60000, Stop Loss: 58000, Profit Probability: 90%
-==&gt; response/EUR_USD.md &lt;== Recommendation: SHORT, Entry Price: 1.10, Stop Loss: 1.105, Profit Probability: 70%</code></pre>
-<p><strong>Output:</strong></p>
-<pre><code>BTC_USD: Profit Probability: 90%
-GOLD_USD: Profit Probability: 80%
-EUR_USD: Profit Probability: 70%
-SILVER_USD: Profit Probability: 65%</code></pre>
-<p><strong>Now, please provide the sample report content format so I can write the parsing logic.</strong></p>
+<p><strong>General Response (Without Actual File Content):</strong></p>
+<p>&quot;Okay, I’m ready to process the reports. If you provide the content of each <code>response/ASSET_NAME.md</code> report, I will:</p>
+<ol type="1">
+<li><strong>Extract the Asset Name:</strong> Identify the <code>ASSET_NAME</code> from the filename (e.g., if the file is <code>response/AAPL.md</code>, the asset name is <code>AAPL</code>).</li>
+<li><strong>Extract the Trading Position:</strong> Find the recommendation (LONG or SHORT).</li>
+<li><strong>Extract the Profit Probability:</strong> Find the profit probability (e.g., 75%).</li>
+<li><strong>Create a Summary:</strong> Form a short summary line for each report including the asset name and probability.</li>
+<li><strong>Sort by Probability:</strong> Order the summaries from highest profit probability to lowest.</li>
+<li><strong>Present the Sorted Summaries.</strong></li>
+</ol>
+<p><strong>Example of how the output <em>would</em> look, if I had the data:</strong></p>
+<p>Let’s say you provided the content of three files and after parsing, it looks like this:</p>
+<ul>
+<li><code>response/AAPL.md</code>: Recommendation: LONG, Profit Probability: 85%</li>
+<li><code>response/GOOG.md</code>: Recommendation: SHORT, Profit Probability: 60%</li>
+<li><code>response/MSFT.md</code>: Recommendation: LONG, Profit Probability: 70%</li>
+</ul>
+<p>Then the output would be:</p>
+<pre><code>AAPL: 85%
+MSFT: 70%
+GOOG: 60%</code></pre>
+<p><strong>How to provide the data to me:</strong></p>
+<p>Since I cannot access your files directly, you need to provide the content of each report individually. You can copy and paste the text from each <code>response/ASSET_NAME.md</code> file into our conversation, one at a time. Please make sure to clearly indicate which asset each report belongs to (e.g., “AAPL Report:”, followed by the content of <code>response/AAPL.md</code>). Once I have all the reports, I’ll generate the sorted summary. &quot;</p>
 </body>
 </html>
