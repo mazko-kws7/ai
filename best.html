@@ -15,51 +15,36 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to your file system or the <code>response/*</code> files, I’ll give you the <em>format</em> of the response I would provide if I <em>did</em> have that access. I will use placeholders for the ASSET_NAME and the specific data.</p>
-<p><strong>Here’s the expected format of my response:</strong></p>
-<pre><code>Sorted Trade Recommendations by Profit Probability:
-
-*   **ASSET_NAME_1:** Probability: XX.XX%
-*   **ASSET_NAME_2:** Probability: XX.XX%
-*   **ASSET_NAME_3:** Probability: XX.XX%
-*   **ASSET_NAME_4:** Probability: XX.XX%
-*   **ASSET_NAME_5:** Probability: XX.XX%
-</code></pre>
-<p><strong>Important Notes:</strong></p>
+<p>Okay, I understand. Since you don’t have the actual files available, I’ll create example summaries based on the information you provided (asset name, trading position, entry price, stop loss, and profit probability). I will then sort them based on the profit probability.</p>
+<p><strong>Assumptions:</strong></p>
 <ul>
-<li><strong>Replace <code>ASSET_NAME_X</code></strong> with the actual asset name extracted from the filename (e.g., if the filename is <code>response/AAPL.md</code>, <code>ASSET_NAME_X</code> would be <code>AAPL</code>).</li>
-<li><strong>Replace <code>XX.XX</code></strong> with the actual profit probability percentage from each report.</li>
-<li><strong>The list will be sorted in <em>descending</em> order of probability</strong>, with the highest probability trade at the top.</li>
-<li>I will only include the asset name and probability in the summary.</li>
-<li>I am assuming you want all assets to be in the summary, even if they are SHORT position.</li>
+<li>Each report will have a format allowing me to extract the necessary information.</li>
+<li>We will generate example data and present the output as if the files existed.</li>
 </ul>
-<p><strong>Example (if I <em>did</em> have your files):</strong></p>
-<p>Let’s say you had these files and probabilities:</p>
+<p><strong>Example Data &amp; Processing</strong></p>
+<p>Let’s assume the following example reports (if I had real files I would analyze their content):</p>
 <ul>
-<li><code>response/AAPL.md</code>: 65.2% probability</li>
-<li><code>response/GOOG.md</code>: 78.9% probability</li>
-<li><code>response/MSFT.md</code>: 50.1% probability</li>
-<li><code>response/TSLA.md</code>: 92.5% probability</li>
+<li><code>response/AAPL.md</code>: Contains information indicating a LONG position, entry price $170, stop loss $165, and <strong>profit probability 85%</strong>.</li>
+<li><code>response/GOOG.md</code>: Contains information indicating a SHORT position, entry price $2700, stop loss $2750, and <strong>profit probability 60%</strong>.</li>
+<li><code>response/MSFT.md</code>: Contains information indicating a LONG position, entry price $330, stop loss $325, and <strong>profit probability 75%</strong>.</li>
+<li><code>response/TSLA.md</code>: Contains information indicating a SHORT position, entry price $1000, stop loss $1020, and <strong>profit probability 90%</strong>.</li>
 </ul>
-<p>Then, the output I <em>would</em> give you is:</p>
-<pre><code>Sorted Trade Recommendations by Profit Probability:
-
-*   **TSLA:** Probability: 92.50%
-*   **GOOG:** Probability: 78.90%
-*   **AAPL:** Probability: 65.20%
-*   **MSFT:** Probability: 50.10%</code></pre>
-<p><strong>How to Use This:</strong></p>
+<p><strong>Generated Resume (Sorted by Profit Probability):</strong></p>
+<p>Here’s the requested resume, sorted by the probability of taking profit, in descending order:</p>
+<ul>
+<li><strong>TSLA</strong>: Profit Probability: 90%</li>
+<li><strong>AAPL</strong>: Profit Probability: 85%</li>
+<li><strong>MSFT</strong>: Profit Probability: 75%</li>
+<li><strong>GOOG</strong>: Profit Probability: 60%</li>
+</ul>
+<p><strong>Explanation:</strong></p>
 <ol type="1">
-<li><strong>Run the <code>tail</code> command:</strong> You tried to use <code>tail response/*</code>, but this didn’t work because the directory structure is missing, or the files don’t exist. You will need to use a command or code to read the contents of your <code>response/ASSET_NAME.md</code> files. This will depend on how you’re running this.</li>
-<li><strong>Parse the Output:</strong> Write a script (using Python, Bash, etc.) to:
-<ul>
-<li>Extract the <code>ASSET_NAME</code> from the filename.</li>
-<li>Open each file.</li>
-<li>Read the file and extract the profit probability. You will need to know the format of the file to do this (e.g., is it a table, a specific line, etc.).</li>
-</ul></li>
-<li><strong>Store and Sort:</strong> Store the ASSET_NAME and probability in a list or dictionary. Then, sort the list/dictionary by probability in descending order.</li>
-<li><strong>Format and Print:</strong> Use the format I provided above to print the sorted results.</li>
+<li><strong>Asset Name Extraction:</strong> I take the <code>ASSET_NAME</code> part from the file name (e.g., “AAPL” from <code>response/AAPL.md</code>).</li>
+<li><strong>Content Extraction:</strong> If the files were available, I would read each file and extract the trading position (LONG/SHORT) and profit probability.</li>
+<li><strong>Resume Creation:</strong> A short resume line is created for each asset, containing the asset name and its probability.</li>
+<li><strong>Sorting:</strong> The lines are sorted in descending order of probability (highest probability first).</li>
+<li><strong>Output:</strong> The sorted list is presented above.</li>
 </ol>
-<p>Let me know if you need help with the scripting part. I’ll need more information about the file contents to help you specifically. For example, a sample file would allow to provide concrete example script.</p>
+<p><strong>Important:</strong> Since the files are missing, I have used example data. If you provide the content of real files I will analyze them and create a correct report.</p>
 </body>
 </html>
