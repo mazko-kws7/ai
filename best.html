@@ -15,39 +15,51 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand the situation. Even though you’re getting a &quot;tail: cannot open ’response/*’ for reading: No such file or directory&quot; error (which indicates that the script or process you’re using is trying to access files that don’t exist in a directory named “response”), I can still provide a general response based on the instructions you’ve given.</p>
-<p><strong>Assumptions (since I don’t have the actual report content):</strong></p>
+<p>Okay, I understand. Since I don’t have access to your file system or the <code>response/*</code> files, I’ll give you the <em>format</em> of the response I would provide if I <em>did</em> have that access. I will use placeholders for the ASSET_NAME and the specific data.</p>
+<p><strong>Here’s the expected format of my response:</strong></p>
+<pre><code>Sorted Trade Recommendations by Profit Probability:
+
+*   **ASSET_NAME_1:** Probability: XX.XX%
+*   **ASSET_NAME_2:** Probability: XX.XX%
+*   **ASSET_NAME_3:** Probability: XX.XX%
+*   **ASSET_NAME_4:** Probability: XX.XX%
+*   **ASSET_NAME_5:** Probability: XX.XX%
+</code></pre>
+<p><strong>Important Notes:</strong></p>
 <ul>
-<li>Each <code>response/ASSET_NAME.md</code> file contains text that includes:
-<ul>
-<li>A trading position recommendation (e.g., “LONG”, “SHORT”)</li>
-<li>An entry price (e.g., “Entry Price: 100.50”)</li>
-<li>A stop loss (e.g., “Stop Loss: 99.00”)</li>
-<li>A profit probability (e.g., “Profit Probability: 75%”)</li>
-</ul></li>
+<li><strong>Replace <code>ASSET_NAME_X</code></strong> with the actual asset name extracted from the filename (e.g., if the filename is <code>response/AAPL.md</code>, <code>ASSET_NAME_X</code> would be <code>AAPL</code>).</li>
+<li><strong>Replace <code>XX.XX</code></strong> with the actual profit probability percentage from each report.</li>
+<li><strong>The list will be sorted in <em>descending</em> order of probability</strong>, with the highest probability trade at the top.</li>
+<li>I will only include the asset name and probability in the summary.</li>
+<li>I am assuming you want all assets to be in the summary, even if they are SHORT position.</li>
 </ul>
-<p><strong>General Response (Without Actual File Content):</strong></p>
-<p>&quot;Okay, I’m ready to process the reports. If you provide the content of each <code>response/ASSET_NAME.md</code> report, I will:</p>
+<p><strong>Example (if I <em>did</em> have your files):</strong></p>
+<p>Let’s say you had these files and probabilities:</p>
+<ul>
+<li><code>response/AAPL.md</code>: 65.2% probability</li>
+<li><code>response/GOOG.md</code>: 78.9% probability</li>
+<li><code>response/MSFT.md</code>: 50.1% probability</li>
+<li><code>response/TSLA.md</code>: 92.5% probability</li>
+</ul>
+<p>Then, the output I <em>would</em> give you is:</p>
+<pre><code>Sorted Trade Recommendations by Profit Probability:
+
+*   **TSLA:** Probability: 92.50%
+*   **GOOG:** Probability: 78.90%
+*   **AAPL:** Probability: 65.20%
+*   **MSFT:** Probability: 50.10%</code></pre>
+<p><strong>How to Use This:</strong></p>
 <ol type="1">
-<li><strong>Extract the Asset Name:</strong> Identify the <code>ASSET_NAME</code> from the filename (e.g., if the file is <code>response/AAPL.md</code>, the asset name is <code>AAPL</code>).</li>
-<li><strong>Extract the Trading Position:</strong> Find the recommendation (LONG or SHORT).</li>
-<li><strong>Extract the Profit Probability:</strong> Find the profit probability (e.g., 75%).</li>
-<li><strong>Create a Summary:</strong> Form a short summary line for each report including the asset name and probability.</li>
-<li><strong>Sort by Probability:</strong> Order the summaries from highest profit probability to lowest.</li>
-<li><strong>Present the Sorted Summaries.</strong></li>
-</ol>
-<p><strong>Example of how the output <em>would</em> look, if I had the data:</strong></p>
-<p>Let’s say you provided the content of three files and after parsing, it looks like this:</p>
+<li><strong>Run the <code>tail</code> command:</strong> You tried to use <code>tail response/*</code>, but this didn’t work because the directory structure is missing, or the files don’t exist. You will need to use a command or code to read the contents of your <code>response/ASSET_NAME.md</code> files. This will depend on how you’re running this.</li>
+<li><strong>Parse the Output:</strong> Write a script (using Python, Bash, etc.) to:
 <ul>
-<li><code>response/AAPL.md</code>: Recommendation: LONG, Profit Probability: 85%</li>
-<li><code>response/GOOG.md</code>: Recommendation: SHORT, Profit Probability: 60%</li>
-<li><code>response/MSFT.md</code>: Recommendation: LONG, Profit Probability: 70%</li>
-</ul>
-<p>Then the output would be:</p>
-<pre><code>AAPL: 85%
-MSFT: 70%
-GOOG: 60%</code></pre>
-<p><strong>How to provide the data to me:</strong></p>
-<p>Since I cannot access your files directly, you need to provide the content of each report individually. You can copy and paste the text from each <code>response/ASSET_NAME.md</code> file into our conversation, one at a time. Please make sure to clearly indicate which asset each report belongs to (e.g., “AAPL Report:”, followed by the content of <code>response/AAPL.md</code>). Once I have all the reports, I’ll generate the sorted summary. &quot;</p>
+<li>Extract the <code>ASSET_NAME</code> from the filename.</li>
+<li>Open each file.</li>
+<li>Read the file and extract the profit probability. You will need to know the format of the file to do this (e.g., is it a table, a specific line, etc.).</li>
+</ul></li>
+<li><strong>Store and Sort:</strong> Store the ASSET_NAME and probability in a list or dictionary. Then, sort the list/dictionary by probability in descending order.</li>
+<li><strong>Format and Print:</strong> Use the format I provided above to print the sorted results.</li>
+</ol>
+<p>Let me know if you need help with the scripting part. I’ll need more information about the file contents to help you specifically. For example, a sample file would allow to provide concrete example script.</p>
 </body>
 </html>
