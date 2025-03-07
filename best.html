@@ -15,36 +15,55 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since you don’t have the actual files available, I’ll create example summaries based on the information you provided (asset name, trading position, entry price, stop loss, and profit probability). I will then sort them based on the profit probability.</p>
+<p>Okay, I understand. Since I don’t have access to the files themselves and you’re getting a “No such file or directory” error (which suggests the files aren’t actually present), I’ll give you a general template response based on the information you’ve provided.</p>
 <p><strong>Assumptions:</strong></p>
 <ul>
-<li>Each report will have a format allowing me to extract the necessary information.</li>
-<li>We will generate example data and present the output as if the files existed.</li>
+<li>Each <code>response/ASSET_NAME.md</code> file contains information in a format I can reasonably extract: Trading Position (LONG/SHORT), Entry Price, Stop Loss, and Profit Probability.</li>
+<li>I will make up sample data for this example.</li>
 </ul>
-<p><strong>Example Data &amp; Processing</strong></p>
-<p>Let’s assume the following example reports (if I had real files I would analyze their content):</p>
-<ul>
-<li><code>response/AAPL.md</code>: Contains information indicating a LONG position, entry price $170, stop loss $165, and <strong>profit probability 85%</strong>.</li>
-<li><code>response/GOOG.md</code>: Contains information indicating a SHORT position, entry price $2700, stop loss $2750, and <strong>profit probability 60%</strong>.</li>
-<li><code>response/MSFT.md</code>: Contains information indicating a LONG position, entry price $330, stop loss $325, and <strong>profit probability 75%</strong>.</li>
-<li><code>response/TSLA.md</code>: Contains information indicating a SHORT position, entry price $1000, stop loss $1020, and <strong>profit probability 90%</strong>.</li>
-</ul>
-<p><strong>Generated Resume (Sorted by Profit Probability):</strong></p>
-<p>Here’s the requested resume, sorted by the probability of taking profit, in descending order:</p>
-<ul>
-<li><strong>TSLA</strong>: Profit Probability: 90%</li>
-<li><strong>AAPL</strong>: Profit Probability: 85%</li>
-<li><strong>MSFT</strong>: Profit Probability: 75%</li>
-<li><strong>GOOG</strong>: Profit Probability: 60%</li>
-</ul>
+<p><strong>Example Response:</strong></p>
+<p>Since I can’t read the actual files, here’s how I would format the output, <strong>assuming</strong> I could extract the necessary information. I’ll invent some data for illustrative purposes.</p>
+<pre><code>**Trading Recommendation Summaries (Sorted by Profit Probability):**
+
+*   **Asset: AssetD - Profit Probability: 55%**
+    *   Position: LONG
+    *   Entry Price: 15.50
+    *   Stop Loss: 15.00
+
+*   **Asset: AssetB - Profit Probability: 65%**
+    *   Position: SHORT
+    *   Entry Price: 100.20
+    *   Stop Loss: 101.00
+
+*   **Asset: AssetA - Profit Probability: 70%**
+    *   Position: LONG
+    *   Entry Price: 50.75
+    *   Stop Loss: 50.00
+
+*   **Asset: AssetC - Profit Probability: 80%**
+    *   Position: SHORT
+    *   Entry Price: 25.10
+    *   Stop Loss: 25.50</code></pre>
 <p><strong>Explanation:</strong></p>
 <ol type="1">
-<li><strong>Asset Name Extraction:</strong> I take the <code>ASSET_NAME</code> part from the file name (e.g., “AAPL” from <code>response/AAPL.md</code>).</li>
-<li><strong>Content Extraction:</strong> If the files were available, I would read each file and extract the trading position (LONG/SHORT) and profit probability.</li>
-<li><strong>Resume Creation:</strong> A short resume line is created for each asset, containing the asset name and its probability.</li>
-<li><strong>Sorting:</strong> The lines are sorted in descending order of probability (highest probability first).</li>
-<li><strong>Output:</strong> The sorted list is presented above.</li>
+<li><strong>Asset:</strong> The <code>ASSET_NAME</code> extracted from the filename (e.g., <code>response/AAPL.md</code> would have <code>Asset: AAPL</code>).</li>
+<li><strong>Profit Probability:</strong> The profit probability value extracted from the file content.</li>
+<li><strong>Sorting:</strong> The list is sorted in <em>ascending</em> order of <code>Profit Probability</code>.</li>
 </ol>
-<p><strong>Important:</strong> Since the files are missing, I have used example data. If you provide the content of real files I will analyze them and create a correct report.</p>
+<p><strong>Important Notes &amp; What You Need To Do:</strong></p>
+<ul>
+<li><strong>File Access:</strong> The most important thing is to ensure that the files <code>response/ASSET_NAME.md</code> actually exist in a location that the process/script you are using can access. The “No such file or directory” error is the key problem to resolve. Double-check the file paths and make sure the program has the necessary permissions to read them.</li>
+<li><strong>Data Extraction:</strong> You will need a script (e.g., in Python) to:
+<ul>
+<li>List the files matching the <code>response/*.md</code> pattern.</li>
+<li>Open each file and read its content.</li>
+<li>Parse the content to extract the trading position, entry price, stop loss, and profit probability. This is the trickiest part and depends on the format of the data <em>inside</em> the files. You might use regular expressions or other parsing techniques.</li>
+<li>Store the extracted information in a data structure (e.g., a list of dictionaries).</li>
+<li>Sort the list based on the profit probability.</li>
+<li>Print the formatted output as shown in the example above.</li>
+</ul></li>
+<li><strong>File Content Format:</strong> Provide more details about the exact format of the data <em>inside</em> the <code>.md</code> files if you want me to create the code snippet for data extraction. For example: “Each file contains a line like ‘Profit Probability: 75%’” or “The file is a JSON document with a key called ‘profit_probability’”.</li>
+</ul>
+<p>Once you can access the files and describe the data format within them, I can help you create a more specific script to perform the analysis you require.</p>
 </body>
 </html>
