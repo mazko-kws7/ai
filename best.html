@@ -15,55 +15,58 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to the files themselves and you’re getting a “No such file or directory” error (which suggests the files aren’t actually present), I’ll give you a general template response based on the information you’ve provided.</p>
-<p><strong>Assumptions:</strong></p>
-<ul>
-<li>Each <code>response/ASSET_NAME.md</code> file contains information in a format I can reasonably extract: Trading Position (LONG/SHORT), Entry Price, Stop Loss, and Profit Probability.</li>
-<li>I will make up sample data for this example.</li>
-</ul>
-<p><strong>Example Response:</strong></p>
-<p>Since I can’t read the actual files, here’s how I would format the output, <strong>assuming</strong> I could extract the necessary information. I’ll invent some data for illustrative purposes.</p>
-<pre><code>**Trading Recommendation Summaries (Sorted by Profit Probability):**
-
-*   **Asset: AssetD - Profit Probability: 55%**
-    *   Position: LONG
-    *   Entry Price: 15.50
-    *   Stop Loss: 15.00
-
-*   **Asset: AssetB - Profit Probability: 65%**
-    *   Position: SHORT
-    *   Entry Price: 100.20
-    *   Stop Loss: 101.00
-
-*   **Asset: AssetA - Profit Probability: 70%**
-    *   Position: LONG
-    *   Entry Price: 50.75
-    *   Stop Loss: 50.00
-
-*   **Asset: AssetC - Profit Probability: 80%**
-    *   Position: SHORT
-    *   Entry Price: 25.10
-    *   Stop Loss: 25.50</code></pre>
-<p><strong>Explanation:</strong></p>
+<p>Okay, I understand. Since you’re encountering a “No such file or directory” error when trying to access the report files directly (using <code>tail response/*</code>), I’ll adapt my approach.</p>
+<p><strong>Instead of relying on file access, I’ll simulate processing the reports based on the information you provide in the future.</strong></p>
+<p><strong>Here’s how I’ll handle your input and provide the sorted summary:</strong></p>
 <ol type="1">
-<li><strong>Asset:</strong> The <code>ASSET_NAME</code> extracted from the filename (e.g., <code>response/AAPL.md</code> would have <code>Asset: AAPL</code>).</li>
-<li><strong>Profit Probability:</strong> The profit probability value extracted from the file content.</li>
-<li><strong>Sorting:</strong> The list is sorted in <em>ascending</em> order of <code>Profit Probability</code>.</li>
-</ol>
-<p><strong>Important Notes &amp; What You Need To Do:</strong></p>
+<li><p><strong>You provide input one report at a time.</strong> You’ll give me the content of the report as a string. Make sure to include the asset name, LONG/SHORT recommendation, entry price, stop loss, and profit probability within the string. I will know report separation by line:</p>
+<p><code>==&gt; response/ASSET_NAME.md &lt;==</code></p></li>
+<li><p><strong>I’ll extract the relevant data.</strong> From each report, I will extract:</p>
 <ul>
-<li><strong>File Access:</strong> The most important thing is to ensure that the files <code>response/ASSET_NAME.md</code> actually exist in a location that the process/script you are using can access. The “No such file or directory” error is the key problem to resolve. Double-check the file paths and make sure the program has the necessary permissions to read them.</li>
-<li><strong>Data Extraction:</strong> You will need a script (e.g., in Python) to:
-<ul>
-<li>List the files matching the <code>response/*.md</code> pattern.</li>
-<li>Open each file and read its content.</li>
-<li>Parse the content to extract the trading position, entry price, stop loss, and profit probability. This is the trickiest part and depends on the format of the data <em>inside</em> the files. You might use regular expressions or other parsing techniques.</li>
-<li>Store the extracted information in a data structure (e.g., a list of dictionaries).</li>
-<li>Sort the list based on the profit probability.</li>
-<li>Print the formatted output as shown in the example above.</li>
+<li><code>ASSET_NAME</code> (from the filename part of the input line)</li>
+<li><code>Profit Probability</code> (from the report content you provide)</li>
 </ul></li>
-<li><strong>File Content Format:</strong> Provide more details about the exact format of the data <em>inside</em> the <code>.md</code> files if you want me to create the code snippet for data extraction. For example: “Each file contains a line like ‘Profit Probability: 75%’” or “The file is a JSON document with a key called ‘profit_probability’”.</li>
+<li><p><strong>I’ll store the information.</strong> I’ll keep track of the extracted data for each report.</p></li>
+<li><p><strong>Once you’ve provided <em>all</em> the reports, you’ll signal that you’re done.</strong> You can do this by typing something like “DONE” or “END”.</p></li>
+<li><p><strong>I’ll create the sorted summary.</strong> I’ll sort the reports based on the <code>Profit Probability</code> (highest to lowest) and present the summary in the following format:</p>
+<pre><code>Asset: ASSET_NAME, Probability: PROBABILITY
+Asset: ASSET_NAME, Probability: PROBABILITY
+Asset: ASSET_NAME, Probability: PROBABILITY
+...</code></pre></li>
+</ol>
+<p><strong>Example Interaction (simulated):</strong></p>
+<p><strong>You:</strong></p>
+<pre><code>==&gt; response/AAPL.md &lt;==
+Trading Recommendation: LONG
+Entry Price: 170.00
+Stop Loss: 165.00
+Profit Probability: 75%</code></pre>
+<p><strong>Me:</strong> <em>Acknowledged AAPL report.</em></p>
+<p><strong>You:</strong></p>
+<pre><code>==&gt; response/GOOG.md &lt;==
+Trading Recommendation: SHORT
+Entry Price: 2700.00
+Stop Loss: 2750.00
+Profit Probability: 60%</code></pre>
+<p><strong>Me:</strong> <em>Acknowledged GOOG report.</em></p>
+<p><strong>You:</strong></p>
+<pre><code>==&gt; response/MSFT.md &lt;==
+Trading Recommendation: LONG
+Entry Price: 300.00
+Stop Loss: 295.00
+Profit Probability: 80%</code></pre>
+<p><strong>Me:</strong> <em>Acknowledged MSFT report.</em></p>
+<p><strong>You:</strong> <code>DONE</code></p>
+<p><strong>Me:</strong></p>
+<pre><code>Asset: MSFT, Probability: 80%
+Asset: AAPL, Probability: 75%
+Asset: GOOG, Probability: 60%</code></pre>
+<p><strong>Important Notes:</strong></p>
+<ul>
+<li><strong>Exact Text Matching:</strong> I’ll be looking for the phrase “Profit Probability:” in the report content. Make sure you use that exact phrase (including the colon). The percentage symbol (%) is also important.</li>
+<li><strong>Error Handling:</strong> I will try to handle cases where the profit probability is missing, invalid, or the asset name is malformed, but the more consistent your input, the better. I will default to 0% probability if there is an error.</li>
+<li><strong>Accuracy:</strong> My response relies entirely on the data <em>you</em> provide. I cannot verify the information in the reports.</li>
 </ul>
-<p>Once you can access the files and describe the data format within them, I can help you create a more specific script to perform the analysis you require.</p>
+<p><strong>I’m ready to start. Please provide the first report in the format described above.</strong></p>
 </body>
 </html>
