@@ -15,58 +15,37 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since you’re encountering a “No such file or directory” error when trying to access the report files directly (using <code>tail response/*</code>), I’ll adapt my approach.</p>
-<p><strong>Instead of relying on file access, I’ll simulate processing the reports based on the information you provide in the future.</strong></p>
-<p><strong>Here’s how I’ll handle your input and provide the sorted summary:</strong></p>
+<p>Okay, I understand. Since I don’t have access to the files themselves (the <code>response/ASSET_NAME.md</code> files), I’ll provide a <em>template</em> for how I <em>would</em> summarize the information and sort it. You will need to manually extract the relevant data (asset name, trading position, entry price, stop loss, and profit probability) from each report and then plug it into the template.</p>
+<p>Here’s the template and the structure I’ll use:</p>
+<p><strong>Instructions:</strong></p>
 <ol type="1">
-<li><p><strong>You provide input one report at a time.</strong> You’ll give me the content of the report as a string. Make sure to include the asset name, LONG/SHORT recommendation, entry price, stop loss, and profit probability within the string. I will know report separation by line:</p>
-<p><code>==&gt; response/ASSET_NAME.md &lt;==</code></p></li>
-<li><p><strong>I’ll extract the relevant data.</strong> From each report, I will extract:</p>
+<li><p><strong>Extract Data:</strong> For each <code>response/ASSET_NAME.md</code> file, carefully read the contents and identify the following:</p>
 <ul>
-<li><code>ASSET_NAME</code> (from the filename part of the input line)</li>
-<li><code>Profit Probability</code> (from the report content you provide)</li>
+<li><code>ASSET_NAME</code>: The name of the asset (e.g., AAPL, BTCUSD, EURUSD).</li>
+<li><code>Trading Position</code>: Whether the recommendation is <code>LONG</code> or <code>SHORT</code>.</li>
+<li><code>Entry Price</code>: The recommended entry price for the position.</li>
+<li><code>Stop Loss</code>: The suggested stop-loss price.</li>
+<li><code>Profit Probability</code>: The estimated probability of the trade being profitable (e.g., 0.65, 0.80, 0.50). Express this as a decimal between 0 and 1.</li>
 </ul></li>
-<li><p><strong>I’ll store the information.</strong> I’ll keep track of the extracted data for each report.</p></li>
-<li><p><strong>Once you’ve provided <em>all</em> the reports, you’ll signal that you’re done.</strong> You can do this by typing something like “DONE” or “END”.</p></li>
-<li><p><strong>I’ll create the sorted summary.</strong> I’ll sort the reports based on the <code>Profit Probability</code> (highest to lowest) and present the summary in the following format:</p>
-<pre><code>Asset: ASSET_NAME, Probability: PROBABILITY
-Asset: ASSET_NAME, Probability: PROBABILITY
-Asset: ASSET_NAME, Probability: PROBABILITY
-...</code></pre></li>
+<li><p><strong>Fill in the Template:</strong> Use the extracted data to fill in the following template for each report:</p>
+<pre><code>Asset: [ASSET_NAME], Position: [LONG/SHORT], Entry: [ENTRY_PRICE], Stop: [STOP_LOSS], Probability: [PROFIT_PROBABILITY]</code></pre>
+<p>For example:</p>
+<pre><code>Asset: AAPL, Position: LONG, Entry: 170.50, Stop: 168.00, Probability: 0.75</code></pre></li>
+<li><p><strong>Create a List:</strong> Create a list of these filled-in templates, one entry per report.</p></li>
+<li><p><strong>Sort by Probability:</strong> Sort the list in <em>descending</em> order based on the <code>Profit Probability</code> value (highest probability first).</p></li>
+<li><p><strong>Present the Sorted Results:</strong> Display the sorted list.</p></li>
 </ol>
-<p><strong>Example Interaction (simulated):</strong></p>
-<p><strong>You:</strong></p>
-<pre><code>==&gt; response/AAPL.md &lt;==
-Trading Recommendation: LONG
-Entry Price: 170.00
-Stop Loss: 165.00
-Profit Probability: 75%</code></pre>
-<p><strong>Me:</strong> <em>Acknowledged AAPL report.</em></p>
-<p><strong>You:</strong></p>
-<pre><code>==&gt; response/GOOG.md &lt;==
-Trading Recommendation: SHORT
-Entry Price: 2700.00
-Stop Loss: 2750.00
-Profit Probability: 60%</code></pre>
-<p><strong>Me:</strong> <em>Acknowledged GOOG report.</em></p>
-<p><strong>You:</strong></p>
-<pre><code>==&gt; response/MSFT.md &lt;==
-Trading Recommendation: LONG
-Entry Price: 300.00
-Stop Loss: 295.00
-Profit Probability: 80%</code></pre>
-<p><strong>Me:</strong> <em>Acknowledged MSFT report.</em></p>
-<p><strong>You:</strong> <code>DONE</code></p>
-<p><strong>Me:</strong></p>
-<pre><code>Asset: MSFT, Probability: 80%
-Asset: AAPL, Probability: 75%
-Asset: GOOG, Probability: 60%</code></pre>
-<p><strong>Important Notes:</strong></p>
+<p><strong>Example Output (after you provide the data):</strong></p>
+<p>Let’s say you have these three reports and you’ve extracted the following data:</p>
 <ul>
-<li><strong>Exact Text Matching:</strong> I’ll be looking for the phrase “Profit Probability:” in the report content. Make sure you use that exact phrase (including the colon). The percentage symbol (%) is also important.</li>
-<li><strong>Error Handling:</strong> I will try to handle cases where the profit probability is missing, invalid, or the asset name is malformed, but the more consistent your input, the better. I will default to 0% probability if there is an error.</li>
-<li><strong>Accuracy:</strong> My response relies entirely on the data <em>you</em> provide. I cannot verify the information in the reports.</li>
+<li><code>response/AAPL.md</code>: LONG, Entry: 170.50, Stop: 168.00, Probability: 0.75</li>
+<li><code>response/BTCUSD.md</code>: SHORT, Entry: 30000, Stop: 30500, Probability: 0.82</li>
+<li><code>response/EURUSD.md</code>: LONG, Entry: 1.1000, Stop: 1.0950, Probability: 0.68</li>
 </ul>
-<p><strong>I’m ready to start. Please provide the first report in the format described above.</strong></p>
+<p>Then, the final output I would generate would be:</p>
+<pre><code>Asset: BTCUSD, Position: SHORT, Entry: 30000, Stop: 30500, Probability: 0.82
+Asset: AAPL, Position: LONG, Entry: 170.50, Stop: 168.00, Probability: 0.75
+Asset: EURUSD, Position: LONG, Entry: 1.1000, Stop: 1.0950, Probability: 0.68</code></pre>
+<p><strong>Therefore, please provide the extracted data for each report in the format specified above, and I will then generate the sorted summary.</strong></p>
 </body>
 </html>
