@@ -15,49 +15,55 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to external files or the ability to execute commands like <code>tail</code>, I’ll provide you with a template for how I <em>would</em> format the summary if I had the report data.</p>
-<p><strong>Here’s the expected input format (repeated for each report):</strong></p>
-<pre><code>==&gt; response/ASSET_NAME.md &lt;==
-[Report Content - including LONG/SHORT recommendation, Entry Price, Stop Loss, and Profit Probability]</code></pre>
-<p><strong>Here’s the format of the summary I would produce, once you provide the report contents:</strong></p>
-<pre><code>Summary of Trading Recommendations (Sorted by Profit Probability):
-
-*   **ASSET_NAME_1:** [LONG/SHORT] - Profit Probability: [Probability Value]%
-*   **ASSET_NAME_2:** [LONG/SHORT] - Profit Probability: [Probability Value]%
-*   **ASSET_NAME_3:** [LONG/SHORT] - Profit Probability: [Probability Value]%
-... and so on.</code></pre>
-<p><strong>How to use this:</strong></p>
+<p>Okay, I understand. It seems like you’re intending to give me a list of filenames formatted as <code>response/ASSET_NAME.md</code>, but you’re also indicating the files don’t actually exist in a directory named <code>response/</code>. The <code>tail</code> error suggests a script attempted to read those files and failed.</p>
+<p>Assuming the filenames <em>will</em> eventually be real files containing the trading recommendation data (LONG/SHORT, entry price, stop loss, profit probability), here’s how I’ll process your list of filenames <em>and</em> how I’ll respond when you provide the content of each file:</p>
+<p><strong>Workflow:</strong></p>
 <ol type="1">
-<li><p><strong>Extract Information:</strong> For <em>each</em> of the reports you have, locate the <code>ASSET_NAME</code>, the trading recommendation (<code>LONG</code> or <code>SHORT</code>), and the “Profit Probability” value.</p></li>
-<li><p><strong>Format a line:</strong> Create a line in the format: `* <strong>ASSET_NAME:</strong> [LONG/SHORT] - Profit Probability: [Probability Value]%` for each asset.</p></li>
-<li><p><strong>Sort:</strong> Sort these lines in <em>ascending</em> order based on the “Profit Probability” value. (Lowest probability first, highest probability last).</p></li>
-<li><p><strong>Present:</strong> Add the heading “Summary of Trading Recommendations (Sorted by Profit Probability):” and then list all the lines.</p></li>
+<li><p><strong>You provide filenames:</strong> You will give me a list of filenames, one per line, in the format: <code>==&gt; response/ASSET_NAME.md &lt;==</code></p></li>
+<li><p><strong>I acknowledge the filename:</strong> For each filename, I’ll acknowledge that I’ve received it.</p></li>
+<li><p><strong>You provide the file content:</strong> For each filename, you will then provide the <em>content</em> of that file. Copy and paste the content. It should include the trading recommendation details (LONG/SHORT, entry, stop loss, probability). Let me know when you’re done typing.</p></li>
+<li><p><strong>I extract and store data:</strong> I’ll extract the <code>ASSET_NAME</code> from the filename, and the trade recommendation (LONG/SHORT), and probability from the file’s content.</p></li>
+<li><p><strong>After all files are processed, I provide the summary:</strong> Once you’ve given me the content of <em>all</em> the files, I will then provide a summarized list of the asset names and their associated profit probabilities, sorted in <em>descending</em> order (highest probability first).</p></li>
 </ol>
-<p><strong>Example:</strong></p>
-<p>Let’s say you give me this input:</p>
+<p><strong>Example Interaction:</strong></p>
+<p><strong>You:</strong></p>
 <pre><code>==&gt; response/AAPL.md &lt;==
-Recommendation: LONG
-Entry Price: 170
-Stop Loss: 165
-Profit Probability: 75%
-
 ==&gt; response/GOOG.md &lt;==
-Recommendation: SHORT
-Entry Price: 2700
-Stop Loss: 2750
-Profit Probability: 60%
-
-==&gt; response/MSFT.md &lt;==
+==&gt; response/MSFT.md &lt;==</code></pre>
+<p><strong>Me:</strong></p>
+<pre><code>AAPL acknowledged.
+GOOG acknowledged.
+MSFT acknowledged.</code></pre>
+<p><strong>You:</strong></p>
+<pre><code>AAPL:
 Recommendation: LONG
-Entry Price: 300
-Stop Loss: 295
-Profit Probability: 80%</code></pre>
-<p><strong>Then, I would generate this output:</strong></p>
-<pre><code>Summary of Trading Recommendations (Sorted by Profit Probability):
+Entry Price: 170.00
+Stop Loss: 165.00
+Profit Probability: 0.75
 
-*   **GOOG:** SHORT - Profit Probability: 60%
-*   **AAPL:** LONG - Profit Probability: 75%
-*   **MSFT:** LONG - Profit Probability: 80%</code></pre>
-<p><strong>Important:</strong> I need you to <em>provide</em> the content of each report (the section after the <code>==&gt; response/ASSET_NAME.md &lt;==</code> line) for me to create this summary. I cannot access files on your system or on the internet. I am just a language model processing text you give me.</p>
+GOOG:
+Recommendation: SHORT
+Entry Price: 2700.00
+Stop Loss: 2750.00
+Profit Probability: 0.60
+
+MSFT:
+Recommendation: LONG
+Entry Price: 300.00
+Stop Loss: 295.00
+Profit Probability: 0.80</code></pre>
+<p><strong>Me:</strong></p>
+<pre><code>Summary (sorted by profit probability):
+
+*   MSFT: 0.80
+*   AAPL: 0.75
+*   GOOG: 0.60</code></pre>
+<p><strong>Important Considerations:</strong></p>
+<ul>
+<li><strong>Content Format:</strong> The example above assumes a <em>consistent</em> format for the file content. If the actual format varies, you’ll need to provide an example so I can adjust how I extract the information. Specify the keywords that will mark those numbers (Probability, Entry, SL)</li>
+<li><strong>Error Handling:</strong> If I can’t find the probability in a file, I’ll flag that asset in the summary.</li>
+<li><strong>Completeness:</strong> I will only provide the final sorted summary <em>after</em> you’ve given me the content of <em>all</em> the files you intend to provide.</li>
+</ul>
+<p>Let me know when you’re ready to start providing the filenames and content!</p>
 </body>
 </html>
