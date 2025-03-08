@@ -12,58 +12,165 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 </head>
 <body>
-<p>Okay, I understand. It seems like you’re intending to give me a list of filenames formatted as <code>response/ASSET_NAME.md</code>, but you’re also indicating the files don’t actually exist in a directory named <code>response/</code>. The <code>tail</code> error suggests a script attempted to read those files and failed.</p>
-<p>Assuming the filenames <em>will</em> eventually be real files containing the trading recommendation data (LONG/SHORT, entry price, stop loss, profit probability), here’s how I’ll process your list of filenames <em>and</em> how I’ll respond when you provide the content of each file:</p>
-<p><strong>Workflow:</strong></p>
-<ol type="1">
-<li><p><strong>You provide filenames:</strong> You will give me a list of filenames, one per line, in the format: <code>==&gt; response/ASSET_NAME.md &lt;==</code></p></li>
-<li><p><strong>I acknowledge the filename:</strong> For each filename, I’ll acknowledge that I’ve received it.</p></li>
-<li><p><strong>You provide the file content:</strong> For each filename, you will then provide the <em>content</em> of that file. Copy and paste the content. It should include the trading recommendation details (LONG/SHORT, entry, stop loss, probability). Let me know when you’re done typing.</p></li>
-<li><p><strong>I extract and store data:</strong> I’ll extract the <code>ASSET_NAME</code> from the filename, and the trade recommendation (LONG/SHORT), and probability from the file’s content.</p></li>
-<li><p><strong>After all files are processed, I provide the summary:</strong> Once you’ve given me the content of <em>all</em> the files, I will then provide a summarized list of the asset names and their associated profit probabilities, sorted in <em>descending</em> order (highest probability first).</p></li>
-</ol>
-<p><strong>Example Interaction:</strong></p>
-<p><strong>You:</strong></p>
-<pre><code>==&gt; response/AAPL.md &lt;==
-==&gt; response/GOOG.md &lt;==
-==&gt; response/MSFT.md &lt;==</code></pre>
-<p><strong>Me:</strong></p>
-<pre><code>AAPL acknowledged.
-GOOG acknowledged.
-MSFT acknowledged.</code></pre>
-<p><strong>You:</strong></p>
-<pre><code>AAPL:
-Recommendation: LONG
-Entry Price: 170.00
-Stop Loss: 165.00
-Profit Probability: 0.75
-
-GOOG:
-Recommendation: SHORT
-Entry Price: 2700.00
-Stop Loss: 2750.00
-Profit Probability: 0.60
-
-MSFT:
-Recommendation: LONG
-Entry Price: 300.00
-Stop Loss: 295.00
-Profit Probability: 0.80</code></pre>
-<p><strong>Me:</strong></p>
-<pre><code>Summary (sorted by profit probability):
-
-*   MSFT: 0.80
-*   AAPL: 0.75
-*   GOOG: 0.60</code></pre>
-<p><strong>Important Considerations:</strong></p>
+<p>Okay, I understand the instructions. Since I cannot access any files or external data (including &quot;response/<em>&quot;), I will provide a </em>simulated* response based on the format you described.</p>
+<p><strong>Important Assumptions (since I have no real data):</strong></p>
 <ul>
-<li><strong>Content Format:</strong> The example above assumes a <em>consistent</em> format for the file content. If the actual format varies, you’ll need to provide an example so I can adjust how I extract the information. Specify the keywords that will mark those numbers (Probability, Entry, SL)</li>
-<li><strong>Error Handling:</strong> If I can’t find the probability in a file, I’ll flag that asset in the summary.</li>
-<li><strong>Completeness:</strong> I will only provide the final sorted summary <em>after</em> you’ve given me the content of <em>all</em> the files you intend to provide.</li>
+<li>I will assume each “response/ASSET_NAME.md” file contains text that can be easily parsed to extract the needed information.</li>
+<li>I will <em>invent</em> the content of these reports and then process it as if I had actually read them. This will allow me to demonstrate the correct output format and sorting.</li>
+<li>I will create some sample data for a few different ASSET_NAME values.</li>
 </ul>
-<p>Let me know when you’re ready to start providing the filenames and content!</p>
+<p><strong>Simulated Input Data (as if I had read the files):</strong></p>
+<p>Let’s pretend I read the following from these files:</p>
+<ul>
+<li><p><strong>response/AAPL.md:</strong> <code>Recommendation: LONG     Entry Price: 170.00     Stop Loss: 165.00     Take Profit Probability: 0.75</code></p></li>
+<li><p><strong>response/GOOGL.md:</strong> <code>Recommendation: SHORT     Entry Price: 2700.00     Stop Loss: 2750.00     Take Profit Probability: 0.60</code></p></li>
+<li><p><strong>response/MSFT.md:</strong> <code>Recommendation: LONG     Entry Price: 340.00     Stop Loss: 335.00     Take Profit Probability: 0.85</code></p></li>
+<li><p><strong>response/TSLA.md:</strong> <code>Recommendation: SHORT     Entry Price: 1000.00     Stop Loss: 1050.00     Take Profit Probability: 0.70</code></p></li>
+</ul>
+<p><strong>Generated Output (based on the simulated data, sorted by probability):</strong></p>
+<pre><code>GOOGL: Take Profit Probability - 0.60
+TSLA: Take Profit Probability - 0.70
+AAPL: Take Profit Probability - 0.75
+MSFT: Take Profit Probability - 0.85</code></pre>
+<p><strong>Explanation:</strong></p>
+<ol type="1">
+<li><p><strong>Report Processing (Simulated):</strong> I would have parsed (in reality) each <code>response/ASSET_NAME.md</code> file to extract the asset name and the “Take Profit Probability” value.</p></li>
+<li><p><strong>Data Extraction (Simulated):</strong> The simulation would have collected the data as shown above.</p></li>
+<li><p><strong>Sorting:</strong> The extracted data would be sorted in ascending order based on the “Take Profit Probability”.</p></li>
+<li><p><strong>Output Formatting:</strong> The final output is formatted according to your instructions: <code>ASSET_NAME: Take Profit Probability - PROBABILITY</code></p></li>
+</ol>
+<p><strong>How this would work in a real script (in Python as an example, since it’s common for this type of task):</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="im">import</span> os</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="im">import</span> re</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="kw">def</span> extract_data(filename):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Extracts asset name and probability from a report file.&quot;&quot;&quot;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>    asset_name <span class="op">=</span> filename.split(<span class="st">&#39;/&#39;</span>)[<span class="dv">1</span>].split(<span class="st">&#39;.&#39;</span>)[<span class="dv">0</span>] <span class="co"># Extract ASSET_NAME from filename</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>    <span class="cf">try</span>:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>        <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">&#39;r&#39;</span>) <span class="im">as</span> f:</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>            content <span class="op">=</span> f.read()</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>            match <span class="op">=</span> re.search(<span class="vs">r&quot;Take Profit Probability: (\d\.\d+)&quot;</span>, content)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a>            <span class="cf">if</span> match:</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a>                probability <span class="op">=</span> <span class="bu">float</span>(match.group(<span class="dv">1</span>))</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a>                <span class="cf">return</span> asset_name, probability</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a>            <span class="cf">else</span>:</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a>                <span class="bu">print</span>(<span class="ss">f&quot;Warning: No probability found in </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a>                <span class="cf">return</span> asset_name, <span class="va">None</span>  <span class="co"># Or some default value</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true"></a>    <span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Error: File not found: </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true"></a>        <span class="cf">return</span> asset_name, <span class="va">None</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true"></a><span class="kw">def</span> main():</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true"></a>    reports <span class="op">=</span> []</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true"></a>    <span class="co"># Assuming the reports are in the &#39;response&#39; directory</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true"></a>    <span class="cf">for</span> filename <span class="kw">in</span> os.listdir(<span class="st">&#39;response&#39;</span>):</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true"></a>      <span class="cf">if</span> filename.endswith(<span class="st">&#39;.md&#39;</span>):</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true"></a>        asset_name, probability <span class="op">=</span> extract_data(os.path.join(<span class="st">&#39;response&#39;</span>, filename))</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true"></a>        <span class="cf">if</span> probability <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true"></a>          reports.append((asset_name, probability))</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true"></a>    <span class="co"># Sort by probability</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true"></a>    reports.sort(key<span class="op">=</span><span class="kw">lambda</span> item: item[<span class="dv">1</span>])  <span class="co"># Sort by the probability (second element)</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true"></a>    <span class="co"># Print the results</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true"></a>    <span class="cf">for</span> asset_name, probability <span class="kw">in</span> reports:</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>asset_name<span class="sc">}</span><span class="ss">: Take Profit Probability - </span><span class="sc">{</span>probability<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true"></a>    <span class="co"># Create dummy files (for testing)</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">&quot;response&quot;</span>):</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true"></a>        os.makedirs(<span class="st">&quot;response&quot;</span>)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;response/AAPL.md&quot;</span>, <span class="st">&quot;w&quot;</span>) <span class="im">as</span> f:</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true"></a>        f.write(<span class="st">&quot;Recommendation: LONG</span><span class="ch">\n</span><span class="st">Entry Price: 170.00</span><span class="ch">\n</span><span class="st">Stop Loss: 165.00</span><span class="ch">\n</span><span class="st">Take Profit Probability: 0.75&quot;</span>)</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;response/GOOGL.md&quot;</span>, <span class="st">&quot;w&quot;</span>) <span class="im">as</span> f:</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true"></a>        f.write(<span class="st">&quot;Recommendation: SHORT</span><span class="ch">\n</span><span class="st">Entry Price: 2700.00</span><span class="ch">\n</span><span class="st">Stop Loss: 2750.00</span><span class="ch">\n</span><span class="st">Take Profit Probability: 0.60&quot;</span>)</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;response/MSFT.md&quot;</span>, <span class="st">&quot;w&quot;</span>) <span class="im">as</span> f:</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true"></a>        f.write(<span class="st">&quot;Recommendation: LONG</span><span class="ch">\n</span><span class="st">Entry Price: 340.00</span><span class="ch">\n</span><span class="st">Stop Loss: 335.00</span><span class="ch">\n</span><span class="st">Take Profit Probability: 0.85&quot;</span>)</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;response/TSLA.md&quot;</span>, <span class="st">&quot;w&quot;</span>) <span class="im">as</span> f:</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true"></a>        f.write(<span class="st">&quot;Recommendation: SHORT</span><span class="ch">\n</span><span class="st">Entry Price: 1000.00</span><span class="ch">\n</span><span class="st">Stop Loss: 1050.00</span><span class="ch">\n</span><span class="st">Take Profit Probability: 0.70&quot;</span>)</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true"></a></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true"></a>    main()</span></code></pre></div>
+<p><strong>Key improvements in the Python example:</strong></p>
+<ul>
+<li><strong>Error Handling:</strong> The code includes <code>try...except</code> blocks to handle potential file errors (like <code>FileNotFoundError</code>).</li>
+<li><strong>Robust Parsing:</strong> Uses regular expressions (<code>re</code> module) to reliably extract the probability even if the file format varies slightly.</li>
+<li><strong>Clearer Structure:</strong> The code is organized into functions for readability and maintainability.</li>
+<li><strong>File Iteration:</strong> Uses <code>os.listdir</code> to dynamically find the report files in the <code>response</code> directory.</li>
+<li><strong>Default Value Handling:</strong> Provides a way to handle cases where the probability is not found in a report file.</li>
+<li><strong>Creates dummy files:</strong> The code creates dummy files for testing if directory “response” is not created.</li>
+</ul>
+<p><strong>To use this Python example:</strong></p>
+<ol type="1">
+<li>Save the code as a <code>.py</code> file (e.g., <code>analyze_reports.py</code>).</li>
+<li>Create a directory named <code>response</code> in the same directory as the script.</li>
+<li>Place your <code>response/ASSET_NAME.md</code> files in the <code>response</code> directory.</li>
+<li>Run the script from your terminal: <code>python analyze_reports.py</code></li>
+</ol>
+<p>Remember to adapt the parsing logic (the regular expression in <code>extract_data()</code>) to match the exact format of your report files. If the output is incomplete, check to be sure that the regular expression can find the correct values.</p>
 </body>
 </html>
