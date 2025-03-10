@@ -15,46 +15,73 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand the task.</p>
-<p>You are providing me with the <em>content</em> of multiple reports, but <em>not the actual reports themselves as files</em>. Each report’s content will be identifiable by a line like <code>==&gt; response/ASSET_NAME.md &lt;==</code>, where <code>ASSET_NAME</code> is a variable representing the specific asset. Within each report, I will look for:</p>
+<p>Okay, I understand. Even though the <code>tail</code> command failed, you’re giving me the <em>intended</em> structure of the input. I will simulate the processing you wanted, assuming I <em>did</em> have the data.</p>
+<p><strong>Here’s how I will proceed, given the (simulated) structure:</strong></p>
+<ol type="1">
+<li><p><strong>Assume the reports are named according to the pattern</strong> <code>response/ASSET_NAME.md</code>.</p></li>
+<li><p><strong>Pretend I can read each report.</strong> I’ll have to <em>imagine</em> the content inside those files. That content will <em>include</em> the following key pieces of information:</p>
 <ul>
-<li><strong>Trading Position:</strong> (LONG or SHORT)</li>
-<li><strong>Entry Price:</strong> (a numerical value)</li>
-<li><strong>Stop Loss:</strong> (a numerical value)</li>
-<li><strong>Profit Probability:</strong> (a numerical value, presumably a percentage or decimal)</li>
-</ul>
-<p>My goal is to generate a summary for <em>each</em> provided asset, consisting of:</p>
+<li>Trading Position: <code>SHORT</code> or <code>LONG</code></li>
+<li>Entry Price: (a numerical value)</li>
+<li>Stop Loss: (a numerical value)</li>
+<li>Take Profit Probability: (a percentage or decimal value, e.g., 65% or 0.65)</li>
+</ul></li>
+<li><p><strong>Create a simulated summary of each report.</strong> The summary will include:</p>
 <ul>
-<li><strong>Asset Name:</strong> Extracted from the <code>==&gt; response/ASSET_NAME.md &lt;==</code> line.</li>
-<li><strong>Profit Probability:</strong> The extracted probability value.</li>
+<li>Asset Name (extracted from the filename)</li>
+<li>Take Profit Probability</li>
+</ul></li>
+<li><p><strong>Sort the summaries by Take Profit Probability in descending order</strong> (highest probability first).</p></li>
+<li><p><strong>Present the sorted summaries.</strong> <strong>Example (Simulated) Input and Output</strong></p></li>
+</ol>
+<p>Let’s pretend I have these reports and their <em>simulated</em> contents:</p>
+<ul>
+<li><code>response/AAPL.md</code> (AAPL = Apple stock)
+<ul>
+<li>Trading Position: LONG</li>
+<li>Entry Price: 170.00</li>
+<li>Stop Loss: 165.00</li>
+<li>Take Profit Probability: 70%</li>
+</ul></li>
+<li><code>response/GOOG.md</code> (GOOG = Google stock)
+<ul>
+<li>Trading Position: SHORT</li>
+<li>Entry Price: 2500.00</li>
+<li>Stop Loss: 2550.00</li>
+<li>Take Profit Probability: 85%</li>
+</ul></li>
+<li><code>response/TSLA.md</code> (TSLA = Tesla stock)
+<ul>
+<li>Trading Position: LONG</li>
+<li>Entry Price: 800.00</li>
+<li>Stop Loss: 780.00</li>
+<li>Take Profit Probability: 60%</li>
+</ul></li>
+<li><code>response/MSFT.md</code> (MSFT = Microsoft stock)
+<ul>
+<li>Trading Position: SHORT</li>
+<li>Entry Price: 300.00</li>
+<li>Stop Loss: 305.00</li>
+<li>Take Profit Probability: 75% <strong>Simulated Output (Sorted by Take Profit Probability):</strong></li>
+</ul></li>
 </ul>
-<p>Finally, I will sort the summaries by <strong>Profit Probability</strong> in descending order (highest probability first).</p>
+<pre><code>GOOG: 85%
+MSFT: 75%
+AAPL: 70%
+TSLA: 60%</code></pre>
+<p><strong>Explanation of the Simulated Output:</strong></p>
+<ul>
+<li><strong>GOOG: 85%</strong> - Google has the highest take profit probability.</li>
+<li><strong>MSFT: 75%</strong> - Microsoft is next.</li>
+<li><strong>AAPL: 70%</strong> - Apple follows.</li>
+<li><strong>TSLA: 60%</strong> - Tesla has the lowest take profit probability in this simulated example.</li>
+</ul>
 <p><strong>Important Considerations:</strong></p>
 <ul>
-<li><strong>Error Handling:</strong> Since you mention &quot;tail: cannot open ’response/<em>’ for reading: No such file or directory&quot;, I understand you’re simulating a situation where the files are not directly accessible. Therefore, I need the </em>content* of the report to be directly available to me as the input.</li>
-<li><strong>Format Consistency:</strong> I will assume a consistent format for the reports. If the position, entry, stop loss, and probability are presented in different ways (e.g., different labels, different units), you’ll need to provide examples so I can adapt my parsing logic.</li>
-<li><strong>Data Extraction Accuracy:</strong> The accuracy of my summaries depends entirely on the clarity and consistency of the report format. I’ll do my best to extract the correct information.</li>
-<li><strong>No Files:</strong> I will not create or attempt to access any files. All processing will be done in-memory, based on the text you provide as input.</li>
+<li><strong>Placeholder Data:</strong> This is entirely simulated because you said the files don’t exist. To get <em>real</em> results, you need to provide the <em>actual</em> content of the reports.</li>
+<li><strong>Parsing:</strong> If I <em>did</em> have the files, I would need to parse the content to extract the “Take Profit Probability” value. The exact parsing method would depend on the format of the reports (e.g., regular expressions, parsing JSON or YAML if the files contained those formats).</li>
+<li><strong>Real-World Trading:</strong> <em>Never</em> make trading decisions based solely on this kind of automated analysis. Always do your own thorough research and consider your risk tolerance.</li>
 </ul>
-<p><strong>How to Give Me the Reports:</strong></p>
-<p>Provide the content of each report, one after the other, in a single multi-line text block. Make sure to include the <code>==&gt; response/ASSET_NAME.md &lt;==</code> line <em>before</em> the content of each report. For example:</p>
-<pre><code>==&gt; response/AAPL.md &lt;==
-Position: LONG
-Entry Price: 170.50
-Stop Loss: 168.00
-Profit Probability: 75%
-
-==&gt; response/MSFT.md &lt;==
-Position: SHORT
-Entry Price: 330.00
-Stop Loss: 332.50
-Profit Probability: 60%
-
-==&gt; response/GOOG.md &lt;==
-Position: LONG
-Entry Price: 2500.00
-Stop Loss: 2450.00
-Profit Probability: 80%</code></pre>
-<p><strong>Once you provide the reports in this format, I will generate the sorted summaries.</strong></p>
+<p>If you provide actual report content (or even a representative example of the report format), I can give you a much more concrete solution.</p>
 </body>
 </html>
