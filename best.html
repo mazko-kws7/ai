@@ -15,35 +15,27 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since you’re providing the reports as a list of filenames and not the content of the reports themselves, and I’m getting an error indicating the files aren’t accessible, I will <em>simulate</em> reading and summarizing the reports.</p>
-<p><strong>Here’s what I will do, based on your instructions:</strong></p>
-<ol type="1">
-<li><strong>Assume the filename <code>response/ASSET_NAME.md</code> implies the existence of a report for the asset named <code>ASSET_NAME</code>.</strong> I will extract the asset name from the filename.</li>
-<li><strong>I will <em>pretend</em> to read the report content and find a “Profit Probability” value.</strong> Since I don’t have the actual content, I will <em>randomly generate</em> a profit probability (a number between 0 and 100) for each asset.</li>
-<li><strong>I will create a summary for each report</strong> including the Asset Name and generated Probability.</li>
-<li><strong>I will sort the summaries</strong> by the Profit Probability in <em>descending</em> order (highest probability first).</li>
-<li><strong>I will present the sorted summaries.</strong></li>
-</ol>
-<p><strong>Please understand:</strong> This is a <strong>simulation</strong> because I lack the actual report content. If you provide me with the content of each <code>md</code> file, I can give you a MUCH more accurate summary.</p>
-<p><strong>Example (based on your provided information):</strong></p>
-<p>Let’s say you provide the following input:</p>
-<pre><code>response/AAPL.md
-response/MSFT.md
-response/GOOG.md
-response/AMZN.md</code></pre>
-<p>Here’s the simulated output I would generate:</p>
-<pre><code>**Report Summaries (Sorted by Simulated Profit Probability):**
-
-*   **Asset: AMZN,  Profit Probability: 92%**
-*   **Asset: AAPL,  Profit Probability: 78%**
-*   **Asset: GOOG,  Profit Probability: 65%**
-*   **Asset: MSFT,  Profit Probability: 31%**</code></pre>
-<p><strong>Important Notes:</strong></p>
+<p>Okay, I understand. Since you’re getting a &quot;tail: cannot open ’response/*’ for reading&quot; error, it means I don’t have access to the actual files. I’ll simulate the process based on your description and assume the following:</p>
+<p><strong>Assumptions:</strong></p>
 <ul>
-<li><strong>Random Probabilities:</strong> The probability values are completely random. <em>Do not use them for actual trading decisions.</em></li>
-<li><strong>File Content Matters:</strong> To get meaningful results, you <strong>must</strong> provide the actual content of each <code>md</code> file, so I can extract the <em>real</em> profit probability and other relevant information. The current implementation is purely demonstrative.</li>
-<li><strong>Error handling</strong> The error message &quot;tail: cannot open ’response/*’ for reading: No such file or directory&quot; implies that you are trying to process the files using <code>tail</code> command but the directory doesn’t exists or the files are not there.</li>
+<li>You’ll provide the filename for each report, and <em>you</em> will read the content of each report.</li>
+<li>Each report will contain the asset name in the filename and information in a format I can parse: e.g., “Recommendation: LONG, Entry Price: 1.2345, Stop Loss: 1.2300, Probability: 75%”.</li>
+<li>I’ll focus on extracting the asset name (from the filename you provide), and the profit probability from the content (which you’ll provide in the simulated reports).</li>
 </ul>
-<p>Let me know if you want to proceed and list your report file names so I can perform the simulation. If you can provide the file contents, I will give you much better output.</p>
+<p><strong>How to use this simulated workflow:</strong></p>
+<ol type="1">
+<li>I will present you a simulated example of the reports, as they might appear in the file.</li>
+<li>You’ll give me each report individually, one by one, along with its file name (e.g., <code>&quot;==&gt; response/AAPL.md &lt;==  Recommendation: LONG, Entry Price: 1.2345, Stop Loss: 1.2300, Probability: 75%&quot;</code>).</li>
+<li>I’ll extract the information and store it.</li>
+<li>After you’ve given me all the reports, I’ll sort them by probability and give you the final summary.</li>
+</ol>
+<p><strong>Example</strong></p>
+<p>Let’s imagine your <code>response/AAPL.md</code> contains this text, after the filename indicator:</p>
+<p><code>==&gt; response/AAPL.md &lt;== Recommendation: LONG, Entry Price: 170.00, Stop Loss: 165.00, Probability: 60%</code></p>
+<p>And you want to give me <code>response/GOOGL.md</code>, which contains:</p>
+<p><code>==&gt; response/GOOGL.md &lt;== Recommendation: SHORT, Entry Price: 2500.00, Stop Loss: 2550.00, Probability: 85%</code></p>
+<p>And finally <code>response/MSFT.md</code>, containing:</p>
+<p><code>==&gt; response/MSFT.md &lt;== Recommendation: LONG, Entry Price: 300.00, Stop Loss: 295.00, Probability: 70%</code></p>
+<p>Then I expect you to give each report in order, and after the last report I will generate sorted result. OK. Let’s start. Please give me the first report (filename and content).</p>
 </body>
 </html>
