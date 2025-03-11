@@ -15,54 +15,58 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since you’re getting a “No such file or directory” error, it means I don’t have access to the actual files you’re referencing. I need the content of those files to give you the resume you’re asking for.</p>
-<p>However, I <em>can</em> provide you with the <strong>format</strong> of the output I would generate <em>if</em> I had the content of the <code>response/ASSET_NAME.md</code> files.</p>
-<p><strong>Here’s how I’d process the information and what the output would look like:</strong></p>
+<p>Okay, I understand. Since I don’t have access to the actual report files (like <code>response/ASSET_NAME.md</code>), I can’t give you real values for the probabilities. However, I can simulate the response based on the format you described.</p>
+<p>Here’s how I’ll proceed, assuming each file would contain information in a structured manner:</p>
 <ol type="1">
-<li><p><strong>Assume Input Format:</strong> I’d assume each <code>response/ASSET_NAME.md</code> file contains text like this (the specific format doesn’t matter exactly as long as these elements are present):</p>
-<pre><code>## Trading Recommendation:
-
-**Asset:** AAPL
-**Position:** LONG
-**Entry Price:** 170.00
-**Stop Loss:** 165.00
-**Take Profit:** 180.00
-**Profit Probability:** 75%</code></pre>
-<p>Or like this:</p>
-<pre><code># Trade Alert
-
-ASSET: TSLA
-RECOMMENDATION: SHORT
-ENTRY: 1000
-STOP LOSS: 1010
-PROBABILITY: 60%</code></pre></li>
-<li><p><strong>Extraction:</strong> I would extract the following information from <em>each</em> file:</p>
-<ul>
-<li><code>ASSET_NAME</code> (from the filename)</li>
-<li><code>Profit Probability</code> (or equivalent, like just “Probability”)</li>
-</ul></li>
-<li><p><strong>Resume Generation:</strong> I would create a short resume for each asset:</p>
-<p><code>ASSET_NAME: Probability = XX%</code></p></li>
-<li><p><strong>Sorting:</strong> I would sort the summaries in <em>descending</em> order of probability (highest probability first).</p></li>
+<li><p><strong>Assume a structure:</strong> I’ll assume each <code>response/ASSET_NAME.md</code> file contains the following information:</p>
+<pre><code>Position: LONG  (or SHORT)
+Entry Price: 100.00
+Stop Loss: 95.00
+Take Profit Probability: 65%</code></pre></li>
+<li><p><strong>Generate Example Data:</strong> Since I don’t have the data, I will create synthetic data.</p></li>
+<li><p><strong>Extract and Summarize:</strong> For each asset name, I will extract the <code>ASSET_NAME</code>, and the “Take Profit Probability”.</p></li>
+<li><p><strong>Sort:</strong> I will then sort the extracted data by the “Take Profit Probability” in descending order (highest probability first).</p></li>
+<li><p><strong>Output:</strong> I’ll print the sorted results.</p></li>
 </ol>
-<p><strong>Example Output (if you provided the file contents):</strong></p>
-<p>Let’s say you had these three files (with these probabilities):</p>
+<p><strong>Example Response (Synthetic Data):</strong></p>
+<p>Assuming these are the filenames and I’ve “read” their contents:</p>
 <ul>
-<li><code>response/GOOGL.md</code> (Probability: 90%)</li>
-<li><code>response/MSFT.md</code> (Probability: 70%)</li>
-<li><code>response/AMZN.md</code> (Probability: 80%)</li>
+<li><code>response/GOLD.md</code> (Take Profit Probability: 75%)</li>
+<li><code>response/BTC.md</code> (Take Profit Probability: 60%)</li>
+<li><code>response/TSLA.md</code> (Take Profit Probability: 80%)</li>
+<li><code>response/EURUSD.md</code> (Take Profit Probability: 55%)</li>
+<li><code>response/OIL.md</code> (Take Profit Probability: 70%)</li>
+<li><code>response/AAPL.md</code> (Take Profit Probability: 65%)</li>
 </ul>
-<p>Then, the output would be:</p>
-<pre><code>GOOGL: Probability = 90%
-AMZN: Probability = 80%
-MSFT: Probability = 70%</code></pre>
-<p><strong>How to Use This:</strong></p>
-<p>To get the <em>actual</em> output, you’ll need to:</p>
-<ol type="1">
-<li><strong>Provide the contents of each <code>response/ASSET_NAME.md</code> file to me.</strong> You can copy and paste them into the prompt, or if there are too many, consider sharing a smaller representative sample. Clearly indicate which content belongs to which file. If you’re comfortable with coding, you could even write a small script to read the files and paste their contents into the prompt. <em>Please remove any sensitive data like account numbers or API keys from the file contents before sharing them.</em></li>
-<li><strong>Tell me how consistent the formatting is across the files.</strong> Are the key names always the same? Are the values always in the same format? This will help me extract the information accurately.</li>
-<li><strong>Specify if there is other relevant information</strong> which should be used for short resume</li>
-</ol>
-<p>Once you provide the file content, I can generate the sorted resume list for you.</p>
+<p>Here’s the output I would provide:</p>
+<pre><code>Sorted Trading Recommendations by Take Profit Probability:
+
+TSLA: 80%
+GOLD: 75%
+OIL: 70%
+AAPL: 65%
+BTC: 60%
+EURUSD: 55%</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li>The list is sorted from highest probability (TSLA at 80%) to the lowest (EURUSD at 55%).</li>
+<li>Each line shows the asset name and its corresponding take profit probability.</li>
+</ul>
+<p><strong>Important Considerations:</strong></p>
+<ul>
+<li><strong>Data Format:</strong> This response <em>heavily</em> depends on the data within each <code>.md</code> file being consistently formatted. If the “Take Profit Probability” is in a different place or uses a different format, I will not be able to extract it correctly.</li>
+<li><strong>File Access:</strong> I <em>cannot</em> access local files on your system. The <code>tail</code> error message you received confirms this. I need the <em>content</em> of each file to be provided to me in some way.</li>
+<li><strong>Markdown Parsing:</strong> I’m assuming the Markdown formatting is relatively simple. More complex Markdown could interfere with my ability to extract the probability.</li>
+<li><strong>Error Handling:</strong> I have not added any error handling, so If the reports are not formatted as expected, the summary will be incorrect.</li>
+</ul>
+<p><strong>To get a <em>real</em> and accurate response, you would need to provide me with the actual content of each <code>response/ASSET_NAME.md</code> file, one at a time, or as a batch.</strong></p>
+<p>For example:</p>
+<p>You could say:</p>
+<p>&quot;Here’s the content of response/GOLD.md:</p>
+<pre><code>Position: LONG
+Entry Price: 1800
+Stop Loss: 1790
+Take Profit Probability: 75%</code></pre>
+<p>And then repeat for each of your files. I can then use that actual data to generate the correct sorted summary.</p>
 </body>
 </html>
