@@ -15,59 +15,54 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to the file system to read the actual files, I’ll provide a template for how I <em>would</em> respond, based on the information you’ve provided and the error message you received.</p>
-<p><strong>Assumptions:</strong></p>
+<p>Okay, I understand. Since you’re getting a “No such file or directory” error, it means I don’t have access to the actual files you’re referencing. I need the content of those files to give you the resume you’re asking for.</p>
+<p>However, I <em>can</em> provide you with the <strong>format</strong> of the output I would generate <em>if</em> I had the content of the <code>response/ASSET_NAME.md</code> files.</p>
+<p><strong>Here’s how I’d process the information and what the output would look like:</strong></p>
+<ol type="1">
+<li><p><strong>Assume Input Format:</strong> I’d assume each <code>response/ASSET_NAME.md</code> file contains text like this (the specific format doesn’t matter exactly as long as these elements are present):</p>
+<pre><code>## Trading Recommendation:
+
+**Asset:** AAPL
+**Position:** LONG
+**Entry Price:** 170.00
+**Stop Loss:** 165.00
+**Take Profit:** 180.00
+**Profit Probability:** 75%</code></pre>
+<p>Or like this:</p>
+<pre><code># Trade Alert
+
+ASSET: TSLA
+RECOMMENDATION: SHORT
+ENTRY: 1000
+STOP LOSS: 1010
+PROBABILITY: 60%</code></pre></li>
+<li><p><strong>Extraction:</strong> I would extract the following information from <em>each</em> file:</p>
 <ul>
-<li>I will create hypothetical reports based on my knowledge of how they should look like.</li>
-<li>The error message &quot;tail: cannot open ’response/<em>’ for reading: No such file or directory&quot; suggests that the script/process you were using to generate the reports failed. I will assume that </em>if* the files existed, they would have the format you described.</li>
+<li><code>ASSET_NAME</code> (from the filename)</li>
+<li><code>Profit Probability</code> (or equivalent, like just “Probability”)</li>
+</ul></li>
+<li><p><strong>Resume Generation:</strong> I would create a short resume for each asset:</p>
+<p><code>ASSET_NAME: Probability = XX%</code></p></li>
+<li><p><strong>Sorting:</strong> I would sort the summaries in <em>descending</em> order of probability (highest probability first).</p></li>
+</ol>
+<p><strong>Example Output (if you provided the file contents):</strong></p>
+<p>Let’s say you had these three files (with these probabilities):</p>
+<ul>
+<li><code>response/GOOGL.md</code> (Probability: 90%)</li>
+<li><code>response/MSFT.md</code> (Probability: 70%)</li>
+<li><code>response/AMZN.md</code> (Probability: 80%)</li>
 </ul>
-<p><strong>Hypothetical Response Format (Because I cannot access real files):</strong></p>
-<p>Here’s how I <em>would</em> provide the summary, sorted by take profit probability. I will generate 3 hypothetical report responses:</p>
-<pre><code>Report Summaries (Sorted by Take Profit Probability):
-
-*   **Asset:** HypotheticalAssetC
-    **Probability:** 85%
-    **Recommendation:** LONG
-    **Entry:** 1.2500
-    **Stop Loss:** 1.2450
-
-*   **Asset:** HypotheticalAssetB
-    **Probability:** 70%
-    **Recommendation:** SHORT
-    **Entry:** 150.50
-    **Stop Loss:** 151.00
-
-*   **Asset:** HypotheticalAssetA
-    **Probability:** 60%
-    **Recommendation:** LONG
-    **Entry:** 50.00
-    **Stop Loss:** 49.50</code></pre>
-<p><strong>Explanation:</strong></p>
+<p>Then, the output would be:</p>
+<pre><code>GOOGL: Probability = 90%
+AMZN: Probability = 80%
+MSFT: Probability = 70%</code></pre>
+<p><strong>How to Use This:</strong></p>
+<p>To get the <em>actual</em> output, you’ll need to:</p>
 <ol type="1">
-<li><p><strong>Structure:</strong> The output is clearly structured with “Report Summaries” as the header and then each asset listed with its key information.</p></li>
-<li><p><strong>Sorting:</strong> The summaries are sorted in <em>descending</em> order of “Probability” (highest probability first).</p></li>
-<li><p><strong>Key Information:</strong> Each summary includes the “Asset” name and “Probability”, and other key information like Recommendation, Entry and Stop Loss.</p></li>
-<li><p><strong>Handling the Error:</strong> The initial error message <code>tail: cannot open &#39;response/*&#39; for reading: No such file or directory</code> indicates a problem with the script or process generating the reports. To fix this in a real situation, you would need to:</p>
-<ul>
-<li>Ensure the <code>response/</code> directory exists.</li>
-<li>Ensure that the script generating the <code>ASSET_NAME.md</code> files is running correctly and creating the files in the <code>response/</code> directory.</li>
-<li>Verify the permissions on the <code>response/</code> directory and files allow the script to read them.</li>
-</ul></li>
+<li><strong>Provide the contents of each <code>response/ASSET_NAME.md</code> file to me.</strong> You can copy and paste them into the prompt, or if there are too many, consider sharing a smaller representative sample. Clearly indicate which content belongs to which file. If you’re comfortable with coding, you could even write a small script to read the files and paste their contents into the prompt. <em>Please remove any sensitive data like account numbers or API keys from the file contents before sharing them.</em></li>
+<li><strong>Tell me how consistent the formatting is across the files.</strong> Are the key names always the same? Are the values always in the same format? This will help me extract the information accurately.</li>
+<li><strong>Specify if there is other relevant information</strong> which should be used for short resume</li>
 </ol>
-<p><strong>In a Real Implementation:</strong></p>
-<p>You would need a script (e.g., Python, Bash) to:</p>
-<ol type="1">
-<li><strong>List Files:</strong> Use a function to get a list of all files matching the pattern <code>response/*.md</code>.</li>
-<li><strong>Parse Files:</strong> For each file:
-<ul>
-<li>Read the contents of the <code>.md</code> file.</li>
-<li>Use regular expressions or string parsing to extract the “ASSET_NAME”, “SHORT” or “LONG”, “entry price”, “stop loss”, and “profit probability” from the file content.</li>
-</ul></li>
-<li><strong>Store Data:</strong> Store the extracted data in a list of dictionaries or a similar data structure.</li>
-<li><strong>Sort Data:</strong> Sort the list of dictionaries based on the “profit probability” in descending order.</li>
-<li><strong>Output:</strong> Print the formatted summaries as shown in the example above.</li>
-</ol>
-<p><strong>Important Note:</strong></p>
-<p>I cannot execute any code or access external files. The above is a template for how I <em>would</em> respond <em>if</em> I had access to the files and the ability to process them. You’ll need to implement the actual file processing and parsing logic yourself. Let me know if you’d like help with a Python or Bash script to accomplish this, and I can provide code snippets (but you will still need to adapt them to your specific file structure and system).</p>
+<p>Once you provide the file content, I can generate the sorted resume list for you.</p>
 </body>
 </html>
