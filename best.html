@@ -15,39 +15,43 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. It seems like the script you’re running is trying to process files matching the pattern <code>response/ASSET_NAME.md</code>, but it’s not finding any. This is likely because those files either don’t exist in that location or the script is being run from the wrong directory.</p>
-<p>However, since I don’t have access to those files or their content, I can only give you a general response of how the summary would look, assuming I had the content.</p>
-<p><strong>General Response Format (If files were available):</strong></p>
-<p>Assuming I had the content of the files (e.g., <code>response/AAPL.md</code>, <code>response/GOOG.md</code>, etc.), I would process them and generate output similar to this:</p>
-<pre><code>(Sorted by Take Profit Probability, highest to lowest)
-
-*   **Asset:** GOOG, **Probability:** 0.85
-    *   Recommendation: LONG
-    *   Entry Price: 2700
-    *   Stop Loss: 2600
-
-*   **Asset:** MSFT, **Probability:** 0.75
-    *   Recommendation: SHORT
-    *   Entry Price: 340
-    *   Stop Loss: 350
-
-*   **Asset:** AAPL, **Probability:** 0.60
-    *   Recommendation: LONG
-    *   Entry Price: 170
-    *   Stop Loss: 160
-</code></pre>
-<p><strong>Explanation of the Format:</strong></p>
+<p>Okay, I understand. Even though the <code>tail</code> command failed, I can still give you the output format you want, assuming I had the data. Since you are acting as the process that <em>would</em> generate the data, I will act as the process that <em>consumes</em> it.</p>
+<p>Since I don’t have the actual report content, I’ll make up some example data for demonstration. You will need to provide the real content for me to generate the real report.</p>
+<p>Here’s how I’ll process the hypothetical data and format the output:</p>
 <ol type="1">
-<li><strong>Sorted by Take Profit Probability:</strong> The reports are listed in descending order of the “take profit probability” value, meaning the highest probability trade is listed first.</li>
-<li><strong>Asset:</strong> This is the <code>ASSET_NAME</code> extracted from the filename (e.g., AAPL, GOOG, MSFT).</li>
-<li><strong>Probability:</strong> This is the “take profit probability” value extracted from the file content.</li>
-<li>The rest of the information I would also put so it is easy to see the recommendation.</li>
+<li><p><strong>Assume Input Structure:</strong> I’ll assume each report file (e.g., <code>response/AAPL.md</code>) contains text like this:</p>
+<pre><code>Recommendation: LONG
+Entry Price: 150.00
+Stop Loss: 145.00
+Take Profit: 160.00
+Profit Probability: 0.75</code></pre>
+<p><em>Important:</em> I’m assuming a consistent format. If the format varies, you’ll need to describe the variations to me so I can handle them correctly.</p></li>
+<li><p><strong>Extraction Logic:</strong> For each <code>ASSET_NAME.md</code> report, I’ll:</p>
+<ul>
+<li>Extract the <code>ASSET_NAME</code> from the filename.</li>
+<li>Extract the “Profit Probability” value. I’ll assume it’s always a number between 0 and 1.</li>
+</ul></li>
+<li><p><strong>Output Format:</strong> The final output will be a list of “Asset: Probability” pairs, sorted in <em>descending</em> order of probability (highest probability first).</p></li>
 </ol>
-<p><strong>To make this work, you’ll need to:</strong></p>
-<ol type="1">
-<li><strong>Verify File Location:</strong> Make sure the <code>response/ASSET_NAME.md</code> files actually exist and are located in the correct directory relative to where you’re running your script.</li>
-<li><strong>Check Script Directory:</strong> Ensure your script is being executed from the directory where it can find the <code>response/</code> folder.</li>
-<li><strong>Provide File Content:</strong> If the files exist and the directory is correct, you’ll need to provide me with the actual content of a few example <code>response/ASSET_NAME.md</code> files so I can understand the format and extract the relevant information (Asset, Recommendation, Entry Price, Stop Loss, Probability). I’ll then be able to give you a more accurate and helpful response.</li>
-</ol>
+<p><strong>Example and How to Provide Real Data:</strong></p>
+<p>Let’s say you ran the process and got the following list of reports:</p>
+<pre><code>response/AAPL.md
+response/GOOG.md
+response/MSFT.md
+response/TSLA.md</code></pre>
+<p>Now, you need to give me the <em>content</em> of each of those files. For example, you might say:</p>
+<p>&quot;Okay, here’s the content of each file:</p>
+<ul>
+<li><code>response/AAPL.md</code>: <code>Recommendation: LONG     Entry Price: 150.00     Stop Loss: 145.00     Take Profit: 160.00     Profit Probability: 0.75</code></li>
+<li><code>response/GOOG.md</code>: <code>Recommendation: SHORT     Entry Price: 2700.00     Stop Loss: 2750.00     Take Profit: 2600.00     Profit Probability: 0.60</code></li>
+<li><code>response/MSFT.md</code>: <code>Recommendation: LONG     Entry Price: 300.00     Stop Loss: 295.00     Take Profit: 310.00     Profit Probability: 0.85</code></li>
+<li><code>response/TSLA.md</code>: <code>Recommendation: SHORT     Entry Price: 700.00     Stop Loss: 710.00     Take Profit: 680.00     Profit Probability: 0.50</code>&quot;</li>
+</ul>
+<p><strong>Based on this example input, here’s the output I would generate:</strong></p>
+<pre><code>MSFT: 0.85
+AAPL: 0.75
+GOOG: 0.60
+TSLA: 0.50</code></pre>
+<p><strong>Now it’s your turn. Please provide the content of the report files, and I’ll generate the sorted probability summary.</strong> The more files you give me, the better I can demonstrate the full process. Also, tell me <em>exactly</em> how the “Profit Probability” is written within each report file if it’s different from my example (e.g. “Probability of Profit:”, “Profit_Probability =”).</p>
 </body>
 </html>
