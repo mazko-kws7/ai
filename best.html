@@ -15,58 +15,61 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand the situation.</p>
-<p>Even though I don’t have the actual files and am getting a “file not found” error, I can simulate the process based on your description.</p>
-<p>Here’s how I’ll respond <em>assuming</em> I could read the files and extract the information:</p>
-<p><strong>Simulated Response:</strong></p>
-<p>Okay, I will process the reports (if they existed!) and provide a summary sorted by profit probability. The simulated output would look something like this:</p>
-<p><strong>Hypothetical Sorted Report Summary (based on take profit probability)</strong></p>
-<ul>
-<li><strong>ASSET_D:</strong> 78% probability
-<ul>
-<li>Recommendation: LONG</li>
-</ul></li>
-<li><strong>ASSET_A:</strong> 70% probability
-<ul>
-<li>Recommendation: SHORT</li>
-</ul></li>
-<li><strong>ASSET_C:</strong> 62% probability
-<ul>
-<li>Recommendation: LONG</li>
-</ul></li>
-<li><strong>ASSET_B:</strong> 55% probability
-<ul>
-<li>Recommendation: SHORT</li>
-</ul></li>
-</ul>
-<p><strong>Explanation of the Simulated Response:</strong></p>
+<p>Okay, I understand. Since I don’t have access to the file system or the content of any <code>response/ASSET_NAME.md</code> files, I’ll provide you with a template response assuming you’ll fill in the details.</p>
+<p>Here’s the template and explanation:</p>
+<p><strong>Understanding the Goal</strong></p>
+<p>The goal is to create a summary of each trading report (<code>response/ASSET_NAME.md</code>), focusing on:</p>
 <ol type="1">
-<li><strong>Asset Name:</strong> Each line starts with the <code>ASSET_NAME</code> extracted from the filename.</li>
-<li><strong>Profit Probability:</strong> This is the probability value read from the report.</li>
-<li><strong>Sorting:</strong> The list is sorted in <em>descending</em> order based on the profit probability (highest probability first).</li>
-<li><strong>Recommendation:</strong> Indicates LONG or SHORT position from the reports.</li>
+<li><strong>Asset Name:</strong> The <code>ASSET_NAME</code> part of the filename.</li>
+<li><strong>Profit Probability:</strong> The probability that the trade will reach the take profit level, as stated in the report.</li>
 </ol>
-<p><strong>How it <em>would</em> work if the files were accessible:</strong></p>
+<p>And then to <strong>sort</strong> these summaries based on the profit probability, in <em>descending</em> order (highest probability first).</p>
+<p><strong>Template Response (Fill in the details)</strong></p>
+<pre><code>Here&#39;s a summary of the trading reports, sorted by Take Profit Probability:
+
+*   **ASSET_NAME_1:** Probability: PROBABILITY_1%  (Details: LONG/SHORT, Entry Price, Stop Loss)
+*   **ASSET_NAME_2:** Probability: PROBABILITY_2%  (Details: LONG/SHORT, Entry Price, Stop Loss)
+*   **ASSET_NAME_3:** Probability: PROBABILITY_3%  (Details: LONG/SHORT, Entry Price, Stop Loss)
+*   **ASSET_NAME_4:** Probability: PROBABILITY_4%  (Details: LONG/SHORT, Entry Price, Stop Loss)
+*   **ASSET_NAME_5:** Probability: PROBABILITY_5%  (Details: LONG/SHORT, Entry Price, Stop Loss)
+... and so on, ordered from highest to lowest probability.
+</code></pre>
+<p><strong>How to Use This Template</strong></p>
 <ol type="1">
-<li><strong>File Iteration:</strong> I would iterate through each <code>response/ASSET_NAME.md</code> file.</li>
-<li><strong>Data Extraction:</strong> For each file, I would parse the content (assuming a consistent format) to extract:
+<li><p><strong>Read Each Report:</strong> Open each <code>response/ASSET_NAME.md</code> file and extract the following information:</p>
 <ul>
-<li><code>ASSET_NAME</code> (from the filename)</li>
-<li>Trading Position Recommendation (LONG or SHORT)</li>
-<li>Entry Price (not used for summary but would be available)</li>
-<li>Stop Loss (not used for summary but would be available)</li>
-<li>Profit Probability</li>
+<li><strong>ASSET_NAME:</strong> The name of the asset (from the filename).</li>
+<li><strong>Profit Probability:</strong> The probability stated in the report that the trade will reach its take profit target.</li>
+<li><strong>Trading position recomendation:</strong> SHORT or LONG</li>
+<li><strong>Entry Price:</strong> The recommended entry price for the trade.</li>
+<li><strong>Stop Loss:</strong> The recommended stop-loss price.</li>
 </ul></li>
-<li><strong>Data Storage:</strong> I would store the extracted information in a list of dictionaries (or a similar data structure).</li>
-<li><strong>Sorting:</strong> I would sort the list based on the “Profit Probability” in descending order.</li>
-<li><strong>Output:</strong> Finally, I would generate the formatted output as shown above.</li>
+<li><p><strong>Create Summaries:</strong> Create a short summary for each report in the format: `* <strong>ASSET_NAME:</strong> Probability: PROBABILITY% (Details: LONG/SHORT, Entry Price, Stop Loss)`</p></li>
+<li><p><strong>Sort by Probability:</strong> Sort the summaries based on the <code>PROBABILITY</code> value, from highest to lowest.</p></li>
+<li><p><strong>Fill in the Template:</strong> Paste the sorted summaries into the template above.</p></li>
 </ol>
-<p><strong>Important Considerations (If the script worked):</strong></p>
+<p><strong>Example (Hypothetical)</strong></p>
+<p>Let’s say you have these files and probabilities (after reading them):</p>
 <ul>
-<li><strong>Report Format:</strong> This assumes a consistent format for all the <code>*.md</code> reports. If the format varies, the parsing logic would need to be adjusted accordingly.</li>
-<li><strong>Error Handling:</strong> A real-world script would need robust error handling to deal with missing files, invalid data formats, and other potential issues.</li>
-<li><strong>MD Parsing:</strong> I would need a way to parse the Markdown files to reliably extract the required information. Simple string searching or regular expressions could be used, or a more robust Markdown parsing library might be necessary.</li>
+<li><code>response/AAPL.md</code>: Probability: 75%, LONG Entry Price: $150, Stop Loss: $145</li>
+<li><code>response/GOOG.md</code>: Probability: 60%, SHORT Entry Price: $2700, Stop Loss: $2750</li>
+<li><code>response/MSFT.md</code>: Probability: 80%, LONG Entry Price: $250, Stop Loss: $245</li>
+<li><code>response/TSLA.md</code>: Probability: 70%, SHORT Entry Price: $1000, Stop Loss: $1020</li>
 </ul>
-<p><strong>In summary:</strong> Because the files are missing, I’m giving you the <em>structure</em> of the response I would provide and explaining how I <em>would</em> generate it if the files were available. You would need to implement the file reading and parsing steps based on the actual format of your <code>response/ASSET_NAME.md</code> files.</p>
+<p>Then the final response would be:</p>
+<pre><code>Here&#39;s a summary of the trading reports, sorted by Take Profit Probability:
+
+*   **MSFT:** Probability: 80% (Details: LONG, Entry Price: $250, Stop Loss: $245)
+*   **AAPL:** Probability: 75% (Details: LONG, Entry Price: $150, Stop Loss: $145)
+*   **TSLA:** Probability: 70% (Details: SHORT, Entry Price: $1000, Stop Loss: $1020)
+*   **GOOG:** Probability: 60% (Details: SHORT, Entry Price: $2700, Stop Loss: $2750)</code></pre>
+<p><strong>Important Considerations:</strong></p>
+<ul>
+<li><strong>Error Handling:</strong> If you encounter any errors while reading the files (e.g., a file is missing or corrupted), handle them gracefully and log the error.</li>
+<li><strong>Probability Format:</strong> Ensure that all probabilities are in the same format (e.g., all percentages).</li>
+<li><strong>Context:</strong> Remember that profit probability is just one factor to consider when making trading decisions. Always use your own judgment and risk management strategies.</li>
+<li><strong>Details:</strong> Put trading position, entry price and stop loss details inside the description.</li>
+</ul>
+<p>I hope this helps! Let me know if you have any other questions. I am ready for the list of results in format like <code>response/ASSET_NAME.md</code> to process them.</p>
 </body>
 </html>
