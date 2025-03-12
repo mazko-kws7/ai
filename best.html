@@ -15,43 +15,51 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Even though the <code>tail</code> command failed, I can still give you the output format you want, assuming I had the data. Since you are acting as the process that <em>would</em> generate the data, I will act as the process that <em>consumes</em> it.</p>
-<p>Since I don’t have the actual report content, I’ll make up some example data for demonstration. You will need to provide the real content for me to generate the real report.</p>
-<p>Here’s how I’ll process the hypothetical data and format the output:</p>
+<p>Okay, I understand. You’ll provide me with a series of lines, each in the format <code>==&gt; response/ASSET_NAME.md &lt;==</code>. Presumably, after each line, you’ll then provide the content of that file. I will then do the following:</p>
 <ol type="1">
-<li><p><strong>Assume Input Structure:</strong> I’ll assume each report file (e.g., <code>response/AAPL.md</code>) contains text like this:</p>
-<pre><code>Recommendation: LONG
-Entry Price: 150.00
-Stop Loss: 145.00
-Take Profit: 160.00
-Profit Probability: 0.75</code></pre>
-<p><em>Important:</em> I’m assuming a consistent format. If the format varies, you’ll need to describe the variations to me so I can handle them correctly.</p></li>
-<li><p><strong>Extraction Logic:</strong> For each <code>ASSET_NAME.md</code> report, I’ll:</p>
+<li><strong>Extract the <code>ASSET_NAME</code></strong>.</li>
+<li><strong>Assume the content of the file follows</strong> with the following info:
 <ul>
-<li>Extract the <code>ASSET_NAME</code> from the filename.</li>
-<li>Extract the “Profit Probability” value. I’ll assume it’s always a number between 0 and 1.</li>
+<li>Trading position recommendation (LONG or SHORT).</li>
+<li>Entry price.</li>
+<li>Stop Loss.</li>
+<li>Profit probability.</li>
 </ul></li>
-<li><p><strong>Output Format:</strong> The final output will be a list of “Asset: Probability” pairs, sorted in <em>descending</em> order of probability (highest probability first).</p></li>
+<li><strong>Create a short summary for each report.</strong> This summary will include the asset name and the profit probability.</li>
+<li><strong>Sort the summaries</strong> in descending order based on the profit probability.</li>
+<li><strong>Present the sorted summaries</strong> here.</li>
 </ol>
-<p><strong>Example and How to Provide Real Data:</strong></p>
-<p>Let’s say you ran the process and got the following list of reports:</p>
-<pre><code>response/AAPL.md
-response/GOOG.md
-response/MSFT.md
-response/TSLA.md</code></pre>
-<p>Now, you need to give me the <em>content</em> of each of those files. For example, you might say:</p>
-<p>&quot;Okay, here’s the content of each file:</p>
+<p><strong>Important Considerations (since you got a “No such file or directory” error):</strong></p>
 <ul>
-<li><code>response/AAPL.md</code>: <code>Recommendation: LONG     Entry Price: 150.00     Stop Loss: 145.00     Take Profit: 160.00     Profit Probability: 0.75</code></li>
-<li><code>response/GOOG.md</code>: <code>Recommendation: SHORT     Entry Price: 2700.00     Stop Loss: 2750.00     Take Profit: 2600.00     Profit Probability: 0.60</code></li>
-<li><code>response/MSFT.md</code>: <code>Recommendation: LONG     Entry Price: 300.00     Stop Loss: 295.00     Take Profit: 310.00     Profit Probability: 0.85</code></li>
-<li><code>response/TSLA.md</code>: <code>Recommendation: SHORT     Entry Price: 700.00     Stop Loss: 710.00     Take Profit: 680.00     Profit Probability: 0.50</code>&quot;</li>
+<li><strong>You will need to provide the content of each file. I don’t have access to your file system.</strong> You’ll copy and paste the content after each line <code>==&gt; response/ASSET_NAME.md &lt;==</code>. Think of me as a program processing text you feed it.</li>
+<li><strong>Data Format:</strong> I will make assumptions about the data format (keywords for position, probability, etc.) and will try to adjust if the format is slightly different. You might need to tell me what keywords to look for if the standard ones I expect don’t work.</li>
+<li><strong>Error Handling:</strong> If a report doesn’t contain the necessary information (e.g., missing probability), I’ll flag it or omit it from the final sorted list and tell you why.</li>
 </ul>
-<p><strong>Based on this example input, here’s the output I would generate:</strong></p>
-<pre><code>MSFT: 0.85
-AAPL: 0.75
-GOOG: 0.60
-TSLA: 0.50</code></pre>
-<p><strong>Now it’s your turn. Please provide the content of the report files, and I’ll generate the sorted probability summary.</strong> The more files you give me, the better I can demonstrate the full process. Also, tell me <em>exactly</em> how the “Profit Probability” is written within each report file if it’s different from my example (e.g. “Probability of Profit:”, “Profit_Probability =”).</p>
+<p><strong>Example:</strong></p>
+<p><strong>You would input:</strong></p>
+<pre><code>==&gt; response/AAPL.md &lt;==
+Trading Position: LONG
+Entry Price: 170.00
+Stop Loss: 165.00
+Profit Probability: 75%
+
+==&gt; response/GOOG.md &lt;==
+Trading Position: SHORT
+Entry Price: 2700.00
+Stop Loss: 2750.00
+Profit Probability: 60%
+
+==&gt; response/MSFT.md &lt;==
+Trading Position: LONG
+Entry Price: 330.00
+Stop Loss: 325.00
+Profit Probability: 80%</code></pre>
+<p><strong>I would output:</strong></p>
+<pre><code>Sorted Trading Recommendations by Profit Probability:
+
+*   MSFT: 80%
+*   AAPL: 75%
+*   GOOG: 60%</code></pre>
+<p>Now, please provide your reports, one at a time, following the format above. I am ready to process them!</p>
 </body>
 </html>
