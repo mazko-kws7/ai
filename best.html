@@ -77,110 +77,36 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since you cannot provide the actual files, I will create a hypothetical example based on your instructions, and then show you how I would process the reports and present the results if I <em>did</em> have access to the files.</p>
-<p><strong>Hypothetical Example Reports:</strong></p>
-<p>Let’s say the following reports exist (they would normally be in files, but I’ll represent them as strings):</p>
-<ul>
-<li><strong>response/AAPL.md:</strong></li>
-</ul>
-<pre><code>Trading Recommendation: LONG
-Entry Price: 170.00
-Stop Loss: 165.00
-Profit Probability: 75%</code></pre>
-<ul>
-<li><strong>response/GOOGL.md:</strong></li>
-</ul>
-<pre><code>Trading Recommendation: SHORT
-Entry Price: 2700.00
-Stop Loss: 2750.00
-Profit Probability: 60%</code></pre>
-<ul>
-<li><strong>response/MSFT.md:</strong></li>
-</ul>
-<pre><code>Trading Recommendation: LONG
-Entry Price: 330.00
-Stop Loss: 325.00
-Profit Probability: 85%</code></pre>
-<ul>
-<li><strong>response/AMZN.md:</strong></li>
-</ul>
-<pre><code>Trading Recommendation: SHORT
-Entry Price: 3500.00
-Stop Loss: 3550.00
-Profit Probability: 70%</code></pre>
-<p><strong>Simulated Processing and Output:</strong></p>
-<p>Here’s how I would process these (hypothetical) reports and provide the summary you requested, assuming I had access to the file system:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="im">import</span> re</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="im">import</span> os</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="co"># --- Simulate reading from the files ---</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>reports <span class="op">=</span> {</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>    <span class="st">&quot;response/AAPL.md&quot;</span>: <span class="st">&quot;&quot;&quot;</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="st">Trading Recommendation: LONG</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="st">Entry Price: 170.00</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a><span class="st">Stop Loss: 165.00</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a><span class="st">Profit Probability: 75%</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a><span class="st">&quot;&quot;&quot;</span>,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a>    <span class="st">&quot;response/GOOGL.md&quot;</span>: <span class="st">&quot;&quot;&quot;</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a><span class="st">Trading Recommendation: SHORT</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true"></a><span class="st">Entry Price: 2700.00</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true"></a><span class="st">Stop Loss: 2750.00</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true"></a><span class="st">Profit Probability: 60%</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true"></a><span class="st">&quot;&quot;&quot;</span>,</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true"></a>    <span class="st">&quot;response/MSFT.md&quot;</span>: <span class="st">&quot;&quot;&quot;</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true"></a><span class="st">Trading Recommendation: LONG</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true"></a><span class="st">Entry Price: 330.00</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true"></a><span class="st">Stop Loss: 325.00</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true"></a><span class="st">Profit Probability: 85%</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true"></a><span class="st">&quot;&quot;&quot;</span>,</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true"></a>    <span class="st">&quot;response/AMZN.md&quot;</span>: <span class="st">&quot;&quot;&quot;</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true"></a><span class="st">Trading Recommendation: SHORT</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true"></a><span class="st">Entry Price: 3500.00</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true"></a><span class="st">Stop Loss: 3550.00</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true"></a><span class="st">Profit Probability: 70%</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true"></a><span class="st">&quot;&quot;&quot;</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true"></a>}</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true"></a><span class="co"># --------------------------------------</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true"></a></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true"></a>report_summaries <span class="op">=</span> []</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true"></a></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true"></a><span class="cf">for</span> filename, content <span class="kw">in</span> reports.items():</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true"></a>    asset_name <span class="op">=</span> os.path.basename(filename).replace(<span class="st">&quot;.md&quot;</span>, <span class="st">&quot;&quot;</span>)</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true"></a>    match <span class="op">=</span> re.search(<span class="vs">r&quot;Profit Probability: (\d+)%&quot;</span>, content)  <span class="co">#Correct regex</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true"></a>    <span class="cf">if</span> match:</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true"></a>        probability <span class="op">=</span> <span class="bu">int</span>(match.group(<span class="dv">1</span>))</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true"></a>        report_summaries.append({<span class="st">&quot;asset&quot;</span>: asset_name, <span class="st">&quot;probability&quot;</span>: probability})</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true"></a>    <span class="cf">else</span>:</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Warning: Could not extract probability from </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true"></a></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true"></a><span class="co"># Sort by probability in descending order</span></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true"></a>report_summaries.sort(key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="st">&quot;probability&quot;</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true"></a></span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true"></a><span class="co"># Print the sorted summaries</span></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true"></a><span class="bu">print</span>(<span class="st">&quot;Report Summaries (Sorted by Profit Probability):&quot;</span>)</span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true"></a><span class="cf">for</span> summary <span class="kw">in</span> report_summaries:</span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>summary[<span class="st">&#39;asset&#39;</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>summary[<span class="st">&#39;probability&#39;</span>]<span class="sc">}</span><span class="ss">%&quot;</span>)</span></code></pre></div>
-<p><strong>Explanation and Output:</strong></p>
+<p>Okay, I understand. Since I don’t have access to any files and received an error message <code>tail: cannot open &#39;response/*&#39; for reading: No such file or directory</code>, I can’t process any reports.</p>
+<p>However, I can provide the logic for how I <em>would</em> create the summary <em>if</em> I had the data.</p>
+<p><strong>Here’s how I would approach the task:</strong></p>
 <ol type="1">
-<li><p><strong>Simulated Data:</strong> I’ve created a dictionary <code>reports</code> that simulates reading the content of each <code>.md</code> file. In reality, you would use <code>open()</code> to read from the files.</p></li>
-<li><p><strong>Extraction:</strong> The code iterates through the filenames. The basename is extracted from the filename using <code>os.path.basename()</code>. <code>.md</code> is removed. The code use regex <code>re.search(r&quot;Profit Probability: (\d+)%&quot;, content)</code> to safely search for pattern in the file content. The probability is captured.</p></li>
-<li><p><strong>Data Structure:</strong> The extracted data (asset name and probability) is stored in a list of dictionaries called <code>report_summaries</code>.</p></li>
-<li><p><strong>Sorting:</strong> The <code>report_summaries</code> list is sorted in descending order based on the <code>probability</code> value using a <code>lambda</code> function as the key for sorting.</p></li>
-<li><p><strong>Output:</strong> The code then prints the sorted summaries in the requested format.</p></li>
-</ol>
-<p><strong>Output of the Simulated Example:</strong></p>
-<pre><code>Report Summaries (Sorted by Profit Probability):
-MSFT: 85%
-AAPL: 75%
-AMZN: 70%
-GOOGL: 60%</code></pre>
-<p><strong>Important Considerations (If you could provide the actual files):</strong></p>
+<li><p><strong>Extraction:</strong> Read content of file. Extract the following information from each file:</p>
 <ul>
-<li><p><strong>Error Handling:</strong> You should add more robust error handling (e.g., using <code>try...except</code> blocks) to handle cases where files are missing, unreadable, or have unexpected content.</p></li>
-<li><p><strong>File Path:</strong> Adjust the code to read from the correct file paths. If the files are in a subdirectory, make sure your file paths reflect that.</p></li>
-<li><p><strong>Regex Robustness:</strong> If the format of the reports is not perfectly consistent, you might need to adjust the regular expression to be more flexible and handle slight variations. Consider using more descriptive regular expressions for better maintainability.</p></li>
-<li><p><strong>Libraries:</strong> Consider libraries like <code>pandas</code> if you need to do more complex data analysis or manipulation.</p></li>
-</ul>
-<p>This detailed explanation and example should give you a clear understanding of how to approach this task when you have access to the files. Let me know if you have any other questions.</p>
+<li><code>ASSET_NAME</code>: This would be extracted from the filename: <code>response/ASSET_NAME.md</code></li>
+<li><code>Recommendation</code>: (LONG or SHORT)</li>
+<li><code>Entry Price</code>: (a numerical value)</li>
+<li><code>Stop Loss</code>: (a numerical value)</li>
+<li><code>Profit Probability</code>: (a numerical value, ideally expressed as a percentage)</li>
+</ul></li>
+<li><p><strong>Data Structure:</strong> I’d store this information in a list of dictionaries. For example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>reports <span class="op">=</span> [</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    {<span class="st">&#39;asset_name&#39;</span>: <span class="st">&#39;AAPL&#39;</span>, <span class="st">&#39;recommendation&#39;</span>: <span class="st">&#39;LONG&#39;</span>, <span class="st">&#39;entry_price&#39;</span>: <span class="fl">170.00</span>, <span class="st">&#39;stop_loss&#39;</span>: <span class="fl">165.00</span>, <span class="st">&#39;profit_probability&#39;</span>: <span class="fl">0.75</span>},</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>    {<span class="st">&#39;asset_name&#39;</span>: <span class="st">&#39;GOOG&#39;</span>, <span class="st">&#39;recommendation&#39;</span>: <span class="st">&#39;SHORT&#39;</span>, <span class="st">&#39;entry_price&#39;</span>: <span class="fl">2700.00</span>, <span class="st">&#39;stop_loss&#39;</span>: <span class="fl">2750.00</span>, <span class="st">&#39;profit_probability&#39;</span>: <span class="fl">0.60</span>},</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>    {<span class="st">&#39;asset_name&#39;</span>: <span class="st">&#39;TSLA&#39;</span>, <span class="st">&#39;recommendation&#39;</span>: <span class="st">&#39;LONG&#39;</span>, <span class="st">&#39;entry_price&#39;</span>: <span class="fl">750.00</span>, <span class="st">&#39;stop_loss&#39;</span>: <span class="fl">740.00</span>, <span class="st">&#39;profit_probability&#39;</span>: <span class="fl">0.85</span>}</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>]</span></code></pre></div></li>
+<li><p><strong>Sorting:</strong> I would then sort the <code>reports</code> list based on the <code>profit_probability</code> in descending order (highest probability first). This can be done using Python’s <code>sorted</code> function with a lambda function as the key:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>sorted_reports <span class="op">=</span> <span class="bu">sorted</span>(reports, key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="st">&#39;profit_probability&#39;</span>], reverse<span class="op">=</span><span class="va">True</span>)</span></code></pre></div></li>
+<li><p><strong>Output:</strong> Finally, I’d generate the summary from the sorted data. The output would be a concise line for each asset, including asset name and probability:</p>
+<pre><code>TSLA: 85%
+AAPL: 75%
+GOOG: 60%</code></pre></li>
+</ol>
+<p><strong>In summary, if you were to provide the data, the output would look like this:</strong></p>
+<pre><code>ASSET_NAME_1: PROBABILITY_1%
+ASSET_NAME_2: PROBABILITY_2%
+ASSET_NAME_3: PROBABILITY_3%
+...and so on, sorted from highest to lowest probability.</code></pre>
+<p><strong>Because I cannot access files, I cannot provide an actual result.</strong> I need the content of the reports, or at least the information described above (asset name and probability) to generate anything meaningful. If you can provide the contents of the files, I can execute the extraction, sorting, and formatting and give you the desired result.</p>
 </body>
 </html>
