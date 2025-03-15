@@ -15,41 +15,55 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to any files or a command line, I’ll need you to provide the content of each file, one at a time.</p>
-<p>For each report you give me, I’ll extract the asset name from the filename, the trading position (LONG or SHORT), and the profit probability. Then, I’ll keep track of all the reports and finally present a sorted list of summaries based on profit probability.</p>
-<p><strong>Here’s how to give me the information:</strong></p>
-<ol type="1">
-<li>Copy the content of a file (e.g., <code>response/AAPL.md</code>).</li>
-<li>Paste the content into the chat.</li>
-<li><strong>Also, tell me the filename (e.g., <code>response/AAPL.md</code>). I need this to get the asset name.</strong></li>
-<li>Repeat for each file.</li>
-</ol>
-<p><strong>Example:</strong></p>
-<p><strong>You:</strong></p>
-<pre><code>Some text in the report.
-Recommendation: LONG
-Entry Price: 150.00
-Stop Loss: 145.00
-Profit Probability: 0.75
-More text in the report.
-Filename: response/AAPL.md</code></pre>
-<p><strong>My Response:</strong></p>
-<pre><code>Received report for AAPL with profit probability 0.75. Awaiting other reports.</code></pre>
-<p>Once you’ve provided all the reports, tell me “DONE”, and I’ll provide the final sorted summary.</p>
-<p><strong>Example - after all reports submitted and you say “DONE”:</strong></p>
-<p><strong>You:</strong></p>
-<pre><code>DONE</code></pre>
-<p><strong>My Response (example - assumes you gave me reports for AAPL, GOOG, and MSFT):</strong></p>
-<pre><code>Here&#39;s the sorted summary of the reports, based on profit probability:
-
-*   **GOOG:**  Profit Probability: 0.85
-*   **AAPL:**  Profit Probability: 0.75
-*   **MSFT:**  Profit Probability: 0.60</code></pre>
-<p><strong>Important Considerations:</strong></p>
+<p>Okay, I understand. Since you haven’t provided any actual report content, I will create a hypothetical example to demonstrate how I would generate the resume based on the structure you described.</p>
+<p><strong>Hypothetical Reports:</strong></p>
+<p>Let’s say I have these reports (I’m creating example data since you didn’t provide real reports):</p>
+<p><strong>==&gt; response/AAPL.md &lt;==</strong></p>
+<pre><code>Recommendation: LONG
+Entry Price: 170.00
+Stop Loss: 165.00
+Profit Probability: 65%</code></pre>
+<p><strong>==&gt; response/GOOG.md &lt;==</strong></p>
+<pre><code>Recommendation: SHORT
+Entry Price: 2700.00
+Stop Loss: 2750.00
+Profit Probability: 80%</code></pre>
+<p><strong>==&gt; response/MSFT.md &lt;==</strong></p>
+<pre><code>Recommendation: LONG
+Entry Price: 330.00
+Stop Loss: 325.00
+Profit Probability: 70%</code></pre>
+<p><strong>==&gt; response/AMZN.md &lt;==</strong></p>
+<pre><code>Recommendation: SHORT
+Entry Price: 3400.00
+Stop Loss: 3450.00
+Profit Probability: 55%</code></pre>
+<p><strong>Generated Resume (Sorted by Profit Probability):</strong></p>
+<p>Here’s the short resume, sorted by profit probability in ascending order:</p>
 <ul>
-<li><strong>Report Format:</strong> I’m assuming the reports have a consistent format with fields like “Recommendation,” “Entry Price,” “Stop Loss,” and “Profit Probability.” If the format varies, please let me know so I can adjust how I extract the information.</li>
-<li><strong>Clarity:</strong> The clearer you can be about the layout of your reports, the better I can extract the information you need.</li>
+<li><strong>AMZN:</strong> Profit Probability - 55%</li>
+<li><strong>AAPL:</strong> Profit Probability - 65%</li>
+<li><strong>MSFT:</strong> Profit Probability - 70%</li>
+<li><strong>GOOG:</strong> Profit Probability - 80%</li>
 </ul>
-<p>Let’s begin! Please provide the first report’s content and filename.</p>
+<p><strong>Explanation and What I Would Do With Real Data:</strong></p>
+<ol type="1">
+<li><strong>Extraction:</strong> For each report file you provide (e.g., <code>response/AAPL.md</code>), I would:
+<ul>
+<li>Extract the asset name from the filename (e.g., “AAPL”).</li>
+<li>Open the file and read its content.</li>
+<li>Parse the content to find the “Profit Probability” value. I would assume a consistent format like “Profit Probability: XX%”.</li>
+</ul></li>
+<li><strong>Data Structure:</strong> I would store the asset name and probability in a suitable data structure (e.g., a list of dictionaries).</li>
+<li><strong>Sorting:</strong> I would sort the data structure by the profit probability value (ascending order as requested).</li>
+<li><strong>Output:</strong> I would then generate the summary string for each asset as “ASSET_NAME: Profit Probability - XX%” and print them, one per line, in the sorted order.</li>
+</ol>
+<p><strong>How to Give Me Data for Real Reports</strong></p>
+<p>To get a real response, you can provide the data in a few ways:</p>
+<ol type="1">
+<li><strong>Provide the content directly in your prompt:</strong> Copy and paste the <em>actual content</em> of the <code>response/ASSET_NAME.md</code> files into your prompt. Make sure to clearly delineate each file’s content (e.g., with separators and the filename).</li>
+<li><strong>If possible, share a link:</strong> If you have the files online (e.g., in a GitHub repository or Google Drive), share a link to the repository or folder. This is the <em>best</em> way because I can access the data directly and avoid transcription errors. However, be mindful of privacy if the data is sensitive.</li>
+</ol>
+<p>Once I have the <em>actual</em> report data, I can give you a much more useful and accurate response.</p>
 </body>
 </html>
