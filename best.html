@@ -15,45 +15,39 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to any files or the ability to run commands (like <code>tail</code>), I’ll need you to provide the content of each <code>response/ASSET_NAME.md</code> file.</p>
-<p><strong>Here’s how I’ll process the information:</strong></p>
-<ol type="1">
-<li><strong>You provide the content of each file.</strong> Copy and paste the text from each <code>response/ASSET_NAME.md</code> file one at a time. Please tell me which asset name each content belongs to.</li>
-<li><strong>I’ll extract the key information:</strong> From the text, I’ll identify the following:
+<p>Okay, I understand. It seems like you intended to provide me with the contents of several markdown files named <code>response/ASSET_NAME.md</code>, but there was an error because those files couldn’t be found. Since I don’t have access to those files, I’ll give you the general format of how I <em>would</em> respond if I <em>did</em> have the data.</p>
+<p><strong>Assumptions:</strong></p>
 <ul>
-<li><code>ASSET_NAME</code> (You’ll provide this).</li>
-<li><code>Position</code> (LONG or SHORT).</li>
-<li><code>Entry Price</code> (The recommended entry price).</li>
-<li><code>Stop Loss</code> (The recommended stop loss price).</li>
-<li><code>Profit Probability</code> (The estimated probability of the trade being profitable).</li>
+<li>Each <code>response/ASSET_NAME.md</code> file contains text including strings like:
+<ul>
+<li>“Recommendation: SHORT” or “Recommendation: LONG”</li>
+<li>“Entry Price: 1.2345”</li>
+<li>“Stop Loss: 1.2300”</li>
+<li>“Profit Probability: 75%”</li>
 </ul></li>
-<li><strong>I’ll create a short summary for each asset:</strong> e.g., “ASSET_NAME: Position - LONG/SHORT, Entry: ENTRY_PRICE, Stop: STOP_LOSS, Probability: PROFIT_PROBABILITY”</li>
-<li><strong>I’ll sort the summaries:</strong> I’ll sort these summaries in descending order based on the <code>Profit Probability</code>.</li>
-<li><strong>I’ll present the sorted summaries to you.</strong></li>
-</ol>
-<p><strong>Example:</strong></p>
-<p><strong>You Provide:</strong></p>
-<pre><code>**response/AAPL.md:**
-Position: LONG
-Entry Price: 170.00
-Stop Loss: 165.00
-Profit Probability: 0.75</code></pre>
-<pre><code>**response/GOOG.md:**
-Position: SHORT
-Entry Price: 2500.00
-Stop Loss: 2550.00
-Profit Probability: 0.60</code></pre>
-<pre><code>**response/MSFT.md:**
-Position: LONG
-Entry Price: 300.00
-Stop Loss: 295.00
-Profit Probability: 0.80</code></pre>
-<p><strong>My Response (Sorted):</strong></p>
+<li>I can reliably extract those values from the text of the file.</li>
+</ul>
+<p><strong>Example Response (if I had the data):</strong></p>
+<p>Okay, here’s a summary of the trading reports, sorted by profit probability:</p>
+<ul>
+<li><strong>Asset: XYZ (LONG), Profit Probability: 60%</strong> <em>(Extracted from response/XYZ.md)</em></li>
+<li><strong>Asset: ABC (SHORT), Profit Probability: 70%</strong> <em>(Extracted from response/ABC.md)</em></li>
+<li><strong>Asset: DEF (LONG), Profit Probability: 85%</strong> <em>(Extracted from response/DEF.md)</em></li>
+</ul>
+<p><strong>How it <em>would</em> work, step-by-step:</strong></p>
 <ol type="1">
-<li>MSFT: Position - LONG, Entry: 300.00, Stop: 295.00, Probability: 0.80</li>
-<li>AAPL: Position - LONG, Entry: 170.00, Stop: 165.00, Probability: 0.75</li>
-<li>GOOG: Position - SHORT, Entry: 2500.00, Stop: 2550.00, Probability: 0.60</li>
+<li><strong>Input:</strong> I would receive the list of filenames you provide (e.g., <code>response/XYZ.md</code>, <code>response/ABC.md</code>, <code>response/DEF.md</code>).</li>
+<li><strong>File Access (if possible):</strong> I would attempt to read the contents of each file. (This is where it failed in your example, as I don’t have access to your local file system).</li>
+<li><strong>Data Extraction:</strong> For each file:
+<ul>
+<li>I would parse the text of the file.</li>
+<li>I would extract the <code>ASSET_NAME</code> from the filename (e.g., <code>XYZ</code> from <code>response/XYZ.md</code>).</li>
+<li>I would extract the <code>Recommendation</code> (LONG or SHORT), <code>Entry Price</code>, <code>Stop Loss</code>, and <code>Profit Probability</code> using string matching or regular expressions.</li>
+</ul></li>
+<li><strong>Data Storage:</strong> I would store the extracted data in a suitable data structure (e.g., a list of dictionaries).</li>
+<li><strong>Sorting:</strong> I would sort the data structure by <code>Profit Probability</code> in ascending order.</li>
+<li><strong>Output:</strong> I would generate a formatted string summarizing each asset and its profit probability, in the sorted order.</li>
 </ol>
-<p><strong>Ready when you are! Just paste the content of each file, one at a time, and clearly label it with the <code>response/ASSET_NAME.md</code> name.</strong></p>
+<p><strong>In summary:</strong> To get a useful response, you need to provide the <em>content</em> of each <code>response/ASSET_NAME.md</code> file directly to me. I can’t access files on your computer. Once you provide the content, I can parse it and provide the summarized, sorted list. Provide the content of each file one at a time, and I’ll accumulate them until you tell me you’re finished. Then I will produce the summary.</p>
 </body>
 </html>
