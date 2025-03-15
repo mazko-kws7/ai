@@ -15,40 +15,42 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. It seems like I’m supposed to process a list of filenames (like <code>response/ASSET_NAME.md</code>) and then, <em>hypothetically</em>, read those files to extract trading recommendations. Since you’re telling me that the <code>response/*</code> directory doesn’t exist, I <strong>cannot</strong> actually read the files.</p>
-<p>Therefore, I will create a <em>simulated</em> resume based on the <em>filenames</em> you provide and <em>assume</em> some reasonable probabilities. This is the best I can do given the information and the error.</p>
-<p><strong>Here’s how I will proceed (assuming you <em>would</em> provide the list of filenames):</strong></p>
-<ol type="1">
-<li><strong>Parse the Asset Name:</strong> Extract <code>ASSET_NAME</code> from the filename <code>response/ASSET_NAME.md</code>.</li>
-<li><strong>Simulate Probability:</strong> Since I can’t read the file, I’ll assign a <em>random</em> probability between 0% and 100% to each asset. In a real scenario, I would be <em>reading the file</em> and extracting the actual probability value from it.</li>
-<li><strong>Create Resume Entry:</strong> Create an entry like this: <code>ASSET_NAME: Profit Probability = XX%</code></li>
-<li><strong>Sort:</strong> Sort the entries based on the <em>simulated</em> probability, from highest to lowest.</li>
-<li><strong>Output:</strong> Display the sorted list.</li>
-</ol>
-<p><strong>Example (if you were to provide the following list of files):</strong></p>
-<pre><code>response/AAPL.md
-response/GOOG.md
-response/MSFT.md
-response/TSLA.md
-response/AMZN.md</code></pre>
-<p><strong>The <em>simulated</em> output would look something like this (probabilities are random):</strong></p>
-<pre><code>MSFT: Profit Probability = 92%
-AAPL: Profit Probability = 78%
-GOOG: Profit Probability = 65%
-AMZN: Profit Probability = 45%
-TSLA: Profit Probability = 23%</code></pre>
-<p><strong>Important Considerations:</strong></p>
+<p>Okay, I understand the task. Even though you got a “No such file or directory” error, let’s assume you <em>did</em> have a directory named <code>response</code> and it <em>did</em> contain files like <code>ASSET_NAME.md</code>. Let’s also assume each of those files contains trading position recommendations in some standardized format.</p>
+<p>Here’s how I would approach this, and how I will respond, given the <em>hypothetical</em> data:</p>
+<p><strong>Assumptions:</strong></p>
 <ul>
-<li><strong>Error:</strong> The <code>tail</code> error indicates a problem with the file paths or the existence of the directory <code>response/</code>. Make sure that directory exists and that the files are actually there. You need to fix this problem before any real data processing can occur.</li>
-<li><strong>File Format:</strong> I’m assuming that the reports are plain text files and that the probability is clearly labeled within the file. If the reports are in a different format (e.g., JSON, CSV), or if the probability is not easily identifiable, the code I would need to write to parse the files would be different.</li>
-<li><strong>Command Line:</strong> You likely intend to pipe the output of a command like <code>ls response/*.md</code> to this process. Make sure <code>ls response/*.md</code> returns the correct list of files.</li>
+<li><strong>Data Format:</strong> Each <code>ASSET_NAME.md</code> file contains text including (but not necessarily <em>only</em>):
+<ul>
+<li>The words “SHORT” or “LONG” (case-insensitive).</li>
+<li>“Entry Price:”, followed by a numerical value.</li>
+<li>“Stop Loss:”, followed by a numerical value.</li>
+<li>“Profit Probability:”, followed by a percentage value (e.g., “85%”).</li>
+</ul></li>
+<li><strong>Sorting:</strong> I will extract the profit probability percentage and sort the reports in <em>descending</em> order (highest probability first).</li>
 </ul>
-<p><strong>To get a <em>real</em> resume, you need to:</strong></p>
-<ol type="1">
-<li><strong>Fix the file path issue:</strong> Make sure the <code>response/</code> directory exists and contains the <code>*.md</code> files.</li>
-<li><strong>Provide the list of filenames:</strong> Give me the actual list of filenames, one per line, as you originally intended.</li>
-<li><strong>Describe the file format more precisely:</strong> Tell me exactly how the probability, entry price, and stop loss are formatted within each <code>*.md</code> file. For example: “The file contains a line that says <code>Profit Probability: 75%</code>.” The more detail you give me, the better I can extract the data.</li>
-</ol>
-<p><strong>Until you provide the actual file list and format details, I can only give you a hypothetical example.</strong></p>
+<p><strong>Example Hypothetical Reports:</strong></p>
+<p>Let’s imagine the following reports exist in a directory called <code>response</code>:</p>
+<ul>
+<li><code>response/AAPL.md</code> (contains: “…LONG…Entry Price: 170…Stop Loss: 165…Profit Probability: 70%…”)</li>
+<li><code>response/GOOG.md</code> (contains: “…SHORT…Entry Price: 2700…Stop Loss: 2750…Profit Probability: 85%…”)</li>
+<li><code>response/MSFT.md</code> (contains: “…LONG…Entry Price: 330…Stop Loss: 325…Profit Probability: 60%…”)</li>
+<li><code>response/TSLA.md</code> (contains: “…SHORT…Entry Price: 1000…Stop Loss: 1050…Profit Probability: 92%…”)</li>
+<li><code>response/AMZN.md</code> (contains: “…LONG…Entry Price: 3500…Stop Loss: 3450…Profit Probability: 70%…”)</li>
+</ul>
+<p><strong>My Response (based on the above hypothetical data):</strong></p>
+<p>Here’s the sorted resume of the reports, based on <em>descending</em> profit probability:</p>
+<ul>
+<li><strong>TSLA:</strong> Profit Probability: 92%</li>
+<li><strong>GOOG:</strong> Profit Probability: 85%</li>
+<li><strong>AAPL:</strong> Profit Probability: 70%</li>
+<li><strong>AMZN:</strong> Profit Probability: 70%</li>
+<li><strong>MSFT:</strong> Profit Probability: 60%</li>
+</ul>
+<p><strong>Important Notes:</strong></p>
+<ul>
+<li><strong>Error Handling:</strong> Because the initial <code>tail</code> command failed (due to the missing <code>response</code> directory), a robust solution would need error handling to gracefully manage missing files.</li>
+<li><strong>Flexibility:</strong> This solution <em>heavily</em> depends on a consistent format of the report files. If the format varies significantly, more sophisticated parsing techniques (like regular expressions) would be needed.</li>
+<li><strong>Real-World Trading:</strong> I am providing information, not financial advice. Do not make any trading decisions based solely on this information. Consult with a qualified financial advisor.</li>
+</ul>
 </body>
 </html>
