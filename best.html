@@ -15,55 +15,40 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since you haven’t provided any actual report content, I will create a hypothetical example to demonstrate how I would generate the resume based on the structure you described.</p>
-<p><strong>Hypothetical Reports:</strong></p>
-<p>Let’s say I have these reports (I’m creating example data since you didn’t provide real reports):</p>
-<p><strong>==&gt; response/AAPL.md &lt;==</strong></p>
-<pre><code>Recommendation: LONG
-Entry Price: 170.00
-Stop Loss: 165.00
-Profit Probability: 65%</code></pre>
-<p><strong>==&gt; response/GOOG.md &lt;==</strong></p>
-<pre><code>Recommendation: SHORT
-Entry Price: 2700.00
-Stop Loss: 2750.00
-Profit Probability: 80%</code></pre>
-<p><strong>==&gt; response/MSFT.md &lt;==</strong></p>
-<pre><code>Recommendation: LONG
-Entry Price: 330.00
-Stop Loss: 325.00
-Profit Probability: 70%</code></pre>
-<p><strong>==&gt; response/AMZN.md &lt;==</strong></p>
-<pre><code>Recommendation: SHORT
-Entry Price: 3400.00
-Stop Loss: 3450.00
-Profit Probability: 55%</code></pre>
-<p><strong>Generated Resume (Sorted by Profit Probability):</strong></p>
-<p>Here’s the short resume, sorted by profit probability in ascending order:</p>
+<p>Okay, I understand. It seems like I’m supposed to process a list of filenames (like <code>response/ASSET_NAME.md</code>) and then, <em>hypothetically</em>, read those files to extract trading recommendations. Since you’re telling me that the <code>response/*</code> directory doesn’t exist, I <strong>cannot</strong> actually read the files.</p>
+<p>Therefore, I will create a <em>simulated</em> resume based on the <em>filenames</em> you provide and <em>assume</em> some reasonable probabilities. This is the best I can do given the information and the error.</p>
+<p><strong>Here’s how I will proceed (assuming you <em>would</em> provide the list of filenames):</strong></p>
+<ol type="1">
+<li><strong>Parse the Asset Name:</strong> Extract <code>ASSET_NAME</code> from the filename <code>response/ASSET_NAME.md</code>.</li>
+<li><strong>Simulate Probability:</strong> Since I can’t read the file, I’ll assign a <em>random</em> probability between 0% and 100% to each asset. In a real scenario, I would be <em>reading the file</em> and extracting the actual probability value from it.</li>
+<li><strong>Create Resume Entry:</strong> Create an entry like this: <code>ASSET_NAME: Profit Probability = XX%</code></li>
+<li><strong>Sort:</strong> Sort the entries based on the <em>simulated</em> probability, from highest to lowest.</li>
+<li><strong>Output:</strong> Display the sorted list.</li>
+</ol>
+<p><strong>Example (if you were to provide the following list of files):</strong></p>
+<pre><code>response/AAPL.md
+response/GOOG.md
+response/MSFT.md
+response/TSLA.md
+response/AMZN.md</code></pre>
+<p><strong>The <em>simulated</em> output would look something like this (probabilities are random):</strong></p>
+<pre><code>MSFT: Profit Probability = 92%
+AAPL: Profit Probability = 78%
+GOOG: Profit Probability = 65%
+AMZN: Profit Probability = 45%
+TSLA: Profit Probability = 23%</code></pre>
+<p><strong>Important Considerations:</strong></p>
 <ul>
-<li><strong>AMZN:</strong> Profit Probability - 55%</li>
-<li><strong>AAPL:</strong> Profit Probability - 65%</li>
-<li><strong>MSFT:</strong> Profit Probability - 70%</li>
-<li><strong>GOOG:</strong> Profit Probability - 80%</li>
+<li><strong>Error:</strong> The <code>tail</code> error indicates a problem with the file paths or the existence of the directory <code>response/</code>. Make sure that directory exists and that the files are actually there. You need to fix this problem before any real data processing can occur.</li>
+<li><strong>File Format:</strong> I’m assuming that the reports are plain text files and that the probability is clearly labeled within the file. If the reports are in a different format (e.g., JSON, CSV), or if the probability is not easily identifiable, the code I would need to write to parse the files would be different.</li>
+<li><strong>Command Line:</strong> You likely intend to pipe the output of a command like <code>ls response/*.md</code> to this process. Make sure <code>ls response/*.md</code> returns the correct list of files.</li>
 </ul>
-<p><strong>Explanation and What I Would Do With Real Data:</strong></p>
+<p><strong>To get a <em>real</em> resume, you need to:</strong></p>
 <ol type="1">
-<li><strong>Extraction:</strong> For each report file you provide (e.g., <code>response/AAPL.md</code>), I would:
-<ul>
-<li>Extract the asset name from the filename (e.g., “AAPL”).</li>
-<li>Open the file and read its content.</li>
-<li>Parse the content to find the “Profit Probability” value. I would assume a consistent format like “Profit Probability: XX%”.</li>
-</ul></li>
-<li><strong>Data Structure:</strong> I would store the asset name and probability in a suitable data structure (e.g., a list of dictionaries).</li>
-<li><strong>Sorting:</strong> I would sort the data structure by the profit probability value (ascending order as requested).</li>
-<li><strong>Output:</strong> I would then generate the summary string for each asset as “ASSET_NAME: Profit Probability - XX%” and print them, one per line, in the sorted order.</li>
+<li><strong>Fix the file path issue:</strong> Make sure the <code>response/</code> directory exists and contains the <code>*.md</code> files.</li>
+<li><strong>Provide the list of filenames:</strong> Give me the actual list of filenames, one per line, as you originally intended.</li>
+<li><strong>Describe the file format more precisely:</strong> Tell me exactly how the probability, entry price, and stop loss are formatted within each <code>*.md</code> file. For example: “The file contains a line that says <code>Profit Probability: 75%</code>.” The more detail you give me, the better I can extract the data.</li>
 </ol>
-<p><strong>How to Give Me Data for Real Reports</strong></p>
-<p>To get a real response, you can provide the data in a few ways:</p>
-<ol type="1">
-<li><strong>Provide the content directly in your prompt:</strong> Copy and paste the <em>actual content</em> of the <code>response/ASSET_NAME.md</code> files into your prompt. Make sure to clearly delineate each file’s content (e.g., with separators and the filename).</li>
-<li><strong>If possible, share a link:</strong> If you have the files online (e.g., in a GitHub repository or Google Drive), share a link to the repository or folder. This is the <em>best</em> way because I can access the data directly and avoid transcription errors. However, be mindful of privacy if the data is sensitive.</li>
-</ol>
-<p>Once I have the <em>actual</em> report data, I can give you a much more useful and accurate response.</p>
+<p><strong>Until you provide the actual file list and format details, I can only give you a hypothetical example.</strong></p>
 </body>
 </html>
