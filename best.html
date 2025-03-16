@@ -15,59 +15,33 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand the task. Since I don’t have access to local files or directories, I’ll assume you’re providing me with the <em>content</em> of each <code>response/ASSET_NAME.md</code> file, one at a time, and I need to keep track of them to provide the final sorted summary.</p>
-<p>Here’s the process I’ll use, and how I’ll respond to you:</p>
-<ol type="1">
-<li><strong>You provide the content of a file.</strong> You’ll paste the text content of <code>response/ASSET_NAME.md</code> into our conversation.</li>
-<li><strong>I extract the relevant information.</strong> I’ll look for:
+<p>Okay, I understand. Since I don’t have access to the files on your system, I will act as if I <em>do</em> and provide you with the output format I <em>would</em> give you, based on the information you’ve provided. I will assume the files exist and contain the necessary information.</p>
+<p>Here’s the output I will generate, assuming I’ve parsed the <code>response/ASSET_NAME.md</code> files and extracted the trading information:</p>
+<pre><code>**Trading Recommendations Sorted by Take Profit Probability**
+
+(Assuming I found data in the reports similar to the examples below.  The asset names and probabilities are placeholders.)
+
+*   **Asset: AssetD (Probability: 55%)**:  Based on the report, this asset has a 55% probability of reaching its take profit target.
+
+*   **Asset: AssetA (Probability: 65%)**:  Based on the report, this asset has a 65% probability of reaching its take profit target.
+
+*   **Asset: AssetC (Probability: 70%)**:  Based on the report, this asset has a 70% probability of reaching its take profit target.
+
+*   **Asset: AssetB (Probability: 80%)**:  Based on the report, this asset has an 80% probability of reaching its take profit target.
+</code></pre>
+<p><strong>Explanation of the Output:</strong></p>
 <ul>
-<li><code>ASSET_NAME</code> (from the filename itself, which you’ll effectively provide by context).</li>
-<li>Trading Position (<code>SHORT</code> or <code>LONG</code>).</li>
-<li>Profit Probability (a percentage value, like “75%”).</li>
-</ul></li>
-<li><strong>I store the extracted data.</strong> I’ll keep this information in memory.</li>
-<li><strong>You repeat.</strong> You’ll provide the content of the next <code>response/ASSET_NAME.md</code> file.</li>
-<li><strong>Final Summary:</strong> After you’ve given me all the files, you’ll tell me you’re done. <em>Then</em>, I will:
-<ul>
-<li>Sort the collected reports by Profit Probability (descending, highest probability first).</li>
-<li>Generate a short summary for each report, including Asset Name and Probability.</li>
-<li>Present the sorted summary to you.</li>
-</ul></li>
-</ol>
-<p><strong>Example Interaction:</strong></p>
-<p><strong>You:</strong></p>
-<pre><code>==&gt; response/AAPL.md &lt;==
-Trading Recommendation: LONG
-Entry Price: 170.00
-Stop Loss: 165.00
-Profit Probability: 65%</code></pre>
-<p><strong>I:</strong></p>
-<p>“Received report for AAPL with a LONG recommendation and 65% profit probability. Awaiting further reports.”</p>
-<p><strong>You:</strong></p>
-<pre><code>==&gt; response/GOOG.md &lt;==
-Trading Recommendation: SHORT
-Entry Price: 2500.00
-Stop Loss: 2550.00
-Profit Probability: 80%</code></pre>
-<p><strong>I:</strong></p>
-<p>“Received report for GOOG with a SHORT recommendation and 80% profit probability. Awaiting further reports.”</p>
-<p><strong>You:</strong></p>
-<pre><code>==&gt; response/MSFT.md &lt;==
-Trading Recommendation: LONG
-Entry Price: 300.00
-Stop Loss: 295.00
-Profit Probability: 70%</code></pre>
-<p><strong>I:</strong></p>
-<p>“Received report for MSFT with a LONG recommendation and 70% profit probability. Awaiting further reports.”</p>
-<p><strong>You:</strong></p>
-<p>“DONE”</p>
-<p><strong>I:</strong></p>
-<p>&quot;Here’s the sorted summary of the reports, based on profit probability (highest to lowest):</p>
-<ul>
-<li><strong>GOOG:</strong> 80% Profit Probability</li>
-<li><strong>MSFT:</strong> 70% Profit Probability</li>
-<li><strong>AAPL:</strong> 65% Profit Probability&quot;</li>
+<li><strong>Sorted by Probability:</strong> The list is sorted in <em>ascending</em> order of the “Probability” value (lowest to highest).</li>
+<li><strong>Asset Name:</strong> <code>Asset: ASSET_NAME</code> shows the name extracted from the filename.</li>
+<li><strong>Probability:</strong> <code>(Probability: XX%)</code> shows the take profit probability extracted from the report content.</li>
+<li><strong>Summary:</strong> A brief description indicating that the probability is related to the take profit target.</li>
 </ul>
-<p><strong>Important:</strong> I need the <em>content</em> of each file. Just telling me the filename isn’t enough. Also, clearly signal when you have provided all the reports (e.g., with the word “DONE”). Let’s begin! Please paste the content of your first report file.</p>
+<p><strong>Important Considerations (since I cannot access your files):</strong></p>
+<ol type="1">
+<li><p><strong>File Format and Content:</strong> My ability to extract the correct information <em>entirely</em> depends on the consistent format and content of your <code>response/ASSET_NAME.md</code> files. If the files have varying formats, or if the “probability” is presented in different ways, I’ll need more specific instructions on how to parse them.</p></li>
+<li><p><strong>Error Handling:</strong> If any file is missing or has an unexpected format, I’ll ideally need to be informed. The <code>tail</code> error suggests there is no such directory or it is unaccessible.</p></li>
+<li><p><strong>Missing Information:</strong> If a file is missing the “probability” value, it should probably be excluded from the summary (or perhaps listed at the very end with a note indicating missing data).</p></li>
+</ol>
+<p>To get a <em>real</em> summary, you’ll need to write a script (e.g., in Python) that reads these files, extracts the required information, and sorts the results accordingly. If you provide sample contents of your <code>.md</code> files, I can create the script for you, but please be aware that I cannot execute the code without access to your local machine.</p>
 </body>
 </html>
