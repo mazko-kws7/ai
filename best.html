@@ -15,33 +15,36 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to the files on your system, I will act as if I <em>do</em> and provide you with the output format I <em>would</em> give you, based on the information you’ve provided. I will assume the files exist and contain the necessary information.</p>
-<p>Here’s the output I will generate, assuming I’ve parsed the <code>response/ASSET_NAME.md</code> files and extracted the trading information:</p>
-<pre><code>**Trading Recommendations Sorted by Take Profit Probability**
-
-(Assuming I found data in the reports similar to the examples below.  The asset names and probabilities are placeholders.)
-
-*   **Asset: AssetD (Probability: 55%)**:  Based on the report, this asset has a 55% probability of reaching its take profit target.
-
-*   **Asset: AssetA (Probability: 65%)**:  Based on the report, this asset has a 65% probability of reaching its take profit target.
-
-*   **Asset: AssetC (Probability: 70%)**:  Based on the report, this asset has a 70% probability of reaching its take profit target.
-
-*   **Asset: AssetB (Probability: 80%)**:  Based on the report, this asset has an 80% probability of reaching its take profit target.
-</code></pre>
-<p><strong>Explanation of the Output:</strong></p>
-<ul>
-<li><strong>Sorted by Probability:</strong> The list is sorted in <em>ascending</em> order of the “Probability” value (lowest to highest).</li>
-<li><strong>Asset Name:</strong> <code>Asset: ASSET_NAME</code> shows the name extracted from the filename.</li>
-<li><strong>Probability:</strong> <code>(Probability: XX%)</code> shows the take profit probability extracted from the report content.</li>
-<li><strong>Summary:</strong> A brief description indicating that the probability is related to the take profit target.</li>
-</ul>
-<p><strong>Important Considerations (since I cannot access your files):</strong></p>
+<p>Okay, I understand. Since you can’t provide the files directly and I’m getting an error about missing files, I’ll simulate the report parsing and sorting based on a hypothetical scenario.</p>
+<p><strong>Here’s how I’ll approach this, given that I don’t have real report content:</strong></p>
 <ol type="1">
-<li><p><strong>File Format and Content:</strong> My ability to extract the correct information <em>entirely</em> depends on the consistent format and content of your <code>response/ASSET_NAME.md</code> files. If the files have varying formats, or if the “probability” is presented in different ways, I’ll need more specific instructions on how to parse them.</p></li>
-<li><p><strong>Error Handling:</strong> If any file is missing or has an unexpected format, I’ll ideally need to be informed. The <code>tail</code> error suggests there is no such directory or it is unaccessible.</p></li>
-<li><p><strong>Missing Information:</strong> If a file is missing the “probability” value, it should probably be excluded from the summary (or perhaps listed at the very end with a note indicating missing data).</p></li>
+<li><p><strong>Assume Report Structure:</strong> I’ll assume each <code>response/ASSET_NAME.md</code> file contains text that allows me to extract:</p>
+<ul>
+<li><code>ASSET_NAME</code>: This is given in the filename.</li>
+<li><code>Recommendation</code>: LONG or SHORT</li>
+<li><code>Entry Price</code>: A numerical value.</li>
+<li><code>Stop Loss</code>: A numerical value.</li>
+<li><code>Profit Probability</code>: A percentage value (e.g., 65%). This is the <em>most important</em> value for sorting.</li>
+</ul></li>
+<li><p><strong>Simulate Data:</strong> I’ll <em>pretend</em> I’ve read the files and extracted the values. I’ll create some example data.</p></li>
+<li><p><strong>Generate Summaries:</strong> I’ll create a short summary for each asset with its name and profit probability.</p></li>
+<li><p><strong>Sort and Output:</strong> I’ll sort the summaries by <code>Profit Probability</code> (highest to lowest) and present them in that order.</p></li>
 </ol>
-<p>To get a <em>real</em> summary, you’ll need to write a script (e.g., in Python) that reads these files, extracts the required information, and sorts the results accordingly. If you provide sample contents of your <code>.md</code> files, I can create the script for you, but please be aware that I cannot execute the code without access to your local machine.</p>
+<p><strong>Here’s the simulated output based on hypothetical data:</strong></p>
+<pre><code>**Trading Recommendation Summary (Sorted by Profit Probability):**
+
+*   **Asset:** GOLD, **Profit Probability:** 85%
+*   **Asset:** BTC, **Profit Probability:** 78%
+*   **Asset:** ETH, **Profit Probability:** 62%
+*   **Asset:** TSLA, **Profit Probability:** 55%
+*   **Asset:** GME, **Profit Probability:** 40%</code></pre>
+<p><strong>Explanation of the Simulated Output:</strong></p>
+<ul>
+<li>Each line represents a single asset report.</li>
+<li>The format is: <code>Asset: [ASSET_NAME], Profit Probability: [PROBABILITY]%</code></li>
+<li>The list is sorted from the highest <code>Profit Probability</code> (85% for GOLD) to the lowest (40% for GME).</li>
+</ul>
+<p><strong>Important: To make this work <em>for real</em>, you need to provide the actual content of the <code>response/ASSET_NAME.md</code> files or at least a representative sample of their format. Then I can write code to parse them correctly.</strong></p>
+<p>For example, if you can show me what the inside of <code>response/BTC.md</code> looks like I could use proper parsing.</p>
 </body>
 </html>
