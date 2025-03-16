@@ -15,37 +15,40 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand.</p>
-<p>Since I don’t have access to your files and am receiving the error message <code>&quot;tail: cannot open &#39;response/*&#39; for reading: No such file or directory&quot;</code>, I cannot directly process the reports.</p>
-<p><strong>However, I can provide you with the format I would use to give you the summary once you PROVIDE ME WITH THE CONTENT OF EACH FILE.</strong></p>
-<p><strong>Here’s how I would proceed, assuming you provide the content of each <code>response/ASSET_NAME.md</code> file:</strong></p>
-<ol type="1">
-<li><p><strong>Input:</strong> You would give me the content of each file one by one, clearly indicating the <code>ASSET_NAME</code> for each. For example:</p>
-<pre><code>ASSET_NAME: AAPL
-Report content:
-## Recommendation: LONG
-Entry Price: $170
-Stop Loss: $165
-Profit Probability: 75%
-... (rest of the report)</code></pre>
-<pre><code>ASSET_NAME: TSLA
-Report content:
-## Recommendation: SHORT
-Entry Price: $1000
-Stop Loss: $1020
-Profit Probability: 60%
-... (rest of the report)</code></pre></li>
-<li><p><strong>Processing:</strong> For each report, I would:</p>
+<p>Okay, I understand. Since you’re experiencing an error indicating that the files don’t exist ( <code>tail: cannot open &#39;response/*&#39; for reading: No such file or directory</code>), I can’t actually read the content of those files.</p>
+<p>However, I <em>can</em> give you the format of the output I <em>would</em> provide if I had the file content. I’ll assume the reports contain the information you specified.</p>
+<p><strong>Assumptions:</strong></p>
 <ul>
-<li>Extract the <code>ASSET_NAME</code>.</li>
-<li>Extract the <code>Profit Probability</code>.</li>
+<li>Each report file (e.g., <code>response/AAPL.md</code>) contains text that can be parsed to extract:
+<ul>
+<li>Asset Name (from the filename)</li>
+<li>Trading Position (LONG or SHORT)</li>
+<li>Entry Price</li>
+<li>Stop Loss</li>
+<li>Profit Probability (as a percentage)</li>
 </ul></li>
-<li><p><strong>Output:</strong> After you provide all the reports, I would generate a sorted list like this:</p>
-<pre><code>Summary of Trading Recommendations (Sorted by Profit Probability):
-
-*   TSLA: Probability = 60%
-*   AAPL: Probability = 75%</code></pre></li>
+</ul>
+<p><strong>Desired Output Format:</strong></p>
+<p>The output will be a list, sorted by profit probability (highest to lowest), with each line summarizing a report. The format for each line will be:</p>
+<p><code>ASSET_NAME: Probability: XX%</code></p>
+<p><strong>Example Output (Hypothetical):</strong></p>
+<p>Let’s say I hypothetically read the following data from your files:</p>
+<ul>
+<li><code>response/GOOGL.md</code>: Profit Probability 95%</li>
+<li><code>response/MSFT.md</code>: Profit Probability 80%</li>
+<li><code>response/AAPL.md</code>: Profit Probability 90%</li>
+<li><code>response/TSLA.md</code>: Profit Probability 70%</li>
+</ul>
+<p>Then the output would be:</p>
+<pre><code>GOOGL: Probability: 95%
+AAPL: Probability: 90%
+MSFT: Probability: 80%
+TSLA: Probability: 70%</code></pre>
+<p><strong>Important Note:</strong> To make this <em>actually</em> work, you’ll need to:</p>
+<ol type="1">
+<li><strong>Ensure the <code>response/</code> directory and report files exist</strong> and contain the trading data in a parsable format.</li>
+<li><strong>Provide me with the <em>content</em> of those files.</strong> You can copy and paste the contents into our conversation. This is necessary, as I can’t access your local file system.</li>
 </ol>
-<p><strong>Therefore, please provide me with the content of each of your <code>response/ASSET_NAME.md</code> files, one at a time, clearly indicating the <code>ASSET_NAME</code> for each.</strong> I will then be able to give you the summary you requested.</p>
+<p>Once you provide the file contents, I can write a Python script (or use command-line tools) to extract the information, sort it, and present it in the desired format. Just let me know!</p>
 </body>
 </html>
