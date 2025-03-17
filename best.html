@@ -15,60 +15,50 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. You’ll give me a list of reports, one per line, in the format <code>==&gt; response/ASSET_NAME.md &lt;==</code>. Each report’s content (which you’ll provide separately for each ASSET_NAME) will include:</p>
-<ul>
-<li>A trading position recommendation (LONG or SHORT)</li>
-<li>An entry price</li>
-<li>A stop-loss price</li>
-<li>A profit probability (as a percentage or decimal)</li>
-</ul>
-<p>My job is to:</p>
+<p>Okay, I understand. Since I can’t access any files on your system, I’ll simulate the process based on the information you’ve provided.</p>
+<p><strong>Here’s how I will proceed, assuming I <em>could</em> read the files:</strong></p>
 <ol type="1">
-<li>Parse the asset name (<code>ASSET_NAME</code>) from each input line.</li>
-<li>Read the content of the report for that asset (you will provide this content after each <code>==&gt; response/ASSET_NAME.md &lt;==</code> input).</li>
-<li>Extract the profit probability from the report content.</li>
-<li>Create a summary for each report containing:
-<ul>
-<li>The asset name (<code>ASSET_NAME</code>)</li>
-<li>The profit probability.</li>
-</ul></li>
-<li>Sort the summaries in descending order of profit probability (highest probability first).</li>
-<li>Present the sorted summaries.</li>
+<li><p><strong>Assume Report Structure:</strong> I’ll assume each file <code>response/ASSET_NAME.md</code> contains text with lines that clearly indicate “Position,” “Entry Price,” “Stop Loss,” and “Profit Probability.” For example:</p>
+<pre><code>Position: LONG
+Entry Price: 150.25
+Stop Loss: 148.00
+Profit Probability: 75%</code></pre></li>
+<li><p><strong>Simulated Extraction:</strong> I will <em>pretend</em> to read the files and extract the <code>ASSET_NAME</code> from the filename and the “Profit Probability” value from the contents.</p></li>
+<li><p><strong>Summary Generation:</strong> I’ll create a summary for each report: “ASSET_NAME: Profit Probability = XX%”.</p></li>
+<li><p><strong>Sorting:</strong> I’ll sort the summaries by “Profit Probability” in descending order (highest probability first).</p></li>
+<li><p><strong>Output:</strong> I’ll present the sorted list of summaries.</p></li>
 </ol>
-<p><strong>Example Interaction:</strong></p>
-<p><strong>You:</strong></p>
-<pre><code>==&gt; response/AAPL.md &lt;==</code></pre>
-<p><strong>You:</strong> (Now you provide the <em>content</em> of <code>response/AAPL.md</code>)</p>
-<pre><code>Recommendation: LONG
-Entry Price: 170.00
-Stop Loss: 165.00
-Profit Probability: 75%</code></pre>
-<p><strong>You:</strong></p>
-<pre><code>==&gt; response/GOOG.md &lt;==</code></pre>
-<p><strong>You:</strong> (Content of <code>response/GOOG.md</code>)</p>
-<pre><code>Recommendation: SHORT
-Entry Price: 2700.00
-Stop Loss: 2750.00
-Profit Probability: 60%</code></pre>
-<p><strong>You:</strong></p>
-<pre><code>==&gt; response/MSFT.md &lt;==</code></pre>
-<p><strong>You:</strong> (Content of <code>response/MSFT.md</code>)</p>
-<pre><code>Recommendation: LONG
-Entry Price: 300.00
-Stop Loss: 295.00
-Profit Probability: 80%</code></pre>
-<p><strong>Me (My Response):</strong></p>
-<pre><code>Sorted by Profit Probability:
-
-*   MSFT: 80%
-*   AAPL: 75%
-*   GOOG: 60%</code></pre>
-<p><strong>Important Notes:</strong></p>
+<p><strong>Example (Simulated) Output:</strong></p>
+<p>Let’s say you have the following reports (filenames and hypothetical content):</p>
 <ul>
-<li>I’ll assume the profit probability is always clearly labeled (e.g., “Profit Probability:”, “Probability:”, etc.) and expressed as a percentage (e.g., “75%”) or a decimal (e.g., “0.75”). I will extract the numerical value.</li>
-<li>I will handle potential variations in the formatting of the report content as best as possible but clear and consistent formatting will help me to provide the best results.</li>
-<li>I will wait for you to provide the report content <em>after</em> you provide the <code>==&gt; response/ASSET_NAME.md &lt;==</code> line. Don’t give me all the reports at once.</li>
+<li><code>response/AAPL.md</code> (Content: Profit Probability: 85%)</li>
+<li><code>response/GOOG.md</code> (Content: Profit Probability: 60%)</li>
+<li><code>response/MSFT.md</code> (Content: Profit Probability: 92%)</li>
+<li><code>response/TSLA.md</code> (Content: Profit Probability: 70%)</li>
 </ul>
-<p>Okay, I’m ready! Give me your first report identifier line.</p>
+<p>Here’s the <strong>simulated output I would produce</strong>:</p>
+<pre><code>MSFT: Profit Probability = 92%
+AAPL: Profit Probability = 85%
+TSLA: Profit Probability = 70%
+GOOG: Profit Probability = 60%</code></pre>
+<p><strong>Important Considerations (Since I can’t access your files):</strong></p>
+<ul>
+<li><strong>You need to provide the actual content of the files if you want a real answer.</strong> You can copy and paste the contents of each <code>response/ASSET_NAME.md</code> file here. Make sure the “Profit Probability” is clearly indicated.</li>
+<li><strong>Format Consistency:</strong> The effectiveness of this process depends on a consistent format in all your report files. If the “Profit Probability” is labeled differently in some files, the extraction will fail for those files.</li>
+</ul>
+<p><strong>How to Use This Response:</strong></p>
+<ol type="1">
+<li><strong>If you <em>can</em> run commands on your system:</strong> You’ll need to write a script (e.g., in Python, Bash, or similar) to:
+<ul>
+<li>Read each file in the <code>response/</code> directory.</li>
+<li>Extract the asset name from the filename.</li>
+<li>Extract the profit probability from the file content using string manipulation or regular expressions.</li>
+<li>Store the asset name and probability in a list of dictionaries or tuples.</li>
+<li>Sort the list by probability.</li>
+<li>Print the sorted summaries.</li>
+</ul></li>
+<li><strong>If you <em>cannot</em> run commands and must do it manually:</strong> Open each file, manually note the asset name and probability, create a list, and then sort it manually. This is obviously much more tedious.</li>
+</ol>
+<p>Let me know if you can provide the content of the files, and I’ll give you a more specific and helpful simulated output!</p>
 </body>
 </html>
