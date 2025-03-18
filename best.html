@@ -15,40 +15,56 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to any files, I will simulate reading the reports based on your description. I will assume each report file contains lines like:</p>
-<pre><code>Trading Recommendation: LONG
-Entry Price: 1.25
-Stop Loss: 1.24
-Profit Probability: 75%</code></pre>
-<p>Here’s how I will respond:</p>
-<p><strong>I am unable to access the actual file contents, so I will generate a hypothetical response based on the instructions. If you <em>can</em> provide example content for a few <code>response/ASSET_NAME.md</code> files, I can give you a much more accurate and helpful answer.</strong></p>
-<p><strong>Hypothetical Output (based on assumed file contents):</strong></p>
-<p>Let’s imagine the following reports <em>would have</em> been found:</p>
+<p>Okay, I understand. Since I don’t have access to local files, I’ll assume the input will come to me line by line and contain the asset name and the report content.</p>
+<p>Here’s how I’ll process the reports and provide the output you requested:</p>
+<ol type="1">
+<li><p><strong>Input Processing:</strong> I will expect input in the format <code>==&gt; response/ASSET_NAME.md &lt;==</code> followed by the content of the report. I’ll extract the <code>ASSET_NAME</code> from the first line.</p></li>
+<li><p><strong>Report Analysis:</strong> From the report content, I’ll look for the following information:</p>
 <ul>
-<li><code>response/AAPL.md</code> contains <code>Profit Probability: 60%</code></li>
-<li><code>response/GOOG.md</code> contains <code>Profit Probability: 85%</code></li>
-<li><code>response/MSFT.md</code> contains <code>Profit Probability: 70%</code></li>
-<li><code>response/TSLA.md</code> contains <code>Profit Probability: 90%</code></li>
-</ul>
-<p>Then, the output would be:</p>
-<pre><code>**Trading Recommendation Summary (Sorted by Profit Probability):**
+<li><strong>Position:</strong> SHORT or LONG.</li>
+<li><strong>Entry Price:</strong> (A numerical value).</li>
+<li><strong>Stop Loss:</strong> (A numerical value).</li>
+<li><strong>Profit Probability:</strong> (A percentage or a probability value between 0 and 1). I’ll look for keywords like “Probability”, “Success Rate”, “Chance of Profit”, “Take Profit Probability”, etc.</li>
+</ul></li>
+<li><p><strong>Resume Generation:</strong> I will create a short resume of the report in the following format: <code>ASSET_NAME: [LONG/SHORT], Probability: [PROBABILITY]</code></p></li>
+<li><p><strong>Sorting and Output:</strong> I will store all the resumes in a list. After processing all the inputs, I will sort the list by the <code>PROBABILITY</code> value in descending order (highest probability first). Finally, I will print each resume from the sorted list to the console, one per line.</p></li>
+</ol>
+<p><strong>Example Interaction</strong></p>
+<p><strong>You:</strong></p>
+<pre><code>==&gt; response/AAPL.md &lt;==
+Recommendation: LONG
+Entry Price: 170.00
+Stop Loss: 165.00
+Profit Probability: 75%
 
-*   **Asset: AAPL, Profit Probability: 60%**
-*   **Asset: MSFT, Profit Probability: 70%**
-*   **Asset: GOOG, Profit Probability: 85%**
-*   **Asset: TSLA, Profit Probability: 90%**</code></pre>
-<p><strong>Explanation:</strong></p>
-<ol type="1">
-<li><p><strong>Assumed File Structure:</strong> I’m assuming each <code>response/ASSET_NAME.md</code> file contains lines similar to the example I provided, and that the “Profit Probability” line is reliably present in each report.</p></li>
-<li><p><strong>Extraction:</strong> I would extract the <code>ASSET_NAME</code> from the filename (e.g., <code>AAPL</code> from <code>response/AAPL.md</code>) and the profit probability from the file content.</p></li>
-<li><p><strong>Sorting:</strong> I would sort the results based on the profit probability in ascending order (lowest probability first).</p></li>
-<li><p><strong>Output Format:</strong> I would present the results in a clear, summarized format as shown above.</p></li>
-</ol>
-<p><strong>How to use this with your actual data:</strong></p>
-<ol type="1">
-<li><p><strong>Run your scripts:</strong> Execute the scripts that are <em>supposed</em> to generate the <code>response/ASSET_NAME.md</code> files. Make sure these files actually exist in the <code>response/</code> directory (or wherever they are being written to).</p></li>
-<li><p><strong>Provide File Contents (if possible):</strong> If you <em>can</em> copy and paste the <em>actual text content</em> of a few of these files (e.g., the content of <code>response/AAPL.md</code>, <code>response/GOOG.md</code>, etc.), I can write a Python script (or other suitable code) to parse them and give you a <em>real</em>, accurate response. I would need a representative sample of the different kinds of reports you might have.</p></li>
-</ol>
-<p>Without access to the actual files, this is the best I can do to simulate the requested behavior. Let me know if you can provide the file contents, and I’ll be happy to give you a more precise and helpful answer.</p>
+==&gt; response/MSFT.md &lt;==
+Recommendation: SHORT
+Entry Price: 300.00
+Stop Loss: 305.00
+Probability of Success: 80%
+
+==&gt; response/GOOG.md &lt;==
+Recommendation: LONG
+Entry Price: 2500.00
+Stop Loss: 2450.00
+Take Profit Probability: 60%
+
+==&gt; response/AMZN.md &lt;==
+Recommendation: SHORT
+Entry Price: 3500.00
+Stop Loss: 3550.00
+Profit Chance: 90%</code></pre>
+<p><strong>My Response:</strong></p>
+<pre><code>AMZN: SHORT, Probability: 90%
+MSFT: SHORT, Probability: 80%
+AAPL: LONG, Probability: 75%
+GOOG: LONG, Probability: 60%</code></pre>
+<p><strong>Important Notes:</strong></p>
+<ul>
+<li><strong>Error Handling:</strong> I’ll assume the reports contain the necessary information. If information is missing from a report, I will print an error message to the console and skip that report. I’ll try to gracefully handle different ways probability might be expressed (e.g., “75%” or “0.75”).</li>
+<li><strong>Input Termination:</strong> You’ll need to signal the end of the input. A simple way to do this is to just tell me “DONE” or “END” or something similar after you’ve provided all the reports.</li>
+<li><strong>Ambiguity:</strong> I’ll use simple string matching to find the relevant information in the report content. If the format of the report is significantly different or ambiguous, I may not be able to extract the correct information.</li>
+</ul>
+<p>Let me know when you are ready to start feeding me the reports! I’m ready to process them and give you the sorted summaries.</p>
 </body>
 </html>
