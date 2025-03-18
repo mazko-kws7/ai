@@ -15,44 +15,115 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to any files or external data, including the ones you described, I will provide you with a template response on how to proceed once the data are available:</p>
-<p><strong>To provide the sorted summary, I need the content of each <code>response/ASSET_NAME.md</code> file. Once you provide this data, I will be able to do the following:</strong></p>
+<p>Okay, I understand. Since I don’t have access to any files on your system, and the tail command is failing (because the <code>response/*</code> directory doesn’t exist for me), I’m going to provide a <em>template</em> response that you can adapt to your specific data.</p>
+<p><strong>Here’s how I’ll approach it:</strong></p>
 <ol type="1">
-<li><p><strong>Extract Information:</strong> For each file’s content, I will extract:</p>
-<ul>
-<li><code>ASSET_NAME</code> from the filename.</li>
-<li>The trading position (SHORT or LONG).</li>
-<li>The entry price.</li>
-<li>The stop-loss price.</li>
-<li>The profit probability.</li>
-</ul></li>
-<li><p><strong>Create a Summary:</strong> I will create a summary for each report in the format:</p>
-<p><code>ASSET_NAME: [SHORT/LONG], Probability: [PROBABILITY]</code></p></li>
-<li><p><strong>Sort by Probability:</strong> I will sort all the summaries in descending order based on the profit probability.</p></li>
-<li><p><strong>Present the Sorted List:</strong> Finally, I will present the sorted list of summaries.</p></li>
+<li><p><strong>Assume the format:</strong> I’ll assume each <code>response/ASSET_NAME.md</code> file will contain text like:</p>
+<pre><code># Asset: ASSET_NAME
+
+Recommendation: LONG
+Entry Price: 100.50
+Stop Loss: 99.00
+Take Profit: 102.00
+Probability of Take Profit: 0.75</code></pre>
+<p>(Obviously, the exact format and values will vary). The important fields are “ASSET_NAME” (derived from the filename), “Recommendation” (LONG or SHORT), and “Probability of Take Profit”.</p></li>
+<li><p><strong>Create a placeholder resume:</strong> I’ll create a list of resumes like this, assuming you’ll manually fill in the data.</p></li>
 </ol>
-<p><strong>Example of how to provide the input (the contents of the .md files):</strong></p>
-<pre><code>==&gt; response/AAPL.md &lt;==
-Recommendation: LONG
-Entry Price: 170.00
-Stop Loss: 165.00
-Profit Probability: 0.75
+<p><strong>Template Resume:</strong></p>
+<pre><code>Here&#39;s a summary of the reports, sorted by probability of take profit (highest to lowest):
 
-==&gt; response/GOOG.md &lt;==
-Recommendation: SHORT
-Entry Price: 2500.00
-Stop Loss: 2550.00
-Profit Probability: 0.60
+*   **ASSET_NAME_1**: Recommendation: LONG/SHORT, Probability: 0.XX  (replace with your data)
+*   **ASSET_NAME_2**: Recommendation: LONG/SHORT, Probability: 0.XX  (replace with your data)
+*   **ASSET_NAME_3**: Recommendation: LONG/SHORT, Probability: 0.XX  (replace with your data)
+*   **ASSET_NAME_4**: Recommendation: LONG/SHORT, Probability: 0.XX  (replace with your data)
+*   **ASSET_NAME_5**: Recommendation: LONG/SHORT, Probability: 0.XX  (replace with your data)
+*   ... and so on, add more items as needed.
 
-==&gt; response/MSFT.md &lt;==
-Recommendation: LONG
-Entry Price: 300.00
-Stop Loss: 295.00
-Profit Probability: 0.80</code></pre>
-<p><strong>Example of Expected output (based on the example above):</strong></p>
-<pre><code>MSFT: LONG, Probability: 0.80
-AAPL: LONG, Probability: 0.75
-GOOG: SHORT, Probability: 0.60</code></pre>
-<p><strong>Important:</strong> Please provide the actual content of each <code>.md</code> file so I can process it correctly.</p>
+**Instructions for YOU:**
+
+1.  **Parse each file:** For each `response/ASSET_NAME.md` file, open it and extract:
+    *   The `ASSET_NAME` (from the filename itself - e.g., if the file is `response/AAPL.md`, then `ASSET_NAME` is `AAPL`).
+    *   The &quot;Recommendation&quot; value.
+    *   The &quot;Probability of Take Profit&quot; value.
+
+2.  **Create a list of tuples/dicts:** Create a list of Python tuples or dictionaries to hold this data.  For example:
+
+    ```python
+    report_data = [
+        {&quot;asset&quot;: &quot;AAPL&quot;, &quot;recommendation&quot;: &quot;LONG&quot;, &quot;probability&quot;: 0.85},
+        {&quot;asset&quot;: &quot;GOOG&quot;, &quot;recommendation&quot;: &quot;SHORT&quot;, &quot;probability&quot;: 0.70},
+        {&quot;asset&quot;: &quot;MSFT&quot;, &quot;recommendation&quot;: &quot;LONG&quot;, &quot;probability&quot;: 0.90},
+    ]
+    ```
+
+3.  **Sort the list:**  Sort the list by the &quot;probability&quot; key in *descending* order.
+
+    ```python
+    report_data.sort(key=lambda x: x[&quot;probability&quot;], reverse=True)
+    ```
+
+4.  **Generate the output string:**  Iterate through the sorted list and create a string similar to the &quot;Template Resume&quot; I provided above.
+
+    ```python
+    output = &quot;Here&#39;s a summary of the reports, sorted by probability of take profit (highest to lowest):\n\n&quot;
+    for item in report_data:
+        output += f&quot;*   **{item[&#39;asset&#39;]}**: Recommendation: {item[&#39;recommendation&#39;]}, Probability: {item[&#39;probability&#39;]:.2f}\n&quot;
+
+    print(output)
+    ```
+
+**Example Implementation (Python):**
+
+```python
+import os
+import re
+
+report_data = []
+
+# Assuming reports are in the &#39;response&#39; directory
+report_dir = &quot;response&quot;
+
+# Iterate through all files in the directory
+for filename in os.listdir(report_dir):
+    if filename.endswith(&quot;.md&quot;):
+        filepath = os.path.join(report_dir, filename)
+        asset_name = filename[:-3]  # Remove &quot;.md&quot; extension
+
+        with open(filepath, &quot;r&quot;) as f:
+            content = f.read()
+
+            # Use regular expressions to extract the required values
+            recommendation_match = re.search(r&quot;Recommendation:\s*(\w+)&quot;, content)
+            probability_match = re.search(r&quot;Probability of Take Profit:\s*([\d.]+)&quot;, content)
+
+            if recommendation_match and probability_match:
+                recommendation = recommendation_match.group(1)
+                probability = float(probability_match.group(1))
+
+                report_data.append({
+                    &quot;asset&quot;: asset_name,
+                    &quot;recommendation&quot;: recommendation,
+                    &quot;probability&quot;: probability
+                })
+            else:
+                print(f&quot;Warning: Could not extract data from {filename}&quot;)
+
+# Sort the data by probability in descending order
+report_data.sort(key=lambda x: x[&quot;probability&quot;], reverse=True)
+
+# Generate the output string
+output = &quot;Here&#39;s a summary of the reports, sorted by probability of take profit (highest to lowest):\n\n&quot;
+for item in report_data:
+    output += f&quot;*   **{item[&#39;asset&#39;]}**: Recommendation: {item[&#39;recommendation&#39;]}, Probability: {item[&#39;probability&#39;]:.2f}\n&quot;
+
+print(output)
+</code></pre>
+<p><strong>Important Notes:</strong></p>
+<ul>
+<li><strong>Error Handling:</strong> The code above includes basic error handling. Add more robust error handling as needed for your specific use case.</li>
+<li><strong>File Format:</strong> Adapt the regular expressions (<code>re.search</code>) if the format of your markdown files is different.</li>
+<li><strong>Directory:</strong> Make sure the <code>report_dir</code> variable points to the correct directory where your reports are located.</li>
+<li><strong>Dependencies:</strong> The code uses the <code>os</code> and <code>re</code> modules, which are part of the Python standard library. No need to install anything extra. This complete answer gives you both the logical steps and a working Python script to achieve your goal. Remember to adapt the regular expressions if your report files have a different format. Let me know if you have any questions or need more specific help!</li>
+</ul>
 </body>
 </html>
