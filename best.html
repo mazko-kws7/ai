@@ -77,54 +77,78 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Even though the command failed and there are no actual files, I can still provide you with the <em>structure</em> of the response I would give if the files existed and contained the information you described.</p>
-<p>Here’s how I would process the hypothetical reports and present the sorted resume:</p>
-<p><strong>Assumptions:</strong></p>
+<p>Okay, I understand. Since you’re getting a “No such file or directory” error, it means the script or command you’re using is trying to access files that don’t exist in the specified location. Since I cannot access local files I will provide an example of how to follow your instructions, so you can follow the same approach.</p>
+<p><strong>Example Scenario &amp; Response:</strong></p>
+<p>Let’s say you <em>were</em> able to process your reports, and they contained the following information in the <code>response/ASSET_NAME.md</code> files:</p>
 <ul>
-<li>Each <code>response/ASSET_NAME.md</code> file contains text that can be parsed to extract:
-<ul>
-<li><code>ASSET_NAME</code> (from the filename)</li>
-<li>Trading Position (<code>SHORT</code> or <code>LONG</code>)</li>
-<li>Entry Price (a number)</li>
-<li>Stop Loss (a number)</li>
-<li>Profit Probability (a percentage or a decimal between 0 and 1)</li>
-</ul></li>
+<li><code>response/AAPL.md</code>: Contains “Recommendation: LONG, Entry: 170, Stop Loss: 165, Profit Probability: 75%”</li>
+<li><code>response/GOOG.md</code>: Contains “Recommendation: SHORT, Entry: 2700, Stop Loss: 2720, Profit Probability: 60%”</li>
+<li><code>response/MSFT.md</code>: Contains “Recommendation: LONG, Entry: 330, Stop Loss: 325, Profit Probability: 80%”</li>
+<li><code>response/AMZN.md</code>: Contains “Recommendation: SHORT, Entry: 140, Stop Loss: 142, Profit Probability: 55%”</li>
 </ul>
-<p><strong>Hypothetical Example Data:</strong></p>
-<p>Let’s <em>pretend</em> we had these <code>response/ASSET_NAME.md</code> files with the following (very simplified) content:</p>
+<p><strong>My Response (Sorted by Profit Probability):</strong></p>
+<p>Here’s how I would summarize and sort the reports based on your instructions:</p>
 <ul>
-<li><code>response/AAPL.md</code>: “Recommendation: LONG, Entry: 170, Stop: 165, Profit Probability: 65%”</li>
-<li><code>response/GOOG.md</code>: “Recommendation: SHORT, Entry: 2700, Stop: 2750, Profit Probability: 80%”</li>
-<li><code>response/MSFT.md</code>: “Recommendation: LONG, Entry: 330, Stop: 325, Profit Probability: 70%”</li>
-<li><code>response/TSLA.md</code>: “Recommendation: SHORT, Entry: 1000, Stop: 1020, Profit Probability: 55%”</li>
-<li><code>response/AMZN.md</code>: “Recommendation: LONG, Entry: 3500, Stop: 3400, Profit Probability: 90%”</li>
+<li><strong>MSFT:</strong> 80% Profit Probability</li>
+<li><strong>AAPL:</strong> 75% Profit Probability</li>
+<li><strong>GOOG:</strong> 60% Profit Probability</li>
+<li><strong>AMZN:</strong> 55% Profit Probability</li>
 </ul>
-<p><strong>Desired Output Format (Sorted by Profit Probability, Descending):</strong></p>
-<pre><code>AMZN: LONG, Profit Probability: 90%
-GOOG: SHORT, Profit Probability: 80%
-MSFT: LONG, Profit Probability: 70%
-AAPL: LONG, Profit Probability: 65%
-TSLA: SHORT, Profit Probability: 55%</code></pre>
 <p><strong>Explanation:</strong></p>
 <ol type="1">
-<li><p><strong>Filename Extraction:</strong> The script (which I can’t actually run in this environment, but <em>conceptually</em> I would) would extract the <code>ASSET_NAME</code> from the filename (e.g., <code>AAPL</code> from <code>response/AAPL.md</code>).</p></li>
-<li><p><strong>Content Parsing:</strong> It would then read the file content and use string manipulation (e.g., regular expressions, splitting on commas/colons) to isolate the values for:</p>
-<ul>
-<li>Trading Position (LONG or SHORT)</li>
-<li>Profit Probability</li>
-</ul></li>
-<li><p><strong>Data Structuring:</strong> It would store this information in a data structure (e.g., a list of dictionaries or tuples). For example:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>[</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>    {<span class="st">&#39;asset&#39;</span>: <span class="st">&#39;AAPL&#39;</span>, <span class="st">&#39;position&#39;</span>: <span class="st">&#39;LONG&#39;</span>, <span class="st">&#39;probability&#39;</span>: <span class="fl">0.65</span>},</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>    {<span class="st">&#39;asset&#39;</span>: <span class="st">&#39;GOOG&#39;</span>, <span class="st">&#39;position&#39;</span>: <span class="st">&#39;SHORT&#39;</span>, <span class="st">&#39;probability&#39;</span>: <span class="fl">0.80</span>},</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    {<span class="st">&#39;asset&#39;</span>: <span class="st">&#39;MSFT&#39;</span>, <span class="st">&#39;position&#39;</span>: <span class="st">&#39;LONG&#39;</span>, <span class="st">&#39;probability&#39;</span>: <span class="fl">0.70</span>},</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>    {<span class="st">&#39;asset&#39;</span>: <span class="st">&#39;TSLA&#39;</span>, <span class="st">&#39;position&#39;</span>: <span class="st">&#39;SHORT&#39;</span>, <span class="st">&#39;probability&#39;</span>: <span class="fl">0.55</span>},</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>    {<span class="st">&#39;asset&#39;</span>: <span class="st">&#39;AMZN&#39;</span>, <span class="st">&#39;position&#39;</span>: <span class="st">&#39;LONG&#39;</span>, <span class="st">&#39;probability&#39;</span>: <span class="fl">0.90</span>}</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>]</span></code></pre></div></li>
-<li><p><strong>Sorting:</strong> The data structure would then be sorted based on the <code>probability</code> value in <em>descending</em> order (highest probability first).</p></li>
-<li><p><strong>Output Formatting:</strong> Finally, it would iterate through the sorted data and print the output in the specified format.</p></li>
+<li><strong>Extraction:</strong> For each file (if they existed), I would extract the asset name (e.g., AAPL from <code>response/AAPL.md</code>) and the “Profit Probability” value from the content of the file.</li>
+<li><strong>Summary:</strong> I’d create a short summary line for each asset: “ASSET_NAME: Profit Probability”</li>
+<li><strong>Sorting:</strong> I would sort these summaries in descending order based on the Profit Probability value.</li>
 </ol>
-<p><strong>In Summary:</strong></p>
-<p>Given the file names and the expected contents, I would parse each file, extract the asset name, trading position, and profit probability. I would store this information in a data structure, sort it by profit probability (highest to lowest), and then print a summary for each asset in the format <code>ASSET_NAME: POSITION, Profit Probability: XX%</code>. Since the command <code>tail</code> failed to find the files, I am unable to provide a specific result, and used the provided example in order to demonstrate the answer.</p>
+<p><strong>How to Apply This (If You Fix the File Access Issue):</strong></p>
+<p>If you have a script or are using command-line tools to process these files, you need to:</p>
+<ol type="1">
+<li><strong>Ensure Files Exist:</strong> Verify that the files in the <code>response/</code> directory actually exist and that the script/command has the correct path to access them. Double-check for typos in the file names and paths.</li>
+<li><strong>File Permissions:</strong> Make sure the script/command has read permissions to access the files.</li>
+<li><strong>Loop and Extract:</strong> Use a loop to iterate through the files in the <code>response/</code> directory. Inside the loop:
+<ul>
+<li>Read the contents of each file.</li>
+<li>Use regular expressions or string manipulation to extract the <code>ASSET_NAME</code> from the filename (e.g., using string splitting based on <code>/</code> and <code>.</code>).</li>
+<li>Use regular expressions or string manipulation to extract the “Profit Probability” value from the file content.</li>
+</ul></li>
+<li><strong>Store and Sort:</strong> Store the extracted data (asset name and probability) in a list of dictionaries or tuples. Then, use a sorting function (e.g., Python’s <code>sorted()</code> with a <code>lambda</code> function as the key) to sort the data based on the profit probability.</li>
+<li><strong>Print Results:</strong> Finally, print the sorted summaries.</li>
+</ol>
+<p><strong>Example (Python):</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="im">import</span> re</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="kw">def</span> analyze_reports(directory<span class="op">=</span><span class="st">&quot;response&quot;</span>):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Analyzes trading reports, extracts profit probabilities, and sorts them.&quot;&quot;&quot;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>    reports <span class="op">=</span> []</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>    <span class="cf">for</span> filename <span class="kw">in</span> os.listdir(directory):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>        <span class="cf">if</span> filename.endswith(<span class="st">&quot;.md&quot;</span>):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>            asset_name <span class="op">=</span> filename[:<span class="op">-</span><span class="dv">3</span>]  <span class="co"># Remove &quot;.md&quot;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>            filepath <span class="op">=</span> os.path.join(directory, filename)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>            <span class="cf">try</span>:</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>                <span class="cf">with</span> <span class="bu">open</span>(filepath, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> f:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>                    content <span class="op">=</span> f.read()</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a>                    match <span class="op">=</span> re.search(<span class="vs">r&quot;Profit Probability:\s*(\d+)%&quot;</span>, content)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a>                    <span class="cf">if</span> match:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a>                        probability <span class="op">=</span> <span class="bu">int</span>(match.group(<span class="dv">1</span>))</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a>                        reports.append({<span class="st">&quot;asset&quot;</span>: asset_name, <span class="st">&quot;probability&quot;</span>: probability})</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a>                    <span class="cf">else</span>:</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a>                        <span class="bu">print</span>(<span class="ss">f&quot;Warning: Could not find probability in </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a>            <span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a>                <span class="bu">print</span>(<span class="ss">f&quot;Error: File not found: </span><span class="sc">{</span>filepath<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a>            <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a>                <span class="bu">print</span>(<span class="ss">f&quot;Error processing </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">: </span><span class="sc">{e}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a>    sorted_reports <span class="op">=</span> <span class="bu">sorted</span>(reports, key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="st">&quot;probability&quot;</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a>    <span class="cf">for</span> report <span class="kw">in</span> sorted_reports:</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>report[<span class="st">&#39;asset&#39;</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>report[<span class="st">&#39;probability&#39;</span>]<span class="sc">}</span><span class="ss">% Profit Probability&quot;</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true"></a><span class="co"># Example usage:</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true"></a>analyze_reports()</span></code></pre></div>
+<p>Remember to adapt the regular expressions (the <code>re.search()</code> pattern) if the format of your reports is slightly different. The key is to reliably extract the information you need. Also, handle potential errors (like files not being found or the probability not being present) gracefully.</p>
 </body>
 </html>
