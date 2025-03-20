@@ -15,51 +15,41 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to the files or their contents (the <code>response/ASSET_NAME.md</code> files), I’ll have to create a simulated example based on your description. I will make up the data so you can understand how I would process it if I <em>did</em> have the files.</p>
-<p><strong>Example Scenario &amp; Simulated Data</strong></p>
-<p>Let’s say you gave me these “reports” (in reality, just the filenames, and I will <em>imagine</em> their content).</p>
-<pre><code>response/AAPL.md
-response/GOOGL.md
-response/MSFT.md
-response/TSLA.md
-response/AMZN.md</code></pre>
-<p>And let’s <em>pretend</em> the contents of these files are:</p>
+<p>Okay, I understand. Since I don’t have access to the files, I’ll create a hypothetical response based on the information you’ve provided about the report format. I’ll <em>simulate</em> reading the files and extracting the necessary data to create a sorted summary.</p>
+<p><strong>Assumptions (since I can’t read the files):</strong></p>
 <ul>
-<li><strong>response/AAPL.md:</strong> <code>Recommendation: LONG, Entry: $170, Stop Loss: $165, Profit Probability: 75%</code></li>
-<li><strong>response/GOOGL.md:</strong> <code>Recommendation: SHORT, Entry: $2700, Stop Loss: $2750, Profit Probability: 60%</code></li>
-<li><strong>response/MSFT.md:</strong> <code>Recommendation: LONG, Entry: $300, Stop Loss: $295, Profit Probability: 80%</code></li>
-<li><strong>response/TSLA.md:</strong> <code>Recommendation: SHORT, Entry: $1000, Stop Loss: $1020, Profit Probability: 50%</code></li>
-<li><strong>response/AMZN.md:</strong> <code>Recommendation: LONG, Entry: $3500, Stop Loss: $3450, Profit Probability: 90%</code></li>
+<li>Each file <code>response/ASSET_NAME.md</code> contains text that can be parsed to find:
+<ul>
+<li><strong>ASSET_NAME:</strong> The name of the asset (this is already given in the filename).</li>
+<li><strong>Trading Position:</strong> Either “SHORT” or “LONG”.</li>
+<li><strong>Entry Price:</strong> A numerical value.</li>
+<li><strong>Stop Loss:</strong> A numerical value.</li>
+<li><strong>Profit Probability:</strong> A percentage value (e.g., “65%”).</li>
+</ul></li>
+<li>The parsing is relatively straightforward (e.g., using regular expressions or simple string searching).</li>
 </ul>
-<p><strong>Desired Output (Based on Simulated Data)</strong></p>
-<p>If I had access to those files, I would produce the following output:</p>
-<pre><code>AMZN: 90%
-MSFT: 80%
-AAPL: 75%
-GOOGL: 60%
-TSLA: 50%</code></pre>
-<p><strong>Explanation of the Process (that I would use if I had the files):</strong></p>
+<p><strong>Hypothetical Response (Since files are not available for reading):</strong></p>
+<p>Based on the assumed format, here’s an example of what the sorted summary would look like, assuming you had these (again, hypothetical) reports:</p>
+<ul>
+<li><code>response/AAPL.md</code> (Apple)</li>
+<li><code>response/GOOG.md</code> (Google)</li>
+<li><code>response/TSLA.md</code> (Tesla)</li>
+<li><code>response/MSFT.md</code> (Microsoft)</li>
+</ul>
+<p><strong>(Hypothetical) Sorted Summary:</strong></p>
+<pre><code>*   **Asset:** GOOG (Google), **Probability:** 82%
+*   **Asset:** MSFT (Microsoft), **Probability:** 75%
+*   **Asset:** TSLA (Tesla), **Probability:** 60%
+*   **Asset:** AAPL (Apple), **Probability:** 55%</code></pre>
+<p><strong>Explanation:</strong></p>
 <ol type="1">
-<li><strong>File Iteration:</strong> I would iterate through the list of filenames you provide (e.g., <code>response/AAPL.md</code>, etc.).</li>
-<li><strong>File Reading (if possible):</strong> For each file, I would <em>attempt</em> to open and read its content.</li>
-<li><strong>Data Extraction:</strong> I would parse the content of the file (using string manipulation or regular expressions) to extract the asset name (<code>AAPL</code>, <code>GOOGL</code>, etc.) and the “Profit Probability”. I would assume the format is consistent.</li>
-<li><strong>Data Storage:</strong> I would store the asset name and probability as a key-value pair in a suitable data structure (like a dictionary or a list of tuples).</li>
-<li><strong>Sorting:</strong> I would sort the stored data based on the “Profit Probability” in descending order (highest probability first).</li>
-<li><strong>Output:</strong> I would format the sorted data into the desired output format (<code>ASSET_NAME: PROBABILITY%</code>) and print it to the console.</li>
+<li><strong>Asset:</strong> Shows the extracted asset name from filename.</li>
+<li><strong>Probability:</strong> The profit probability extracted from reports.</li>
 </ol>
-<p><strong>Error Handling (Important!)</strong></p>
-<p>Because the prompt included <code>tail: cannot open &#39;response/*&#39; for reading: No such file or directory</code>, a real implementation <em>must</em> include robust error handling. This would involve:</p>
+<p><strong>Important Notes:</strong></p>
 <ul>
-<li>Checking if a file exists before attempting to open it.</li>
-<li>Handling potential <code>IOError</code> exceptions that can occur when reading a file.</li>
-<li>Handling cases where the file format is unexpected and the probability cannot be extracted. In such a case, the program should either skip the file or report an error without crashing.</li>
+<li><p><strong>Error Message:</strong> The <code>tail: cannot open &#39;response/*&#39; for reading: No such file or directory</code> error indicates that the script or process you were using to read the files couldn’t find the <code>response</code> directory or the files within it. Make sure the path <code>response/*</code> is correct and that the files actually exist in that location.</p></li>
+<li><p><strong>Parsing Logic:</strong> If you were writing code to do this, you’d need to implement the logic to open each file, read its contents, and extract the relevant information (trading position, entry price, stop loss, profit probability).</p></li>
 </ul>
-<p><strong>Caveats &amp; How to Use This Response</strong></p>
-<ul>
-<li><strong>I cannot actually access your files.</strong> This response is a <em>simulation</em> to show you the process.</li>
-<li><strong>You need to adapt this logic to your programming language of choice.</strong> The example is conceptual.</li>
-<li><strong>Provide real file contents!</strong> If you can paste the <em>actual contents</em> of a few of the <code>response/ASSET_NAME.md</code> files here, I can give you a much more specific (and even code-based) answer. This will allow me to write regular expressions that can actually extract data from your reports.</li>
-</ul>
-<p>Let me know if you can provide example file contents!</p>
 </body>
 </html>
