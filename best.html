@@ -15,55 +15,59 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to the actual files, I’ll provide you with a template response that you can use. When you <em>do</em> have the content of the files, replace the placeholder information with the actual data.</p>
-<p>Here’s the template response you can adapt:</p>
-<pre><code>**Trading Recommendation Summary (Sorted by Profit Probability):**
+<p>Okay, I understand. It seems like I don’t have access to the actual report files, and the <code>tail</code> command failed because the directory <code>response/</code> doesn’t exist in my environment.</p>
+<p>However, I can still provide the format and logic you need to process the reports <em>if</em> you provide me with the <em>content</em> of each file.</p>
+<p>Here’s the process I’ll follow, and the output you can expect <em>given</em> the report content:</p>
+<p><strong>1. Input:</strong></p>
+<p>You’ll give me the reports one by one, like this:</p>
+<pre><code>==&gt; response/AAPL.md &lt;==
+[Content of AAPL.md:  e.g., Recommendation: LONG, Entry Price: 170, Stop Loss: 165, Profit Probability: 65%]
 
-*   **ASSET_NAME_1:** Recommendation: [LONG/SHORT], Profit Probability: [PROBABILITY_1]%
-    Entry Price: [ENTRY_PRICE_1], Stop Loss: [STOP_LOSS_1]
+==&gt; response/GOOG.md &lt;==
+[Content of GOOG.md: e.g., Recommendation: SHORT, Entry Price: 2500, Stop Loss: 2550, Profit Probability: 75%]
 
-*   **ASSET_NAME_2:** Recommendation: [LONG/SHORT], Profit Probability: [PROBABILITY_2]%
-    Entry Price: [ENTRY_PRICE_2], Stop Loss: [STOP_LOSS_2]
-
-*   **ASSET_NAME_3:** Recommendation: [LONG/SHORT], Profit Probability: [PROBABILITY_3]%
-    Entry Price: [ENTRY_PRICE_3], Stop Loss: [STOP_LOSS_3]
-
-...and so on, in descending order of Profit Probability...
-
-**Instructions:**
-
-1.  **Extract Information:** For *each* `response/ASSET_NAME.md` file, extract the following:
-    *   `ASSET_NAME` (from the filename)
-    *   `Recommendation` (LONG or SHORT)
-    *   `Entry Price`
-    *   `Stop Loss`
-    *   `Profit Probability`
-
-2.  **Fill in the Template:** Replace the bracketed placeholders in the template above with the extracted values.
-
-3.  **Sort:** Arrange the filled-in entries in *descending* order of `Profit Probability`.
-
-4.  **Present the Summary:** Display the sorted list.
-
-**Example (with placeholder data):**
-
-**Trading Recommendation Summary (Sorted by Profit Probability):**
-
-*   **AAPL:** Recommendation: LONG, Profit Probability: 85%
-    Entry Price: 170.50, Stop Loss: 168.00
-
-*   **GOOGL:** Recommendation: SHORT, Profit Probability: 70%
-    Entry Price: 2700.00, Stop Loss: 2720.00
-
-*   **MSFT:** Recommendation: LONG, Profit Probability: 60%
-    Entry Price: 330.25, Stop Loss: 328.00
-</code></pre>
-<p><strong>Important Considerations:</strong></p>
+==&gt; response/MSFT.md &lt;==
+[Content of MSFT.md: e.g., Recommendation: LONG, Entry Price: 300, Stop Loss: 295, Profit Probability: 50%]</code></pre>
+<p><strong>2. Processing:</strong></p>
+<p>For <em>each</em> report you give me, I will:</p>
 <ul>
-<li><strong>Error Handling:</strong> Your script or process that reads the files should include error handling. The &quot;tail: cannot open ’response/*’ for reading: No such file or directory&quot; error indicates that the files or directory are not accessible. You need to ensure the files exist and are readable.</li>
-<li><strong>File Format:</strong> I’m assuming a relatively consistent format within each <code>.md</code> file so you can reliably extract the data. You’ll likely need to use regular expressions or other parsing techniques to extract the specific values.</li>
-<li><strong>Scripting Language:</strong> You’ll need to use a scripting language (like Python, Bash, etc.) to automate this process.</li>
+<li>Extract the <code>ASSET_NAME</code> from the filename (e.g., <code>AAPL</code>, <code>GOOG</code>, <code>MSFT</code>).</li>
+<li>Parse the content of the report to find the <code>Profit Probability</code>.</li>
+<li>Store the <code>ASSET_NAME</code> and <code>Profit Probability</code> in a temporary list.</li>
 </ul>
-<p>Let me know if you have the content of the files and I can help you create a Python script or other solution to automate this process. Also, provide more details on how the data inside the <code>.md</code> files is structured. This will help me create a better script.</p>
+<p><strong>3. Sorting:</strong></p>
+<p>After you’ve given me <em>all</em> the reports, I will:</p>
+<ul>
+<li>Sort the list of <code>ASSET_NAME</code> and <code>Profit Probability</code> pairs in <em>descending</em> order based on the <code>Profit Probability</code>.</li>
+</ul>
+<p><strong>4. Output:</strong></p>
+<p>Finally, I will print the sorted summary like this:</p>
+<pre><code>Asset: GOOG, Profit Probability: 75%
+Asset: AAPL, Profit Probability: 65%
+Asset: MSFT, Profit Probability: 50%</code></pre>
+<p><strong>Example with full content</strong></p>
+<p><strong>Input</strong></p>
+<pre><code>==&gt; response/AAPL.md &lt;==
+Recommendation: LONG
+Entry Price: 170
+Stop Loss: 165
+Profit Probability: 65%
+
+==&gt; response/GOOG.md &lt;==
+Recommendation: SHORT
+Entry Price: 2500
+Stop Loss: 2550
+Profit Probability: 75%
+
+==&gt; response/MSFT.md &lt;==
+Recommendation: LONG
+Entry Price: 300
+Stop Loss: 295
+Profit Probability: 50%</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>Asset: GOOG, Profit Probability: 75%
+Asset: AAPL, Profit Probability: 65%
+Asset: MSFT, Profit Probability: 50%</code></pre>
+<p><strong>Important:</strong> Provide <em>one</em> report at a time, including the <code>==&gt; response/ASSET_NAME.md &lt;==</code> line and the content of the file. After you’ve given me all the reports, let me know, and I’ll generate the sorted summary. I will parse the “Profit Probability” line exactly as it is shown in the example. Any deviation in the wording might cause the program to not find the information.</p>
 </body>
 </html>
