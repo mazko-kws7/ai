@@ -15,41 +15,55 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to the files, I’ll create a hypothetical response based on the information you’ve provided about the report format. I’ll <em>simulate</em> reading the files and extracting the necessary data to create a sorted summary.</p>
-<p><strong>Assumptions (since I can’t read the files):</strong></p>
+<p>Okay, I understand. Since I don’t have access to the actual files, I’ll provide you with a template response that you can use. When you <em>do</em> have the content of the files, replace the placeholder information with the actual data.</p>
+<p>Here’s the template response you can adapt:</p>
+<pre><code>**Trading Recommendation Summary (Sorted by Profit Probability):**
+
+*   **ASSET_NAME_1:** Recommendation: [LONG/SHORT], Profit Probability: [PROBABILITY_1]%
+    Entry Price: [ENTRY_PRICE_1], Stop Loss: [STOP_LOSS_1]
+
+*   **ASSET_NAME_2:** Recommendation: [LONG/SHORT], Profit Probability: [PROBABILITY_2]%
+    Entry Price: [ENTRY_PRICE_2], Stop Loss: [STOP_LOSS_2]
+
+*   **ASSET_NAME_3:** Recommendation: [LONG/SHORT], Profit Probability: [PROBABILITY_3]%
+    Entry Price: [ENTRY_PRICE_3], Stop Loss: [STOP_LOSS_3]
+
+...and so on, in descending order of Profit Probability...
+
+**Instructions:**
+
+1.  **Extract Information:** For *each* `response/ASSET_NAME.md` file, extract the following:
+    *   `ASSET_NAME` (from the filename)
+    *   `Recommendation` (LONG or SHORT)
+    *   `Entry Price`
+    *   `Stop Loss`
+    *   `Profit Probability`
+
+2.  **Fill in the Template:** Replace the bracketed placeholders in the template above with the extracted values.
+
+3.  **Sort:** Arrange the filled-in entries in *descending* order of `Profit Probability`.
+
+4.  **Present the Summary:** Display the sorted list.
+
+**Example (with placeholder data):**
+
+**Trading Recommendation Summary (Sorted by Profit Probability):**
+
+*   **AAPL:** Recommendation: LONG, Profit Probability: 85%
+    Entry Price: 170.50, Stop Loss: 168.00
+
+*   **GOOGL:** Recommendation: SHORT, Profit Probability: 70%
+    Entry Price: 2700.00, Stop Loss: 2720.00
+
+*   **MSFT:** Recommendation: LONG, Profit Probability: 60%
+    Entry Price: 330.25, Stop Loss: 328.00
+</code></pre>
+<p><strong>Important Considerations:</strong></p>
 <ul>
-<li>Each file <code>response/ASSET_NAME.md</code> contains text that can be parsed to find:
-<ul>
-<li><strong>ASSET_NAME:</strong> The name of the asset (this is already given in the filename).</li>
-<li><strong>Trading Position:</strong> Either “SHORT” or “LONG”.</li>
-<li><strong>Entry Price:</strong> A numerical value.</li>
-<li><strong>Stop Loss:</strong> A numerical value.</li>
-<li><strong>Profit Probability:</strong> A percentage value (e.g., “65%”).</li>
-</ul></li>
-<li>The parsing is relatively straightforward (e.g., using regular expressions or simple string searching).</li>
+<li><strong>Error Handling:</strong> Your script or process that reads the files should include error handling. The &quot;tail: cannot open ’response/*’ for reading: No such file or directory&quot; error indicates that the files or directory are not accessible. You need to ensure the files exist and are readable.</li>
+<li><strong>File Format:</strong> I’m assuming a relatively consistent format within each <code>.md</code> file so you can reliably extract the data. You’ll likely need to use regular expressions or other parsing techniques to extract the specific values.</li>
+<li><strong>Scripting Language:</strong> You’ll need to use a scripting language (like Python, Bash, etc.) to automate this process.</li>
 </ul>
-<p><strong>Hypothetical Response (Since files are not available for reading):</strong></p>
-<p>Based on the assumed format, here’s an example of what the sorted summary would look like, assuming you had these (again, hypothetical) reports:</p>
-<ul>
-<li><code>response/AAPL.md</code> (Apple)</li>
-<li><code>response/GOOG.md</code> (Google)</li>
-<li><code>response/TSLA.md</code> (Tesla)</li>
-<li><code>response/MSFT.md</code> (Microsoft)</li>
-</ul>
-<p><strong>(Hypothetical) Sorted Summary:</strong></p>
-<pre><code>*   **Asset:** GOOG (Google), **Probability:** 82%
-*   **Asset:** MSFT (Microsoft), **Probability:** 75%
-*   **Asset:** TSLA (Tesla), **Probability:** 60%
-*   **Asset:** AAPL (Apple), **Probability:** 55%</code></pre>
-<p><strong>Explanation:</strong></p>
-<ol type="1">
-<li><strong>Asset:</strong> Shows the extracted asset name from filename.</li>
-<li><strong>Probability:</strong> The profit probability extracted from reports.</li>
-</ol>
-<p><strong>Important Notes:</strong></p>
-<ul>
-<li><p><strong>Error Message:</strong> The <code>tail: cannot open &#39;response/*&#39; for reading: No such file or directory</code> error indicates that the script or process you were using to read the files couldn’t find the <code>response</code> directory or the files within it. Make sure the path <code>response/*</code> is correct and that the files actually exist in that location.</p></li>
-<li><p><strong>Parsing Logic:</strong> If you were writing code to do this, you’d need to implement the logic to open each file, read its contents, and extract the relevant information (trading position, entry price, stop loss, profit probability).</p></li>
-</ul>
+<p>Let me know if you have the content of the files and I can help you create a Python script or other solution to automate this process. Also, provide more details on how the data inside the <code>.md</code> files is structured. This will help me create a better script.</p>
 </body>
 </html>
