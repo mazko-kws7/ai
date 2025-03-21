@@ -15,63 +15,41 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since you can’t provide the files and I’m getting an error indicating no files exist, I’ll give you a template for how I <em>would</em> process your request, and then you can apply this process manually using the information from your files.</p>
-<p>Here’s the <strong>assumed</strong> workflow and template output:</p>
-<p><strong>1. Assumed Workflow:</strong></p>
-<ul>
-<li><strong>Input:</strong> You would provide me with the reports, one report per line, following the <code>==&gt; response/ASSET_NAME.md &lt;==</code> structure.</li>
-<li><strong>Parsing:</strong> I would extract the <code>ASSET_NAME</code> from each line.</li>
-<li><strong>Report Analysis (Hypothetical):</strong> I would <em>hypothetically</em> read each <code>ASSET_NAME.md</code> file. Inside the file, I would search for:
-<ul>
-<li>Trading Position: (SHORT or LONG)</li>
-<li>Entry Price: (a number, e.g., 1.2345)</li>
-<li>Stop Loss: (a number, e.g., 1.2300)</li>
-<li>Profit Probability: (a percentage, e.g., 75%)</li>
-</ul></li>
-<li><strong>Summary Generation:</strong> For each report, I would create a summary like: “ASSET_NAME: [Position] with [Probability]% profit probability.”</li>
-<li><strong>Sorting:</strong> Finally, I would sort all the summaries by the <code>Profit Probability</code> in descending order (highest probability first).</li>
-<li><strong>Output:</strong> A list of summaries, sorted by profit probability.</li>
-</ul>
-<p><strong>2. Template Output (Based on <em>hypothetical</em> data):</strong></p>
-<pre><code>(Hypothetical Data - Replace with your actual values)
-
-Sorted by Take Profit Probability (Highest to Lowest):
-
-*   AAPL: LONG with 85% profit probability.
-*   TSLA: SHORT with 72% profit probability.
-*   GOOG: LONG with 68% profit probability.
-*   MSFT: SHORT with 55% profit probability.
-*   AMZN: LONG with 40% profit probability.</code></pre>
-<p><strong>How to Use This Template (Since I can’t access your files):</strong></p>
+<p>Okay, I understand. Since I don’t have access to your file system, I’ll need you to <strong>provide the actual content of each report</strong> for me to process.</p>
+<p>Here’s how I’ll handle it, based on the format you described:</p>
 <ol type="1">
-<li><strong>Manually analyze each report (ASSET_NAME.md).</strong> Open each file and find the Trading Position, Entry Price, Stop Loss, and Profit Probability.</li>
-<li><strong>Create a summary string for each asset.</strong> Use the format: “ASSET_NAME: [Position] with [Probability]% profit probability.”</li>
-<li><strong>Collect all the summary strings.</strong></li>
-<li><strong>Sort the summary strings based on the Profit Probability (highest to lowest).</strong> You can do this manually or use a spreadsheet program like Excel or Google Sheets.</li>
-<li><strong>Present the sorted list as the final output.</strong> Use the format shown in the template output above.</li>
+<li><p><strong>You provide the report contents one at a time.</strong> Copy and paste the <em>contents</em> of each file (e.g., the text <em>inside</em> <code>response/ASSET_NAME.md</code>) here in our chat.</p></li>
+<li><p><strong>I will extract the relevant information.</strong> I will look for the asset name (from the filename), the trading position (LONG/SHORT), and the profit probability. I’ll assume the report content clearly indicates where to find these values.</p></li>
+<li><p><strong>I will create a summary for each report.</strong> The summary will be in this format: <code>ASSET_NAME: Position - [LONG/SHORT], Profit Probability - [Probability]</code></p></li>
+<li><p><strong>After you’ve provided all reports, I will sort the summaries.</strong> I will sort them in <em>descending</em> order of profit probability (highest probability first).</p></li>
+<li><p><strong>I will present the sorted summaries to you.</strong></p></li>
 </ol>
-<p><strong>Example: Using Excel/Google Sheets</strong></p>
-<ol type="1">
-<li>Create a spreadsheet.</li>
-<li>Column A: Asset Name (e.g., AAPL)</li>
-<li>Column B: Position (e.g., LONG)</li>
-<li>Column C: Profit Probability (e.g., 85) <strong>Important: Enter this as a number, not text.</strong></li>
-<li>Fill in the data for all your assets.</li>
-<li>Select all the data.</li>
-<li>Sort by Column C (Profit Probability) in descending order.</li>
-<li>Create the output strings from the sorted data in columns A, B, and C.</li>
-</ol>
-<p><strong>Key improvements and considerations:</strong></p>
+<p><strong>Example</strong></p>
+<p>Let’s say you have two files:</p>
 <ul>
-<li><strong>Error Handling (If I could read files):</strong> If a file was missing a ‘Profit Probability’ or had an invalid format, I would have added error handling to skip that file and report the error. Since I can’t read files, <em>you</em> need to watch out for this and handle it manually.</li>
-<li><strong>Robust Parsing (If I could read files):</strong> If I could read the files, I would use regular expressions or a more robust parsing library to ensure that the information is extracted accurately, even if the file format is slightly different.</li>
-<li><strong>Scalability (If I could read files):</strong> If you had hundreds of reports, I could have optimized the process for speed and efficiency.</li>
-<li><strong>Important Reminders:</strong>
-<ul>
-<li>Make sure the “Profit Probability” is a <em>number</em> and not text, when using spreadsheet to sort.</li>
-<li>The <code>tail</code> error indicates that the files in <code>response/*</code> are not accessible at the location where the code is running. This is expected in this scenario.</li>
-</ul></li>
+<li><p><code>response/AAPL.md</code> contains: <code>Trading Recommendation: LONG     Entry Price: 170.00     Stop Loss: 165.00     Profit Probability: 75%</code></p></li>
+<li><p><code>response/GOOG.md</code> contains: <code>Trading Recommendation: SHORT     Entry Price: 2700.00     Stop Loss: 2750.00     Profit Probability: 60%</code></p></li>
 </ul>
-<p>By following these steps and using the template, you can manually achieve the desired result even without me being able to access your files directly. Remember to replace the hypothetical data with your actual data!</p>
+<p><strong>Here’s how our conversation would go:</strong></p>
+<p><strong>You:</strong></p>
+<pre><code>Trading Recommendation: LONG
+Entry Price: 170.00
+Stop Loss: 165.00
+Profit Probability: 75%</code></pre>
+<p><strong>Me:</strong></p>
+<pre><code>AAPL: Position - LONG, Profit Probability - 75%</code></pre>
+<p><strong>You:</strong></p>
+<pre><code>Trading Recommendation: SHORT
+Entry Price: 2700.00
+Stop Loss: 2750.00
+Profit Probability: 60%</code></pre>
+<p><strong>Me:</strong></p>
+<pre><code>GOOG: Position - SHORT, Profit Probability - 60%</code></pre>
+<p><strong>Me (After you confirm you’ve sent all reports):</strong></p>
+<pre><code>Sorted Report Summaries:
+
+AAPL: Position - LONG, Profit Probability - 75%
+GOOG: Position - SHORT, Profit Probability - 60%</code></pre>
+<p><strong>Ready? Please paste the content of the first report.</strong></p>
 </body>
 </html>
