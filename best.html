@@ -15,58 +15,63 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since I don’t have access to external files or the ability to execute shell commands (like <code>tail</code>), I’ll provide a general example of how I would summarize and sort the reports if I had the content.</p>
-<p><strong>Here’s how I would approach the task, including an example output format:</strong></p>
-<p><strong>Assumptions:</strong></p>
-<ul>
-<li>Each <code>response/ASSET_NAME.md</code> file contains the trading recommendation (LONG/SHORT), entry price, stop loss, and profit probability.</li>
-<li>The format of the probability within the file is consistently parsable (e.g., “Profit Probability: 75%”, “Probability: 0.75”).</li>
-<li>The goal is to extract the asset name and profit probability and sort by probability in descending order.</li>
-</ul>
-<p><strong>Example Scenario (if I had the file contents):</strong></p>
-<p>Let’s imagine these are the contents of a few of the files:</p>
-<ul>
-<li><p><strong>response/AAPL.md:</strong> <code>Recommendation: LONG     Entry Price: 170.00     Stop Loss: 165.00     Profit Probability: 85%</code></p></li>
-<li><p><strong>response/MSFT.md:</strong> <code>Recommendation: SHORT     Entry Price: 330.00     Stop Loss: 335.00     Profit Probability: 60%</code></p></li>
-<li><p><strong>response/GOOG.md:</strong> <code>Recommendation: LONG     Entry Price: 2500.00     Stop Loss: 2450.00     Probability: 70%</code></p></li>
-<li><p><strong>response/TSLA.md:</strong> <code>Recommendation: SHORT     Entry Price: 800.00     Stop Loss: 805.00     Profit Probability: 90%</code></p></li>
-</ul>
-<p><strong>The Process (that I <em>would</em> perform if I could access the files):</strong></p>
+<p>Okay, I understand. Since I don’t have access to the files you’re referencing and I’m getting a “No such file or directory” error, I’ll need you to <em>provide</em> the content of each report one at a time.</p>
+<p>Here’s how I’ll process each report and what I’ll do after you’ve given me all of them:</p>
 <ol type="1">
-<li><strong>Iterate through the reports:</strong> (AAPL.md, MSFT.md, GOOG.md, TSLA.md).</li>
-<li><strong>Extract Information:</strong> For each report:
+<li><strong>You provide the report content:</strong> You’ll paste the text from a file like <code>response/ASSET_NAME.md</code> into our conversation.</li>
+<li><strong>I extract the relevant information:</strong> I’ll identify:
 <ul>
-<li>Get the asset name from the filename (e.g., “AAPL” from “response/AAPL.md”).</li>
-<li>Read the file content.</li>
-<li>Parse the content to find the profit probability (e.g., using string matching or regular expressions). Handle variations in the “Probability” label (“Profit Probability” vs “Probability”).</li>
+<li><code>ASSET_NAME</code> (from your description of the filename)</li>
+<li>Trading position recommendation (SHORT or LONG)</li>
+<li>Entry Price (I’ll look for a phrase like “Entry Price:” or similar)</li>
+<li>Stop Loss (I’ll look for a phrase like “Stop Loss:” or similar)</li>
+<li>Profit Probability (I’ll look for a phrase like “Profit Probability:” or similar)</li>
 </ul></li>
-<li><strong>Store Data:</strong> Create a data structure (e.g., a list of dictionaries) to store the asset name and profit probability.</li>
-<li><strong>Sort:</strong> Sort the list of dictionaries based on the profit probability in descending order.</li>
-<li><strong>Present Results:</strong> Print the sorted summary.</li>
+<li><strong>I store the information.</strong> I’ll keep this data structured internally.</li>
 </ol>
-<p><strong>Example Output (based on the example file contents above):</strong></p>
-<pre><code>Summary of Trading Recommendations (Sorted by Profit Probability):
+<p>After you have provided all the reports, I will:</p>
+<ol type="1">
+<li><strong>Generate summaries:</strong> Create a short summary for each report. The summary will include: <code>ASSET_NAME</code>, <code>SHORT</code> or <code>LONG</code> recommendation, and <code>Profit Probability</code>.</li>
+<li><strong>Sort summaries:</strong> Order the summaries from highest <code>Profit Probability</code> to lowest.</li>
+<li><strong>Present the sorted summaries:</strong> Display the sorted summaries in a clear, easy-to-read format.</li>
+</ol>
+<p><strong>Example:</strong></p>
+<p>Let’s say you provide the following report content:</p>
+<pre><code>## Trading Recommendation for ABC_STOCK
 
-Asset: TSLA, Profit Probability: 90%
-Asset: AAPL, Profit Probability: 85%
-Asset: GOOG, Profit Probability: 70%
-Asset: MSFT, Profit Probability: 60%</code></pre>
-<p><strong>Explanation of the Output:</strong></p>
-<ul>
-<li>Each line represents a summarized trading recommendation.</li>
-<li>The format is “Asset: [ASSET_NAME], Profit Probability: [PROBABILITY]”.</li>
-<li>The list is sorted in descending order of the profit probability. TSLA has the highest probability (90%) and MSFT has the lowest (60%) in this example.</li>
-</ul>
-<p><strong>Important Notes &amp; Error Handling:</strong></p>
-<ul>
-<li><strong>Error Handling:</strong> In a real implementation, robust error handling is crucial. This includes:
-<ul>
-<li>Checking if the file exists.</li>
-<li>Handling cases where the profit probability is not found or is in an unexpected format.</li>
-<li>Handling potential exceptions during file reading.</li>
-</ul></li>
-<li><strong>Probability Parsing:</strong> The string parsing or regular expression to extract the probability needs to be flexible to handle slight variations in the file format.</li>
-</ul>
-<p><strong>Without the actual file content, I can only provide this conceptual outline. If you can provide the content of the reports, I can give you a more precise and tailored response.</strong></p>
+Recommendation: LONG
+Entry Price: 150.25
+Stop Loss: 148.75
+Profit Target: 155.00
+Profit Probability: 65%
+
+This report suggests a long position for ABC_STOCK...</code></pre>
+<p>And then another:</p>
+<pre><code>## Trading Recommendation for XYZ_CURRENCY
+
+Recommendation: SHORT
+Entry Price: 1.1050
+Stop Loss: 1.1075
+Profit Target: 1.1000
+Profit Probability: 80%
+
+This report suggests a short position for XYZ_CURRENCY...</code></pre>
+<p>And a third:</p>
+<pre><code>## Trading Recommendation for QRS_INDEX
+
+Recommendation: LONG
+Entry Price: 17000
+Stop Loss: 16900
+Profit Target: 17200
+Profit Probability: 70%
+
+This report suggests a long position for QRS_INDEX...</code></pre>
+<p><strong>After you provide all three, I will output:</strong></p>
+<pre><code>Summarized Trading Recommendations (Sorted by Profit Probability):
+
+*   **XYZ_CURRENCY:** SHORT - Profit Probability: 80%
+*   **QRS_INDEX:** LONG - Profit Probability: 70%
+*   **ABC_STOCK:** LONG - Profit Probability: 65%</code></pre>
+<p><strong>Now, please provide the content of your first report.</strong> Just paste the text from the <code>response/ASSET_NAME.md</code> file here. Remember to tell me what the <code>ASSET_NAME</code> is, or I will try to extract it from the content.</p>
 </body>
 </html>
