@@ -15,54 +15,54 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. It sounds like the command you used (likely some form of <code>tail</code> piped into processing logic) returned an error because there are no files in a directory called <code>response/</code>.</p>
-<p>Assuming you will provide me with the <em>contents</em> of those files one by one (mimicking the <code>==&gt; response/ASSET_NAME.md &lt;==</code> structure as a separator), I will provide a summary of each report, sorted by profit probability. I’ll adhere to this format for each chunk you provide:</p>
+<p>Okay, I understand. Since I don’t have access to any files on your system (including the <code>response/</code> directory), and I received an error about <code>response/*</code> not existing, I’ll have to <strong>imagine</strong> that you will provide me with the content of each file one by one.</p>
+<p>Here’s how I will process the information you give me, and how I will respond:</p>
 <ol type="1">
-<li><p><strong>Detect the Asset Name:</strong> Extract <code>ASSET_NAME</code> from the <code>==&gt; response/ASSET_NAME.md &lt;==</code> line.</p></li>
-<li><p><strong>Parse Content:</strong> Look for the following within the report’s content:</p>
+<li><strong>You give me the first report:</strong> You will give me a report in the format <code>==&gt; response/ASSET_NAME.md &lt;==</code> followed by the content of the report, separated by lines.</li>
+<li><strong>I parse the report:</strong> I will look for lines containing the following information:
 <ul>
-<li><strong>Position:</strong> (SHORT or LONG)</li>
-<li><strong>Entry Price:</strong> (a number)</li>
-<li><strong>Stop Loss:</strong> (a number)</li>
-<li><strong>Profit Probability:</strong> (a percentage or decimal value between 0 and 1)</li>
+<li>Asset Name (I will get this from the filename itself, like in <code>response/AAPL.md</code> - AAPL is the asset name).</li>
+<li>Trading Position (LONG or SHORT)</li>
+<li>Entry Price (a number)</li>
+<li>Stop Loss (a number)</li>
+<li>Profit Probability (a percentage or decimal between 0 and 1)</li>
 </ul></li>
-<li><p><strong>Create Summary:</strong> Generate a summary like this: <code>ASSET_NAME: &lt;Position&gt; position with a profit probability of &lt;Profit Probability&gt;%.</code></p></li>
-<li><p><strong>Store and Sort:</strong> Store the summaries in memory (or a data structure) along with their profit probability.</p></li>
-<li><p><strong>Present Sorted Results:</strong> After you’ve given me all the reports, I’ll present the summaries sorted by profit probability in <em>descending</em> order (highest probability first).</p></li>
+<li><strong>I extract the relevant information and prepare a summary:</strong> I will create a small summary like this for the asset: <code>ASSET_NAME: LONG/SHORT, Probability: XX%</code></li>
+<li><strong>You repeat the process:</strong> You will give me the next report in the same format.</li>
+<li><strong>I aggregate the summaries:</strong> I will store the summaries in a list, waiting for you to finish providing reports.</li>
+<li><strong>When you’re finished</strong>, you can tell me “DONE” or “FINISHED”. I will then sort the summaries by the Profit Probability (highest to lowest) and print the sorted list.</li>
 </ol>
-<p><strong>Example of how to give me data:</strong></p>
-<p>You would give me input that looks like this:</p>
+<p><strong>Example:</strong></p>
+<p><strong>You:</strong></p>
 <pre><code>==&gt; response/AAPL.md &lt;==
-Position: LONG
+Recommendation: LONG
 Entry Price: 170.50
-Stop Loss: 168.00
-Profit Probability: 65%
+Stop Loss: 165.00
+Profit Probability: 75%</code></pre>
+<p><strong>I would respond:</strong></p>
+<p><code>AAPL: LONG, Probability: 75%</code></p>
+<p><strong>Then You:</strong></p>
+<pre><code>==&gt; response/GOOG.md &lt;==
+Trading signal: SHORT
+Entry: 2500.00
+SL: 2550.00
+Probability of Profit: 60%</code></pre>
+<p><strong>I would respond:</strong></p>
+<p><code>GOOG: SHORT, Probability: 60%</code></p>
+<p><strong>(You provide more reports…)</strong></p>
+<p><strong>Finally, You:</strong></p>
+<p><code>DONE</code></p>
+<p><strong>I would respond:</strong></p>
+<pre><code>Sorted Summaries (by Profit Probability):
 
-==&gt; response/GOOG.md &lt;==
-Position: SHORT
-Entry Price: 2700.00
-Stop Loss: 2720.00
-Profit Probability: 80%
-
-==&gt; response/MSFT.md &lt;==
-Position: LONG
-Entry Price: 330.00
-Stop Loss: 325.00
-Profit Probability: 70%</code></pre>
-<p><strong>Then I would respond (after you provide all the reports):</strong></p>
-<pre><code>Sorted by Profit Probability:
-
-GOOG: SHORT position with a profit probability of 80%.
-MSFT: LONG position with a profit probability of 70%.
-AAPL: LONG position with a profit probability of 65%.</code></pre>
-<p><strong>Important Notes:</strong></p>
+AAPL: LONG, Probability: 75%
+GOOG: SHORT, Probability: 60%</code></pre>
+<p><strong>Important Considerations:</strong></p>
 <ul>
-<li><strong>Complete Reports Required:</strong> Provide the <em>entire</em> content of each report after its header line.</li>
-<li><strong>Clear Formatting:</strong> The parsing relies on consistent formatting (e.g., the labels “Position:”, “Entry Price:”, etc.). If the formatting is inconsistent, the extraction may fail.</li>
-<li><strong>Empty Reports:</strong> If a report is empty or lacks the necessary information, I’ll indicate that I couldn’t process it.</li>
-<li><strong>Error Handling:</strong> If I can’t parse a report correctly (e.g., missing fields or invalid formatting) I’ll let you know and skip that report.</li>
-<li><strong>Decimal Probabilities</strong>: If the profit probability is in decimal format (e.g. 0.65), I will multiply by 100 to convert it to percentage.</li>
+<li><strong>Error Handling:</strong> If a report is missing some key information (like Profit Probability), I will flag it as “Invalid Report” or skip it, and let you know.</li>
+<li><strong>Data Formats:</strong> Please try to be consistent with the data formats (e.g., always use “Profit Probability” or “Probability of Profit,” and always use a consistent decimal format). If the formats vary, I’ll do my best to adapt. If the probability is given as a decimal (e.g., 0.75), I will convert it to a percentage (75%).</li>
+<li><strong>Multiple Recommendations:</strong> If a single report has multiple recommendations (e.g., one for LONG and one for SHORT), I will treat them as separate entries.</li>
 </ul>
-<p>Now, please provide the reports one by one, starting with the line <code>==&gt; response/ASSET_NAME.md &lt;==</code> followed by the report’s content. I am ready to receive the first report.</p>
+<p>Let’s start! Please give me the first report.</p>
 </body>
 </html>
