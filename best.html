@@ -15,67 +15,55 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. You’re giving me a <em>simulated</em> list of reports, and you want me to:</p>
+<p>Okay, I understand. I’m ready to process the reports when you provide them. Since I don’t have access to your file system, you’ll need to copy and paste the content of each <code>response/ASSET_NAME.md</code> report here.</p>
+<p><strong>Here’s how I’ll process each report and what you’ll get:</strong></p>
 <ol type="1">
-<li><strong>Parse</strong> each report name to extract the <code>ASSET_NAME</code>.</li>
-<li><strong>Extract</strong> the “profit probability” from each report (since you say that’s in each report’s content, which I don’t have). I will <em>assume</em> that when I eventually receive the <em>actual</em> content, I’ll be able to find it with some simple parsing.</li>
-<li><strong>Create a summary</strong> of each report, including <code>ASSET_NAME</code> and “profit probability”.</li>
-<li><strong>Sort</strong> these summaries in <em>ascending</em> order of “profit probability” (lowest to highest).</li>
-<li><strong>Output</strong> the sorted summaries.</li>
-</ol>
-<p>Since I <em>don’t</em> have the actual report contents, I’ll have to <em>simulate</em> the “profit probability” value. I’ll generate random probabilities for each asset, just to demonstrate the sorting. When you provide real report data, the probabilities will, of course, be different.</p>
-<p>Here’s how I’ll proceed (in code-like terms, since you’re likely going to translate this into a script):</p>
-<pre><code># Input: List of report filenames (as provided)
-
-import random
-
-reports = [] # List to store dictionaries of {asset_name, profit_probability}
-
-# Assume &#39;report_lines&#39; is your input list of lines, like [&quot;==&gt; response/AAPL.md &lt;==&quot;, &quot;==&gt; response/MSFT.md &lt;==&quot;]
-def summarize_reports(report_lines):
-    reports = []
-    for line in report_lines:
-        if line.startswith(&quot;==&gt; response/&quot;):
-            asset_name = line.split(&quot;/&quot;)[1].split(&quot;.&quot;)[0] # Extract ASSET_NAME
-
-            # ***SIMULATION:  Replace this with actual probability extraction when you have the content***
-            profit_probability = random.randint(50, 95)  # Simulate probability between 50% and 95%
-
-            reports.append({&quot;asset_name&quot;: asset_name, &quot;profit_probability&quot;: profit_probability})
-
-    # Sort by profit_probability (ascending)
-    reports.sort(key=lambda x: x[&quot;profit_probability&quot;])
-
-    # Output the summaries
-    for report in reports:
-        print(f&quot;Asset: {report[&#39;asset_name&#39;]}, Profit Probability: {report[&#39;profit_probability&#39;]}%&quot;)
-
-# Example Usage (assuming you have a list of report paths):
-report_lines = [
-    &quot;==&gt; response/AAPL.md &lt;==&quot;,
-    &quot;==&gt; response/MSFT.md &lt;==&quot;,
-    &quot;==&gt; response/GOOG.md &lt;==&quot;,
-    &quot;==&gt; response/TSLA.md &lt;==&quot;,
-    &quot;==&gt; response/NVDA.md &lt;==&quot;,
-]
-summarize_reports(report_lines)
-
-</code></pre>
-<p><strong>Explanation:</strong></p>
-<ol type="1">
-<li><strong>Filename Parsing:</strong> The code extracts <code>asset_name</code> by splitting the filename string. It assumes the format is consistently <code>==&gt; response/{ASSET_NAME}.md &lt;==&quot;</code>.</li>
-<li><strong>Simulated Probability:</strong> The <code>profit_probability = random.randint(50, 95)</code> line is the <em>crucial part you’ll need to replace</em>. <strong>When you have the actual report file content, you’ll need to open the file, read its contents, and then parse the content to find the “profit probability” value.</strong> You might use regular expressions or simple string searching, depending on how the probability is formatted in the report. <em>This is the part where you’ll need to adapt the code to your specific data format.</em></li>
-<li><strong>List of Dictionaries:</strong> The code creates a list called <code>reports</code>. Each element in the list is a dictionary containing the <code>asset_name</code> and its corresponding (simulated, for now) <code>profit_probability</code>.</li>
-<li><strong>Sorting:</strong> <code>reports.sort(key=lambda x: x[&quot;profit_probability&quot;])</code> sorts the list of dictionaries in place, based on the value of the <code>profit_probability</code> key. The <code>lambda</code> function is a small anonymous function that tells <code>sort()</code> what to use for comparison.</li>
-<li><strong>Output:</strong> Finally, the code iterates through the sorted list and prints the summary for each asset.</li>
-</ol>
-<p><strong>Important:</strong></p>
+<li><p><strong>You Provide Report Content:</strong> You’ll paste the content of each <code>response/ASSET_NAME.md</code> file. Include the entire content of the file.</p></li>
+<li><p><strong>I Extract Information:</strong> I will extract the following from each report:</p>
 <ul>
-<li><strong>Replace the Simulation!</strong> The <code>random.randint(50, 95)</code> line is <em>only</em> for demonstration. You <strong>must</strong> replace it with code that reads the content of the report file and extracts the actual profit probability. I will need sample contents from the reports files to help you write that part.</li>
-<li><strong>Error Handling:</strong> The provided code lacks error handling. In a real script, you’d want to add <code>try...except</code> blocks to handle cases where a report file is missing, unreadable, or doesn’t contain the expected probability information.</li>
-<li><strong>File Paths:</strong> This code assumes the report lines provided are already extracted. You need to read the actual files from your disk.</li>
-<li><strong>Data Type:</strong> Ensure that when you extract the probability, it’s converted to a numerical type (e.g., <code>float</code> or <code>int</code>) before sorting. If it’s extracted as a string, the sorting will be incorrect.</li>
-</ul>
-<p>When you can provide a <em>sample</em> of the actual content of a <code>response/ASSET_NAME.md</code> file, I can help you write the code to extract the probability accurately. Let me know!</p>
+<li><strong>ASSET_NAME:</strong> (From the filename you’ll tell me)</li>
+<li><strong>Trading Position:</strong> (LONG or SHORT)</li>
+<li><strong>Entry Price:</strong> (The suggested entry price)</li>
+<li><strong>Stop Loss:</strong> (The suggested stop loss price)</li>
+<li><strong>Profit Probability:</strong> (The probability of the trade being profitable)</li>
+</ul></li>
+<li><p><strong>I Create a Summary:</strong> I’ll create a short summary for each report like this:</p>
+<p><code>ASSET_NAME: [LONG/SHORT] Entry: [Entry Price], Stop: [Stop Loss], Probability: [Profit Probability]</code></p></li>
+<li><p><strong>I Sort and Present the Results:</strong> After you’ve given me all the reports, I will sort the summaries by <code>Profit Probability</code> in descending order (highest probability first) and present them to you.</p></li>
+</ol>
+<p><strong>Example:</strong></p>
+<p>Let’s say you provide the following data:</p>
+<p><strong>Report 1:</strong> <code>response/AAPL.md</code></p>
+<pre><code>## AAPL Trade Recommendation
+
+**Position:** LONG
+**Entry Price:** 170.00
+**Stop Loss:** 165.00
+**Profit Probability:** 75%
+
+... (rest of the report content) ...</code></pre>
+<p><strong>Report 2:</strong> <code>response/GOOG.md</code></p>
+<pre><code>## GOOG Trade Recommendation
+
+**Position:** SHORT
+**Entry Price:** 2700.00
+**Stop Loss:** 2750.00
+**Profit Probability:** 60%
+
+... (rest of the report content) ...</code></pre>
+<p><strong>Report 3:</strong> <code>response/TSLA.md</code></p>
+<pre><code>## TSLA Trade Recommendation
+
+**Position:** LONG
+**Entry Price:** 1000.00
+**Stop Loss:** 950.00
+**Profit Probability:** 80%
+
+... (rest of the report content) ...</code></pre>
+<p><strong>Then, I would provide the following output:</strong></p>
+<pre><code>TSLA: LONG Entry: 1000.00, Stop: 950.00, Probability: 80%
+AAPL: LONG Entry: 170.00, Stop: 165.00, Probability: 75%
+GOOG: SHORT Entry: 2700.00, Stop: 2750.00, Probability: 60%</code></pre>
+<p><strong>Ready when you are! Just paste the content of each <code>response/ASSET_NAME.md</code> file here, one at a time.</strong></p>
 </body>
 </html>
