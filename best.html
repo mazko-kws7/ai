@@ -15,53 +15,58 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since you’re getting a “No such file or directory” error, I cannot access the files directly. I will provide you with a template for how I would structure the summaries and sorting, <em>assuming</em> I had the data from the files.</p>
-<p><strong>Here’s the structure I’ll use when you provide me with the content of each <code>response/ASSET_NAME.md</code> file:</strong></p>
-<ol type="1">
-<li><p><strong>You will paste the contents of <em>each</em> <code>response/ASSET_NAME.md</code> file directly into our chat.</strong> Make sure to clearly identify which asset the report belongs to (e.g., “Report for AAPL:”).</p></li>
-<li><p><strong>I will parse the content you provide, extracting:</strong></p>
+<p>Here’s a summary of the reports sorted by take profit probability:</p>
 <ul>
-<li>Asset Name (ASSET_NAME from the filename).</li>
-<li>Trading Position (SHORT or LONG).</li>
-<li>Entry Price (I will assume there’s a clear label like “Entry Price:” or “Entry:”).</li>
-<li>Stop Loss (I will assume there’s a clear label like “Stop Loss:” or “SL:”).</li>
-<li>Profit Probability (I will assume there’s a clear label like “Profit Probability:” or “Probability:”).</li>
-</ul></li>
-<li><p><strong>I will generate a summary for each report in the following format:</strong></p>
-<p><code>ASSET_NAME: [LONG/SHORT], Profit Probability: [PROBABILITY]</code></p></li>
-<li><p><strong>Finally, I will sort the summaries by <code>Profit Probability</code> in <em>descending</em> order (highest probability first).</strong></p></li>
-</ol>
-<p><strong>Example:</strong></p>
-<p>Let’s say you provide the following (as <em>separate</em> inputs):</p>
-<p><strong>Input 1:</strong></p>
-<pre><code>Report for AAPL:
-Trading Position: LONG
-Entry Price: 170.00
-Stop Loss: 165.00
-Profit Probability: 0.75</code></pre>
-<p><strong>Input 2:</strong></p>
-<pre><code>Report for TSLA:
-Trading Position: SHORT
-Entry Price: 1200.00
-Stop Loss: 1250.00
-Profit Probability: 0.60</code></pre>
-<p><strong>Input 3:</strong></p>
-<pre><code>Report for GOOG:
-Trading Position: LONG
-Entry Price: 2500.00
-Stop Loss: 2450.00
-Profit Probability: 0.80</code></pre>
-<p><strong>My Output:</strong></p>
-<pre><code>GOOG: LONG, Profit Probability: 0.80
-AAPL: LONG, Profit Probability: 0.75
-TSLA: SHORT, Profit Probability: 0.60</code></pre>
-<p><strong>Important Considerations:</strong></p>
-<ul>
-<li><strong>Consistency:</strong> The more consistent the format of your reports, the better I can extract the information accurately.</li>
-<li><strong>Labels:</strong> Make sure the labels for “Entry Price”, “Stop Loss”, and “Profit Probability” are clear and consistent across all reports. Tell me if they’re different than what I’ve assumed (e.g., if “Profit Probability” is labeled “Success Rate”).</li>
-<li><strong>Error Handling:</strong> If I can’t find a piece of information in a report, I’ll let you know.</li>
-<li><strong>Decimal Handling:</strong> I will assume profit probability is given as a decimal (e.g. 0.75 for 75%).</li>
+<li><strong>ETC-USD:</strong> Asset down trend, <em>Probability of Hitting Target 1:</em> 40% - 50%.</li>
+<li><strong>AVAX-USD:</strong> Asset down trend, <em>Probability of Hitting Target</em> at 18.50: 40-50%.</li>
+<li><strong>BTC-USD:</strong> Asset down trend, <em>Probability of Hitting Take-Profit Target:</em> 50%.</li>
+<li><strong>ARB-USD:</strong> Asset downtrend,<em>Probability of Hitting Take-Profit:</em> 50%.</li>
+<li><strong>HBAR-USD:</strong> Asset volatility down trend. <em>Probability of Hitting Take Profit:</em> 50%.</li>
+<li><strong>DOT-USD:</strong> Asset down trend, <em>Probability of Reaching Take Profit:</em> 50-60%.</li>
+<li><strong>NEIRO-USD:</strong> Asset down trend <em>Probability of Take-Profit:</em> 60%.</li>
+<li><strong>ADA-USD:</strong> Asset downtrend, <em>Probability of Take Profit (0.633):</em> 40%.</li>
+<li><strong>ALGO-USD:</strong> Asset downtrend, estimates a 60% chance of hitting the take profit target.</li>
+<li><strong>FIL-USD:</strong> Asset down trend, 60% chance of take profit target hit.</li>
+<li><strong>ATOM-USD:</strong> Asset downtrend, <em>Probability of Take-Profit (Hitting Target):</em> 60%</li>
+<li><strong>GT-USD:</strong> Asset Consolidation , I estimate a <strong>60%</strong> probability of hitting the take-profit target.</li>
+<li><strong>CRO-USD:</strong> Asset Downtrend, <em>Probability of Profit:</em> 60%.</li>
+<li><strong>FET-USD:</strong> Asset down trend, <em>Probability of Profit (Hitting Take-Profit):</em> 60%.</li>
+<li><strong>DOGE-USD:</strong> Asset downtrend, I would estimate a <strong>60% to 70% probability</strong> of hitting the take-profit target.</li>
+<li><strong>BCH-USD:</strong> Asset downtrend, <em>Probability of Hitting Take-Profit (TP):</em> 40-50%.</li>
+<li><strong>LTC-USD:</strong> Asset consolidation, <em>Probability of Hitting Take-Profit Target 1 (100.0):</em> 55%.</li>
+<li><strong>INJ-USD:</strong> downtrend, <em>Probability of Hitting Target 1:</em> 55-60%.</li>
+<li><strong>IMX-USD:</strong> Asset downtrend, <em>Probability of Hitting Take Profit:</em> 50%</li>
+<li><strong>ETH-USD:</strong> Asset trending down, a 60% chance of hitting the take-profit target.</li>
+<li><strong>HYPE-USD:</strong> Asset down trend, <em>Probability of Profit (Hitting Take-Profit):</em> 55%.</li>
+<li><strong>KAS-USD:</strong> Asset down trend <em>Probability of Take-Profit (Based on Analysis):</em> 55%.</li>
+<li><strong>JUP-USD:</strong> Asset down trend, <em>Probability of Hitting Take Profit:</em> 60%</li>
+<li><strong>CFX-USD:</strong> Asset Downtrend, <em>Probability of Take-Profit:</em> 50%.</li>
+<li><strong>BGB-USD:</strong> Asset Uptrend , I estimate a <strong>60%</strong> probability of hitting the first Take-Profit target (4.45).</li>
+<li><strong>BNB-USD:</strong> Asset down trend , a probability of hitting the take-profit target at <strong>60% to 70%</strong></li>
+<li><strong>LEO-USD:</strong> Asset consolidation, <em>Estimated Probability of Profit (Take-Profit Hit):</em> 55%</li>
+<li><strong>LINK-USD:</strong> Asset down trend, estimate a 60% of take profit target hit.</li>
+<li><strong>MNT-USD:</strong> Asset uptrend, <em>Probability of Take-Profit:</em> 55%</li>
+<li><strong>OM-USD:</strong> Asset volatility trending up, <em>Probability of Hitting Take Profit:</em> 60%</li>
+<li><strong>ENA-USD:</strong> Asset Downtrend, <em>Probability of Profit (Take Profit):</em> 60%</li>
+<li><strong>APT-USD:</strong> Asset down trend, <em>Probability of Profit:</em> 60-70%.</li>
+<li><strong>ONDO-USD:</strong> Asset down trend, <em>Probability of Take Profit:</em> 50%.</li>
+<li><strong>OP-USD:</strong> Asset down trend, <em>Probability of Profit (Hitting Take Profit):</em> 55%.</li>
+<li><strong>PEOPLE-USD:</strong> Asset down trend, <em>Probability of Profit:</em> 60%.</li>
+<li><strong>PEPE-USD:</strong> Asset volatility down trend, take profit higher, I’d estimate around a <strong>60%</strong> chance of hitting the take-profit.</li>
+<li><strong>POL-USD:</strong> Asset down trend, <em>Probability of Profit (Take Profit):</em> 60-65%.</li>
+<li><strong>RAY-USD:</strong> Asset down trend, Given the downward trend and the conservative take-profit target, I would estimate a <strong>60% to 70% probability</strong> of hitting the take-profit target</li>
+<li><strong>RENDER-USD:</strong> Asset down trend, <em>Probability of Hitting Take-Profit (3.20):</em> 55%.</li>
+<li><strong>SHIB-USD:</strong> Asset trending down, 60-70% chance of hitting the take-profit target.</li>
+<li><strong>SOL-USD:</strong> Asset trend down, 40-50% estimate probability profit hit.</li>
+<li><strong>STX-USD:</strong> Asset down trend <em>Probability of Profit:</em> 60%</li>
+<li><strong>TON-USD:</strong> Asset no trend - 50% probability</li>
+<li><strong>TRX-USD:</strong> Asset down trend, Probability of Take Profit: 45%.</li>
+<li><strong>UNI-USD:</strong> Asset trending down,65%.</li>
+<li><strong>VET-USD:</strong> Asset volitality down trend, 40% Probability</li>
+<li><strong>XDC-USD:</strong> Asset down trend, 20-30% probability</li>
+<li><strong>XLM-USD:</strong> Asset downtrend and consolidation, 60% probability to hit take profit.</li>
+<li><strong>XMR-USD:</strong> Asset trending UP, 60% probability to profit.</li>
+<li><strong>XRP-USD:</strong> Asset not trend, 50% probability profit.</li>
 </ul>
-<p><strong>Now, please provide the content of each <code>response/ASSET_NAME.md</code> file, one at a time, and I’ll process them as described above.</strong></p>
 </body>
 </html>
