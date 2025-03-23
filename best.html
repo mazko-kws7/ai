@@ -15,51 +15,53 @@
   </style>
 </head>
 <body>
-<p>Okay, I understand. Since you’re telling me there are no actual files to read, I’ll assume the content of each <code>response/ASSET_NAME.md</code> file includes the information you described: trading position (LONG/SHORT), entry price, stop loss, and profit probability.</p>
-<p>Here’s how I’ll provide the summary and sorting, based on the <em>provided information format</em> and assuming I’m getting this <em>raw output</em>:</p>
-<p><strong>1. Assumed Input Format:</strong></p>
-<p>I expect each line to start with <code>&quot;==&gt; response/&quot;</code> and end with <code>&quot;.md &lt;==&quot;</code>. The asset name will be what’s in between. Inside the (non-existent) file, I expect to see strings like <code>&quot;Position: LONG&quot;</code>, <code>&quot;Probability: 75%&quot;</code>, etc.</p>
-<p><strong>2. Logic (Since I can’t actually read files):</strong></p>
+<p>Okay, I understand. Since you’re getting a “No such file or directory” error, I cannot access the files directly. I will provide you with a template for how I would structure the summaries and sorting, <em>assuming</em> I had the data from the files.</p>
+<p><strong>Here’s the structure I’ll use when you provide me with the content of each <code>response/ASSET_NAME.md</code> file:</strong></p>
+<ol type="1">
+<li><p><strong>You will paste the contents of <em>each</em> <code>response/ASSET_NAME.md</code> file directly into our chat.</strong> Make sure to clearly identify which asset the report belongs to (e.g., “Report for AAPL:”).</p></li>
+<li><p><strong>I will parse the content you provide, extracting:</strong></p>
 <ul>
-<li>I will parse the provided line to extract the <code>ASSET_NAME</code>.</li>
-<li>Since I don’t have actual file content, I’ll have to <em>assume</em> the existence of a profit probability value within each report. I will denote this by <code>Unknown</code>.</li>
-<li>I will present the summary as “Asset: [ASSET_NAME], Probability: [PROBABILITY]”.</li>
-<li>Because the probability is unknown, I cannot sort them. Instead, I will present them in the order that you provide them.</li>
-</ul>
-<p><strong>Example and Response:</strong></p>
-<p>Let’s say you provide the following input:</p>
-<pre><code>==&gt; response/AAPL.md &lt;==&quot;
-==&gt; response/GOOG.md &lt;==&quot;
-==&gt; response/MSFT.md &lt;==&quot;</code></pre>
-<p>Here’s the response I’d generate:</p>
-<pre><code>Asset: AAPL, Probability: Unknown
-Asset: GOOG, Probability: Unknown
-Asset: MSFT, Probability: Unknown</code></pre>
-<p><strong>Important Considerations:</strong></p>
-<ul>
-<li><p><strong>Accuracy depends on your input.</strong> If the format of the input lines or the content inside the (missing) files is different from my assumptions, the result will be incorrect.</p></li>
-<li><p><strong>File Access:</strong> I cannot read files. I need you to provide the <em>content</em> of what would be in the files.</p></li>
-<li><p><strong>Real Content Extraction:</strong> If you <em>can</em> get the content of those files (even if it’s just the relevant lines containing “Position,” “Entry Price,” “Stop Loss,” and “Probability”), then paste that content along with the <code>==&gt; response/ASSET_NAME.md &lt;==&quot;</code> lines. I can then parse the <em>actual</em> probability. For example:</p>
-<pre><code>==&gt; response/AAPL.md &lt;==&quot;
-Position: LONG
+<li>Asset Name (ASSET_NAME from the filename).</li>
+<li>Trading Position (SHORT or LONG).</li>
+<li>Entry Price (I will assume there’s a clear label like “Entry Price:” or “Entry:”).</li>
+<li>Stop Loss (I will assume there’s a clear label like “Stop Loss:” or “SL:”).</li>
+<li>Profit Probability (I will assume there’s a clear label like “Profit Probability:” or “Probability:”).</li>
+</ul></li>
+<li><p><strong>I will generate a summary for each report in the following format:</strong></p>
+<p><code>ASSET_NAME: [LONG/SHORT], Profit Probability: [PROBABILITY]</code></p></li>
+<li><p><strong>Finally, I will sort the summaries by <code>Profit Probability</code> in <em>descending</em> order (highest probability first).</strong></p></li>
+</ol>
+<p><strong>Example:</strong></p>
+<p>Let’s say you provide the following (as <em>separate</em> inputs):</p>
+<p><strong>Input 1:</strong></p>
+<pre><code>Report for AAPL:
+Trading Position: LONG
 Entry Price: 170.00
 Stop Loss: 165.00
-Probability: 80%
-==&gt; response/GOOG.md &lt;==&quot;
-Position: SHORT
+Profit Probability: 0.75</code></pre>
+<p><strong>Input 2:</strong></p>
+<pre><code>Report for TSLA:
+Trading Position: SHORT
+Entry Price: 1200.00
+Stop Loss: 1250.00
+Profit Probability: 0.60</code></pre>
+<p><strong>Input 3:</strong></p>
+<pre><code>Report for GOOG:
+Trading Position: LONG
 Entry Price: 2500.00
-Stop Loss: 2550.00
-Probability: 65%
-==&gt; response/MSFT.md &lt;==&quot;
-Position: LONG
-Entry Price: 330.00
-Stop Loss: 325.00
-Probability: 70%</code></pre>
-<p>Then I <em>could</em> provide a sorted response:</p>
-<pre><code>Asset: GOOG, Probability: 65%
-Asset: MSFT, Probability: 70%
-Asset: AAPL, Probability: 80%</code></pre></li>
+Stop Loss: 2450.00
+Profit Probability: 0.80</code></pre>
+<p><strong>My Output:</strong></p>
+<pre><code>GOOG: LONG, Profit Probability: 0.80
+AAPL: LONG, Profit Probability: 0.75
+TSLA: SHORT, Profit Probability: 0.60</code></pre>
+<p><strong>Important Considerations:</strong></p>
+<ul>
+<li><strong>Consistency:</strong> The more consistent the format of your reports, the better I can extract the information accurately.</li>
+<li><strong>Labels:</strong> Make sure the labels for “Entry Price”, “Stop Loss”, and “Profit Probability” are clear and consistent across all reports. Tell me if they’re different than what I’ve assumed (e.g., if “Profit Probability” is labeled “Success Rate”).</li>
+<li><strong>Error Handling:</strong> If I can’t find a piece of information in a report, I’ll let you know.</li>
+<li><strong>Decimal Handling:</strong> I will assume profit probability is given as a decimal (e.g. 0.75 for 75%).</li>
 </ul>
-<p>Please provide more input data (with the <em>actual content</em> if possible) so I can give you a useful response.</p>
+<p><strong>Now, please provide the content of each <code>response/ASSET_NAME.md</code> file, one at a time, and I’ll process them as described above.</strong></p>
 </body>
 </html>
