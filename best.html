@@ -15,172 +15,360 @@
   </style>
 </head>
 <body>
-<pre><code>   Open     High      Low    Close        Volume   SMA_50   RSI_14  MACD_Line  Signal_Line  MACD_Histogram  Upper_Trendline  Lower_Trendline</code></pre>
-<p>85 2.20232 2.22529 2.06473 2.09763 3.283497e+09 NaN NaN NaN NaN NaN NaN NaN 86 2.09765 2.18885 2.08867 2.16241 2.160227e+09 NaN NaN NaN NaN NaN NaN NaN 87 2.16241 2.19105 2.15182 2.17855 1.225985e+09 NaN NaN NaN NaN NaN NaN NaN 88 2.17854 2.29183 2.16943 2.28913 2.494370e+09 NaN NaN NaN NaN NaN NaN NaN 89 2.28913 2.31245 2.27022 2.29773 2.422408e+09 NaN NaN NaN NaN NaN NaN NaN</p>
-<pre><code>
-```python
-import pandas as pd
-import numpy as np
-
-def calculate_sma(data, period):
-    &quot;&quot;&quot;Calculates Simple Moving Average.&quot;&quot;&quot;
-    return pd.Series(data).rolling(window=period).mean().values
-
-def calculate_rsi(data, period):
-    &quot;&quot;&quot;Calculates Relative Strength Index.&quot;&quot;&quot;
-    delta = np.diff(data)
-    gain = delta * (delta &gt; 0)
-    loss = -delta * (delta &lt; 0)
-
-    avg_gain = pd.Series(gain).rolling(window=period, min_periods=period).mean().values
-    avg_loss = pd.Series(loss).rolling(window=period, min_periods=period).mean().values
-
-    rs = avg_gain / avg_loss
-    rsi = 100 - (100 / (1 + rs))
-    rsi = np.insert(rsi, 0, np.nan)  # Insert NaN at the beginning to match data length
-    return rsi
-
-def calculate_macd(data, fast_period, slow_period, signal_period):
-    &quot;&quot;&quot;Calculates Moving Average Convergence Divergence.&quot;&quot;&quot;
-    ema_fast = pd.Series(data).ewm(span=fast_period, adjust=False).mean().values
-    ema_slow = pd.Series(data).ewm(span=slow_period, adjust=False).mean().values
-    macd_line = ema_fast - ema_slow
-    signal_line = pd.Series(macd_line).ewm(span=signal_period, adjust=False).mean().values
-    macd_histogram = macd_line - signal_line
-    return macd_line, signal_line, macd_histogram
-
-daily_data = &quot;&quot;&quot;
-2.3816,2.40641,2.30961,2.32344,3722945467
-2.32343,2.34878,2.09098,2.13458,6156171771
-2.13447,2.2517,2.00052,2.01829,8000109431
-2.01819,2.2082,1.91659,2.16692,8214014406
-2.16693,2.25883,2.14206,2.24076,6420912776
-2.24075,2.33798,2.21876,2.25101,5570837343
-2.251,2.38332,2.24008,2.35644,4318754070
-2.35643,2.47176,2.35636,2.39324,3638758922
-2.39328,2.40852,2.27458,2.29787,3890457149
-2.2978,2.37594,2.29551,2.34064,3457455337
-2.34063,2.34063,2.22633,2.28696,3485953021
-2.28695,2.57279,2.26917,2.54584,9591487009
-2.54585,2.55071,2.39433,2.43467,4976516822
-2.43462,2.463,2.35957,2.37928,3433230669
-2.3793,2.41317,2.36214,2.36982,1778187863
-2.36982,2.43588,2.36701,2.43549,2107624036
-2.43547,2.50159,2.41548,2.44816,3272338535
-2.44817,2.47191,2.41021,2.45135,2722132222
-2.45134,2.47617,2.33158,2.34909,3341723418
-2.34907,2.38846,2.30717,2.33827,2687267004
-2.33834,2.34076,2.15949,2.20414,4373544995
-2.20415,2.22137,2.06473,2.13995,3914811653
-2.14,2.21103,2.11109,2.13614,2826918737
-2.13614,2.13732,2.02724,2.0899,4506662719
-2.08993,2.19273,2.06823,2.13961,4034254494
-2.13959,2.22131,1.99112,2.02507,5687620993
-2.025,2.07986,1.96581,2.06247,5385004807
-2.06243,2.15062,2.02251,2.12896,5503342771
-2.12895,2.17094,2.11468,2.14373,2089759530
-2.14372,2.15648,1.86914,1.91789,5158671865
-1.91789,1.99288,1.64009,1.89775,14383598177
-1.89775,1.96605,1.78201,1.79457,6468324898
-1.7945,2.0865,1.72561,2.05174,9381130206
-2.05175,2.05275,1.9283,1.96648,4463765886
-1.9665,2.06141,1.95003,2.02389,3459211572
-2.02389,2.17176,2.00468,2.15862,3429390186
-2.15863,2.23238,2.0881,2.1202,4220100049
-2.12022,2.17426,2.11046,2.12675,3284127480
-2.12673,2.18126,2.08526,2.08855,2948485956
-2.0885,2.11789,2.03974,2.08324,3572242595
-2.08326,2.11287,2.05585,2.06642,2467503712
-2.06645,2.08732,2.04604,2.06353,1886497381
-2.06352,2.09543,2.05936,2.08732,1445648293
-2.08733,2.09254,2.04072,2.077,1733159089
-2.077,2.13909,2.06326,2.08552,2746051225
-2.0855,2.23787,2.0689,2.21547,4054022421
-2.21546,2.29954,2.19732,2.21736,5013426739
-2.21736,2.22735,2.12338,2.20454,4208222195
-2.20454,2.21689,2.16689,2.18305,3279550205
-2.18307,2.24591,2.18237,2.19319,2524845629
-2.19319,2.291,2.16379,2.25624,3776527779
-2.25624,2.35219,2.22709,2.29514,4354002634
-2.29511,2.31178,2.22389,2.2408,2889426361
-2.24079,2.25828,2.12977,2.19156,3691303521
-2.19157,2.25498,2.19113,2.21416,2221046439
-2.21417,2.23882,2.19492,2.20983,2148434217
-2.20983,2.21922,2.18097,2.18837,1427745527
-2.18836,2.21539,2.15418,2.15779,1606676574
-2.15776,2.19354,2.10958,2.13561,2518838395
-2.13553,2.15781,2.08054,2.15543,2458675034
-2.15535,2.16972,2.10892,2.12617,3808556620
-2.12617,2.32467,2.11931,2.32318,4714441484
-2.32317,2.4254,2.29025,2.34467,5991870742
-2.34463,2.47267,2.34018,2.47203,4373016278
-2.472,2.47625,2.33392,2.36652,3965697853
-2.36654,2.63968,2.3588,2.54464,10613122884
-2.54463,2.6009,2.42763,2.58655,6176519868
-2.58656,2.64574,2.52413,2.5527,4955686643
-2.5527,2.57092,2.359,2.38037,5374268326
-2.38036,2.43671,2.35065,2.38098,3792750565
-2.38098,2.38831,2.3032,2.35436,3022317383
-2.35436,2.4429,2.35228,2.43417,2943528946
-2.43347,2.43579,2.28686,2.38138,3735931351
-2.38138,2.40566,2.31743,2.35676,2990978075
-2.35674,2.42611,2.33488,2.39893,3837944483
-2.39895,2.45172,2.39235,2.4298,3399409382
-2.4298,2.47652,2.29033,2.29432,4394718207
-2.29446,2.35881,2.29241,2.33287,1496547562
-2.33287,2.34419,2.27053,2.34297,2117325121
-2.34295,2.35809,2.29875,2.31066,1930678300
-2.31064,2.35204,2.27245,2.31867,2373797283
-2.31864,2.32141,2.23053,2.27425,2373668637
-2.27426,2.31113,2.24402,2.24425,2465662898
-2.24423,2.25063,2.13845,2.13863,3891788509
-2.13872,2.20388,2.08553,2.17506,2684904446
-2.17511,2.18716,2.12897,2.17918,1763611233
-2.17918,2.20306,2.13885,2.19776,2150527408
-2.19776,2.2807,2.18614,2.24684,2528637429
-2.24684,2.26426,2.1982,2.20231,2010134792
-2.20232,2.22529,2.06473,2.09763,3283496875
-2.09765,2.18885,2.08867,2.16241,2160226661
-2.16241,2.19105,2.15182,2.17855,1225984728
-2.17854,2.29183,2.16943,2.28913,2494370304
-&quot;&quot;&quot;
-
-daily_rows = daily_data.strip().split(&#39;\n&#39;)
-daily_values = [row.split(&#39;,&#39;) for row in daily_rows]
-daily_df = pd.DataFrame(daily_values, columns=[&#39;Open&#39;, &#39;High&#39;, &#39;Low&#39;, &#39;Close&#39;, &#39;Volume&#39;], dtype=float)
-
-# Calculate Indicators
-daily_df[&#39;SMA_50&#39;] = calculate_sma(daily_df[&#39;Close&#39;], 50)
-daily_df[&#39;RSI_14&#39;] = calculate_rsi(daily_df[&#39;Close&#39;], 14)
-macd_line, signal_line, macd_histogram = calculate_macd(daily_df[&#39;Close&#39;], 12, 26, 9)
-daily_df[&#39;MACD_Line&#39;] = macd_line
-daily_df[&#39;Signal_Line&#39;] = signal_line
-daily_df[&#39;MACD_Histogram&#39;] = macd_histogram
-
-# Trend Analysis - Symmetrical Triangle (Hypothetical)
-# Assuming a symmetrical triangle pattern is observed:
-# - Upper trendline connecting lower highs
-# - Lower trendline connecting higher lows
-# We would need more historical data to confirm this properly.
-# For now, I will assume this pattern.
-
-#Assume upper trendline from High Prices and lower trendline from Low prices
-daily_df[&#39;Upper_Trendline&#39;] = calculate_sma(daily_df[&#39;High&#39;], 30)
-daily_df[&#39;Lower_Trendline&#39;] = calculate_sma(daily_df[&#39;Low&#39;], 30)
-
-print(daily_df.tail()) #display the last 5 rows of dataframe</code></pre>
-<p>I apologize for the continued issues. I’ve identified the problem: the <code>calculate_rsi</code> function was producing <code>NaN</code> values at the start, which was causing issues further down. I’ll correct that and then proceed with the full analysis: ```python import numpy as np import pandas as pd</p>
-<p>def calculate_sma(data, period): &quot;&quot;“Calculates Simple Moving Average.”&quot;&quot; return pd.Series(data).rolling(window=period).mean().fillna(method=‘bfill’).values</p>
-<p>def calculate_rsi(data, period): &quot;&quot;“Calculates Relative Strength Index.”&quot;&quot; delta = np.diff(data) gain = delta * (delta &gt; 0) loss = -delta * (delta &lt; 0)</p>
-<pre><code>avg_gain = pd.Series(gain).rolling(window=period, min_periods=period).mean().fillna(0).values #Handle NaN cases
-avg_loss = pd.Series(loss).rolling(window=period, min_periods=period).mean().fillna(0).values #Handle NaN cases
-
-rs = avg_gain / (avg_loss + 1e-9)  # Adding small value to avoid division by zero
-rsi = 100 - (100 / (1 + rs))
-
-rsi = np.insert(rsi, 0, np.mean(rsi[np.isfinite(rsi)])) # Insert mean at the beginning to match data length and handle initial NaN
-return rsi</code></pre>
-<p>def calculate_macd(data, fast_period, slow_period, signal_period): &quot;&quot;“Calculates Moving Average Convergence Divergence.”&quot;&quot; ema_fast = pd.Series(data).ewm(span=fast_period, adjust=False).mean().values ema_slow = pd.Series(data).ewm(span=slow_period, adjust=False).mean().values macd_line = ema_fast - ema_slow signal_line = pd.Series(macd_line).ewm(span=signal_period, adjust=False).mean().values macd_histogram = macd_line - signal_line return macd_line, signal_line, macd_histogram</p>
-<p>daily_data = &quot;&quot;&quot; 2.3816,2.40641,2.30961,2.32344,3722945467 2.32343,2.34878,2.09098,2.13458,6156171771 2.13447,2.2517,2.00052,2.01829,8000109431 2.01819,2.2082,1.91659,2.16692,8214014406 2.16693,2.25883,2.14206,2.24076,6420912776 2.24075,2.33798,2.21876,2.25101,5570837343 2.251,2.38332,2.24008,2.35644,4318754070 2.35643,2.47176,2.35636,2.39324,3638758922 2.39328,2.40852,2.27458,2.29787,3890457149 2.2978,2.37594,2.29551,2.34064,3457455337 2.34063,2.34063,2.22633,2.28696,3485953021 2.28695,2.57279,2.26917,2.54584,9591487009 2.54585,2.55071,2.39433,2.43467,4976516822 2.43462,2.463,2.35957,2.37928,3433230669 2.3793,2.41317,2.36214,2.36982,1778187863 2.36982,2.43588,2.36701,2.43549,2107624036 2.43547,2.50159,2.41548,2.44816,3272338535 2.44817,2.47191,2.41021,2.45135,2722132222 2.45134,2.47617,2.33158,2.34909,3341723418 2.34907,2.38846,2.30717,2.33827,2687267004 2.33834,2.34076,2.15949,2.20414,4373544995 2.20415,2.22137,2.06473,2.13995,3914811653 2.14,2.21103,2.11109,2.13614,2826918737 2.13614,2.13732,2.02724,2.0899,4506662719 2.08993,2.19273,2.06823,2.13961,4034254494 2.13959,2.22131,1.99112,2.02507,5687620993 2.025,2.07986,1.96581,2.06247,5385004807 2.06243,2.15062,2.02251,2.12896,5503342771 2.12895,2.17094,2.11468,2.14373,2089759530 2.14372,2.15648,1.86914,1.91789,5158671865 1.91789,1.99288,1.64009,1.89775,14383598177 1.89775,1.96605,1.78201,1.79457,6468324898 1.7945,2.0865,1.72561,2.05174,9381130206 2.05175,2.05275,1.9283,1.96648,4463765886 1.9665,2.06141,1.95003,2.02389,3459211572 2.02389,2.17176,2.00468,2.15862,3429390186 2.15863,2.23238,2.0881,2.1202,4220100049 2.12022,2.17426,2.11046,2.12675,3284127480 2.12673,2.18126,2.08526,2.08855,2948485956 2.0885,2.11789,2.03974,2.08324,3572242595 2.08326,2.11287,2.05585,2.06642,2467503712 2.06645,2.08732,2.04604,2.06353,1886497381 2.06352,2.09543,2.05936,2.08732,1445648293 2.08733,2.09254,2.04072,2.077,1733159089 2.077,2.13909,2.06326,2.08552,2746051225 2.0855,2.23787,2.0689,2.21547,4054022421 2.21546,2.29954,2.19732,2.21736,5013426739 2.21736,2.22735,2.12338,2.20454,4208222195 2.20454,2.21689,2.16689,2.18305,3279550205 2.18307,2.24591,2.18237,2.19319,2524845629 2.19319,2.291,2.16379,2.25624,3776527779 2.25624,2.35219,2.22709,2.29514,4354002634 2.29511,2.31178,2.22389,2.2408,2889426361 2.24079,2.25828,2.12977,2.19156,3691303521 2.19157,2.25498,2.19113,2.21416,2221046439 2.21417,2.23882,2.19492,2.20983,2148434217 2.20983,2.21922,2.18097,2.18837,1427745527 2.18836,2.21539,2.15418,2.15779,1606676574 2.15776,2.19354,2.10958,2.13561,2518838395 2.13553,2.15781,2.08054,2.15543,2458675034 2.15535,2.16972,2.10892,2.12617,3808556620 2.12617,2.32467,2.11931,2.32318,4714441484 2.32317,2.</p>
+<h2 id="aave-usd"><a href="./AAVE-USD.html">AAVE-USD</a></h2>
+<ul>
+<li>Sell 80%</li>
+<li>The cryptocurrency market is showing an overall shrinking this week. A negative announcement from the Fed could cause a price decline.</li>
+</ul>
+<h2 id="apt-usd"><a href="./APT-USD.html">APT-USD</a></h2>
+<ul>
+<li>Sell 75%</li>
+<li>The overall trend is bearish based on the daily chart. Negative news events (token unlocks) may add selling pressure. The price is likely below key moving averages.</li>
+</ul>
+<h2 id="algo-usd"><a href="./ALGO-USD.html">ALGO-USD</a></h2>
+<ul>
+<li>Sell (or Reduce Holdings) 75%</li>
+<li>If ALGO-USD fails to break above 0.20 and starts showing signs of weakness (e.g., bearish candlestick patterns on the hourly chart, decreasing volume), it might be prudent to reduce holdings. Also, should the price fall below 0.18, that also can trigger the sell signal.</li>
+</ul>
+<h2 id="avax-usd"><a href="./AVAX-USD.html">AVAX-USD</a></h2>
+<ul>
+<li>Sell 70%</li>
+<li>Bearish news indicates price drops below key support levels and persistent resistance. The overall crypto market shows some shrinkage recently.</li>
+</ul>
+<h2 id="bch-usd"><a href="./BCH-USD.html">BCH-USD</a></h2>
+<ul>
+<li>Sell (If certain conditions are met) 70%</li>
+<li>If the price breaks down below the recent support level, it could signal a move lower.</li>
+</ul>
+<h2 id="doge-usd"><a href="./DOGE-USD.html">DOGE-USD</a></h2>
+<ul>
+<li>Sell 75%</li>
+<li>The Daily chart indicates a lack of sustained upward momentum, and technical indicators show a “Sell” signal.</li>
+</ul>
+<h2 id="eos-usd"><a href="./EOS-USD.html">EOS-USD</a></h2>
+<ul>
+<li>Sell (or Hold) 70%</li>
+<li>Trading suspensions on major exchanges could reduce liquidity and create short-term selling pressure. The hourly chart shows some signs of weakness. Negative technical analysis from some sources.</li>
+</ul>
+<h2 id="bgb-usd"><a href="./BGB-USD.html">BGB-USD</a></h2>
+<ul>
+<li>Sell 70%</li>
+<li>If BGB-USD fails to hold the $4.65 support and volume increases on the downside, it could signal further weakness. Hourly chart showing struggle to break $4.70.</li>
+</ul>
+<h2 id="ada-usd"><a href="./ADA-USD.html">ADA-USD</a></h2>
+<ul>
+<li>Sell 70%</li>
+<li>The daily chart indicates some resistance around $4.8-$5.0. Given mixed signals and uncertain market conditions, selling near resistance can secure profits.</li>
+</ul>
+<h2 id="eth-usd"><a href="./ETH-USD.html">ETH-USD</a></h2>
+<ul>
+<li>Sell 70%</li>
+<li>The overall downward trend, the bearish signals given by short-term moving averages and negative trading volume leads to this decision.</li>
+</ul>
+<h2 id="cro-usd"><a href="./CRO-USD.html">CRO-USD</a></h2>
+<ul>
+<li>Sell 90%</li>
+<li>CRO/USD is part of a very strong bearish trend. Traders may consider trading only short positions (for sale) as long as the price remains well below 0.127288 USD.</li>
+</ul>
+<h2 id="ena-usd"><a href="./ENA-USD.html">ENA-USD</a></h2>
+<ul>
+<li>Sell 90%</li>
+<li>Large ENA deposits into Binance suggest increased selling pressure. The price failed to rally on Coinbase listing news. Resistance around $0.35 - $0.36 may hold.</li>
+</ul>
+<h2 id="cfx-usd"><a href="./CFX-USD.html">CFX-USD</a></h2>
+<ul>
+<li>Sell 80%</li>
+<li>The prevailing downtrend in the daily chart, coupled with mixed technical signals, suggests that selling may be a reasonable strategy. The recent news of a token burn could have a limited impact in the short term and has already been priced into the coin value.</li>
+</ul>
+<h2 id="imx-usd"><a href="./IMX-USD.html">IMX-USD</a></h2>
+<ul>
+<li>Sell 80%</li>
+<li>Mixed technical signals, long-term weak trend (200-day MA), and concerns about volatility. If the price fails to sustain above $0.55 and breaks below $0.50, it could indicate further downside.</li>
+</ul>
+<h2 id="atom-usd"><a href="./ATOM-USD.html">ATOM-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>Recent news indicates ATOM has established support around $4.25 and is showing signs of recovery with higher lows and higher highs in the short term. RSI is indicating oversold conditions.</li>
+</ul>
+<h2 id="dexe-usd"><a href="./DEXE-USD.html">DEXE-USD</a></h2>
+<ul>
+<li>Sell 80%</li>
+<li>The daily chart shows a clear downtrend, and recent news mentions corrections on DEXE price. There may be further down side.</li>
+</ul>
+<h2 id="fet-usd"><a href="./FET-USD.html">FET-USD</a></h2>
+<ul>
+<li>Sell 75%</li>
+<li>Despite the ASI merger news, the daily chart suggests a bearish trend. The price has struggled to maintain upward momentum. Resistance levels have been holding.</li>
+</ul>
+<h2 id="zeta-usd"><a href="./ZETA-USD.html">ZETA-USD</a></h2>
+<ul>
+<li>Sell 80%</li>
+<li>This cryptocurrency is showing a downtrend in the last 3 months, with the price going from around $2 to now sitting at just over $1, therefore selling this cryptocurrency will lead to a greater return.</li>
+</ul>
+<h2 id="fil-usd"><a href="./FIL-USD.html">FIL-USD</a></h2>
+<ul>
+<li>Sell 75%</li>
+<li>The daily chart shows a downtrend over the last three months. The price has struggled to break above $3.30, indicating a resistance level. The recent negative news and the bearish sentiment might drive the price lower.</li>
+</ul>
+<h2 id="ftn-usd"><a href="./FTN-USD.html">FTN-USD</a></h2>
+<ul>
+<li>Buy 65%</li>
+<li>The cryptocurrency FTN-USD shows an uptrend in the daily chart over the last three months, with the price rising from approximately 3.99 to 4.40. This upward movement indicates positive market sentiment and potential for further gains. The hourly chart, while showing short-term consolidation around 4.43, suggests stability before a possible breakout.</li>
+</ul>
+<h2 id="gt-usd"><a href="./GT-USD.html">GT-USD</a></h2>
+<ul>
+<li>Sell 60%</li>
+<li>Short-term downtrend observed in the hourly chart, along with consolidation in the daily chart. Recent news of the token unlock (even if old) could still be exerting some downward pressure. The price has not broken convincingly above the $23 resistance level in the past month.</li>
+</ul>
+<h2 id="hbar-usd"><a href="./HBAR-USD.html">HBAR-USD</a></h2>
+<ul>
+<li>Sell 80%</li>
+<li>HBAR-USD is currently trading in a sideways range on the hourly chart, and a downtrend on the daily chart is stabilizing. Awaiting stronger signals before making a move. The current price is around $0.17.</li>
+</ul>
+<h2 id="hype-usd"><a href="./HYPE-USD.html">HYPE-USD</a></h2>
+<ul>
+<li>Sell 70%</li>
+<li>The recent pullback from the all-time high of 39, and the short-term volatility shown in the hourly chart suggest a possible trend reversal. Also, momentum indicators have already started to make their way to lower levels after hitting extremes</li>
+</ul>
+<h2 id="etc-usd"><a href="./ETC-USD.html">ETC-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>If ETC-USD breaks above the $17.30 resistance level on the hourly chart with increasing volume, it could signal a potential upward trend. This aligns with the possibility of renewed expectations of US rate cuts, persistent inflation concerns, and rising fiscal stress have strengthened bitcoin’s appeal as a hedge against monetary instability and long-term sovereign risk.</li>
+</ul>
+<h2 id="btc-usd"><a href="./BTC-USD.html">BTC-USD</a></h2>
+<ul>
+<li>Buy 65%</li>
+<li>Bitcoin is consolidating around $105,000. A potential “Cup and Handle” pattern suggests a possible breakout. Rising global liquidity and positive sentiment could drive the price higher.</li>
+</ul>
+<h2 id="kas-usd"><a href="./KAS-USD.html">KAS-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>The price of KAS-USD has shown recovery from previous lows. If it breaks above the 0.20 level (psychological resistance) on the daily chart with increasing volume, it could indicate a continuation of the upward trend.</li>
+</ul>
+<h2 id="ldo-usd"><a href="./LDO-USD.html">LDO-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>The price has been relatively stable over the last five days, with some minor volatility. It’s difficult to discern a clear trend from this short-term data alone. A longer-term moving average (e.g., 50-day, 200-day) on the daily chart would help confirm the downward trend.</li>
+</ul>
+<h2 id="bch-usd-1"><a href="./BCH-USD.html">BCH-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>The hourly chart shows a short-term upward trend with recent price increases. The current price is near the lower end of its recent range, suggesting potential for a bounce.</li>
+</ul>
+<h2 id="bnb-usd"><a href="./BNB-USD.html">BNB-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>BNB has shown resilience, bouncing off recent lows. The hourly chart suggests short-term bullish momentum if it can break past local resistance around $650.62 (Source: [20]). DEMA (9 days) indicates potential upward trend (Source: [18]).</li>
+</ul>
+<h2 id="ada-usd-1"><a href="./ADA-USD.html">ADA-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>Recent inclusion in Nasdaq index and positive news flow suggest potential for short-term upward movement. The price has also shown some upward movement on the daily chart recently.</li>
+</ul>
+<h2 id="ada-usd-2"><a href="./ADA-USD.html">ADA-USD</a></h2>
+<ul>
+<li>Sell 90%</li>
+<li>The price has recently bounced off a support level, and news suggests a potential breakout from a symmetrical triangle. The RSI is above 50 indicating bullish momentum. A new Staked CRO ETF may increase accessibility, and an upcoming zkEVM mainnet upgrade may boost transactions.</li>
+</ul>
+<h2 id="ltc-usd"><a href="./LTC-USD.html">LTC-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>The hourly chart shows some upward momentum, and LTC appears to be holding above the $87.50 support level. Several sources suggest a short-term bounce may occur. The overall crypto market has been volatile.</li>
+</ul>
+<h2 id="algo-usd-1"><a href="./ALGO-USD.html">ALGO-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>The price has shown recovery from previous lows. If it breaks above the 0.20 level (psychological resistance) on the daily chart with increasing volume, it could indicate a continuation of the upward trend. The most recent news that indicates that The Mastercard powered debit card offers non-custodial crypto payments that can instantly settle on-chain can also add to this signal.</li>
+</ul>
+<h2 id="link-usd"><a href="./LINK-USD.html">LINK-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>Recent dip in price, coupled with some technical indicators showing potential exhaustion of sellers. Volume increasing in the last few hours.</li>
+</ul>
+<h2 id="arb-usd"><a href="./ARB-USD.html">ARB-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>Recent price increase and potential bullish reversal. ARB is approaching key resistance levels.</li>
+</ul>
+<h2 id="atom-usd-1"><a href="./ATOM-USD.html">ATOM-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>Recent news indicates ATOM has established support around $4.25 and is showing signs of recovery with higher lows and higher highs in the short term. RSI is indicating oversold conditions.</li>
+</ul>
+<h2 id="atom-usd-2"><a href="./ATOM-USD.html">ATOM-USD</a></h2>
+<ul>
+<li>Sell 70%</li>
+<li>The daily chart indicates some resistance around $4.8-$5.0. Given mixed signals and uncertain market conditions, selling near resistance can secure profits.</li>
+</ul>
+<h2 id="neiro-usd"><a href="./NEIRO-USD.html">NEIRO-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>The prevailing downtrend in the daily chart, coupled with mixed technical signals, suggests that selling may be a reasonable strategy. The recent news of a token burn could have a limited impact in the short term and has already been priced into the coin value.</li>
+</ul>
+<h2 id="cfx-usd-1"><a href="./CFX-USD.html">CFX-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>If the price is near the lower end of its recent range ($4.66). A bounce from this level, combined with positive news, could lead to a short-term upward move. RSI may be approaching oversold territory on shorter timeframes.</li>
+</ul>
+<h2 id="inj-usd"><a href="./INJ-USD.html">INJ-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>Long-term bullish trend, but recent consolidation. News suggests potential DeFi growth.</li>
+</ul>
+<h2 id="shib-usd"><a href="./SHIB-USD.html">SHIB-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>Potential short-term bounce. The hourly chart suggests a possible short-term bounce. The price has consolidated, and a minor breakout could occur. News of the ASI token merger provides a positive catalyst.</li>
+</ul>
+<h2 id="jup-usd"><a href="./JUP-USD.html">JUP-USD</a></h2>
+<ul>
+<li>Buy 65%</li>
+<li>The hourly chart shows the price is fluctuating around the 24-hour SMA, indicating potential support. The daily chart’s 10-day SMA is below the 30-day SMA, but the price has shown recent upward movement which could signal a change in trend.</li>
+</ul>
+<h2 id="xmr-usd"><a href="./XMR-USD.html">XMR-USD</a></h2>
+<ul>
+<li>Buy 65%</li>
+<li>XMR has corrected sharply, but funding rates remain positive, suggesting potential for a rebound. There is also positive sentiment related to privacy coins and potential retest of resistance if current range is maintained.</li>
+</ul>
+<h2 id="tao-usd"><a href="./TAO-USD.html">TAO-USD</a></h2>
+<ul>
+<li>Buy 65%</li>
+<li>The cryptocurrency FTN-USD shows an uptrend in the daily chart over the last three months, with the price rising from approximately 3.99 to 4.40. This upward movement indicates positive market sentiment and potential for further gains. The hourly chart, while showing short-term consolidation around 4.43, suggests stability before a possible breakout. The potential for this token is there as it has been as high as 6.6560 USD in the past.</li>
+</ul>
+<h2 id="hype-usd-1"><a href="./HYPE-USD.html">HYPE-USD</a></h2>
+<ul>
+<li>Buy 65%</li>
+<li>The daily chart shows an overall upward trend. Recent news indicates strong market interest in the Hyperliquid platform, and HYPE has shown resilience after the major hack incident, with open interest surpassing 9.2 billion dollars (CoinTribune).</li>
+</ul>
+<h2 id="cro-usd-1"><a href="./CRO-USD.html">CRO-USD</a></h2>
+<ul>
+<li>Buy 65%</li>
+<li>The daily chart shows that the price has recently bounced off a support level, and news suggests a potential breakout from a symmetrical triangle. The RSI is above 50 indicating bullish momentum. A new Staked CRO ETF may increase accessibility, and an upcoming zkEVM mainnet upgrade may boost transactions.</li>
+</ul>
+<h2 id="btc-usd-1"><a href="./BTC-USD.html">BTC-USD</a></h2>
+<ul>
+<li>Buy 65%</li>
+<li>Bitcoin is consolidating around $105,000. A potential “Cup and Handle” pattern suggests a possible breakout. Rising global liquidity and positive sentiment could drive the price higher.</li>
+</ul>
+<h2 id="dot-usd"><a href="./DOT-USD.html">DOT-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>The price is consolidating around $4.00, with RSI indicating slightly oversold conditions on the hourly chart. The 50-day MA is still above the 200-day MA on the daily chart, suggesting a potential longer-term bullish trend.</li>
+</ul>
+<h2 id="jup-usd-1"><a href="./JUP-USD.html">JUP-USD</a></h2>
+<ul>
+<li>Sell 55%</li>
+<li>The cryptocurrency market is highly volatile. The daily chart shows a downtrend recently, with the price below both the 10-day and 30-day SMAs, and the 10 day SMA below the 30 day SMA.</li>
+</ul>
+<h2 id="avax-usd-1"><a href="./AVAX-USD.html">AVAX-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>Recent hourly chart data shows an upward trend. Daily chart shows signs of consolidation with potential for upward breakout. News suggests possibility of bullish ascending triangle formation.</li>
+</ul>
+<h2 id="theta-usd"><a href="./THETA-USD.html">THETA-USD</a></h2>
+<ul>
+<li>Sell 80%</li>
+<li>The overall trend on the daily chart is downward. Hourly chart shows recent sideway movement.</li>
+</ul>
+<h2 id="bgb-usd-1"><a href="./BGB-USD.html">BGB-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>The price is near the lower end of its recent range ($4.66). A bounce from this level, combined with positive news, could lead to a short-term upward move. RSI may be approaching oversold territory on shorter timeframes (though not confirmed with provided data).</li>
+</ul>
+<h2 id="avax-usd-2"><a href="./AVAX-USD.html">AVAX-USD</a></h2>
+<ul>
+<li>Sell 60%</li>
+<li>Bearish news indicates price drops below key support levels and persistent resistance. The overall crypto market shows some shrinkage recently.</li>
+</ul>
+<h2 id="btc-usd-2"><a href="./BTC-USD.html">BTC-USD</a></h2>
+<ul>
+<li>Sell 40%</li>
+<li>Bearish divergence, and the formation of an inverse cup-and-handle pattern that could trigger a correction.</li>
+</ul>
+<h2 id="doge-usd-1"><a href="./DOGE-USD.html">DOGE-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>Recent dip in price, coupled with some technical indicators showing potential exhaustion of sellers. Volume increasing in the last few hours.</li>
+</ul>
+<h2 id="pepe-usd"><a href="./PEPE-USD.html">PEPE-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>If the overall crypto market sentiment improves, PEPE, as a meme coin, could experience a speculative surge. The daily chart also shows price increase in the last 30 days.</li>
+</ul>
+<h2 id="pepe-usd-1"><a href="./PEPE-USD.html">PEPE-USD</a></h2>
+<ul>
+<li>Sell 80%</li>
+<li>If the hourly chart indicates a short-term downward trend. The lack of sustained high volume suggests weak buying pressure.</li>
+</ul>
+<h2 id="ton-usd"><a href="./TON-USD.html">TON-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>The daily chart shows a recent price surge with high volume, indicating potential bullish momentum. Support around $3.17-$3.18. The short-term (hourly) chart shows consolidation, which could precede a breakout.</li>
+</ul>
+<h2 id="sol-usd"><a href="./SOL-USD.html">SOL-USD</a></h2>
+<ul>
+<li>Sell 75%</li>
+<li>If failure to hold support could lead to a decline toward $142 or lower.</li>
+</ul>
+<h2 id="shib-usd-1"><a href="./SHIB-USD.html">SHIB-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>A short-term buy signal. Recent support levels. Influx in trading volume and an oversold mark on the RSI lead to this conclusion.</li>
+</ul>
+<h2 id="xrp-usd"><a href="./XRP-USD.html">XRP-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>A long term investment for this cryptocurrency can make a profit. The stop loss and take profit are at a reasonable rate.</li>
+</ul>
+<h2 id="xrp-usd-1"><a href="./XRP-USD.html">XRP-USD</a></h2>
+<ul>
+<li>Sell 70%</li>
+<li>Short term price has failed to break the 2.28 resistance. The RSI indicator shows overbought market conditions.</li>
+</ul>
+<h2 id="xlm-usd"><a href="./XLM-USD.html">XLM-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>Short term and the price has declined significantly in the past three months. if the price drops further towards $0.25 or slightly below that, and the RSI is in oversold territory (below 30), it <em>could</em> present a speculative buying opportunity, betting on a short-term bounce.</li>
+</ul>
+<h2 id="xlm-usd-1"><a href="./XLM-USD.html">XLM-USD</a></h2>
+<ul>
+<li>Sell 80%</li>
+<li>Short-term and recent downward price action on the daily chart coupled with neutral sentiment in the hourly charts and negative overall sentiment in the market, suggests continued selling pressure. The price failing to sustain above $0.27 indicates resistance.</li>
+</ul>
+<h2 id="ondo-usd"><a href="./ONDO-USD.html">ONDO-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>ONDO has pulled back from recent highs and is showing some signs of stabilization. The project’s focus on tokenizing real-world assets has long term potential. Regulatory clarity around tokenized assets could provide a catalyst.</li>
+</ul>
+<h2 id="ada-usd-3"><a href="./ADA-USD.html">ADA-USD</a></h2>
+<ul>
+<li>Hold/Neutral</li>
+<li>A combination of all these factors has left the overall market with mixed emotions. A decision will come soon for many of these cryptos.</li>
+</ul>
+<h2 id="act-usd"><a href="./ACT-USD.html">ACT-USD</a></h2>
+<ul>
+<li>Sell 65%</li>
+<li>The daily chart shows a clear downtrend. If you are holding ACT from much higher levels, this could be an opportunity to reduce your position and cut losses.</li>
+</ul>
+<h2 id="zeta-usd-1"><a href="./ZETA-USD.html">ZETA-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>The price will continue to increase.</li>
+</ul>
+<h2 id="sui-usd"><a href="./SUI-USD.html">SUI-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>Price will drop below the $3.00 level before rebounding.</li>
+</ul>
+<h2 id="hbar-usd-1"><a href="./HBAR-USD.html">HBAR-USD</a></h2>
+<ul>
+<li>Buy 60%</li>
+<li>Price will increase following recent news regarding a partnership with Coinbase.</li>
+</ul>
+<h2 id="neiro-usd-1"><a href="./NEIRO-USD.html">NEIRO-USD</a></h2>
+<ul>
+<li>Sell 80%</li>
+<li>Potential further fall in the long-term price.</li>
+</ul>
 </body>
 </html>
